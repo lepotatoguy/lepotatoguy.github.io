@@ -1436,3 +1436,8 @@ body.offcanvas {
 
 .js .animate-box {
   opacity: 0; }
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+  }
