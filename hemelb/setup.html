@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HemeLB Setup Instructions</title>
+</head>
+<body>
+  <h1>Set up your HemeLB environment on Local Device (User)</h1>
+  <p><strong>Author:</strong> Joyanta Mondal (<a href="mailto:joyanta@udel.edu">joyanta@udel.edu</a>)</p>
+  <p><strong>Last Updated:</strong> May 12</p>
+  <p><strong>Commit Version:</strong> 81a78e1</p>
+
+  <section>
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>Operating System: Ubuntu 24.04.1</li>
+      <li>Required: git and Anaconda must be pre-installed</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Installation Steps</h2>
+    <h3>Step 1: Install Required Packages</h3>
+    <pre><code>sudo apt-get install cmake-curses-gui
+sudo apt install cmake build-essential
+sudo apt install libopenmpi-dev openmpi-bin
+sudo apt-get install libtinyxml-dev
+sudo apt install libboost-all-dev
+sudo apt install libcgal-dev</code></pre>
+
+    <h3>Step 2: Clone and Configure HemeLB</h3>
+    <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
+cd hemelb
+mkdir build && cd build
+ccmake ..</code></pre>
+    <p>Press <code>c</code> to configure. There will be an option for a Parmetis tarball link, replace the broken one with:</p>
+    <p><a href="https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz" target="_blank">https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz</a></p>
+    <p>Then press <code>c</code> again, and finally press <code>g</code> to generate.</p>
+
+    <h3>Step 3: Build the Project</h3>
+    <pre><code>make  # or make -j4 for faster build</code></pre>
+    <p>Use <code>sudo</code> if permission is denied.</p>
+  </section>
+
+  <section>
+    <h2>Post-Installation</h2>
+    <p>After successful build, the <code>hemelb</code> binary should be available in your PATH. You can verify this using:</p>
+    <pre><code>which hemelb</code></pre>
+    <p>If not, manually add it to your PATH or specify full path during execution.</p>
+  </section>
+
+    <section>
+    <h2>Geometry Tool and Python Tool Setup</h2>
+    <p>To prepare the geometry and input files required for simulations, follow these steps:</p>
+
+    <h3>Step 1: Install Geometry Tool Dependencies</h3>
+    <p>Download the <code>hemelb-geometry-python-env.txt</code> file from <a href="hemelb/hemelb-geometry-python-env.txt">here</a>.</p>
+    <pre><code>conda create --name gmy-tool --file hemelb-geometry-python-env.txt --yes</code></pre>
+
+    <h3>Step 2: Install Python Tools</h3>
+    <pre><code>cd hemelb/python-tools
+pip install .</code></pre>
+
+    <h3>Step 3: Install HlbGmyTool</h3>
+    <pre><code>cd hemelb/geometry-tool
+pip install '.[gui]'</code></pre>
+
+    <h3>Optional Fix for VMTK Error</h3>
+    <p>If you encounter an error related to missing vmtk even though it is installed:</p>
+    <ol>
+      <li>Edit <code>geometry-tool/setup.py</code> and comment out the vmtk line.</li>
+      <li>Alternatively, refer to Appendix 5.3 in the <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing">documentation</a>.</li>
+    </ol>
+    <p>Then re-run:</p>
+    <pre><code>pip install '.[gui]'</code></pre>
+
+    <h3>Test Installation</h3>
+    <pre><code>pip install pytest
+hemelb-tests</code></pre>
+    <p>Ensure you receive test output containing "All Tests Passed" indicating successful and full setup.</p>
+  </section>
+
+  <section>
+    <h2>Helpful Links</h2>
+    <ul>
+      <li><a href="https://gist.github.com/lepotatoguy/88c83bb19fc42783e3337ff0a9174274" target="_blank">Installation Script</a></li>
+      <li><a href="https://github.com/lepotatoguy/docker-hemelb" target="_blank">Docker Version</a></li>
+      <li><a href="https://github.com/hemelb-codes/hemelb.git" target="_blank">HemeLB GitHub</a></li>
+    </ul>
+  </section>
+</body>
+</html>
