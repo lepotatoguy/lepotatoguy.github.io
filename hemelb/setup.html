@@ -10,6 +10,8 @@
   <p><strong>Last Updated:</strong> May 12</p>
   <p><strong>Commit Version:</strong> 81a78e1</p>
 
+  <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Extensive and Most Updated HemeLB Documentation</a>
+
   <section>
     <h2>Prerequisites</h2>
     <ul>
@@ -65,7 +67,7 @@ pip install .</code></pre>
     <pre><code>cd hemelb/geometry-tool
 pip install '.[gui]'</code></pre>
 
-    <h3>Optional Fix for VMTK Error</h3>
+    <h3>Fix for VMTK Error</h3>
     <p>If you encounter an error related to missing vmtk even though it is installed:</p>
     <ol>
       <li>Edit <code>geometry-tool/setup.py</code> and comment out the vmtk line.</li>
@@ -79,6 +81,12 @@ pip install '.[gui]'</code></pre>
 hemelb-tests</code></pre>
     <p>Ensure you receive test output containing "All Tests Passed" indicating successful and full setup.</p>
   </section>
+
+  <h3>6. Uninstall HemeLB</h3>
+<pre><code>sudo rm /usr/local/bin/hemelb
+sudo rm -f /usr/local/bin/hemelb-confcheck /usr/local/bin/hemelb-tests
+sudo rm -rf /usr/local/share/hemelb
+conda remove -n gmy-tool --all</code></pre>
 
   <section>
     <h2>Helpful Links</h2>
