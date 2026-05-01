@@ -4,22 +4,23 @@
   <meta charset="UTF-8">
   <title>HemeLB Tutorial</title>
   <meta name="description" content="Tutorial for using HemeLB: geometry preparation, simulation, result extraction, and visualization.">
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2em; line-height: 1.6; }
-    h1, h2, h3 { color: #003366; }
-    code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
-    pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
-    a { color: #0645AD; }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+<div class="container">
 <h1>HemeLB Tutorial</h1>
 <p><strong>Author:</strong> Joyanta Mondal (<a href="mailto:joyanta@udel.edu">joyanta@udel.edu</a>)</p>
-<p><strong>Last Updated:</strong> May 12</p>
+<p><strong>Last Updated:</strong> May 1, 2026</p>
 <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Extensive and Most Updated HemeLB Documentation and Tutorial</a>
 
 <p>This tutorial covers the workflow for using <strong>HemeLB</strong> after installation, focusing on geometry preparation, simulation execution, and data analysis.</p>
+
+<h2>0. Files you have to have to get started</h2>
+<ul>
+  <li>Your STL geometry file.</li>
+  <li>HemeLB installed.</li>
+  <li>(Optional) .pr2 file for CLI tool.</li>
+</ul>
 
 <h2>1. Geometry Setup</h2>
 <h3>1.1. Launch the Geometry Tool</h3>
@@ -40,7 +41,7 @@ Initially, you have to have a .pr2 profile to execute it. You can find it more i
 
 <h2>2. Running Simulation</h2>
 <h3>2.1. Prepare Your XML Configuration</h3>
-<p>Add the following block to your XML to enable data output:</p>
+<p>Add the following block just before last line to your XML to enable data output:</p>
 <pre><code>&lt;properties&gt;
   &lt;propertyoutput file="whole.xtr" period="100"&gt;
     &lt;geometry type="whole" /&gt;
@@ -51,8 +52,9 @@ Initially, you have to have a .pr2 profile to execute it. You can find it more i
 </code></pre>
 
 <h3>2.2. Execute HemeLB Simulation</h3>
+<p>Having the .gmy file, xml file, you can run this command below:</p>
 <pre><code>mpirun -n 4 hemelb -in large_cylinder.xml -out ./output/large_cylinder_test</code></pre>
-<p>Ensure <code>.xml</code> and <code>.gmy</code> files are in the same directory. Adjust processor count (<code>-n</code>) as appropriate.</p>
+<p>Ensure <code>.xml</code> and <code>.gmy</code> files are in the same directory. Adjust processor count (<code>-n</code>) as appropriate to your device.</p>
 
 <h2>3. Extracting and Visualizing Results</h2>
 <h3>3.1. Extract Simulation Output</h3>
@@ -185,6 +187,7 @@ VoxelSize: 0x1.999999999999ap-3
   <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/tutorials/">HemeLB Official Tutorials</a></li>
   <li><a href="https://github.com/UCL-CCS/hemeXtract">HemeXtract (not compatible with this version)</a></li>
 </ul>
-
+</div>
+<script defer src="assets/js/main.js"></script>
 </body>
 </html>

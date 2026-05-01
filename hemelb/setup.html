@@ -6,45 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Installation guide for setting up HemeLB on a local Ubuntu device.">
-  <style>
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      margin: 2em;
-      line-height: 1.6;
-      color: #202020;
-      background-color: #fdfdfd;
-    }
-    h1, h2, h3 {
-      color: #003366;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 1em;
-      overflow-x: auto;
-      border-left: 4px solid #003366;
-    }
-    code {
-      background-color: #eef;
-      padding: 2px 4px;
-      font-family: Consolas, monospace;
-    }
-    a {
-      color: #0645AD;
-    }
-    ul {
-      padding-left: 1.5em;
-    }
-    section {
-      margin-bottom: 2em;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-
+<div class="container">
   <h1>HemeLB Setup Instructions</h1>
   <p><strong>Author:</strong> Joyanta Mondal (<a href="mailto:joyanta@udel.edu">joyanta@udel.edu</a>)</p>
-  <p><strong>Last Updated:</strong> May 12</p>
-  <p><strong>Commit Version:</strong> <code>81a78e1</code></p>
+  <p><strong>Last Updated:</strong> May 1, 2026</p>
+  <p><strong>Commit Version:</strong> <code>432d338</code></p>
 
   <p>For the most comprehensive and updated information, refer to the 
     <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" 
@@ -78,12 +47,12 @@ cd hemelb
 mkdir build && cd build
 ccmake ..</code></pre>
 
-    <p>During the CMake configuration, replace the broken Parmetis tarball URL with:</p>
-    <p>
-      <a href="https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz" target="_blank" rel="noopener noreferrer">
-        https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz
-      </a>
-    </p>
+    <!-- <p>During the CMake configuration, replace the broken Parmetis tarball URL with:</p> -->
+    <!-- <p> -->
+      <!-- <a href="https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz" target="_blank" rel="noopener noreferrer"> -->
+        <!-- https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz -->
+      <!-- </a> -->
+    <!-- </p> -->
     <p>Press <code>c</code> to configure, update any necessary values, then press <code>c</code> again and finally <code>g</code> to generate build files.</p>
 
     <h3>Step 3: Build the Project</h3>
@@ -102,7 +71,7 @@ ccmake ..</code></pre>
     <h2>4. Geometry and Python Tool Setup</h2>
 
     <h3>Step 1: Install Geometry Tool Dependencies</h3>
-    <p>Download the required environment file 
+    <p><a href="https://gist.github.com/lepotatoguy/3b833ea08a5cb89756684b3cf53a7a7b" target="_blank">Download the required environment file</a> 
       <code>hemelb-geometry-python-env.txt</code> and create the environment:</p>
     <pre><code>conda create --name gmy-tool --file hemelb-geometry-python-env.txt --yes</code></pre>
 
@@ -147,6 +116,7 @@ conda remove -n gmy-tool --all</code></pre>
       <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank">HemeLB GitHub Repository</a></li>
     </ul>
   </section>
-
+  </div>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

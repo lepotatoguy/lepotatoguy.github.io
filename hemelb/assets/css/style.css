@@ -1,0 +1,361 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  /* Palette */
+  --color-bg:           #f7f6f3;
+  --color-surface:      #ffffff;
+  --color-border:       #e8e4de;
+  --color-border-strong:#c9c3bb;
+
+  --color-text:         #1a1917;
+  --color-text-muted:   #6b6560;
+  --color-text-subtle:  #9c958e;
+
+  --color-accent:       #1d4ed8;
+  --color-accent-hover: #1e40af;
+  --color-accent-bg:    #eff6ff;
+  --color-accent-text:  #1e40af;
+
+  --color-code-bg:      #0f1621;
+  --color-code-fg:      #d4cfc8;
+  --color-code-border:  #1e2d3d;
+
+  /* Typography */
+  --font-sans:   "Georgia", "Times New Roman", ui-serif, serif;
+  --font-ui:     "Helvetica Neue", system-ui, sans-serif;
+  --font-mono:   ui-monospace, "Cascadia Code", "Fira Code", Menlo, Consolas, monospace;
+
+  --text-base:   1rem;
+  --text-sm:     0.875rem;
+  --text-xs:     0.8rem;
+
+  --leading-body:    1.75;
+  --leading-heading: 1.2;
+
+  /* Spacing */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(26, 25, 23, 0.06),
+                 0 8px 24px rgba(26, 25, 23, 0.07),
+                 0 0 0 1px rgba(26, 25, 23, 0.04);
+
+  /* Transitions */
+  --transition: 150ms ease;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 760px;
+  margin: var(--space-12) auto;
+  padding: var(--space-12) var(--space-10);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 860px) {
+  .container {
+    margin: var(--space-6) var(--space-4);
+    padding: var(--space-8) var(--space-6);
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0;
+    padding: var(--space-6) var(--space-4);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-ui);
+  line-height: var(--leading-heading);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: var(--space-12) 0 var(--space-4);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: var(--space-8) 0 var(--space-2);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 0.95rem;
+  margin: var(--space-6) 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+}
+
+p {
+  margin: 0 0 var(--space-4);
+  max-width: 65ch;
+}
+
+/* ============================================================
+   LINKS
+   ============================================================ */
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  transition: color var(--transition),
+              text-decoration-color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+  text-decoration-color: var(--color-accent-hover);
+}
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+ul, ol {
+  padding-left: var(--space-5);
+  margin: 0 0 var(--space-4);
+}
+
+li {
+  margin-bottom: var(--space-1);
+}
+
+li::marker {
+  color: var(--color-text-subtle);
+}
+
+/* ============================================================
+   CODE
+   ============================================================ */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: #f0ede8;
+  color: #b45309;
+  padding: 1px 5px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #e5ddd3;
+}
+
+/* Code block wrapper */
+.code-block {
+  position: relative;
+  margin: var(--space-4) 0 var(--space-6);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-code-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
+              0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Optional: language label bar */
+.code-block::before {
+  content: attr(data-lang);
+  display: block;
+  background: #1a2540;
+  color: #5b7db5;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-code-border);
+}
+
+pre {
+  margin: 0;
+  padding: var(--space-5) var(--space-5);
+  background: var(--color-code-bg);
+  color: var(--color-code-fg);
+  overflow-x: auto;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  tab-size: 2;
+}
+
+/* Scrollbar styling for code */
+pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #2d3f55;
+  border-radius: 3px;
+}
+
+/* ============================================================
+   COPY BUTTON
+   ============================================================ */
+.copy-btn {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid #2d3f55;
+  background: rgba(255, 255, 255, 0.06);
+  color: #8fa8c8;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition),
+              background var(--transition),
+              color var(--transition);
+}
+
+.code-block:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #c8d8e8;
+  border-color: #3d5575;
+}
+
+.copy-btn:active {
+  transform: scale(0.96);
+}
+
+/* ============================================================
+   HEADER METADATA
+   ============================================================ */
+.header-meta {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  line-height: 1.4;
+}
+
+.header-meta > * + *::before {
+  content: "·";
+  margin-right: var(--space-3);
+  color: var(--color-border-strong);
+}
+
+/* ============================================================
+   BADGE LINK
+   ============================================================ */
+.badge-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-6);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-accent-bg);
+  color: var(--color-accent-text);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  border-radius: 100px;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background var(--transition),
+              border-color var(--transition),
+              box-shadow var(--transition);
+}
+
+.badge-link:hover {
+  background: color-mix(in srgb, var(--color-accent) 10%, white);
+  border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.12);
+  text-decoration: none;
+}
+
+/* ============================================================
+   LARGE SCREEN REFINEMENTS
+   ============================================================ */
+@media (min-width: 1200px) {
+  body {
+    font-size: 17px;
+  }
+
+  .container {
+    padding: var(--space-12) 72px;
+  }
+}
