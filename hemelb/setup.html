@@ -9,115 +9,147 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container">
-  <h1>HemeLB Setup Instructions</h1>
-  <p><strong>Author:</strong> Joyanta Mondal (<a href="mailto:joyanta@udel.edu">joyanta@udel.edu</a>)</p>
-  <p><strong>Last Updated:</strong> May 1, 2026</p>
-  <p><strong>Commit Version:</strong> <code>432d338</code></p>
 
-  <p>For the most comprehensive and updated information, refer to the 
-    <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" 
-       target="_blank" rel="noopener noreferrer">
-      full documentation.
-    </a>
-  </p>
+  <header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="2" y1="4.5" x2="16" y2="4.5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13.5" x2="16" y2="13.5"/>
+      </svg>
+    </button>
+    <a href="index.html" class="topbar-logo">HemeLB</a>
+  </header>
 
-  <section>
-    <h2>1. Prerequisites</h2>
-    <ul>
-      <li>Operating System: Ubuntu 24.04.1</li>
-      <li>Pre-installed: <code>git</code> and <code>Anaconda</code></li>
-    </ul>
-  </section>
+  <div class="page-layout">
+    <div class="sidebar-overlay" id="overlay"></div>
 
-  <section>
-    <h2>2. Installation Steps</h2>
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Getting Started</span>
+        <ul class="sidebar-nav">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="setup.html" class="active">Installation</a></li>
+        </ul>
+      </div>
 
-    <h3>Step 1: Install Required Packages</h3>
-    <pre><code>sudo apt-get install cmake-curses-gui
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Guides</span>
+        <ul class="sidebar-nav">
+          <li><a href="tutorial.html">Tutorial</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="container">
+
+        <h1>HemeLB Setup Instructions</h1>
+        <p class="header-meta">
+          <span>Author: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a></span>
+          <span>Last Updated: May 1, 2026</span>
+          <span>Commit: <code>432d338</code></span>
+        </p>
+
+        <p>For the most comprehensive and updated information, refer to the
+          <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing"
+             target="_blank" rel="noopener noreferrer">full documentation</a>.
+        </p>
+
+        <section>
+          <h2>1. Prerequisites</h2>
+          <ul>
+            <li>Operating System: Ubuntu 24.04.1</li>
+            <li>Pre-installed: <code>git</code> and <code>Anaconda</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. Installation Steps</h2>
+
+          <h3>Step 1: Install Required Packages</h3>
+          <pre><code>sudo apt-get install cmake-curses-gui
 sudo apt install cmake build-essential
 sudo apt install libopenmpi-dev openmpi-bin
 sudo apt-get install libtinyxml-dev
 sudo apt install libboost-all-dev
 sudo apt install libcgal-dev</code></pre>
 
-    <h3>Step 2: Clone and Configure HemeLB</h3>
-    <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
+          <h3>Step 2: Clone and Configure HemeLB</h3>
+          <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
 cd hemelb
 mkdir build && cd build
 ccmake ..</code></pre>
 
-    <!-- <p>During the CMake configuration, replace the broken Parmetis tarball URL with:</p> -->
-    <!-- <p> -->
-      <!-- <a href="https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz" target="_blank" rel="noopener noreferrer"> -->
-        <!-- https://karypis.github.io/glaros/files/sw/parmetis/parmetis-4.0.2.tar.gz -->
-      <!-- </a> -->
-    <!-- </p> -->
-    <p>Press <code>c</code> to configure, update any necessary values, then press <code>c</code> again and finally <code>g</code> to generate build files.</p>
+          <p>Press <code>c</code> to configure, update any necessary values, then press <code>c</code> again and finally <code>g</code> to generate build files.</p>
 
-    <h3>Step 3: Build the Project</h3>
-    <pre><code>make        # or use make -j4 for parallel build</code></pre>
-    <p>Use <code>sudo</code> if you encounter permission errors.</p>
-  </section>
+          <h3>Step 3: Build the Project</h3>
+          <pre><code>make        # or use make -j4 for parallel build</code></pre>
+          <p>Use <code>sudo</code> if you encounter permission errors.</p>
+        </section>
 
-  <section>
-    <h2>3. Post-Installation Verification</h2>
-    <p>Check if the binary is accessible via:</p>
-    <pre><code>which hemelb</code></pre>
-    <p>If not, you may need to add the binary directory to your system's <code>PATH</code> environment variable.</p>
-  </section>
+        <section>
+          <h2>3. Post-Installation Verification</h2>
+          <p>Check if the binary is accessible via:</p>
+          <pre><code>which hemelb</code></pre>
+          <p>If not, you may need to add the binary directory to your system's <code>PATH</code> environment variable.</p>
+        </section>
 
-  <section>
-    <h2>4. Geometry and Python Tool Setup</h2>
+        <section>
+          <h2>4. Geometry and Python Tool Setup</h2>
 
-    <h3>Step 1: Install Geometry Tool Dependencies</h3>
-    <p><a href="https://gist.github.com/lepotatoguy/3b833ea08a5cb89756684b3cf53a7a7b" target="_blank">Download the required environment file</a> 
-      <code>hemelb-geometry-python-env.txt</code> and create the environment:</p>
-    <pre><code>conda create --name gmy-tool --file hemelb-geometry-python-env.txt --yes</code></pre>
+          <h3>Step 1: Install Geometry Tool Dependencies</h3>
+          <p><a href="https://gist.github.com/lepotatoguy/3b833ea08a5cb89756684b3cf53a7a7b" target="_blank">Download the required environment file</a>
+            <code>hemelb-geometry-python-env.txt</code> and create the environment:</p>
+          <pre><code>conda create --name gmy-tool --file hemelb-geometry-python-env.txt --yes</code></pre>
 
-    <h3>Step 2: Install Python Tools</h3>
-    <pre><code>cd hemelb/python-tools
+          <h3>Step 2: Install Python Tools</h3>
+          <pre><code>cd hemelb/python-tools
 pip install .</code></pre>
 
-    <h3>Step 3: Install Geometry Tool (GUI)</h3>
-    <pre><code>cd ../geometry-tool
+          <h3>Step 3: Install Geometry Tool (GUI)</h3>
+          <pre><code>cd ../geometry-tool
 pip install '.[gui]'</code></pre>
 
-    <h3>Optional: Fix for VMTK Detection Error</h3>
-    <p>If <code>vmtk</code> is installed but not detected, either:</p>
-    <ul>
-      <li>Edit <code>geometry-tool/setup.py</code> and comment out the VMTK dependency line</li>
-      <li>Or follow Appendix 5.3 in the 
-        <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank">documentation</a>.
-      </li>
-    </ul>
-    <p>Re-run the installation afterwards:</p>
-    <pre><code>pip install '.[gui]'</code></pre>
+          <h3>Optional: Fix for VMTK Detection Error</h3>
+          <p>If <code>vmtk</code> is installed but not detected, either:</p>
+          <ul>
+            <li>Edit <code>geometry-tool/setup.py</code> and comment out the VMTK dependency line</li>
+            <li>Or follow Appendix 5.3 in the
+              <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank">documentation</a>.
+            </li>
+          </ul>
+          <p>Re-run the installation afterwards:</p>
+          <pre><code>pip install '.[gui]'</code></pre>
 
-    <h3>Step 4: Validate Installation</h3>
-    <pre><code>pip install pytest
+          <h3>Step 4: Validate Installation</h3>
+          <pre><code>pip install pytest
 hemelb-tests</code></pre>
-    <p>Ensure the tests complete successfully without errors. Look for output confirming that all tests passed.</p>
-  </section>
+          <p>Ensure the tests complete successfully without errors.</p>
+        </section>
 
-  <section>
-    <h2>5. Uninstall Instructions</h2>
-    <pre><code>sudo rm /usr/local/bin/hemelb
+        <section>
+          <h2>5. Uninstall Instructions</h2>
+          <pre><code>sudo rm /usr/local/bin/hemelb
 sudo rm -f /usr/local/bin/hemelb-confcheck /usr/local/bin/hemelb-tests
 sudo rm -rf /usr/local/share/hemelb
 conda remove -n gmy-tool --all</code></pre>
-  </section>
+        </section>
 
-  <section>
-    <h2>6. Useful References</h2>
-    <ul>
-      <li>Appendix 8.0 for Known Errors you may face</li>
-      <li><a href="https://gist.github.com/lepotatoguy/88c83bb19fc42783e3337ff0a9174274" target="_blank">Automated Installation Script (Gist)</a></li>
-      <li><a href="https://github.com/lepotatoguy/docker-hemelb" target="_blank">Docker Container for HemeLB</a></li>
-      <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank">HemeLB GitHub Repository</a></li>
-    </ul>
-  </section>
+        <section>
+          <h2>6. Useful References</h2>
+          <ul>
+            <li>Appendix 8.0 for Known Errors you may face</li>
+            <li><a href="https://gist.github.com/lepotatoguy/88c83bb19fc42783e3337ff0a9174274" target="_blank">Automated Installation Script (Gist)</a></li>
+            <li><a href="https://github.com/lepotatoguy/docker-hemelb" target="_blank">Docker Container for HemeLB</a></li>
+            <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank">HemeLB GitHub Repository</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
   </div>
+
   <script defer src="assets/js/main.js"></script>
 </body>
 </html>

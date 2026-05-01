@@ -4,168 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HemeLB Made Easy</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="The HemeLB Tutorial Site: A complete guide for setting up, running, and understanding HemeLB — a high-performance lattice-Boltzmann simulation environment for blood flow in cerebrovascular and vascular networks." />
-  <meta name="keywords" content="HemeLB, HemeLB Tutorial, HemeLB Easy Guide, HemeLB Documentation, Blood Flow Simulation, Lattice Boltzmann, Computational Fluid Dynamics, CFD, High Performance Computing, Hemodynamics, Biomedical Simulation, Fluid Dynamics" />
-  <meta name="author" content="HemeLB Development Team" />
-  <meta property="og:title" content="HemeLB Tutorial - Blood Flow Simulation Made Easy" />
-  <meta property="og:description" content="Step-by-step tutorials for HemeLB — the high-performance environment for cerebrovascular blood flow simulations." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://lepotatoguy.github.io/hemelb/" />
-  <meta name="google-site-verification" content="EEif9NxaIB5hotYuK2CXbC34WBzl5m0329dA7kQMV8g" />
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Favicon -->
+  <meta name="description" content="The HemeLB Tutorial Site: A complete guide for setting up, running, and understanding HemeLB." />
+  <meta name="keywords" content="HemeLB, HemeLB Tutorial, Blood Flow Simulation, Lattice Boltzmann, CFD, HPC" />
+  <meta name="author" content="Joyanta Mondal" />
   <link rel="icon" type="image/png" href="images/hemelb.png">
-
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
 
-  <div class="container">
-
-  <header>
-    <h1>HemeLB Tutorial</h1>
-    <h2>Software for High Performance Parallel Lattice-Boltzmann Simulations in Vascular Geometries</h2>
+  <header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="2" y1="4.5" x2="16" y2="4.5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13.5" x2="16" y2="13.5"/>
+      </svg>
+    </button>
+    <a href="index.html" class="topbar-logo">HemeLB</a>
   </header>
 
-  <main>
-    <section>
-      <p>
-        <a href="https://github.com/hemelb-codes/hemelb">HemeLB</a> is a high-performance lattice-Boltzmann solver optimized for simulating blood flow through sparse geometries, such as those found in human vasculature. It scales to hundreds of thousands of cores on modern supercomputers.
-      </p>
-      <p>
-        Traditionally used for modeling cerebral blood flow and vascular remodeling in retinas, HemeLB is now expanding to simulations of full human arterial and venous trees. This work contributes to the fast-growing field of Computational Biomedicine.
-      </p>
-      <p>
-        This initiative has been primarily developed from the research lab of Prof. Peter V Coveney at University College London.
-      </p>
-      <p>
-        This tutorial page provides a concise guide to HemeLB documentation and materials.
-      </p>
-    </section>
+  <div class="page-layout">
+    <div class="sidebar-overlay" id="overlay"></div>
 
-    <section>
-      <h2>Project Documentation</h2>
-      <p>
-        View the full document here:
-        <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">HemeLB Documentation</a>
-      </p>
-    </section>
-
-    <section>
-      <iframe src="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/preview" width="100%" height="600"></iframe>
-    </section>
-
-     <h2><a href="setup.html">Installation</a></h2>
-
-    <h2><a href="tutorial.html">Tutorial</a></h2>
-
-    <section>
-        <h2>Project Resources Online</h2>
-        <ul>
-          <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">Official HemeLB GitHub Repository</a></li>
-          <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/" target="_blank" rel="noopener noreferrer">Old HemeLB Website (Obsolete Version)</a></li>
-          <li><a href="https://compbiomedeu.github.io/applications/HemeLB/HemeLB.html" target="_blank" rel="noopener noreferrer">CompBioMed: HemeLB Application Page</a></li>
-          <li><a href="https://hemelb-dev.github.io/HemeLB-Carpentries/" target="_blank" rel="noopener noreferrer">HemeLB Carpentries Training Materials</a></li>
-          <li><a href="https://www.compbiomed.eu/wp-content/uploads/2019/08/CBM_HemeLBWebinar_FINAL.pdf" target="_blank" rel="noopener noreferrer">CompBioMed HemeLB Webinar (PDF)</a></li>
-          <li><a href="https://web.archive.org/web/20191023180612/https://www.compbiomed.eu/compbiomed-webinar-10/" target="_blank" rel="noopener noreferrer">CompBioMed Webinar 10: HemeLB</a></li>
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Getting Started</span>
+        <ul class="sidebar-nav">
+          <li><a href="index.html" class="active">Overview</a></li>
+          <li><a href="setup.html">Installation</a></li>
         </ul>
-      </section>
-  
-      <section>
-        <h2>Key Papers</h2>
-        <ul>
-          <li>
-            M.D. Mazzeo &amp; P.V. Coveney, 
-            "<em>HemeLB: A high performance parallel lattice-Boltzmann code for large scale fluid flow in complex geometries</em>", 
-            <strong>Comput. Phys. Commun.</strong> (2008). 
-            <a href="https://doi.org/10.1016/j.cpc.2008.02.013" target="_blank">https://doi.org/10.1016/j.cpc.2008.02.013</a>
-          </li>
-          
-          <li>
-            D. Groen, J. Hetherington, H.B. Carver, R.W. Nash, M.O. Bernabeu, 
-            "<em>Analysing and modelling the performance of the HemeLB lattice-Boltzmann simulation environment</em>", 
-            <strong>J. Comput. Sci.</strong> (2013). 
-            <a href="https://doi.org/10.1016/j.jocs.2013.03.002" target="_blank">https://doi.org/10.1016/j.jocs.2013.03.002</a>
-          </li>
-          
-          <li>
-            R.W. Nash, H.B. Carver, M.O. Bernabeu, J. Hetherington, D. Groen, T. Krüger, P.V. Coveney, 
-            "<em>Choice of boundary condition for lattice-Boltzmann simulation of moderate-Reynolds-number flow in complex domains</em>", 
-            <strong>Phys. Rev. E</strong> (2014). 
-            <a href="https://doi.org/10.1103/PhysRevE.89.023303" target="_blank">https://doi.org/10.1103/PhysRevE.89.023303</a>
-          </li>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Guides</span>
+        <ul class="sidebar-nav">
+          <li><a href="tutorial.html">Tutorial</a></li>
         </ul>
-      </section>
+      </div>
+    </nav>
 
-      <section>
-        <h2>Papers Using HemeLB</h2>
-        <ul>
-          <li>
-            Lo, S. C. Y., Zingaro, A., McCullough, J. W. S., Xue, X., Gonzalez-Martin, P., Joo, B., Vázquez, M., & Coveney, P. V. (2025). A multi-component, multi-physics computational model for solving coupled cardiac electromechanics and vascular haemodynamics. Computer Methods in Applied Mechanics and Engineering, 446(118185), 118185. https://doi.org/10.1016/j.cma.2025.118185
-          </li>
-          <li>
-            Zacharoudiou, I., McCullough, J. W. S., & Coveney, P. V. (2023). Development and performance of a HemeLB GPU code for human-scale blood flow simulation. Computer Physics Communications, 282(108548), 108548. https://doi.org/10.1016/j.cpc.2022.108548
-          </li>
-          <li>
-            McCullough, J.W.S., Coveney, P.V. High resolution simulation of basilar artery infarct and flow within the circle of Willis. Sci Rep 13, 21665 (2023). https://doi.org/10.1038/s41598-023-48776-0
-          </li>
-          <li>
-            Q. Zhou, K. Schirrmann, E. Doman, Q. Chen, N. Singh, P. Ravi Selvaganapathy,
-            M.O. Bernabeu, O.E. Jensen, A. Juel, I.L. Chernyavsky, T. Krüger.
-            <i>Red blood cell dynamics in extravascular biological tissues modelled as canonical disordered porous media.</i>
-            Interface Focus <b>12</b>, 20220037 (2022).
-            <a href="https://dx.doi.org/10.1098/rsfs.2022.0037" target="_blank">Link</a>
-          </li>
-          <li>
-            Q. Zhou, T. Perovic, I. Fechner, L.T. Edgar, P.R. Hoskins, H. Gerhardt,
-            T. Krüger, M.O. Bernabeu.
-            <i>Association between erythrocyte dynamics and vessel remodelling in developmental vascular networks.</i>
-            J. R. Soc. Interface <b>18</b>, 20210113 (2021).
-            <a href="https://doi.org/10.1098/rsif.2021.0113" target="_blank">Link</a>
-          </li>
-          <li>
-            R. Enjalbert, D. Hardman, T. Krüger, M.O. Bernabeu.
-            <i>Compressed vessels bias red blood cell partitioning at bifurcations in a hematocrit-dependent manner: Implications in tumor blood flow.</i>
-            PNAS <b>118</b>, e2025236118 (2021).
-            <a href="https://doi.org/10.1073/pnas.2025236118" target="_blank">Link</a>
-          </li>
-          <li>
-            Q. Zhou, J. Fidalgo, M.O. Bernabeu, M.S.N. Oliveira, T. Krüger.
-            <i>Emergent cell-free layer asymmetry and biased haematocrit partition in a biomimetic vascular network of successive bifurcations.</i>
-            Soft Matter <b>17</b>, 3619–3633 (2021).
-            <a href="https://doi.org/10.1039/D0SM01845G" target="_blank">Link</a>
-          </li>
-          <li>
-            M.O. Bernabeu, J. Köry, J.A. Grogan, B. Markelc, A.B. Ricol, M. d’Avezac,
-            R. Enjalbert, J. Kaeppler, N. Daly, J. Hetherington, T. Krüger, P.K. Maini,
-            J.M. Pitt-Francis, R.J. Muschel, T. Alarcón, H.M. Byrne.
-            <i>Abnormal morphology biases haematocrit distribution in tumour vasculature and contributes to heterogeneity in tissue oxygenation.</i>
-            PNAS <b>117</b>, 27811–27819 (2020).
-            <a href="https://doi.org/10.1073/pnas.200777011" target="_blank">Link</a>
-          </li>
-          <li>
-            Q. Zhou, J. Fidalgo, L. Calvi, M.O. Bernabeu, P.R. Hoskins, M.S.N. Oliveira,
-            T. Krüger.
-            <i>Spatiotemporal Dynamics of Dilute Red Blood Cell Suspensions in Low-Inertia Microchannel Flow.</i>
-            Biophys. J. <b>118</b>, 2561–2573 (2020).
-            <a href="https://doi.org/10.1016/j.bpj.2020.03.019" target="_blank">Link</a>
-          </li>
-        </ul>
-        
-      </section>
+    <div class="main-content">
+      <div class="container">
 
-  </main>
+        <h1>HemeLB Tutorial</h1>
+        <h2 style="border:none;margin-top:var(--space-2);font-size:1.1rem;font-weight:400;color:var(--color-text-muted);">
+          Software for High Performance Parallel Lattice-Boltzmann Simulations in Vascular Geometries
+        </h2>
 
-  <footer>
-    &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
-  </footer>
+        <section>
+          <p>
+            <a href="https://github.com/hemelb-codes/hemelb">HemeLB</a> is a high-performance lattice-Boltzmann solver optimized for simulating blood flow through sparse geometries, such as those found in human vasculature. It scales to hundreds of thousands of cores on modern supercomputers.
+          </p>
+          <p>
+            Traditionally used for modeling cerebral blood flow and vascular remodeling in retinas, HemeLB is now expanding to simulations of full human arterial and venous trees. This work contributes to the fast-growing field of Computational Biomedicine.
+          </p>
+          <p>
+            This initiative has been primarily developed from the research lab of Prof. Peter V Coveney at University College London.
+          </p>
+          <p>
+            This tutorial page provides a concise guide to HemeLB documentation and materials.
+          </p>
+        </section>
+
+        <section>
+          <h2>Project Documentation</h2>
+          <p>
+            View the full document here:
+            <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">HemeLB Documentation</a>
+          </p>
+          <iframe src="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/preview" width="100%" height="600" style="border:1px solid var(--color-border);border-radius:var(--radius-md);margin-top:var(--space-4);"></iframe>
+        </section>
+
+        <section>
+          <h2>Project Resources Online</h2>
+          <ul>
+            <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">Official HemeLB GitHub Repository</a></li>
+            <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/" target="_blank" rel="noopener noreferrer">Old HemeLB Website (Obsolete Version)</a></li>
+            <li><a href="https://compbiomedeu.github.io/applications/HemeLB/HemeLB.html" target="_blank" rel="noopener noreferrer">CompBioMed: HemeLB Application Page</a></li>
+            <li><a href="https://hemelb-dev.github.io/HemeLB-Carpentries/" target="_blank" rel="noopener noreferrer">HemeLB Carpentries Training Materials</a></li>
+            <li><a href="https://www.compbiomed.eu/wp-content/uploads/2019/08/CBM_HemeLBWebinar_FINAL.pdf" target="_blank" rel="noopener noreferrer">CompBioMed HemeLB Webinar (PDF)</a></li>
+            <li><a href="https://web.archive.org/web/20191023180612/https://www.compbiomed.eu/compbiomed-webinar-10/" target="_blank" rel="noopener noreferrer">CompBioMed Webinar 10: HemeLB</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Key Papers</h2>
+          <ul>
+            <li>
+              M.D. Mazzeo &amp; P.V. Coveney,
+              "<em>HemeLB: A high performance parallel lattice-Boltzmann code for large scale fluid flow in complex geometries</em>",
+              <strong>Comput. Phys. Commun.</strong> (2008).
+              <a href="https://doi.org/10.1016/j.cpc.2008.02.013" target="_blank">DOI</a>
+            </li>
+            <li>
+              D. Groen et al.,
+              "<em>Analysing and modelling the performance of the HemeLB lattice-Boltzmann simulation environment</em>",
+              <strong>J. Comput. Sci.</strong> (2013).
+              <a href="https://doi.org/10.1016/j.jocs.2013.03.002" target="_blank">DOI</a>
+            </li>
+            <li>
+              R.W. Nash et al.,
+              "<em>Choice of boundary condition for lattice-Boltzmann simulation of moderate-Reynolds-number flow in complex domains</em>",
+              <strong>Phys. Rev. E</strong> (2014).
+              <a href="https://doi.org/10.1103/PhysRevE.89.023303" target="_blank">DOI</a>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Papers Using HemeLB</h2>
+          <ul>
+            <li>Lo et al. (2025). A multi-component, multi-physics computational model for solving coupled cardiac electromechanics and vascular haemodynamics. <em>Comput. Methods Appl. Mech. Eng.</em> <a href="https://doi.org/10.1016/j.cma.2025.118185" target="_blank">DOI</a></li>
+            <li>Zacharoudiou et al. (2023). Development and performance of a HemeLB GPU code for human-scale blood flow simulation. <em>Comput. Phys. Commun.</em> <a href="https://doi.org/10.1016/j.cpc.2022.108548" target="_blank">DOI</a></li>
+            <li>McCullough &amp; Coveney (2023). High resolution simulation of basilar artery infarct and flow within the circle of Willis. <em>Sci. Rep.</em> <a href="https://doi.org/10.1038/s41598-023-48776-0" target="_blank">DOI</a></li>
+            <li>Zhou et al. (2022). Red blood cell dynamics in extravascular biological tissues modelled as canonical disordered porous media. <em>Interface Focus</em> <strong>12</strong>. <a href="https://dx.doi.org/10.1098/rsfs.2022.0037" target="_blank">DOI</a></li>
+            <li>Zhou et al. (2021). Association between erythrocyte dynamics and vessel remodelling in developmental vascular networks. <em>J. R. Soc. Interface</em> <strong>18</strong>. <a href="https://doi.org/10.1098/rsif.2021.0113" target="_blank">DOI</a></li>
+            <li>Enjalbert et al. (2021). Compressed vessels bias red blood cell partitioning at bifurcations. <em>PNAS</em> <strong>118</strong>. <a href="https://doi.org/10.1073/pnas.2025236118" target="_blank">DOI</a></li>
+            <li>Zhou et al. (2021). Emergent cell-free layer asymmetry and biased haematocrit partition in a biomimetic vascular network. <em>Soft Matter</em> <strong>17</strong>. <a href="https://doi.org/10.1039/D0SM01845G" target="_blank">DOI</a></li>
+            <li>Bernabeu et al. (2020). Abnormal morphology biases haematocrit distribution in tumour vasculature. <em>PNAS</em> <strong>117</strong>. <a href="https://doi.org/10.1073/pnas.200777011" target="_blank">DOI</a></li>
+            <li>Zhou et al. (2020). Spatiotemporal Dynamics of Dilute Red Blood Cell Suspensions in Low-Inertia Microchannel Flow. <em>Biophys. J.</em> <strong>118</strong>. <a href="https://doi.org/10.1016/j.bpj.2020.03.019" target="_blank">DOI</a></li>
+          </ul>
+        </section>
+
+        <footer>
+          &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
+        </footer>
+
+      </div>
+    </div>
   </div>
-<script defer src="assets/js/main.js"></script>
+
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>

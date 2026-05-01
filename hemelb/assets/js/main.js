@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Copy buttons for code blocks
   document.querySelectorAll("pre").forEach(pre => {
     const wrapper = document.createElement("div");
     wrapper.className = "code-block";
@@ -13,8 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         await navigator.clipboard.writeText(code);
         button.innerText = "Copied";
-        setTimeout(() => button.innerText = "Copy", 1500);
-      } catch (err) {
+        setTimeout(() => (button.innerText = "Copy"), 1500);
+      } catch {
         button.innerText = "Error";
       }
     });
@@ -23,4 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
     wrapper.appendChild(pre);
     wrapper.appendChild(button);
   });
+
+  // Sidebar drawer (mobile)
+  const menuBtn = document.getElementById("menu-btn");
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("overlay");
+
+  if (menuBtn && sidebar && overlay) {
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("open");
+      overlay.classList.toggle("open");
+    });
+
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("open");
+    });
+  }
 });

@@ -2,7 +2,6 @@
    DESIGN TOKENS
    ============================================================ */
 :root {
-  /* Palette */
   --color-bg:           #f7f6f3;
   --color-surface:      #ffffff;
   --color-border:       #e8e4de;
@@ -21,7 +20,6 @@
   --color-code-fg:      #d4cfc8;
   --color-code-border:  #1e2d3d;
 
-  /* Typography */
   --font-sans:   "Georgia", "Times New Roman", ui-serif, serif;
   --font-ui:     "Helvetica Neue", system-ui, sans-serif;
   --font-mono:   ui-monospace, "Cascadia Code", "Fira Code", Menlo, Consolas, monospace;
@@ -33,7 +31,6 @@
   --leading-body:    1.75;
   --leading-heading: 1.2;
 
-  /* Spacing */
   --space-1:  4px;
   --space-2:  8px;
   --space-3:  12px;
@@ -44,18 +41,22 @@
   --space-10: 40px;
   --space-12: 48px;
 
-  /* Radii */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
 
-  /* Shadows */
   --shadow-card: 0 1px 3px rgba(26, 25, 23, 0.06),
                  0 8px 24px rgba(26, 25, 23, 0.07),
                  0 0 0 1px rgba(26, 25, 23, 0.04);
 
-  /* Transitions */
   --transition: 150ms ease;
+
+  --sidebar-width:           240px;
+  --topbar-height:           52px;
+  --sidebar-bg:              #faf9f7;
+  --sidebar-item-hover:      #f0ede8;
+  --sidebar-item-active-bg:  var(--color-accent-bg);
+  --sidebar-item-active-text:var(--color-accent-text);
 }
 
 /* ============================================================
@@ -78,8 +79,177 @@ body {
 }
 
 /* ============================================================
-   LAYOUT
+   TOPBAR
    ============================================================ */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-5);
+  gap: var(--space-3);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topbar-logo {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.topbar-logo:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* Hamburger — visible only on mobile */
+.topbar-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.topbar-menu-btn:hover {
+  background: var(--sidebar-item-hover);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   PAGE SHELL
+   ============================================================ */
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+  padding-top: var(--topbar-height);
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  position: fixed;
+  top: var(--topbar-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  padding: var(--space-5) 0 var(--space-10);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  z-index: 80;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.sidebar-section {
+  margin: var(--space-5) 0 var(--space-1);
+}
+
+.sidebar-section-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  padding: 0 var(--space-4) var(--space-1);
+}
+
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-3);
+}
+
+.sidebar-nav li {
+  margin-bottom: 1px;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 450;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav a:hover {
+  background: var(--sidebar-item-hover);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.sidebar-nav a.active {
+  background: var(--sidebar-item-active-bg);
+  color: var(--sidebar-item-active-text);
+  font-weight: 550;
+}
+
+/* Sub-items */
+.sidebar-nav .subnav {
+  list-style: none;
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+  margin: 0;
+}
+
+.sidebar-nav .subnav li { margin-bottom: 0; }
+
+.sidebar-nav .subnav a {
+  font-size: 0.82rem;
+  padding: 4px var(--space-3);
+  color: var(--color-text-subtle);
+}
+
+.sidebar-nav .subnav a:hover { color: var(--color-text-muted); }
+
+.sidebar-nav .subnav a.active {
+  color: var(--sidebar-item-active-text);
+  background: transparent;
+  font-weight: 500;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-width: 0;
+}
+
 .container {
   max-width: 760px;
   margin: var(--space-12) auto;
@@ -90,12 +260,41 @@ body {
   border: 1px solid var(--color-border);
 }
 
+/* ============================================================
+   MOBILE
+   ============================================================ */
 @media (max-width: 860px) {
+  .topbar-menu-btn { display: flex; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    z-index: 90;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(26, 25, 23, 0.1);
+  }
+
+  .main-content { margin-left: 0; }
+
   .container {
     margin: var(--space-6) var(--space-4);
     padding: var(--space-8) var(--space-6);
     border-radius: var(--radius-md);
   }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: var(--topbar-height) 0 0 0;
+    background: rgba(26, 25, 23, 0.3);
+    z-index: 89;
+    backdrop-filter: blur(2px);
+  }
+
+  .sidebar-overlay.open { display: block; }
 }
 
 @media (max-width: 480px) {
@@ -141,7 +340,6 @@ h3 {
 }
 
 h4 {
-  font-size: 0.95rem;
   margin: var(--space-6) 0 var(--space-2);
   color: var(--color-text-muted);
   font-weight: 600;
@@ -164,8 +362,7 @@ a {
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
   text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
-  transition: color var(--transition),
-              text-decoration-color var(--transition);
+  transition: color var(--transition), text-decoration-color var(--transition);
 }
 
 a:hover {
@@ -181,13 +378,8 @@ ul, ol {
   margin: 0 0 var(--space-4);
 }
 
-li {
-  margin-bottom: var(--space-1);
-}
-
-li::marker {
-  color: var(--color-text-subtle);
-}
+li { margin-bottom: var(--space-1); }
+li::marker { color: var(--color-text-subtle); }
 
 /* ============================================================
    CODE
@@ -197,7 +389,6 @@ code {
   font-size: 0.88em;
 }
 
-/* Inline code */
 :not(pre) > code {
   background: #f0ede8;
   color: #b45309;
@@ -206,18 +397,15 @@ code {
   border: 1px solid #e5ddd3;
 }
 
-/* Code block wrapper */
 .code-block {
   position: relative;
   margin: var(--space-4) 0 var(--space-6);
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--color-code-border);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2),
-              0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* Optional: language label bar */
 .code-block::before {
   content: attr(data-lang);
   display: block;
@@ -234,7 +422,7 @@ code {
 
 pre {
   margin: 0;
-  padding: var(--space-5) var(--space-5);
+  padding: var(--space-5);
   background: var(--color-code-bg);
   color: var(--color-code-fg);
   overflow-x: auto;
@@ -243,19 +431,9 @@ pre {
   tab-size: 2;
 }
 
-/* Scrollbar styling for code */
-pre::-webkit-scrollbar {
-  height: 6px;
-}
-
-pre::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-pre::-webkit-scrollbar-thumb {
-  background: #2d3f55;
-  border-radius: 3px;
-}
+pre::-webkit-scrollbar { height: 6px; }
+pre::-webkit-scrollbar-track { background: transparent; }
+pre::-webkit-scrollbar-thumb { background: #2d3f55; border-radius: 3px; }
 
 /* ============================================================
    COPY BUTTON
@@ -278,14 +456,10 @@ pre::-webkit-scrollbar-thumb {
   color: #8fa8c8;
   cursor: pointer;
   opacity: 0;
-  transition: opacity var(--transition),
-              background var(--transition),
-              color var(--transition);
+  transition: opacity var(--transition), background var(--transition), color var(--transition);
 }
 
-.code-block:hover .copy-btn {
-  opacity: 1;
-}
+.code-block:hover .copy-btn { opacity: 1; }
 
 .copy-btn:hover {
   background: rgba(255, 255, 255, 0.12);
@@ -293,12 +467,10 @@ pre::-webkit-scrollbar-thumb {
   border-color: #3d5575;
 }
 
-.copy-btn:active {
-  transform: scale(0.96);
-}
+.copy-btn:active { transform: scale(0.96); }
 
 /* ============================================================
-   HEADER METADATA
+   HEADER METADATA & BADGE
    ============================================================ */
 .header-meta {
   font-family: var(--font-ui);
@@ -312,15 +484,6 @@ pre::-webkit-scrollbar-thumb {
   line-height: 1.4;
 }
 
-.header-meta > * + *::before {
-  content: "·";
-  margin-right: var(--space-3);
-  color: var(--color-border-strong);
-}
-
-/* ============================================================
-   BADGE LINK
-   ============================================================ */
 .badge-link {
   display: inline-flex;
   align-items: center;
@@ -335,9 +498,7 @@ pre::-webkit-scrollbar-thumb {
   font-size: var(--text-sm);
   font-weight: 500;
   text-decoration: none;
-  transition: background var(--transition),
-              border-color var(--transition),
-              box-shadow var(--transition);
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .badge-link:hover {
@@ -348,14 +509,21 @@ pre::-webkit-scrollbar-thumb {
 }
 
 /* ============================================================
-   LARGE SCREEN REFINEMENTS
+   FOOTER
+   ============================================================ */
+footer {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-text-subtle);
+  margin-top: var(--space-12);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ============================================================
+   LARGE SCREENS
    ============================================================ */
 @media (min-width: 1200px) {
-  body {
-    font-size: 17px;
-  }
-
-  .container {
-    padding: var(--space-12) 72px;
-  }
+  body { font-size: 17px; }
+  .container { padding: var(--space-12) 72px; }
 }

@@ -3,89 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <title>HemeLB Tutorial</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Tutorial for using HemeLB: geometry preparation, simulation, result extraction, and visualization.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container">
-<h1>HemeLB Tutorial</h1>
-<p><strong>Author:</strong> Joyanta Mondal (<a href="mailto:joyanta@udel.edu">joyanta@udel.edu</a>)</p>
-<p><strong>Last Updated:</strong> May 1, 2026</p>
-<a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Extensive and Most Updated HemeLB Documentation and Tutorial</a>
 
-<p>This tutorial covers the workflow for using <strong>HemeLB</strong> after installation, focusing on geometry preparation, simulation execution, and data analysis.</p>
+  <header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="2" y1="4.5" x2="16" y2="4.5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13.5" x2="16" y2="13.5"/>
+      </svg>
+    </button>
+    <a href="index.html" class="topbar-logo">HemeLB</a>
+  </header>
 
-<h2>0. Files you have to have to get started</h2>
-<ul>
-  <li>Your STL geometry file.</li>
-  <li>HemeLB installed.</li>
-  <li>(Optional) .pr2 file for CLI tool.</li>
-</ul>
+  <div class="page-layout">
+    <div class="sidebar-overlay" id="overlay"></div>
 
-<h2>1. Geometry Setup</h2>
-<h3>1.1. Launch the Geometry Tool</h3>
-<pre><code>hlb-gmy-gui [--stl &lt;path-to-stl&gt;]</code></pre>
-<p>In the GUI:</p>
-<ul>
-  <li>Load your STL file.</li>
-  <li>Add <strong>inlet</strong> (green) and <strong>outlet</strong> (red) discs.</li>
-  <li>Set disc radius &gt; geometry radius.</li>
-  <li>Specify <strong>voxel size</strong> and <strong>seed position</strong> (inside geometry).</li>
-  <li>Choose output paths for <code>.gmy</code> and <code>.xml</code> files.</li>
-  <li>Use "Save Profile" to generate a reusable <code>.pr2</code> YAML file.</li>
-</ul>
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Getting Started</span>
+        <ul class="sidebar-nav">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="setup.html">Installation</a></li>
+        </ul>
+      </div>
 
-<h3>1.2. Use CLI Tool (Alternative)</h3>
-Initially, you have to have a .pr2 profile to execute it. You can find it more in section 4.
-<pre><code>hlb-gmy-cli &lt;path-to-profile.pr2&gt;</code></pre>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Guides</span>
+        <ul class="sidebar-nav">
+          <li><a href="tutorial.html" class="active">Tutorial</a></li>
+        </ul>
+      </div>
+    </nav>
 
-<h2>2. Running Simulation</h2>
-<h3>2.1. Prepare Your XML Configuration</h3>
-<p>Add the following block just before last line to your XML to enable data output:</p>
-<pre><code>&lt;properties&gt;
+    <div class="main-content">
+      <div class="container">
+
+        <h1>HemeLB Tutorial</h1>
+        <p class="header-meta">
+          <span>Author: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a></span>
+          <span>Last Updated: May 1, 2026</span>
+        </p>
+        <p>
+          <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing"
+             target="_blank" rel="noopener noreferrer" class="badge-link">
+            Extensive HemeLB Documentation &rarr;
+          </a>
+        </p>
+
+        <p>This tutorial covers the workflow for using HemeLB after installation, focusing on geometry preparation, simulation execution, and data analysis.</p>
+
+        <h2>0. Files You Need to Get Started</h2>
+        <ul>
+          <li>Your STL geometry file.</li>
+          <li>HemeLB installed.</li>
+          <li>(Optional) <code>.pr2</code> file for the CLI tool.</li>
+        </ul>
+
+        <h2>1. Geometry Setup</h2>
+        <h3>1.1. Launch the Geometry Tool</h3>
+        <pre><code>hlb-gmy-gui [--stl &lt;path-to-stl&gt;]</code></pre>
+        <p>In the GUI:</p>
+        <ul>
+          <li>Load your STL file.</li>
+          <li>Add <strong>inlet</strong> (green) and <strong>outlet</strong> (red) discs.</li>
+          <li>Set disc radius &gt; geometry radius.</li>
+          <li>Specify <strong>voxel size</strong> and <strong>seed position</strong> (inside geometry).</li>
+          <li>Choose output paths for <code>.gmy</code> and <code>.xml</code> files.</li>
+          <li>Use "Save Profile" to generate a reusable <code>.pr2</code> YAML file.</li>
+        </ul>
+
+        <h3>1.2. Use CLI Tool (Alternative)</h3>
+        <p>Requires a <code>.pr2</code> profile (see Section 4).</p>
+        <pre><code>hlb-gmy-cli &lt;path-to-profile.pr2&gt;</code></pre>
+
+        <h2>2. Running Simulation</h2>
+        <h3>2.1. Prepare Your XML Configuration</h3>
+        <p>Add the following block just before the last line of your XML to enable data output:</p>
+        <pre><code>&lt;properties&gt;
   &lt;propertyoutput file="whole.xtr" period="100"&gt;
     &lt;geometry type="whole" /&gt;
     &lt;field type="velocity" /&gt;
     &lt;field type="pressure" /&gt;
   &lt;/propertyoutput&gt;
-&lt;/properties&gt;
-</code></pre>
+&lt;/properties&gt;</code></pre>
 
-<h3>2.2. Execute HemeLB Simulation</h3>
-<p>Having the .gmy file, xml file, you can run this command below:</p>
-<pre><code>mpirun -n 4 hemelb -in large_cylinder.xml -out ./output/large_cylinder_test</code></pre>
-<p>Ensure <code>.xml</code> and <code>.gmy</code> files are in the same directory. Adjust processor count (<code>-n</code>) as appropriate to your device.</p>
+        <h3>2.2. Execute HemeLB Simulation</h3>
+        <pre><code>mpirun -n 4 hemelb -in large_cylinder.xml -out ./output/large_cylinder_test</code></pre>
+        <p>Ensure <code>.xml</code> and <code>.gmy</code> files are in the same directory. Adjust <code>-n</code> as appropriate.</p>
 
-<h2>3. Extracting and Visualizing Results</h2>
-<h3>3.1. Extract Simulation Output</h3>
-<pre><code>hlb-dump-extracted-properties whole.xtr &gt; whole.csv</code></pre>
-<p>This converts the output to a CSV file readable for analysis or visualization.</p>
+        <h2>3. Extracting and Visualizing Results</h2>
+        <h3>3.1. Extract Simulation Output</h3>
+        <pre><code>hlb-dump-extracted-properties whole.xtr &gt; whole.csv</code></pre>
 
-<h3>3.2. Visualize Using ParaView</h3>
-<p>Download ParaView from the <a href="https://www.paraview.org/download/">official site</a>.</p>
-<p>In ParaView:</p>
-<ol>
-  <li>Open the CSV file.</li>
-  <li>Use the "Calculator" filter with:
-    <pre><code>iHat*vel_x + jHat*vel_y + kHat*vel_z</code></pre>
-  </li>
-  <li>Apply the "Glyph" filter to visualize flow vectors.</li>
-</ol>
+        <h3>3.2. Visualize Using ParaView</h3>
+        <p>Download ParaView from the <a href="https://www.paraview.org/download/">official site</a>.</p>
+        <ol>
+          <li>Open the CSV file.</li>
+          <li>Use the "Calculator" filter with:
+            <pre><code>iHat*vel_x + jHat*vel_y + kHat*vel_z</code></pre>
+          </li>
+          <li>Apply the "Glyph" filter to visualize flow vectors.</li>
+        </ol>
 
+        <h2>4. Understanding the .pr2 Profile File</h2>
+        <p>The <code>.pr2</code> file is a YAML-based configuration used by <code>hlb-gmy-cli</code> to generate both the voxelized geometry (<code>.gmy</code>) and simulation configuration file (<code>.xml</code>).</p>
 
+        <h3>4.1 Purpose</h3>
+        <ul>
+          <li>Encapsulates all geometry setup parameters in a reusable, human-readable format.</li>
+          <li>Enables reproducible workflows and automation of geometry generation.</li>
+          <li>Required input for command-line generation using <code>hlb-gmy-cli</code>.</li>
+        </ul>
 
-<h2>4. Understanding the .pr2 Profile File</h2>
-<p>The <code>.pr2</code> file is a YAML-based configuration used by the <code>hlb-gmy-cli</code> tool to generate both the voxelized geometry (<code>.gmy</code>) and simulation configuration file (<code>.xml</code>).</p>
-
-<h3>4.1 Purpose</h3>
-<ul>
-  <li>Encapsulates all geometry setup parameters in a reusable and human-readable format.</li>
-  <li>Enables reproducible workflows and automation of geometry generation.</li>
-  <li>Required input for command-line generation using <code>hlb-gmy-cli</code>.</li>
-</ul>
-
-<h3>4.2 Structure Overview</h3>
-<pre><code>DurationSeconds: &lt;float&gt;
+        <h3>4.2 Structure Overview</h3>
+        <pre><code>DurationSeconds: &lt;float&gt;
 Iolets:
   - Centre:
       x: &lt;float&gt;
@@ -102,28 +138,27 @@ Iolets:
       z: &lt;float&gt;
     Radius: &lt;float&gt;
     Type: Inlet | Outlet
-OutputGeometryFile: &lt;string&gt;    # e.g., "cylinder.gmy"
-OutputXmlFile: &lt;string&gt;         # e.g., "cylinder.xml"
+OutputGeometryFile: &lt;string&gt;
+OutputXmlFile: &lt;string&gt;
 SeedPoint:
   x: &lt;float&gt;
   y: &lt;float&gt;
   z: &lt;float&gt;
-StlFile: &lt;string&gt;               # e.g., "cylinder.stl"
-StlFileUnitId: 0 | 1 | 2        # 0 = meters, 1 = millimeters, 2 = micrometers
+StlFile: &lt;string&gt;
+StlFileUnitId: 0 | 1 | 2    # 0=meters, 1=mm, 2=micrometers
 TimeStepSeconds: &lt;float&gt;
-VoxelSize: &lt;float&gt;
-</code></pre>
+VoxelSize: &lt;float&gt;</code></pre>
 
-<h3>4.3 Notes on Field Values</h3>
-<ul>
-  <li>All floats should be in hexadecimal format (e.g., <code>0x1.0p+0</code> for 1.0) to ensure compatibility.</li>
-  <li>Inlets/Outlets must specify center, normal vector, radius, and type.</li>
-  <li><strong>SeedPoint</strong> must be inside the fluid volume for correct voxelization.</li>
-  <li><strong>VoxelSize</strong> determines resolution of the simulation grid.</li>
-</ul>
+        <h3>4.3 Notes on Field Values</h3>
+        <ul>
+          <li>All floats should be in hexadecimal format (e.g., <code>0x1.0p+0</code> for 1.0).</li>
+          <li>Inlets/Outlets must specify center, normal vector, radius, and type.</li>
+          <li><strong>SeedPoint</strong> must be inside the fluid volume for correct voxelization.</li>
+          <li><strong>VoxelSize</strong> determines resolution of the simulation grid.</li>
+        </ul>
 
-<h3>4.4 Example</h3>
-<pre><code>DurationSeconds: 0x1.8000000000000p+2  # 6.0 s
+        <h3>4.4 Example</h3>
+        <pre><code>DurationSeconds: 0x1.8000000000000p+2
 Iolets:
   - Centre:
       x: 0x0.0p+0
@@ -164,30 +199,30 @@ SeedPoint:
 StlFile: cylinder.stl
 StlFileUnitId: 1
 TimeStepSeconds: 0x1.52d02c7e14af6p-17
-VoxelSize: 0x1.999999999999ap-3
-</code></pre>
+VoxelSize: 0x1.999999999999ap-3</code></pre>
 
-<h3>4.5 Usage</h3>
-<pre><code>hlb-gmy-cli profile.pr2</code></pre>
-<p>This command reads <code>profile.pr2</code> and produces the corresponding <code>.gmy</code> and <code>.xml</code> output files.</p>
+        <h3>4.5 Usage</h3>
+        <pre><code>hlb-gmy-cli profile.pr2</code></pre>
+        <p><strong>Note:</strong> Using integer values instead of floats will raise:</p>
+        <pre><code>ValueError: invalid hexadecimal floating-point string</code></pre>
 
-<p><strong>Important:</strong> If using integer values instead of floats, it may raise:</p>
-<pre><code>ValueError: invalid hexadecimal floating-point string</code></pre>
+        <h3>4.6 Best Practices</h3>
+        <ul>
+          <li>Validate that all floating-point values conform to hexadecimal format.</li>
+          <li>Keep backups of <code>.pr2</code> profiles for reproducibility and batch processing.</li>
+        </ul>
 
-<h3>4.6 Best Practices</h3>
-<ul>
-  <li>Validate that all floating-point values conform to hexadecimal format.</li>
-  <li>Keep backups of <code>.pr2</code> profiles for reproducibility and batch processing.</li>
-</ul>
+        <h2>5. References</h2>
+        <ul>
+          <li><a href="https://github.com/hemelb-codes/hemelb">HemeLB GitHub</a></li>
+          <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/tutorials/">HemeLB Official Tutorials</a></li>
+          <li><a href="https://github.com/UCL-CCS/hemeXtract">HemeXtract (not compatible with this version)</a></li>
+        </ul>
 
+      </div>
+    </div>
+  </div>
 
-<h2>5. References</h2>
-<ul>
-  <li><a href="https://github.com/hemelb-codes/hemelb">HemeLB GitHub</a></li>
-  <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/tutorials/">HemeLB Official Tutorials</a></li>
-  <li><a href="https://github.com/UCL-CCS/hemeXtract">HemeXtract (not compatible with this version)</a></li>
-</ul>
-</div>
-<script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
