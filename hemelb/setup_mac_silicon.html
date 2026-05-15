@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HemeLB Setup Instructions (macOS Apple Silicon)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Joyanta Mondal">
+  <meta name="description" content="Installation guide for setting up HemeLB natively on a macOS Apple Silicon (M-series) device.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="2" y1="4.5" x2="16" y2="4.5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13.5" x2="16" y2="13.5"/>
+      </svg>
+    </button>
+    <a href="index.html" class="topbar-logo">HemeLB</a>
+  </header>
+
+  <div class="page-layout">
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Getting Started</span>
+        <ul class="sidebar-nav">
+          <li><a href="index.html">Overview</a></li>
+          <!-- <li><a href="setup.html" class="active">Installation</a></li> -->
+           <li><a href="setup.html">Installation</a></li>
+          <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
+          <li><a href="setup_mac_silicon.html" class="active" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Guides</span>
+        <ul class="sidebar-nav">
+          <li><a href="tutorial.html">Tutorial</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="container">
+
+        <h1>HemeLB Setup Instructions (macOS)</h1>
+        <p class="header-meta">
+          <span>Author: Google Gemini and <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a></span>
+          <span>Last Updated: May 15, 2026</span>
+          <span>Commit: <code>432d338</code></span>
+        </p>
+
+        <p>For the most comprehensive and updated information, refer to the
+          <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing"
+             target="_blank" rel="noopener noreferrer">full documentation</a>.
+        </p>
+
+        <p>
+        <a href="https://gist.github.com/lepotatoguy/af495dd61d21eda50190fdf43b34f1b4.git"">Automated Mac Installation Script (Gist)</a>
+            </p>
+
+        <div style="background-color: #f8f9fa; border-left: 4px solid #6c757d; padding: 1rem; margin: 1.5rem 0; border-radius: 4px;">
+          <strong>Note:</strong> This is not official documentation. It is an independently created guide developed by someone who started working with HemeLB and quickly discovered that the available documentation and tutorials were extremely limited, fragmented, and often unclear for beginners. After spending an unreasonable amount of time struggling through setup issues, missing instructions, and undocumented workflows, this resource was created to document the process, highlight common challenges, and provide practical solutions that may help future users avoid the same frustrations.
+        </div>
+
+        <section>
+          <h2>1. Prerequisites</h2>
+          <ul>
+            <li><strong>Operating System:</strong> macOS (Apple Silicon / ARM64)</li>
+            <li><strong>Package Managers:</strong> <code>Homebrew</code> and <code>Anaconda</code></li>
+            <li><strong>Rosetta 2:</strong> Required for the Geometry Tool environment. Install via terminal: <code>softwareupdate --install-rosetta --agree-to-license</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>2. Installation Steps</h2>
+
+          <h3>Step 1: Install System Dependencies via Homebrew</h3>
+          <pre><code>brew update
+brew install cmake open-mpi boost cgal metis ctemplate git curl pkg-config</code></pre>
+
+          <h3>Step 2: Build TinyXML (v1) from Source</h3>
+          <p>macOS package managers often do not supply the older version of TinyXML required by HemeLB. We must compile it manually and place it in a local directory (e.g., <code>~/local</code>):</p>
+          <pre><code>mkdir -p ~/build && cd ~/build
+git clone https://github.com/robotology-dependencies/tinyxml.git
+cd tinyxml && mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX="$HOME/local" -DBUILD_SHARED_LIBS=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+make -j4 install</code></pre>
+
+          <h3>Step 3: Clone, Lock Commit, and Patch HemeLB</h3>
+          <p>Apple Clang 21 enforces strict C++ parsing that breaks standard HemeLB templates. Clone the repository, lock the commit for reproducibility, and run a quick Python patch to fix the <code>->template</code> syntax errors:</p>
+          <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
+cd hemelb
+git checkout 432d338
+chmod -R u+w Code/
+
+# Run the patch:
+python3 -c "
+import os, re
+for root, dirs, files in os.walk('Code'):
+    for f in files:
+        if f.endswith(('.h', '.cc', '.cpp')):
+            path = os.path.join(root, f)
+            with open(path, 'r', encoding='utf-8', errors='ignore') as fh:
+                data = fh.read()
+            new_data = re.sub(r'->template\s+([A-Za-z_][A-Za-z0-9_]*)\(', r'->\1(', data)
+            if data != new_data:
+                with open(path, 'w', encoding='utf-8') as fh: fh.write(new_data)
+                print(f'  Patched: {path}')
+"
+# Fix minimum CMake versions required for macOS
+find . -name "CMakeLists.txt" -exec sed -i '' 's/cmake_minimum_required(VERSION [1-2]\.[0-9]*/cmake_minimum_required(VERSION 3.5/g' {} +
+</code></pre>
+
+          <h3>Step 4: Configure and Build the Core Engine</h3>
+          <p>Point CMake to the Homebrew and custom TinyXML paths, then compile:</p>
+          <pre><code>mkdir build && cd build
+
+cmake -DCMAKE_C_COMPILER=$(which clang) \
+      -DCMAKE_CXX_COMPILER=$(which clang++) \
+      -DCMAKE_INSTALL_PREFIX="/usr/local/" \
+      -DCMAKE_PREFIX_PATH="$HOME/local;/opt/homebrew" \
+      -DMETIS_INCLUDE_DIR="/opt/homebrew/include/" \
+      -DTINYXML_INCLUDE_DIR="$HOME/local/include" \
+      -DTINYXML_LIBRARIES="$HOME/local/lib/libtinyxml.dylib" \
+      -DHEMELB_USE_ALL_WARNINGS_GNU=OFF \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+
+sudo make -j4</code></pre>
+          <p><em>Note: If ParMETIS is found during configuration, you may need to run a second CMake pass to link it properly. Refer to the <a href="https://gist.github.com/lepotatoguy/af495dd61d21eda50190fdf43b34f1b4">automated script</a> for the dual-pass logic.</em></p>
+        </section>
+
+        <section>
+          <h2>3. Geometry and Python Tool Setup</h2>
+          <p>HemeLB requires C++20 for its tools, but Conda's macOS libraries often have compatibility bugs. We must use Rosetta to emulate an Intel environment (<code>osx-64</code>) and surgically patch the CGAL libraries.</p>
+
+          <h3>Step 1: Create the Intel-Emulated Conda Environment</h3>
+          <pre><code>git clone https://gist.github.com/lepotatoguy/a51d9fc80c44a687e20ac33750ee8be5.git mac-env-temp
+cp mac-env-temp/hlb-gmy-mac.yml .
+rm -rf mac-env-temp
+
+export CONDA_SUBDIR=osx-64 
+conda env create -f hlb-gmy-mac.yml
+
+conda activate gmy-tool
+conda config --env --set subdir osx-64
+conda install -y -c conda-forge cgal ninja "boost>=1.82" "cgal>=5.6"</code></pre>
+
+          <h3>Step 2: Patch the CGAL C++20 Bug</h3>
+          <p>Apple Clang crashes on a buggy <code>nullptr</code> check inside Conda's CGAL iterator. Fix it directly:</p>
+          <pre><code>CGAL_ITERATOR_HEADER="$CONDA_PREFIX/include/CGAL/boost/graph/iterator.h"
+chmod u+w "$CGAL_ITERATOR_HEADER"
+sed -i '' 's/this->base_reference() == nullptr/false/g' "$CGAL_ITERATOR_HEADER"
+sed -i '' 's/this->base() == nullptr/false/g' "$CGAL_ITERATOR_HEADER"</code></pre>
+
+          <h3>Step 3: Install Python and Geometry Tools</h3>
+          <pre><code># Install Python Tools
+cd hemelb/python-tools
+pip install .
+
+# Compile Geometry Tool
+cd ../geometry-tool
+rm -rf _skbuild
+export CMAKE_PREFIX_PATH="$CONDA_PREFIX"
+pip install '.[gui]'</code></pre>
+          <p><em>Note: If VMTK strictly checks for version 1.5 in <code>setup.py</code>, you may need to comment out the VMTK requirement line before running pip install.</em></p>
+
+          <h3>Step 4: Enable GUI on macOS</h3>
+          <p>macOS restricts windows to "Framework builds". To run the GUI, install the wrapper and map it:</p>
+          <pre><code>conda install -y -c conda-forge python.app
+alias hlb-gmy-gui="pythonw $(which hlb-gmy-gui)"</code></pre>
+
+          <h3>Step 5: Validate Installation</h3>
+          <pre><code>pip install pytest
+hemelb-tests</code></pre>
+        </section>
+
+        <section>
+          <h2>4. Uninstall Instructions</h2>
+          <pre><code>sudo rm /usr/local/bin/hemelb
+sudo rm -f /usr/local/bin/hemelb-confcheck /usr/local/bin/hemelb-tests
+sudo rm -rf /usr/local/share/hemelb
+rm -rf ~/local/include/tinyxml* ~/local/lib/libtinyxml*
+conda remove -n gmy-tool --all</code></pre>
+        </section>
+
+        <section>
+          <h2>6. Useful References</h2>
+          <ul>
+            <li>Appendix 8.0 for Known Errors you may face in the <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank">Documentation</a></li>
+            <li><strong><a href="https://gist.github.com/lepotatoguy/af495dd61d21eda50190fdf43b34f1b4.git">Automated Mac Installation Script (Gist)</a></strong></li>
+            <li><a href="https://github.com/lepotatoguy/docker-hemelb" target="_blank">Docker Container for HemeLB</a></li>
+            <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank">HemeLB GitHub Repository</a></li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <script defer src="assets/js/main.js"></script>
+</body>
+</html>
