@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Installation guide for setting up HemeLB on a local Ubuntu device.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="images/hemelb.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
 
@@ -29,9 +30,8 @@
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
-          <!-- <li><a href="setup.html" class="active">Installation</a></li> -->
-           <li><a href="setup.html">Installation</a></li>
-          <li><a href="setup.html" style="padding-left: 2rem;" class="active" >Linux</a></li>
+          <li><a href="setup.html">Installation</a></li>
+          <li><a href="setup.html" style="padding-left: 2rem;" class="active" aria-current="page">Linux</a></li>
           <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
         </ul>
       </div>
@@ -40,6 +40,7 @@
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
           <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="hemextract.html">HemeXtract</a></li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -65,12 +66,24 @@
              target="_blank" rel="noopener noreferrer">full documentation</a>.
         </p>
 
-        <div style="background-color: #f8f9fa; border-left: 4px solid #6c757d; padding: 1rem; margin: 1.5rem 0; border-radius: 4px;">
+        <div class="callout">
           <strong>Note:</strong> This is not official documentation. It is an independently created guide developed by someone who started working with HemeLB and quickly discovered that the available documentation and tutorials were extremely limited, fragmented, and often unclear for beginners. After spending an unreasonable amount of time struggling through setup issues, missing instructions, and undocumented workflows, this resource was created to document the process, highlight common challenges, and provide practical solutions that may help future users avoid the same frustrations.
         </div>
 
+        <details class="toc" open>
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#1-prerequisites">1. Prerequisites</a></li>
+            <li><a href="#2-installation-steps">2. Installation Steps</a></li>
+            <li><a href="#3-post-installation-verification">3. Post-Installation Verification</a></li>
+            <li><a href="#4-geometry-and-python-tool-setup">4. Geometry and Python Tool Setup</a></li>
+            <li><a href="#5-uninstall-instructions">5. Uninstall Instructions</a></li>
+            <li><a href="#6-useful-references">6. Useful References</a></li>
+          </ol>
+        </details>
+
         <section>
-          <h2>1. Prerequisites</h2>
+          <h2 id="1-prerequisites">1. Prerequisites</h2>
           <ul>
             <li>Operating System: Ubuntu 24.04.1</li>
             <li>Pre-installed: <code>git</code> and <code>Anaconda</code></li>
@@ -78,9 +91,9 @@
         </section>
 
         <section>
-          <h2>2. Installation Steps</h2>
+          <h2 id="2-installation-steps">2. Installation Steps</h2>
 
-          <h3>Step 1: Install Required Packages</h3>
+          <h3 id="step-1-install-required-packages">Step 1: Install Required Packages</h3>
           <pre><code>sudo apt-get install cmake-curses-gui
 sudo apt install cmake build-essential
 sudo apt install libopenmpi-dev openmpi-bin
@@ -88,7 +101,7 @@ sudo apt-get install libtinyxml-dev
 sudo apt install libboost-all-dev
 sudo apt install libcgal-dev</code></pre>
 
-          <h3>Step 2: Clone and Configure HemeLB</h3>
+          <h3 id="step-2-clone-and-configure-hemelb">Step 2: Clone and Configure HemeLB</h3>
           <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
 cd hemelb
 git checkout 432d338
@@ -97,35 +110,35 @@ ccmake ..</code></pre>
 
           <p>Press <code>c</code> to configure, update any necessary values, then press <code>c</code> again and finally <code>g</code> to generate build files.</p>
 
-          <h3>Step 3: Build the Project</h3>
+          <h3 id="step-3-build-the-project">Step 3: Build the Project</h3>
           <pre><code>make        # or use make -j4 for parallel build</code></pre>
           <p>Use <code>sudo</code> if you encounter permission errors.</p>
         </section>
 
         <section>
-          <h2>3. Post-Installation Verification</h2>
+          <h2 id="3-post-installation-verification">3. Post-Installation Verification</h2>
           <p>Check if the binary is accessible via:</p>
           <pre><code>which hemelb</code></pre>
           <p>If not, you may need to add the binary directory to your system's <code>PATH</code> environment variable.</p>
         </section>
 
         <section>
-          <h2>4. Geometry and Python Tool Setup</h2>
+          <h2 id="4-geometry-and-python-tool-setup">4. Geometry and Python Tool Setup</h2>
 
-          <h3>Step 1: Install Geometry Tool Dependencies</h3>
+          <h3 id="step-1-install-geometry-tool-dependencies">Step 1: Install Geometry Tool Dependencies</h3>
           <p><a href="https://gist.github.com/lepotatoguy/3b833ea08a5cb89756684b3cf53a7a7b" target="_blank">Download the required environment file</a>
             <code>hemelb-geometry-python-env.txt</code> and create the environment:</p>
           <pre><code>conda create --name gmy-tool --file hemelb-geometry-python-env.txt --yes</code></pre>
 
-          <h3>Step 2: Install Python Tools</h3>
+          <h3 id="step-2-install-python-tools">Step 2: Install Python Tools</h3>
           <pre><code>cd hemelb/python-tools
 pip install .</code></pre>
 
-          <h3>Step 3: Install Geometry Tool (GUI)</h3>
+          <h3 id="step-3-install-geometry-tool-gui">Step 3: Install Geometry Tool (GUI)</h3>
           <pre><code>cd ../geometry-tool
 pip install '.[gui]'</code></pre>
 
-          <h3>Optional: Fix for VMTK Detection Error</h3>
+          <h3 id="optional-fix-for-vmtk-detection-error">Optional: Fix for VMTK Detection Error</h3>
           <p>If <code>vmtk</code> is installed but not detected, either:</p>
           <ul>
             <li>Edit <code>geometry-tool/setup.py</code> and comment out the VMTK dependency line</li>
@@ -136,14 +149,14 @@ pip install '.[gui]'</code></pre>
           <p>Re-run the installation afterwards:</p>
           <pre><code>pip install '.[gui]'</code></pre>
 
-          <h3>Step 4: Validate Installation</h3>
+          <h3 id="step-4-validate-installation">Step 4: Validate Installation</h3>
           <pre><code>pip install pytest
 hemelb-tests</code></pre>
           <p>Ensure the tests complete successfully without errors.</p>
         </section>
 
         <section>
-          <h2>5. Uninstall Instructions</h2>
+          <h2 id="5-uninstall-instructions">5. Uninstall Instructions</h2>
           <pre><code>sudo rm /usr/local/bin/hemelb
 sudo rm -f /usr/local/bin/hemelb-confcheck /usr/local/bin/hemelb-tests
 sudo rm -rf /usr/local/share/hemelb
@@ -151,7 +164,7 @@ conda remove -n gmy-tool --all</code></pre>
         </section>
 
         <section>
-          <h2>6. Useful References</h2>
+          <h2 id="6-useful-references">6. Useful References</h2>
           <ul>
             <li>Appendix 8.0 for Known Errors you may face</li>
             <li><a href="https://gist.github.com/lepotatoguy/88c83bb19fc42783e3337ff0a9174274" target="_blank">Automated Installation Script (Gist)</a></li>
@@ -160,10 +173,15 @@ conda remove -n gmy-tool --all</code></pre>
           </ul>
         </section>
 
+        <nav class="page-nav" aria-label="Previous and next page">
+          <a class="page-nav-prev" href="index.html"><span>Previous</span>Overview</a>
+          <a class="page-nav-next" href="setup_mac_silicon.html"><span>Next</span>Installation: Mac (Apple Silicon)</a>
+        </nav>
+
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=2"></script>
 </body>
 </html>

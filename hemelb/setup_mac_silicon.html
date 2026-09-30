@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Installation guide for setting up HemeLB natively on a macOS Apple Silicon (M-series) device.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="images/hemelb.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
 
@@ -29,10 +30,9 @@
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
-          <!-- <li><a href="setup.html" class="active">Installation</a></li> -->
-           <li><a href="setup.html">Installation</a></li>
+          <li><a href="setup.html">Installation</a></li>
           <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
-          <li><a href="setup_mac_silicon.html" class="active" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
+          <li><a href="setup_mac_silicon.html" class="active" aria-current="page" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
         </ul>
       </div>
 
@@ -40,6 +40,7 @@
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
           <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="hemextract.html">HemeXtract</a></li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -69,12 +70,23 @@
         <a href="https://gist.github.com/lepotatoguy/af495dd61d21eda50190fdf43b34f1b4.git"">Automated Mac Installation Script (Gist)</a>
             </p>
 
-        <div style="background-color: #f8f9fa; border-left: 4px solid #6c757d; padding: 1rem; margin: 1.5rem 0; border-radius: 4px;">
+        <div class="callout">
           <strong>Note:</strong> This is not official documentation. It is an independently created guide developed by someone who started working with HemeLB and quickly discovered that the available documentation and tutorials were extremely limited, fragmented, and often unclear for beginners. After spending an unreasonable amount of time struggling through setup issues, missing instructions, and undocumented workflows, this resource was created to document the process, highlight common challenges, and provide practical solutions that may help future users avoid the same frustrations.
         </div>
 
+        <details class="toc" open>
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#1-prerequisites">1. Prerequisites</a></li>
+            <li><a href="#2-installation-steps">2. Installation Steps</a></li>
+            <li><a href="#3-geometry-and-python-tool-setup">3. Geometry and Python Tool Setup</a></li>
+            <li><a href="#4-uninstall-instructions">4. Uninstall Instructions</a></li>
+            <li><a href="#6-useful-references">6. Useful References</a></li>
+          </ol>
+        </details>
+
         <section>
-          <h2>1. Prerequisites</h2>
+          <h2 id="1-prerequisites">1. Prerequisites</h2>
           <ul>
             <li><strong>Operating System:</strong> macOS (Apple Silicon / ARM64)</li>
             <li><strong>Package Managers:</strong> <code>Homebrew</code> and <code>Anaconda</code></li>
@@ -83,13 +95,13 @@
         </section>
 
         <section>
-          <h2>2. Installation Steps</h2>
+          <h2 id="2-installation-steps">2. Installation Steps</h2>
 
-          <h3>Step 1: Install System Dependencies via Homebrew</h3>
+          <h3 id="step-1-install-system-dependencies-via-homebrew">Step 1: Install System Dependencies via Homebrew</h3>
           <pre><code>brew update
 brew install cmake open-mpi boost cgal metis ctemplate git curl pkg-config</code></pre>
 
-          <h3>Step 2: Build TinyXML (v1) from Source</h3>
+          <h3 id="step-2-build-tinyxml-v1-from-source">Step 2: Build TinyXML (v1) from Source</h3>
           <p>macOS package managers often do not supply the older version of TinyXML required by HemeLB. We must compile it manually and place it in a local directory (e.g., <code>~/local</code>):</p>
           <pre><code>mkdir -p ~/build && cd ~/build
 git clone https://github.com/robotology-dependencies/tinyxml.git
@@ -97,7 +109,7 @@ cd tinyxml && mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX="$HOME/local" -DBUILD_SHARED_LIBS=ON -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 make -j4 install</code></pre>
 
-          <h3>Step 3: Clone, Lock Commit, and Patch HemeLB</h3>
+          <h3 id="step-3-clone-lock-commit-and-patch-hemelb">Step 3: Clone, Lock Commit, and Patch HemeLB</h3>
           <p>Apple Clang 21 enforces strict C++ parsing that breaks standard HemeLB templates. Clone the repository, lock the commit for reproducibility, and run a quick Python patch to fix the <code>->template</code> syntax errors:</p>
           <pre><code>git clone https://github.com/hemelb-codes/hemelb.git
 cd hemelb
@@ -122,7 +134,7 @@ for root, dirs, files in os.walk('Code'):
 find . -name "CMakeLists.txt" -exec sed -i '' 's/cmake_minimum_required(VERSION [1-2]\.[0-9]*/cmake_minimum_required(VERSION 3.5/g' {} +
 </code></pre>
 
-          <h3>Step 4: Configure and Build the Core Engine</h3>
+          <h3 id="step-4-configure-and-build-the-core-engine">Step 4: Configure and Build the Core Engine</h3>
           <p>Point CMake to the Homebrew and custom TinyXML paths, then compile:</p>
           <pre><code>mkdir build && cd build
 
@@ -141,10 +153,10 @@ sudo make -j4</code></pre>
         </section>
 
         <section>
-          <h2>3. Geometry and Python Tool Setup</h2>
+          <h2 id="3-geometry-and-python-tool-setup">3. Geometry and Python Tool Setup</h2>
           <p>HemeLB requires C++20 for its tools, but Conda's macOS libraries often have compatibility bugs. We must use Rosetta to emulate an Intel environment (<code>osx-64</code>) and surgically patch the CGAL libraries.</p>
 
-          <h3>Step 1: Create the Intel-Emulated Conda Environment</h3>
+          <h3 id="step-1-create-the-intel-emulated-conda-environment">Step 1: Create the Intel-Emulated Conda Environment</h3>
           <pre><code>git clone https://gist.github.com/lepotatoguy/a51d9fc80c44a687e20ac33750ee8be5.git mac-env-temp
 cp mac-env-temp/hlb-gmy-mac.yml .
 rm -rf mac-env-temp
@@ -156,14 +168,14 @@ conda activate gmy-tool
 conda config --env --set subdir osx-64
 conda install -y -c conda-forge cgal ninja "boost>=1.82" "cgal>=5.6"</code></pre>
 
-          <h3>Step 2: Patch the CGAL C++20 Bug</h3>
+          <h3 id="step-2-patch-the-cgal-c-20-bug">Step 2: Patch the CGAL C++20 Bug</h3>
           <p>Apple Clang crashes on a buggy <code>nullptr</code> check inside Conda's CGAL iterator. Fix it directly:</p>
           <pre><code>CGAL_ITERATOR_HEADER="$CONDA_PREFIX/include/CGAL/boost/graph/iterator.h"
 chmod u+w "$CGAL_ITERATOR_HEADER"
 sed -i '' 's/this->base_reference() == nullptr/false/g' "$CGAL_ITERATOR_HEADER"
 sed -i '' 's/this->base() == nullptr/false/g' "$CGAL_ITERATOR_HEADER"</code></pre>
 
-          <h3>Step 3: Install Python and Geometry Tools</h3>
+          <h3 id="step-3-install-python-and-geometry-tools">Step 3: Install Python and Geometry Tools</h3>
           <pre><code># Install Python Tools
 cd hemelb/python-tools
 pip install .
@@ -175,18 +187,18 @@ export CMAKE_PREFIX_PATH="$CONDA_PREFIX"
 pip install '.[gui]'</code></pre>
           <p><em>Note: If VMTK strictly checks for version 1.5 in <code>setup.py</code>, you may need to comment out the VMTK requirement line before running pip install.</em></p>
 
-          <h3>Step 4: Enable GUI on macOS</h3>
+          <h3 id="step-4-enable-gui-on-macos">Step 4: Enable GUI on macOS</h3>
           <p>macOS restricts windows to "Framework builds". To run the GUI, install the wrapper and map it:</p>
           <pre><code>conda install -y -c conda-forge python.app
 alias hlb-gmy-gui="pythonw $(which hlb-gmy-gui)"</code></pre>
 
-          <h3>Step 5: Validate Installation</h3>
+          <h3 id="step-5-validate-installation">Step 5: Validate Installation</h3>
           <pre><code>pip install pytest
 hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2>4. Uninstall Instructions</h2>
+          <h2 id="4-uninstall-instructions">4. Uninstall Instructions</h2>
           <pre><code>sudo rm /usr/local/bin/hemelb
 sudo rm -f /usr/local/bin/hemelb-confcheck /usr/local/bin/hemelb-tests
 sudo rm -rf /usr/local/share/hemelb
@@ -195,7 +207,7 @@ conda remove -n gmy-tool --all</code></pre>
         </section>
 
         <section>
-          <h2>6. Useful References</h2>
+          <h2 id="6-useful-references">6. Useful References</h2>
           <ul>
             <li>Appendix 8.0 for Known Errors you may face in the <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank">Documentation</a></li>
             <li><strong><a href="https://gist.github.com/lepotatoguy/af495dd61d21eda50190fdf43b34f1b4.git">Automated Mac Installation Script (Gist)</a></strong></li>
@@ -204,10 +216,15 @@ conda remove -n gmy-tool --all</code></pre>
           </ul>
         </section>
 
+        <nav class="page-nav" aria-label="Previous and next page">
+          <a class="page-nav-prev" href="setup.html"><span>Previous</span>Installation: Linux</a>
+          <a class="page-nav-next" href="tutorial.html"><span>Next</span>Tutorial</a>
+        </nav>
+
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=2"></script>
 </body>
 </html>

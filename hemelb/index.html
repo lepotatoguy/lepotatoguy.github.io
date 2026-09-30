@@ -8,7 +8,7 @@
   <meta name="keywords" content="HemeLB, HemeLB Tutorial, Blood Flow Simulation, Lattice Boltzmann, CFD, HPC" />
   <meta name="author" content="Joyanta Mondal" />
   <link rel="icon" type="image/png" href="images/hemelb.png">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
 
@@ -30,10 +30,9 @@
       <div class="sidebar-section">
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
-          <li><a href="index.html" class="active">Overview</a></li>
-          <!-- <li><a href="setup.html" class="active">Installation</a></li> -->
-           <li><a href="setup.html">Installation</a></li>
-          <li><a href="setup.html" style="padding-left: 2rem;" >Linux</a></li>
+          <li><a href="index.html" class="active" aria-current="page">Overview</a></li>
+          <li><a href="setup.html">Installation</a></li>
+          <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
           <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
         </ul>
       </div>
@@ -42,6 +41,7 @@
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
           <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="hemextract.html">HemeXtract</a></li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -55,10 +55,8 @@
     <div class="main-content">
       <div class="container">
 
-        <h1>HemeLB Tutorial</h1>
-        <h2 style="border:none;margin-top:var(--space-2);font-size:1.1rem;font-weight:400;color:var(--color-text-muted);">
-          Software for High Performance Parallel Lattice-Boltzmann Simulations in Vascular Geometries
-        </h2>
+        <h1>HemeLB Made Easy</h1>
+        <p class="page-subtitle">Software for High Performance Parallel Lattice-Boltzmann Simulations in Vascular Geometries</p>
 
         <section>
           <p>
@@ -76,7 +74,7 @@
         </section>
 
         <section>
-          <h2>Project Documentation</h2>
+          <h2 id="project-documentation">Project Documentation</h2>
           <p>
             View the full document here:
             <a href="https://docs.google.com/document/d/1_3WR3MR7mFyE9LxzcSeXy--G3qgnA3TBxO8aDqUDW2Q/edit?usp=sharing" target="_blank" rel="noopener noreferrer">HemeLB Documentation</a>
@@ -85,7 +83,7 @@
         </section>
 
         <section>
-          <h2>Project Resources Online</h2>
+          <h2 id="project-resources-online">Project Resources Online</h2>
           <ul>
             <li><a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">Official HemeLB GitHub Repository</a></li>
             <li><a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/" target="_blank" rel="noopener noreferrer">Old HemeLB Website (Obsolete Version)</a></li>
@@ -97,7 +95,7 @@
         </section>
 
         <section>
-          <h2>Key Papers</h2>
+          <h2 id="key-papers">Key Papers</h2>
           <ul>
             <li>
               M.D. Mazzeo &amp; P.V. Coveney,
@@ -121,7 +119,7 @@
         </section>
 
         <section>
-          <h2>Papers Using HemeLB</h2>
+          <h2 id="papers-using-hemelb">Papers Using HemeLB</h2>
           <ul>
             <li>Lo et al. (2025). A multi-component, multi-physics computational model for solving coupled cardiac electromechanics and vascular haemodynamics. <em>Comput. Methods Appl. Mech. Eng.</em> <a href="https://doi.org/10.1016/j.cma.2025.118185" target="_blank">DOI</a></li>
             <li>Zacharoudiou et al. (2023). Development and performance of a HemeLB GPU code for human-scale blood flow simulation. <em>Comput. Phys. Commun.</em> <a href="https://doi.org/10.1016/j.cpc.2022.108548" target="_blank">DOI</a></li>
@@ -135,6 +133,10 @@
           </ul>
         </section>
 
+        <nav class="page-nav" aria-label="Previous and next page">
+          <a class="page-nav-next" href="setup.html"><span>Next</span>Installation: Linux</a>
+        </nav>
+
         <footer>
           &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
         </footer>
@@ -143,6 +145,6 @@
     </div>
   </div>
 
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=2"></script>
 </body>
 </html>

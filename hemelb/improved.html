@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Install and run an improved fork of HemeLB with a one-command installer, fixed error messages, and rewritten documentation.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="images/hemelb.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
 
@@ -39,12 +40,13 @@
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
           <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="hemextract.html">HemeXtract</a></li>
         </ul>
       </div>
       <div class="sidebar-section">
         <span class="sidebar-section-label">Improved Fork</span>
         <ul class="sidebar-nav">
-          <li><a href="improved.html" class="active">Install and Use</a></li>
+          <li><a href="improved.html" class="active" aria-current="page">Install and Use</a></li>
         </ul>
       </div>
     </nav>
@@ -66,19 +68,35 @@
           </a>
         </p>
 
-        <div style="background-color: #f8f9fa; border-left: 4px solid #6c757d; padding: 1rem; margin: 1.5rem 0; border-radius: 4px;">
+        <div class="callout">
           <strong>New to HemeLB? Start here.</strong> This fork installs HemeLB, the geometry tool, and the Python tools with one script, without the manual fixes in the older setup guides.
         </div>
 
+        <details class="toc" open>
+          <summary>On this page</summary>
+          <ol>
+            <li><a href="#what-this-is">What this is</a></li>
+            <li><a href="#why-use-it">Why use it</a></li>
+            <li><a href="#what-you-need">What you need</a></li>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#check-that-it-worked">Check that it worked</a></li>
+            <li><a href="#first-run-in-brief">First run, in brief</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#glossary">Glossary</a></li>
+            <li><a href="#uninstalling">Uninstalling</a></li>
+            <li><a href="#getting-help">Getting help</a></li>
+          </ol>
+        </details>
+
         <section>
-          <h2>What this is</h2>
+          <h2 id="what-this-is">What this is</h2>
           <p>
             <a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">HemeLB</a> simulates fluid flow, most often blood flow, through complex 3D shapes such as vessel networks. <a href="https://github.com/lepotatoguy/hemelb" target="_blank" rel="noopener noreferrer">lepotatoguy/hemelb</a> is an improved version of it, with an installer, bug fixes, and updated documentation. The full list of changes is in the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/CHANGELOG.md" target="_blank" rel="noopener noreferrer">changelog</a>.
           </p>
         </section>
 
         <section>
-          <h2>Why use it</h2>
+          <h2 id="why-use-it">Why use it</h2>
           <ul>
             <li>One script installs everything on macOS (Intel or Apple Silicon) and Ubuntu.</li>
             <li>No manual workarounds: no editing <code>setup.py</code> and no extra scripts for VMTK.</li>
@@ -91,7 +109,7 @@
         </section>
 
         <section>
-          <h2>What you need</h2>
+          <h2 id="what-you-need">What you need</h2>
           <ul>
             <li>macOS or Ubuntu Linux, <code>git</code>, and an internet connection. The script installs everything else.</li>
             <li>Tested on macOS 14 and 27 (Apple Silicon), macOS 15 (Intel), and Ubuntu 24.04.</li>
@@ -101,7 +119,7 @@
         </section>
 
         <section>
-          <h2>Install</h2>
+          <h2 id="install">Install</h2>
           <pre><code>git clone https://github.com/lepotatoguy/hemelb.git
 cd hemelb
 git checkout 466aaffba7e0ab9e0a26b8f5121cdeeaeb900c36
@@ -124,7 +142,7 @@ git checkout 466aaffba7e0ab9e0a26b8f5121cdeeaeb900c36</code></pre>
           </ol>
           <p>On GitHub's test machines it takes about 5 minutes on Linux and 8 on macOS; a laptop may take longer.</p>
 
-          <h3>Useful options</h3>
+          <h3 id="useful-options">Useful options</h3>
           <p>Run <code>bash Scripts/install_hemelb.sh --help</code> for all of them.</p>
           <ul>
             <li><code>--prefix DIR</code>: install HemeLB into <code>DIR</code> instead of <code>~/.local/hemelb</code></li>
@@ -136,7 +154,7 @@ git checkout 466aaffba7e0ab9e0a26b8f5121cdeeaeb900c36</code></pre>
         </section>
 
         <section>
-          <h2>Check that it worked</h2>
+          <h2 id="check-that-it-worked">Check that it worked</h2>
           <p>Run these two commands in each new terminal (or add the first to <code>~/.zshrc</code> or <code>~/.bashrc</code>):</p>
           <pre><code>export PATH="$HOME/.local/hemelb/bin:$PATH"   # makes hemelb and hemelb-tests available
 conda activate gmy-tool                        # needed for hlb-gmy-gui, hlb-gmy-cli, ...</code></pre>
@@ -148,7 +166,7 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2>First run, in brief</h2>
+          <h2 id="first-run-in-brief">First run, in brief</h2>
           <p>
             Every run has four steps. The full walkthrough, with sample files, is in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a>.
           </p>
@@ -175,7 +193,7 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2>Troubleshooting</h2>
+          <h2 id="troubleshooting">Troubleshooting</h2>
           <ul>
             <li><strong><code>Geometry file ... does not exist</code></strong>: the <code>&lt;datafile path="..."&gt;</code> in the XML is wrong. Relative paths are resolved relative to the XML file, not the current directory.</li>
             <li><strong><code>The geometry file uses N outlet(s) but the configuration defines M</code></strong>: add the missing inlets or outlets to the XML, in the same order as in the profile.</li>
@@ -189,7 +207,7 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2>Glossary</h2>
+          <h2 id="glossary">Glossary</h2>
           <ul>
             <li><strong>STL</strong>: a file describing a surface as triangles; the shape of your vessel.</li>
             <li><strong>Profile (<code>.pr2</code>)</strong>: the geometry tool's settings (STL, units, voxel size, inlets, outlets, seed point, time step), stored as YAML.</li>
@@ -206,14 +224,14 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2>Uninstalling</h2>
+          <h2 id="uninstalling">Uninstalling</h2>
           <pre><code>rm -rf ~/.local/hemelb
 conda env remove -n gmy-tool</code></pre>
           <p>If the script installed Miniforge for you, you can also delete <code>~/miniforge3</code>.</p>
         </section>
 
         <section>
-          <h2>Getting help</h2>
+          <h2 id="getting-help">Getting help</h2>
           <ul>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/README.md" target="_blank" rel="noopener noreferrer">Documentation index</a>, with a glossary and links to every guide</li>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/install.md" target="_blank" rel="noopener noreferrer">Installing HemeLB</a> (the installer, its options, and platform notes)</li>
@@ -229,10 +247,14 @@ conda env remove -n gmy-tool</code></pre>
           </p>
         </section>
 
+        <nav class="page-nav" aria-label="Previous and next page">
+          <a class="page-nav-prev" href="hemextract.html"><span>Previous</span>HemeXtract</a>
+        </nav>
+
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=2"></script>
 </body>
 </html>

@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>HemeXtract — HemeLB</title>
+  <title>HemeXtract | HemeLB</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Learn how to install and use HemeXtract to process HemeLB simulation output files and visualize them with ParaView.">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="images/hemelb.png">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
 
@@ -29,6 +30,8 @@
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
           <li><a href="setup.html">Installation</a></li>
+          <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
+          <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
         </ul>
       </div>
 
@@ -36,6 +39,7 @@
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
           <li><a href="tutorial.html">Tutorial</a></li>
+          <li><a href="hemextract.html" class="active" aria-current="page">HemeXtract</a></li>
         </ul>
       </div>
       <div class="sidebar-section">
@@ -59,7 +63,7 @@
 
         <p>HemeLB stores output data in compressed <code>.dat</code> or <code>.xtr</code> files. To make this human-readable, use the hemeXtract tool provided in the download files.</p>
 
-        <h2>Installation Steps</h2>
+        <h2 id="installation-steps">Installation Steps</h2>
         <p><em>Applicable for Commit ece1265</em></p>
         <pre><code>git clone https://github.com/UCL-CCS/hemeXtract.git
 sudo apt-get install libtirpc-dev
@@ -71,10 +75,10 @@ sudo apt-get install rpcbind</code></pre>
         <p>Then run:</p>
         <pre><code>make</code></pre>
 
-        <h2>Usage</h2>
+        <h2 id="usage">Usage</h2>
         <pre><code>./hemeXtract -X output.xtr --output=readable_output.txt</code></pre>
 
-        <h2>Visualization</h2>
+        <h2 id="visualization">Visualization</h2>
         <p>To visualize the converted files, use ParaView. It is recommended to install it from the <a href="https://www.paraview.org/download/" target="_blank">official website</a>.</p>
         <p>For further information, refer to the
           <a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/tutorials/simulation/sim_section3/" target="_blank">HemeLB Simulation Tutorial Section 3</a>.
@@ -82,7 +86,7 @@ sudo apt-get install rpcbind</code></pre>
 
         <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-10) 0;">
 
-        <h2>Extract Information (Newer Version)</h2>
+        <h2 id="extract-information-newer-version">Extract Information (Newer Version)</h2>
         <p>First, activate the conda environment:</p>
         <pre><code>conda activate gmy-tool</code></pre>
 
@@ -92,10 +96,15 @@ sudo apt-get install rpcbind</code></pre>
         <p>Example:</p>
         <pre><code>hlb-dump-extracted-properties whole.xtr &gt; whole.csv</code></pre>
 
+        <nav class="page-nav" aria-label="Previous and next page">
+          <a class="page-nav-prev" href="tutorial.html"><span>Previous</span>Tutorial</a>
+          <a class="page-nav-next" href="improved.html"><span>Next</span>Improved Fork: Install and Use</a>
+        </nav>
+
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=2"></script>
 </body>
 </html>
