@@ -693,21 +693,35 @@ summary:focus-visible {
    ============================================================ */
 .theme-toggle {
   margin-left: auto;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  font-family: var(--font-ui);
-  font-size: var(--text-sm);
-  padding: var(--space-1) var(--space-3);
-  border-radius: 100px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
   border: 1px solid var(--color-border-strong);
   background: var(--color-surface);
   color: var(--color-text);
   cursor: pointer;
+  transition: background var(--transition);
 }
 
 .theme-toggle:hover {
   background: var(--sidebar-item-hover);
+}
+
+.theme-toggle svg { width: 18px; height: 18px; display: block; }
+
+/* Moon (switch to dark) in light mode, sun (switch to light) in dark mode.
+   Chosen in CSS so the right icon shows before the script runs. */
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 }
 
 /* ============================================================

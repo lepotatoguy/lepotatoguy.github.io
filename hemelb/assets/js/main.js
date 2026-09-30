@@ -67,7 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const current = () => root.getAttribute("data-theme") || (media.matches ? "dark" : "light");
     const label = () => {
       const dark = current() === "dark";
-      themeBtn.textContent = dark ? "Light mode" : "Dark mode";
+      const text = dark ? "Switch to light mode" : "Switch to dark mode";
+      themeBtn.setAttribute("aria-label", text);
+      themeBtn.title = text;
     };
     themeBtn.addEventListener("click", () => {
       const next = current() === "dark" ? "light" : "dark";
