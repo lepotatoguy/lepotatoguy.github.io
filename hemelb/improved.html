@@ -29,7 +29,6 @@
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
-          <li><a href="improved.html" class="active">Improved Fork (Recommended)</a></li>
           <li><a href="setup.html">Installation</a></li>
           <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
           <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
@@ -42,6 +41,12 @@
           <li><a href="tutorial.html">Tutorial</a></li>
         </ul>
       </div>
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Improved Fork</span>
+        <ul class="sidebar-nav">
+          <li><a href="improved.html" class="active">Install and Use</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="main-content">
@@ -52,6 +57,7 @@
           <span>Author: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a></span>
           <span>Last Updated: September 30, 2026</span>
           <span>Branch: <code>fix/hemelb-improvements</code></span>
+          <span>Commit: <code>466aaff</code></span>
         </p>
 
         <p>
@@ -61,110 +67,90 @@
         </p>
 
         <div style="background-color: #f8f9fa; border-left: 4px solid #6c757d; padding: 1rem; margin: 1.5rem 0; border-radius: 4px;">
-          <strong>This is the easier path.</strong> The setup guides elsewhere on this site describe the older manual workflow (hand-editing <code>setup.py</code>, patching CGAL headers, running one-off scripts). This page describes a fork with fixes for those problems and a single install script. If you are installing HemeLB for the first time, start here.
+          <strong>New to HemeLB? Start here.</strong> This fork installs HemeLB, the geometry tool, and the Python tools with one script, without the manual fixes in the older setup guides.
         </div>
 
         <section>
           <h2>What this is</h2>
           <p>
-            <a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">HemeLB</a> is a lattice Boltzmann solver for fluid flow in complex geometries, most often blood flow through vessel networks. This is a fork of it, <a href="https://github.com/lepotatoguy/hemelb" target="_blank" rel="noopener noreferrer">lepotatoguy/hemelb</a>, on the branch <code>fix/hemelb-improvements</code>.
-          </p>
-          <p>
-            <code>fix/hemelb-improvements</code> is now the fork's default branch, so a plain <code>git clone</code> gets it without needing <code>-b</code>. The fork's <code>main</code> branch is left identical to upstream <code>hemelb-codes/hemelb</code>, so nothing here changes what upstream does.
-          </p>
-          <p>
-            The fork adds a one-command installer for HemeLB, the geometry tool, and the Python tools; fixes a number of crashes and silent failures; and rewrites the documentation, which this page draws from. See the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/CHANGELOG.md" target="_blank" rel="noopener noreferrer">changelog</a> for the full, checked list of changes.
+            <a href="https://github.com/hemelb-codes/hemelb" target="_blank" rel="noopener noreferrer">HemeLB</a> simulates fluid flow, most often blood flow, through complex 3D shapes such as vessel networks. <a href="https://github.com/lepotatoguy/hemelb" target="_blank" rel="noopener noreferrer">lepotatoguy/hemelb</a> is an improved version of it, with an installer, bug fixes, and updated documentation. The full list of changes is in the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/CHANGELOG.md" target="_blank" rel="noopener noreferrer">changelog</a>.
           </p>
         </section>
 
         <section>
           <h2>Why use it</h2>
-          <p>Compared with the older guides on this site:</p>
           <ul>
-            <li>One command, <code>Scripts/install_hemelb.sh</code>, installs HemeLB, the geometry tool, and the Python tools on macOS (Intel or Apple Silicon) and Debian/Ubuntu Linux. On Apple Silicon the geometry tool runs under Rosetta 2, because VMTK 1.5 exists only for x86_64; the script sets this up.</li>
-            <li><code>pip install './geometry-tool[gui]'</code> works directly inside the conda environment. The old workarounds, commenting out the VMTK line in <code>setup.py</code> or running <code>bodge-packages-for-setuptools.sh</code>, are not needed.</li>
-            <li>Package versions are pinned, so an install today matches what was tested: every conda package to an exact build in the lock files (<code>geometry-tool/conda-lock/</code>), the main packages in <code>geometry-tool/conda-environment.yml</code>, and pip's build tools in <code>geometry-tool/pyproject.toml</code>.</li>
-            <li>Common mistakes now give a clear error message instead of a crash or an unclear error: a missing STL, a zero voxel size, a geometry with more inlets or outlets than the XML defines, a missing <code>.gmy</code> file, and asking for more MPI processes than the geometry supports.</li>
-            <li>The geometry tool warns when an inlet or outlet cannot reach the surface, lies beyond the end of the vessel, or when the seed point falls outside the surface. Before, these produced a geometry with a closed end and no warning; generation still finishes, but now you are told.</li>
-            <li>Checkpoints can be restarted with a different number of MPI processes than the run that wrote them.</li>
-            <li>The Python tools install and run on Python 3.12 and 3.13, not only the older versions.</li>
-            <li>Legacy <code>.pro</code> profiles are loaded with a restricted unpickler, so opening one cannot run arbitrary code.</li>
-            <li>Documentation is rewritten and checked against the current code: a start-here index with a glossary, a first-run walkthrough, a GUI walkthrough, and a build and run guide.</li>
+            <li>One script installs everything on macOS (Intel or Apple Silicon) and Ubuntu.</li>
+            <li>No manual workarounds: no editing <code>setup.py</code> and no extra scripts for VMTK.</li>
+            <li>Fixed package versions, so a new install matches the one that was tested.</li>
+            <li>Clear error messages for common mistakes, where HemeLB used to crash or fail silently.</li>
+            <li>Warnings from the geometry tool when an inlet, outlet, or seed point is misplaced.</li>
+            <li>Checkpoints can be restarted with a different number of MPI processes.</li>
+            <li>The Python tools work on Python 3.12 and 3.13.</li>
           </ul>
         </section>
 
         <section>
-          <h2>Requirements and tested platforms</h2>
-          <p>Tested with the install script:</p>
+          <h2>What you need</h2>
           <ul>
-            <li>macOS 14, Apple Silicon (CI)</li>
-            <li>macOS 15, Intel (CI)</li>
-            <li>macOS 27, Apple Silicon (tested locally)</li>
-            <li>Ubuntu 24.04 x86_64 (CI and Docker)</li>
+            <li>macOS or Ubuntu Linux, <code>git</code>, and an internet connection. The script installs everything else.</li>
+            <li>Tested on macOS 14 and 27 (Apple Silicon), macOS 15 (Intel), and Ubuntu 24.04.</li>
+            <li>Not tested: Debian, older Ubuntu releases, Linux on ARM, and Linux without <code>apt</code>.</li>
           </ul>
-          <p>Not tested:</p>
-          <ul>
-            <li>Debian itself</li>
-            <li>The install script on Ubuntu releases before 24.04 (their default compiler may be too old for C++20; the main application itself is tested on 22.04)</li>
-            <li>Linux on ARM (no VMTK build exists, so the geometry tool cannot be installed there)</li>
-            <li>Distributions without <code>apt</code> (install the system packages yourself, then run the script with <code>--no-system-deps</code>)</li>
-          </ul>
-          <p>
-            You need <code>git</code> and an internet connection. Underneath the script, HemeLB itself needs a C++20 compiler (GCC 11 or newer, or AppleClang), CMake 3.13 or newer, and MPI 3.0 or newer. The geometry tool needs Python 3.8 to 3.11, because VMTK 1.5 is only built for those versions; the Python tools are tested on Python 3.8 to 3.13. Full detail, including the exact compiler, CMake, and MPI versions used in each tested environment, is in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/INSTALL" target="_blank" rel="noopener noreferrer">INSTALL</a>.
-          </p>
+          <p>Exact versions of every dependency are listed in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/INSTALL" target="_blank" rel="noopener noreferrer">INSTALL</a>.</p>
         </section>
 
         <section>
           <h2>Install</h2>
           <pre><code>git clone https://github.com/lepotatoguy/hemelb.git
 cd hemelb
-Scripts/install_hemelb.sh</code></pre>
+git checkout 466aaffba7e0ab9e0a26b8f5121cdeeaeb900c36
+bash Scripts/install_hemelb.sh</code></pre>
           <p>
-            The same clone can also be written explicitly as <code>git clone -b fix/hemelb-improvements https://github.com/lepotatoguy/hemelb.git</code>; both get the same branch, since it is now the default.
+            The <code>git checkout</code> line selects the exact version this page describes and that was tested (commit <code>466aaff</code>). Git then says you are in "detached HEAD" state; that is expected. Leave the line out to get the latest version instead.
           </p>
           <p>
-            On macOS, running <code>git</code> for the first time offers to install the Xcode Command Line Tools, which the build also needs; accept that first. (If they are still missing, the script opens the installer and stops; run it again once they are installed.) The script asks no questions of its own, though <code>sudo</code> or the Homebrew installer may ask for your password. By default it:
+            <strong>Already have a clone from before?</strong> Update it first, inside the <code>hemelb</code> folder:
+          </p>
+          <pre><code>git fetch origin
+git checkout 466aaffba7e0ab9e0a26b8f5121cdeeaeb900c36</code></pre>
+          <p>
+            On macOS, accept the offer to install the Xcode Command Line Tools if it appears, then run the script again. The script may ask for your password (to install system packages). It then:
           </p>
           <ol>
-            <li>Installs system packages (Homebrew on macOS, installing Homebrew itself if missing; <code>apt</code> packages on Linux, using <code>sudo</code>).</li>
-            <li>Builds HemeLB and any dependency it cannot find into <code>~/.local/hemelb</code>, then runs <code>hemelb-tests</code>.</li>
-            <li>Creates a conda environment called <code>gmy-tool</code> with the exact tested package versions and installs the geometry tool and Python tools into it. If conda is not already installed, it installs Miniforge into <code>~/miniforge3</code>.</li>
+            <li>Installs the system packages HemeLB needs.</li>
+            <li>Builds HemeLB into <code>~/.local/hemelb</code> and runs its tests.</li>
+            <li>Creates a conda environment called <code>gmy-tool</code> with the geometry tool and Python tools (installing conda first if you do not have it).</li>
           </ol>
-          <p>
-            On GitHub's CI runners the whole install takes about 5 minutes on Linux and 8 minutes on macOS. A laptop may take longer.
-          </p>
+          <p>On GitHub's test machines it takes about 5 minutes on Linux and 8 on macOS; a laptop may take longer.</p>
 
           <h3>Useful options</h3>
-          <p>Run <code>Scripts/install_hemelb.sh --help</code> for the full list. The ones you're most likely to want:</p>
+          <p>Run <code>bash Scripts/install_hemelb.sh --help</code> for all of them.</p>
           <ul>
             <li><code>--prefix DIR</code>: install HemeLB into <code>DIR</code> instead of <code>~/.local/hemelb</code></li>
             <li><code>--jobs N</code>: number of parallel build jobs</li>
             <li><code>--env-name NAME</code>: name of the conda environment (default <code>gmy-tool</code>)</li>
-            <li><code>--no-gmy-tool</code>: build HemeLB only, skip the geometry tool and Python tools</li>
-            <li><code>--no-system-deps</code>: skip Homebrew or <code>apt</code>, if you installed the required packages yourself</li>
-            <li><code>--no-tests</code>: skip running <code>hemelb-tests</code></li>
+            <li><code>--no-gmy-tool</code>: build HemeLB only</li>
+            <li><code>--no-system-deps</code>: skip installing system packages, if you already have them</li>
           </ul>
-          <p>
-            If a conda environment with the chosen name already exists, the script stops. Remove it with <code>conda env remove -n gmy-tool</code> (or your chosen name) and run the script again.
-          </p>
         </section>
 
         <section>
           <h2>Check that it worked</h2>
-          <p>The script ends by printing these two commands. Run them in every new terminal, or add the first one to your shell profile (for example <code>~/.zshrc</code> or <code>~/.bashrc</code>) so you only need the second:</p>
+          <p>Run these two commands in each new terminal (or add the first to <code>~/.zshrc</code> or <code>~/.bashrc</code>):</p>
           <pre><code>export PATH="$HOME/.local/hemelb/bin:$PATH"   # makes hemelb and hemelb-tests available
 conda activate gmy-tool                        # needed for hlb-gmy-gui, hlb-gmy-cli, ...</code></pre>
           <p>Then check that each part is there:</p>
           <pre><code>which hemelb
 hlb-gmy-cli --help
 hemelb-tests</code></pre>
-          <p><code>hemelb-tests</code> prints <code>All tests passed</code> at the end if everything built correctly (the install script already runs this once, unless you passed <code>--no-tests</code>).</p>
+          <p><code>hemelb-tests</code> ends with <code>All tests passed</code> if everything built correctly.</p>
         </section>
 
         <section>
           <h2>First run, in brief</h2>
           <p>
-            Every HemeLB run follows the same four steps. This is a summary; the full walkthrough, with a working sample from the repository, is in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a>.
+            Every run has four steps. The full walkthrough, with sample files, is in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a>.
           </p>
           <ul>
             <li><strong>1. Geometry:</strong> turn a surface (<code>.stl</code>) and a profile (<code>.pr2</code>, with inlets, outlets, and a voxel size) into a geometry and configuration, with <code>hlb-gmy-gui</code> or <code>hlb-gmy-cli</code>. This writes a <code>.gmy</code> file (the voxelised vessel) and a <code>.xml</code> file (the simulation settings).</li>
@@ -195,9 +181,10 @@ hemelb-tests</code></pre>
             <li><strong><code>The geometry file uses N outlet(s) but the configuration defines M</code></strong>: add the missing inlets or outlets to the XML, in the same order as in the profile.</li>
             <li><strong><code>The geometry has N block(s) containing fluid but HemeLB is running on P MPI processes</code></strong>: run with fewer processes, as the message says.</li>
             <li><strong><code>Output directory ... already exists.</code></strong>: pick a new <code>-out</code> folder name for each run.</li>
-            <li><strong>A <code>Warning:</code> from <code>hlb-gmy-cli</code> or the GUI</strong>: read it. It usually means an inlet or outlet cannot reach the surface, lies beyond the end of the vessel, or that the seed point is outside the surface. Generation still finishes, but the geometry may be wrong. See "Things to watch" in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/geometry-tool.md" target="_blank" rel="noopener noreferrer">geometry-tool.md</a>.</li>
-            <li><strong><code>This program needs access to the screen</code></strong> when starting <code>hlb-gmy-gui</code> on macOS: the GUI needs a framework build of Python. The install script fixes this for you; if you installed by hand, activate the environment and, from the repository folder, run <code>conda install -c conda-forge python.app</code> then <code>python geometry-tool/macos-fix-gui-launcher.py</code>.</li>
-            <li>The install script stops because <strong>the conda environment already exists</strong>: remove it (<code>conda env remove -n gmy-tool</code>) or install with <code>--env-name</code> to pick a different name.</li>
+            <li><strong>A <code>Warning:</code> from the geometry tool</strong>: an inlet, outlet, or the seed point is probably misplaced, so the geometry may be wrong. See "Things to watch" in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/geometry-tool.md" target="_blank" rel="noopener noreferrer">geometry-tool.md</a>.</li>
+            <li><strong><code>Permission denied</code> or <code>No such file or directory</code></strong> when starting the installer: run it with <code>bash</code> in front, from inside the <code>hemelb</code> folder. If the <code>Scripts</code> folder has no <code>install_hemelb.sh</code>, update your clone as shown under Install.</li>
+            <li><strong><code>This program needs access to the screen</code></strong> when starting <code>hlb-gmy-gui</code> on macOS: run <code>python geometry-tool/macos-fix-gui-launcher.py</code> from the <code>hemelb</code> folder with <code>gmy-tool</code> active. The install script already does this.</li>
+            <li><strong>The installer says the conda environment already exists</strong>: remove it with <code>conda env remove -n gmy-tool</code>, or choose another name with <code>--env-name</code>.</li>
           </ul>
         </section>
 
