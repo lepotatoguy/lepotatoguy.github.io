@@ -87,7 +87,7 @@
             <li><a href="#what-you-need">What you need</a></li>
             <li><a href="#install">Install</a></li>
             <li><a href="#check-that-it-worked">Check that it worked</a></li>
-            <li><a href="#first-run-in-brief">First run, in brief</a></li>
+            <li><a href="#first-run">First run</a></li>
             <li><a href="#troubleshooting">Troubleshooting</a></li>
             <li><a href="#glossary">Glossary</a></li>
             <li><a href="#uninstalling">Uninstalling</a></li>
@@ -173,30 +173,13 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2 id="first-run-in-brief">First run, in brief</h2>
+          <h2 id="first-run">First run</h2>
           <p>
-            Every run has four steps. The full walkthrough, with sample files, is in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a>.
+            Once installed, you use HemeLB the same way as in the <a href="tutorial.html">Tutorial</a>: prepare the geometry, set up the configuration, run the simulation, and analyse the results. Open a new terminal and run the two commands under <a href="#check-that-it-worked">Check that it worked</a> first.
           </p>
-          <ul>
-            <li><strong>1. Geometry:</strong> turn a surface (<code>.stl</code>) and a profile (<code>.pr2</code>, with inlets, outlets, and a voxel size) into a geometry and configuration, with <code>hlb-gmy-gui</code> or <code>hlb-gmy-cli</code>. This writes a <code>.gmy</code> file (the voxelised vessel) and a <code>.xml</code> file (the simulation settings).</li>
-            <li><strong>2. Configuration:</strong> a generated <code>.xml</code> has no <code>&lt;properties&gt;</code> section, so HemeLB runs but saves nothing. Add one before the closing <code>&lt;/hemelbsettings&gt;</code> tag, for example:
-              <pre><code>&lt;properties&gt;
-  &lt;propertyoutput file="whole.xtr" period="100"&gt;
-    &lt;geometry type="whole" /&gt;
-    &lt;field type="velocity" /&gt;
-    &lt;field type="pressure" /&gt;
-  &lt;/propertyoutput&gt;
-&lt;/properties&gt;</code></pre>
-            </li>
-            <li><strong>3. Simulate:</strong>
-              <pre><code>mpirun -n 4 hemelb -in config.xml -out results</code></pre>
-              The <code>-out</code> folder must not already exist. The run ends with <code>Finish running simulation.</code> and results land in <code>results/Extracted/</code>.
-            </li>
-            <li><strong>4. Analyse:</strong> convert the saved extraction file to CSV:
-              <pre><code>hlb-dump-extracted-properties results/Extracted/whole.xtr whole.csv</code></pre>
-              The CSV has one line per site per saved time step, with grid position, velocity (m/s), and pressure (mmHg).
-            </li>
-          </ul>
+          <p>
+            A worked example with sample files is also in the fork's <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a> guide.
+          </p>
         </section>
 
         <section>
