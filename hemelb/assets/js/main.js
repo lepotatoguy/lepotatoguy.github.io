@@ -58,4 +58,24 @@ document.addEventListener("DOMContentLoaded", () => {
     toTop.classList.toggle("visible", window.scrollY > 600);
   window.addEventListener("scroll", updateToTop, { passive: true });
   updateToTop();
+
+  // Light / dark mode toggle (remembers the choice)
+  const themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) {
+    const root = document.documentElement;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const current = () => root.getAttribute("data-theme") || (media.matches ? "dark" : "light");
+    const label = () => {
+      const dark = current() === "dark";
+      themeBtn.textContent = dark ? "Light mode" : "Dark mode";
+    };
+    themeBtn.addEventListener("click", () => {
+      const next = current() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      label();
+    });
+    media.addEventListener("change", label);
+    label();
+  }
 });

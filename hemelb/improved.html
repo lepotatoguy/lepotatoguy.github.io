@@ -7,7 +7,10 @@
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Install and run an improved fork of HemeLB with a one-command installer, fixed error messages, and rewritten documentation.">
   <link rel="icon" type="image/png" href="images/hemelb.png">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -20,6 +23,7 @@
       </svg>
     </button>
     <a href="index.html" class="topbar-logo">HemeLB</a>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
   </header>
 
   <div class="page-layout">
@@ -249,12 +253,13 @@ conda env remove -n gmy-tool</code></pre>
 
         <nav class="page-nav" aria-label="Previous and next page">
           <a class="page-nav-prev" href="hemextract.html"><span>Previous</span>HemeXtract</a>
+          <a class="page-nav-next" href="tutorial.html"><span>Next</span>Tutorial</a>
         </nav>
 
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js?v=2"></script>
+  <script defer src="assets/js/main.js?v=3"></script>
 </body>
 </html>

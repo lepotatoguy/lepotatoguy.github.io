@@ -7,7 +7,10 @@
   <meta name="author" content="Joyanta Mondal">
   <meta name="description" content="Installation guide for setting up HemeLB natively on a macOS Apple Silicon (M-series) device.">
   <link rel="icon" type="image/png" href="images/hemelb.png">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -20,6 +23,7 @@
       </svg>
     </button>
     <a href="index.html" class="topbar-logo">HemeLB</a>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
   </header>
 
   <div class="page-layout">
@@ -225,6 +229,6 @@ conda remove -n gmy-tool --all</code></pre>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js?v=2"></script>
+  <script defer src="assets/js/main.js?v=3"></script>
 </body>
 </html>

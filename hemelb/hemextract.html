@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Learn how to install and use HemeXtract to process HemeLB simulation output files and visualize them with ParaView.">
   <link rel="icon" type="image/png" href="images/hemelb.png">
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
 
@@ -19,6 +22,7 @@
       </svg>
     </button>
     <a href="index.html" class="topbar-logo">HemeLB</a>
+    <button class="theme-toggle" id="theme-toggle" type="button">Dark mode</button>
   </header>
 
   <div class="page-layout">
@@ -105,6 +109,6 @@ sudo apt-get install rpcbind</code></pre>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js?v=2"></script>
+  <script defer src="assets/js/main.js?v=3"></script>
 </body>
 </html>
