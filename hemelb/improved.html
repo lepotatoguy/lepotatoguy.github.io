@@ -66,7 +66,7 @@
           <span>Authors: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a>, <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Anthropic Claude</a>, and <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT</a></span>
           <span>Last Updated: October 2, 2026</span>
           <span>Branch: <code>fix/hemelb-improvements</code></span>
-          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/a3c3c3869f3cd3a5d57e171f0a8f851762cd97e7" target="_blank" rel="noopener noreferrer"><code>a3c3c386</code></a></span>
+          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b" target="_blank" rel="noopener noreferrer"><code>7ad1ae55</code></a></span>
         </p>
 
         <p>
@@ -141,16 +141,16 @@
           <h2 id="install">Install</h2>
           <pre><code>git clone --branch fix/hemelb-improvements https://github.com/lepotatoguy/hemelb.git
 cd hemelb
-git checkout a3c3c3869f3cd3a5d57e171f0a8f851762cd97e7
+git checkout 7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b
 bash Scripts/install_hemelb.sh</code></pre>
           <p>
-            The <code>git checkout</code> line selects the exact version this page describes (commit <code>a3c3c386</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
+            The <code>git checkout</code> line selects the exact version this page describes (commit <code>7ad1ae55</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
           </p>
           <p>
             <strong>Already have a clone from before?</strong> Update it first, inside the <code>hemelb</code> folder:
           </p>
           <pre><code>git fetch origin
-git checkout a3c3c3869f3cd3a5d57e171f0a8f851762cd97e7</code></pre>
+git checkout 7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b</code></pre>
           <p>Save or commit any local edits before switching revisions. The branch history has been rewritten, so fetching and checking out the pinned commit avoids merging the old and new histories. To inspect the latest remote revision instead, use <code>git checkout origin/fix/hemelb-improvements</code> after fetching.</p>
           <p>
             On macOS, accept the offer to install the Xcode Command Line Tools if it appears, then run the script again. The script may ask for your password (to install system packages). It then:
@@ -178,17 +178,8 @@ git checkout a3c3c3869f3cd3a5d57e171f0a8f851762cd97e7</code></pre>
 
         <section>
           <h2 id="check-that-it-worked">Check that it worked</h2>
-          <p>Run these two commands in each new terminal (or add the first to <code>~/.zshrc</code> or <code>~/.bashrc</code>):</p>
-          <pre><code>export PATH="$HOME/.local/hemelb/bin:$PATH"   # makes hemelb and hemelb-tests available
-conda activate gmy-tool                        # needed for hlb-gmy-gui, hlb-gmy-cli, ...</code></pre>
-          <p>Then check that each part is there:</p>
-          <pre><code>which hemelb
-hlb-gmy-cli --help
-hlb-dump-extracted-properties --help
-hlb-extracted-to-vtk --help
-hemelb-tests</code></pre>
-          <p><code>hemelb-tests</code> ends with <code>All tests passed</code> if everything built correctly.</p>
-          <p>If you selected a different <code>--prefix</code> or environment name, use those values above. With <code>--env-prefix</code>, activate the environment by its path. If the <code>conda</code> shell command is unavailable, follow the shell setup printed by the installer and open a new terminal.</p>
+          <pre><code>export PATH="$HOME/.local/hemelb/bin:$PATH"   # makes hemelb and hemelb-tests available</code></pre>
+          <pre><code>hemelb-tests</code></pre>
         </section>
 
         <section>
@@ -199,24 +190,17 @@ hemelb-tests</code></pre>
           <p>
             A worked example with sample files is also in the fork's <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Quick start</a> guide.
           </p>
-          <p>The repository's root-level <a href="https://github.com/lepotatoguy/hemelb/tree/fix/hemelb-improvements/examples" target="_blank" rel="noopener noreferrer"><code>examples/</code> folder</a> contains <code>first-run.stl</code>, <code>first-run.pr2</code>, <code>first-run.gmy</code>, and <code>first-run.xml</code>. The prepared GMY/XML pair is ready to run. From the repository root:</p>
-          <pre><code>mkdir -p "$HOME/hemelb-first-run"
-cp examples/first-run.* "$HOME/hemelb-first-run/"
-cd "$HOME/hemelb-first-run"
-mpirun -n 2 hemelb -in first-run.xml -out results</code></pre>
-          <p>Use a new output name if <code>results</code> already exists. The example runs 200 timesteps and saves velocity, pressure, and fluid checkpoints every 100 timesteps. It checks that the workflow runs; this short example does not establish steady flow or physical accuracy.</p>
         </section>
 
         <section>
           <h2 id="analyse-results">Analyse the results</h2>
           <p>The run creates <code>results/report.txt</code> and <code>report.xml</code>, field output in <code>results/Extracted/whole.xtr</code> with its companion <code>whole.off</code>, and checkpoints at timesteps 100 and 200 with shared offsets <code>checkpoint_.off</code>.</p>
-          <h3 id="csv-export">Export text</h3>
+          <h3 id="csv-export">Export results to readable CSV</h3>
           <pre><code>hlb-dump-extracted-properties results/Extracted/whole.xtr whole.csv</code></pre>
           <p>The file has comment headers and a separate block of rows for each saved timestep. Keep the headers: the timestep is recorded there, rather than repeated in each row. Vector fields use component columns. Velocity is in m/s and pressure is in mmHg on this branch.</p>
           <h3 id="paraview-export">Export for ParaView</h3>
           <pre><code>hlb-extracted-to-vtk results/Extracted/whole.xtr paraview/whole --step-length 0.0001</code></pre>
-          <p>Open <code>paraview/whole.pvd</code> in ParaView, click <strong>Apply</strong>, and select <code>pressure</code> or <code>velocity</code> under cell data. The collection contains both saved timesteps, at 0.01 and 0.02 seconds. Without <code>--step-length</code>, collection times are lattice timestep numbers.</p>
-          <p>The command writes ASCII VTU frames with physical coordinates in metres and a PVD collection; it needs only the extraction file. Each extracted site becomes a voxel. A selected region output contains that region, and voxel faces approximate the geometry. Existing output files are refused. Keep the collection and frames together when copying them. The example passed simulation, export, coordinate and field checks, and pressure/velocity rendering with timestep changes in the ParaView 5.13.3 GUI on macOS 27.0. See the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/dev/paraview-validation.md" target="_blank" rel="noopener noreferrer">validation record</a> for the tested scope.</p>
+          <p>Use the <strong>ParaView 5.13.3 GUI (tested)</strong>. Open <code>paraview/whole.pvd</code>, click <strong>Apply</strong>, and select <code>pressure</code> or <code>velocity</code> (<strong>Magnitude</strong>) under cell data. Use the time controls to view the saved frames.</p>
         </section>
 
         <section>
