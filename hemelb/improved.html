@@ -66,7 +66,7 @@
           <span>Authors: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a>, <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Anthropic Claude</a>, and <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT</a></span>
           <span>Last Updated: October 2, 2026</span>
           <span>Branch: <code>fix/hemelb-improvements</code></span>
-          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/f8e8622fdc6fe8b518a0eb5b3139167095b59d69" target="_blank" rel="noopener noreferrer"><code>f8e8622f</code></a></span>
+          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/05213b9e7045ea41add176cbeb41265b3cbc0926" target="_blank" rel="noopener noreferrer"><code>05213b9e</code></a></span>
         </p>
 
         <p>
@@ -76,6 +76,10 @@
         </p>
 
         <div class="callout">
+          <strong>Note:</strong> This is not official documentation. It is an independently created guide developed by someone who started working with HemeLB and quickly discovered that the available documentation and tutorials were extremely limited, fragmented, and often unclear for beginners. After spending an unreasonable amount of time struggling through setup issues, missing instructions, and undocumented workflows, this resource was created to document the process, highlight common challenges, and provide practical solutions that may help future users avoid the same frustrations.
+        </div>
+
+        <div class="callout">
           <strong>New to HemeLB? Start here.</strong> This fork installs HemeLB, the geometry tool, and the Python tools with one script, without the manual fixes in the older setup guides.
         </div>
 
@@ -83,12 +87,11 @@
           <summary>On this page</summary>
           <ol>
             <li><a href="#what-this-is">What this is</a></li>
-            <li><a href="#commits">The six commits</a></li>
             <li><a href="#why-use-it">Why use it</a></li>
             <li><a href="#what-you-need">What you need</a></li>
             <li><a href="#install">Install</a></li>
             <li><a href="#check-that-it-worked">Check that it worked</a></li>
-            <li><a href="#first-run">First run</a></li>
+            <li><a href="#quick-start">Quick start</a></li>
             <li><a href="#analyse-results">Analyse the results</a></li>
             <li><a href="#restart">Restart a saved checkpoint (optional)</a></li>
             <li><a href="#troubleshooting">Troubleshooting</a></li>
@@ -105,22 +108,10 @@
           </p>
         </section>
 
-        <section>
-          <h2 id="commits">The six commits</h2>
-          <p>This branch contains six commits above upstream <code>432d3386</code>. Its history was consolidated without changing the final files. The commits cover:</p>
-          <ol>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/179d04d5" target="_blank" rel="noopener noreferrer"><code>179d04d5</code></a>: geometry validation, clear errors, checked decomposition arithmetic, and checkpoint restart across MPI process counts.</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/6b47e059" target="_blank" rel="noopener noreferrer"><code>6b47e059</code></a>: geometry CLI and GUI repairs, restricted legacy profile loading, warnings, and pinned build environments.</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/ba70a278" target="_blank" rel="noopener noreferrer"><code>ba70a278</code></a>: Python 3.12/3.13 and Cython 3 support, extraction parsing, and dump command fixes.</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/ec2c63d7" target="_blank" rel="noopener noreferrer"><code>ec2c63d7</code></a>: the portable installer and solver, geometry, Python, and installation CI workflows.</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/5435d5b9" target="_blank" rel="noopener noreferrer"><code>5435d5b9</code></a>: installation, simulation, restart, and developer guides, plus selected development-branch fixes and faster extraction text output with its format preserved.</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/commit/f8e8622f" target="_blank" rel="noopener noreferrer"><code>f8e8622f</code></a>: root-level runnable examples, ParaView export, and an optional GMY-to-STL inspection helper.</li>
-          </ol>
-          <p>As checked on October 2, 2026, all four workflows for <code>f8e8622f</code> passed: <a href="https://github.com/lepotatoguy/hemelb/actions/runs/36993101898" target="_blank" rel="noopener noreferrer">Main application</a>, <a href="https://github.com/lepotatoguy/hemelb/actions/runs/36993101851" target="_blank" rel="noopener noreferrer">Geometry tool</a>, <a href="https://github.com/lepotatoguy/hemelb/actions/runs/36993101831" target="_blank" rel="noopener noreferrer">Python tools</a>, and <a href="https://github.com/lepotatoguy/hemelb/actions/runs/36993101846" target="_blank" rel="noopener noreferrer">Install script</a>. The changelog retains the earlier validation records.</p>
-        </section>
 
         <section>
           <h2 id="why-use-it">Why use it</h2>
+          <p>Compared with the upstream repository, this fork adds a portable installer, safer geometry and checkpoint handling, repaired geometry and Python tools, and updated guides. It also includes a ready-to-run example and an installed command for exporting results to ParaView.</p>
           <ul>
             <li>One script installs everything on macOS (Intel or Apple Silicon) and Ubuntu.</li>
             <li>No manual workarounds: no editing <code>setup.py</code> and no extra scripts for VMTK.</li>
@@ -150,16 +141,16 @@
           <h2 id="install">Install</h2>
           <pre><code>git clone --branch fix/hemelb-improvements https://github.com/lepotatoguy/hemelb.git
 cd hemelb
-git checkout f8e8622fdc6fe8b518a0eb5b3139167095b59d69
+git checkout 05213b9e7045ea41add176cbeb41265b3cbc0926
 bash Scripts/install_hemelb.sh</code></pre>
           <p>
-            The <code>git checkout</code> line selects the exact version this page describes (commit <code>f8e8622f</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
+            The <code>git checkout</code> line selects the exact version this page describes (commit <code>05213b9e</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
           </p>
           <p>
             <strong>Already have a clone from before?</strong> Update it first, inside the <code>hemelb</code> folder:
           </p>
           <pre><code>git fetch origin
-git checkout f8e8622fdc6fe8b518a0eb5b3139167095b59d69</code></pre>
+git checkout 05213b9e7045ea41add176cbeb41265b3cbc0926</code></pre>
           <p>Save or commit any local edits before switching revisions. The branch history has been rewritten, so fetching and checking out the pinned commit avoids merging the old and new histories. To inspect the latest remote revision instead, use <code>git checkout origin/fix/hemelb-improvements</code> after fetching.</p>
           <p>
             On macOS, accept the offer to install the Xcode Command Line Tools if it appears, then run the script again. The script may ask for your password (to install system packages). It then:
@@ -201,12 +192,12 @@ hemelb-tests</code></pre>
         </section>
 
         <section>
-          <h2 id="first-run">First run</h2>
+          <h2 id="quick-start">Quick start</h2>
           <p>
             Once installed, you use HemeLB the same way as in the <a href="tutorial.html">Tutorial</a>: prepare the geometry, set up the configuration, run the simulation, and analyse the results. Open a new terminal and run the two commands under <a href="#check-that-it-worked">Check that it worked</a> first.
           </p>
           <p>
-            A worked example with sample files is also in the fork's <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a> guide.
+            A worked example with sample files is also in the fork's <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Quick start</a> guide.
           </p>
           <p>The repository's root-level <a href="https://github.com/lepotatoguy/hemelb/tree/fix/hemelb-improvements/examples" target="_blank" rel="noopener noreferrer"><code>examples/</code> folder</a> contains <code>first-run.stl</code>, <code>first-run.pr2</code>, <code>first-run.gmy</code>, and <code>first-run.xml</code>. The prepared GMY/XML pair is ready to run. From the repository root:</p>
           <pre><code>mkdir -p "$HOME/hemelb-first-run"
@@ -214,14 +205,6 @@ cp examples/first-run.* "$HOME/hemelb-first-run/"
 cd "$HOME/hemelb-first-run"
 mpirun -n 2 hemelb -in first-run.xml -out results</code></pre>
           <p>Use a new output name if <code>results</code> already exists. The example runs 200 timesteps and saves velocity, pressure, and fluid checkpoints every 100 timesteps. It checks that the workflow runs; this short example does not establish steady flow or physical accuracy.</p>
-          <p>Optional: run <code>hemelb-confcheck first-run.xml</code> before the simulation to check XML parsing, units, and compatibility with the compiled boundary types. It does not load the GMY or check the geometry's inlet IDs; the simulation checks those during setup.</p>
-          <h3 id="regenerate">Regenerate from the supplied STL (optional)</h3>
-          <p>With <code>gmy-tool</code> active, run in the example folder:</p>
-          <pre><code>hlb-gmy-cli first-run.pr2 --geometry regenerated.gmy --xml generated.xml
-hlb-gmy-countsites regenerated.gmy
-hlb-gmy-selfconsistent regenerated.gmy</code></pre>
-          <p>Use the newly generated XML with the regenerated GMY; it carries the corresponding origin and voxel size. Generated XML has no field-output requests. Follow <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md#regenerate-the-case-from-stl" target="_blank" rel="noopener noreferrer">the regeneration walkthrough</a> to add the example's output requests and run the generated pair. Keep the prepared pair for comparison. Use <code>hlb-gmy-gui</code> to prepare your own STL and profile.</p>
-          <p>Optional: <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/Scripts/gmy-to-stl.py" target="_blank" rel="noopener noreferrer"><code>Scripts/gmy-to-stl.py</code></a> creates a stepped, capped geometry preview when the original STL is unavailable; it is for inspection and does not recover the original surface.</p>
         </section>
 
         <section>
@@ -234,8 +217,6 @@ hlb-gmy-selfconsistent regenerated.gmy</code></pre>
           <pre><code>hlb-extracted-to-vtk results/Extracted/whole.xtr paraview/whole --step-length 0.0001</code></pre>
           <p>Open <code>paraview/whole.pvd</code> in ParaView, click <strong>Apply</strong>, and select <code>pressure</code> or <code>velocity</code> under cell data. The collection contains both saved timesteps, at 0.01 and 0.02 seconds. Without <code>--step-length</code>, collection times are lattice timestep numbers.</p>
           <p>The command writes ASCII VTU frames with physical coordinates in metres and a PVD collection; it needs only the extraction file. Each extracted site becomes a voxel. A selected region output contains that region, and voxel faces approximate the geometry. Existing output files are refused. Keep the collection and frames together when copying them. The recorded validation covers VTU round-trip data checks; the ParaView GUI was not exercised locally.</p>
-          <p>The same exporter can run as <code>python -m hlb.converters.ExtractedPropertyToVtk</code>. The Python reader accepts extraction versions 4 and 5; it does not read version 6. See the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/python-tools.md" target="_blank" rel="noopener noreferrer">Python tools guide</a> for module arguments, array access, and format limits.</p>
-          <p><strong>HemeXtract compatibility:</strong> the tool in the older <a href="hemextract.html">HemeXtract guide</a> was written for another fork. Use the bundled reader and export commands for this branch's files.</p>
         </section>
 
         <section>
@@ -304,7 +285,7 @@ conda env remove -n gmy-tool</code></pre>
           <ul>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/README.md" target="_blank" rel="noopener noreferrer">Documentation index</a>, with a glossary and links to every guide</li>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/install.md" target="_blank" rel="noopener noreferrer">Installing HemeLB</a> (the installer, its options, and platform notes)</li>
-            <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Getting started</a> (a full first run)</li>
+            <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/getting-started.md" target="_blank" rel="noopener noreferrer">Quick start</a> (run the bundled example)</li>
             <li><a href="https://github.com/lepotatoguy/hemelb/tree/fix/hemelb-improvements/examples" target="_blank" rel="noopener noreferrer">Bundled examples</a> (matching STL, profile, GMY, and XML)</li>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/geometry-tool.md" target="_blank" rel="noopener noreferrer">Geometry tool</a> (GUI and command-line generation)</li>
             <li><a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/python-tools.md" target="_blank" rel="noopener noreferrer">Python tools</a> (converting and inspecting output)</li>
