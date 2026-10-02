@@ -66,7 +66,7 @@
           <span>Authors: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a>, <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Anthropic Claude</a>, and <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT</a></span>
           <span>Last Updated: October 2, 2026</span>
           <span>Branch: <code>fix/hemelb-improvements</code></span>
-          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/05213b9e7045ea41add176cbeb41265b3cbc0926" target="_blank" rel="noopener noreferrer"><code>05213b9e</code></a></span>
+          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/42f935565a3ace4d483b1eda1ee2e6fd873cb87e" target="_blank" rel="noopener noreferrer"><code>42f93556</code></a></span>
         </p>
 
         <p>
@@ -141,16 +141,16 @@
           <h2 id="install">Install</h2>
           <pre><code>git clone --branch fix/hemelb-improvements https://github.com/lepotatoguy/hemelb.git
 cd hemelb
-git checkout 05213b9e7045ea41add176cbeb41265b3cbc0926
+git checkout 42f935565a3ace4d483b1eda1ee2e6fd873cb87e
 bash Scripts/install_hemelb.sh</code></pre>
           <p>
-            The <code>git checkout</code> line selects the exact version this page describes (commit <code>05213b9e</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
+            The <code>git checkout</code> line selects the exact version this page describes (commit <code>42f93556</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
           </p>
           <p>
             <strong>Already have a clone from before?</strong> Update it first, inside the <code>hemelb</code> folder:
           </p>
           <pre><code>git fetch origin
-git checkout 05213b9e7045ea41add176cbeb41265b3cbc0926</code></pre>
+git checkout 42f935565a3ace4d483b1eda1ee2e6fd873cb87e</code></pre>
           <p>Save or commit any local edits before switching revisions. The branch history has been rewritten, so fetching and checking out the pinned commit avoids merging the old and new histories. To inspect the latest remote revision instead, use <code>git checkout origin/fix/hemelb-improvements</code> after fetching.</p>
           <p>
             On macOS, accept the offer to install the Xcode Command Line Tools if it appears, then run the script again. The script may ask for your password (to install system packages). It then:
@@ -216,7 +216,7 @@ mpirun -n 2 hemelb -in first-run.xml -out results</code></pre>
           <h3 id="paraview-export">Export for ParaView</h3>
           <pre><code>hlb-extracted-to-vtk results/Extracted/whole.xtr paraview/whole --step-length 0.0001</code></pre>
           <p>Open <code>paraview/whole.pvd</code> in ParaView, click <strong>Apply</strong>, and select <code>pressure</code> or <code>velocity</code> under cell data. The collection contains both saved timesteps, at 0.01 and 0.02 seconds. Without <code>--step-length</code>, collection times are lattice timestep numbers.</p>
-          <p>The command writes ASCII VTU frames with physical coordinates in metres and a PVD collection; it needs only the extraction file. Each extracted site becomes a voxel. A selected region output contains that region, and voxel faces approximate the geometry. Existing output files are refused. Keep the collection and frames together when copying them. The recorded validation covers VTU round-trip data checks; the ParaView GUI was not exercised locally.</p>
+          <p>The command writes ASCII VTU frames with physical coordinates in metres and a PVD collection; it needs only the extraction file. Each extracted site becomes a voxel. A selected region output contains that region, and voxel faces approximate the geometry. Existing output files are refused. Keep the collection and frames together when copying them. The example passed simulation, export, coordinate and field checks, and pressure/velocity rendering with timestep changes in the ParaView 5.13.3 GUI on macOS 27.0. See the <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/dev/paraview-validation.md" target="_blank" rel="noopener noreferrer">validation record</a> for the tested scope and the ParaView 6.1.1 UI limitation.</p>
         </section>
 
         <section>
