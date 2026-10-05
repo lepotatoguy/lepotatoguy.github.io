@@ -64,9 +64,9 @@
         <h1>HemeLB Improved Fork</h1>
         <p class="header-meta">
           <span>Authors: <a href="mailto:joyanta@udel.edu">Joyanta Mondal</a>, <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer">Anthropic Claude</a>, and <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">ChatGPT</a></span>
-          <span>Last Updated: October 2, 2026</span>
+          <span>Last Updated: October 4, 2026</span>
           <span>Branch: <code>fix/hemelb-improvements</code></span>
-          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b" target="_blank" rel="noopener noreferrer"><code>7ad1ae55</code></a></span>
+          <span>Commit: <a href="https://github.com/lepotatoguy/hemelb/commit/ef2530c7778292aa822f7e53185fe2637e126aca" target="_blank" rel="noopener noreferrer"><code>ef2530c</code></a></span>
         </p>
 
         <p>
@@ -76,7 +76,7 @@
         </p>
 
         <div class="callout">
-          <strong>Note:</strong> This is not official documentation. It is an independently created guide developed by someone who started working with HemeLB and quickly discovered that the available documentation and tutorials were extremely limited, fragmented, and often unclear for beginners. After spending an unreasonable amount of time struggling through setup issues, missing instructions, and undocumented workflows, this resource was created to document the process, highlight common challenges, and provide practical solutions that may help future users avoid the same frustrations.
+          <strong>Note:</strong> This is an unofficial, independently developed fork. When I started working with HemeLB, I found the available documentation and tutorials limited, scattered, and often unclear for beginners. I spent far too much time struggling with setup issues, missing instructions, and undocumented workflows. I created this fork to make getting started easier and help future users avoid the same frustrations.
         </div>
 
         <div class="callout">
@@ -98,6 +98,7 @@
             <li><a href="#glossary">Glossary</a></li>
             <li><a href="#uninstalling">Uninstalling</a></li>
             <li><a href="#getting-help">Getting help</a></li>
+            <li><a href="#advanced-users">For advanced users</a></li>
           </ol>
         </details>
 
@@ -141,17 +142,7 @@
           <h2 id="install">Install</h2>
           <pre><code>git clone --branch fix/hemelb-improvements https://github.com/lepotatoguy/hemelb.git
 cd hemelb
-git checkout 7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b
 bash Scripts/install_hemelb.sh</code></pre>
-          <p>
-            The <code>git checkout</code> line selects the exact version this page describes (commit <code>7ad1ae55</code>). Git then says you are in "detached HEAD" state; that is expected. In a fresh clone, leave that line out to use the latest <code>fix/hemelb-improvements</code> branch instead.
-          </p>
-          <p>
-            <strong>Already have a clone from before?</strong> Update it first, inside the <code>hemelb</code> folder:
-          </p>
-          <pre><code>git fetch origin
-git checkout 7ad1ae55a501ff23c485d9d5cd13d5f7b5c8c03b</code></pre>
-          <p>Save or commit any local edits before switching revisions. The branch history has been rewritten, so fetching and checking out the pinned commit avoids merging the old and new histories. To inspect the latest remote revision instead, use <code>git checkout origin/fix/hemelb-improvements</code> after fetching.</p>
           <p>
             On macOS, accept the offer to install the Xcode Command Line Tools if it appears, then run the script again. The script may ask for your password (to install system packages). It then:
           </p>
@@ -231,7 +222,7 @@ mpirun -n 4 hemelb -in restart.xml -out resumed</code></pre>
             <li><strong><code>The geometry has N block(s) containing fluid but HemeLB is running on P MPI processes</code></strong>: run with fewer processes, as the message says.</li>
             <li><strong><code>Output directory ... already exists.</code></strong>: pick a new <code>-out</code> folder name for each run.</li>
             <li><strong>A <code>Warning:</code> from the geometry tool</strong>: an inlet, outlet, or the seed point is probably misplaced, so the geometry may be wrong. See "Things to watch" in <a href="https://github.com/lepotatoguy/hemelb/blob/fix/hemelb-improvements/doc/user/geometry-tool.md" target="_blank" rel="noopener noreferrer">geometry-tool.md</a>.</li>
-            <li><strong><code>Permission denied</code> or <code>No such file or directory</code></strong> when starting the installer: run it with <code>bash</code> in front, from inside the <code>hemelb</code> folder. If the <code>Scripts</code> folder has no <code>install_hemelb.sh</code>, update your clone as shown under Install.</li>
+            <li><strong><code>Permission denied</code> or <code>No such file or directory</code></strong> when starting the installer: run it with <code>bash</code> in front, from inside the <code>hemelb</code> folder. If <code>Scripts/install_hemelb.sh</code> is missing, follow <a href="#install">Install</a> to clone <code>fix/hemelb-improvements</code> into a new folder.</li>
             <li><strong><code>This program needs access to the screen</code></strong> when starting <code>hlb-gmy-gui</code> on macOS: run <code>python geometry-tool/macos-fix-gui-launcher.py</code> from the <code>hemelb</code> folder with <code>gmy-tool</code> active. The install script already does this.</li>
             <li><strong>The installer says the conda environment already exists</strong>: remove it with <code>conda env remove -n gmy-tool</code>, or choose another name with <code>--env-name</code>.</li>
             <li><strong><code>hlb-extracted-to-vtk: command not found</code></strong>: activate the tools environment. If it was installed before this command was added, reinstall the package with <code>python -m pip install --no-deps --no-build-isolation ./python-tools</code> from the repository root.</li>
@@ -281,6 +272,13 @@ conda env remove -n gmy-tool</code></pre>
           <p>
             Found a problem with the fork itself? Report it on
             <a href="https://github.com/lepotatoguy/hemelb/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 id="advanced-users">For advanced users</h2>
+          <p>
+            An upgraded version of HemeLB is being developed on the <a href="https://github.com/lepotatoguy/hemelb/tree/feat/scalability-input-improvements" target="_blank" rel="noopener noreferrer"><code>feat/scalability-input-improvements</code> branch</a>. It addresses limitations in the official HemeLB and HemePure, supports existing input files from both, and aims to improve performance over both. See the branch's <a href="https://github.com/lepotatoguy/hemelb/blob/feat/scalability-input-improvements/doc/user/scalability-and-inputs.md" target="_blank" rel="noopener noreferrer">compatibility guide</a> and <a href="https://github.com/lepotatoguy/hemelb/blob/feat/scalability-input-improvements/doc/dev/representative-cpu-benchmarks.md" target="_blank" rel="noopener noreferrer">performance results</a> for details. I no longer work on this project actively, so contributions are welcome.
           </p>
         </section>
 
