@@ -41,12 +41,14 @@
     />
 
     <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/nav-menu.css" />
   </head>
   <body>
     <header class="site-nav">
       <div class="container nav-inner">
         <a class="nav-brand" href="#about">Joyanta J. Mondal</a>
-        <nav aria-label="Sections">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+        <nav id="site-menu" aria-label="Sections">
           <ul class="nav-links">
             <li><a href="#news" class="nav-link">News</a></li>
             <li><a href="#publications" class="nav-link">Publications</a></li>
@@ -1105,6 +1107,7 @@
     </footer>
 
     <script src="js/scholar-impact.js" defer></script>
+    <script src="js/nav-menu.js" defer></script>
     <script>
       document.getElementById("yr").textContent = new Date().getFullYear();
 

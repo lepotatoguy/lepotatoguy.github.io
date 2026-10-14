@@ -1,0 +1,124 @@
+/* Mobile menu (hamburger) for the shared top bar. Load after the page stylesheet. */
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-right: -8px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #111827;
+  cursor: pointer;
+}
+
+.nav-toggle:hover {
+  background: #f3f4f6;
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.nav-toggle-bars {
+  position: relative;
+}
+
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-bars::before {
+  top: -6px;
+}
+
+.nav-toggle-bars::after {
+  top: 6px;
+}
+
+/* Bars turn into an X while the menu is open */
+.site-nav.menu-open .nav-toggle-bars {
+  background: transparent;
+}
+
+.site-nav.menu-open .nav-toggle-bars::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.site-nav.menu-open .nav-toggle-bars::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (max-width: 820px) {
+  .site-nav .nav-inner {
+    justify-content: space-between;
+  }
+
+  .site-nav .nav-brand {
+    display: block;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav .nav-inner > nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: 0 12px 24px rgba(17, 24, 39, 0.08);
+  }
+
+  .site-nav.menu-open .nav-inner > nav {
+    display: block;
+  }
+
+  .site-nav .nav-links,
+  .site-nav .nav-links.is-scrollable {
+    flex-direction: column;
+    gap: 0;
+    padding: 4px 24px 12px;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .site-nav .nav-links a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 1rem;
+  }
+
+  .site-nav .nav-links li:last-child a {
+    border-bottom: 0;
+  }
+
+  .site-nav .nav-links a:hover,
+  .site-nav .nav-links a.active {
+    border-bottom-color: #f3f4f6;
+    color: #2563eb;
+  }
+}

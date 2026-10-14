@@ -17,13 +17,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="../css/nav-menu.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-nav">
     <div class="nav-inner">
       <a class="nav-brand" href="../">Joyanta J. Mondal</a>
-      <nav aria-label="Sections">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+      <nav id="site-menu" aria-label="Sections">
         <ul class="nav-links">
           <li><a href="../#news">News</a></li>
           <li><a href="../#publications">Publications</a></li>
@@ -362,6 +364,7 @@
     <p class="site-copyright">&copy; <span id="yr">2026</span> Joyanta J. Mondal</p>
   </footer>
 
+  <script src="../js/nav-menu.js" defer></script>
   <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Joyanta J. Mondal","url":"https://lepotatoguy.github.io","image":"https://lepotatoguy.github.io/images/profile.jpg","sameAs":["https://scholar.google.com/citations?user=lIwU1F0AAAAJ","https://github.com/lepotatoguy","https://www.researchgate.net/profile/Joyanta-Mondal"]}</script>
 </body>
