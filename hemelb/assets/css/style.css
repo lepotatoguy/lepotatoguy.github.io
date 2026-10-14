@@ -696,35 +696,9 @@ hr {
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
 
 /* ============================================================
-   DARK MODE (follows the system setting or manual choice)
+   DARK MODE (light by default, dark by manual choice)
    ============================================================ */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg:            #16181c;
-    --color-surface:       #1e2126;
-    --color-border:        #2e333a;
-    --color-border-strong: #4a5059;
-    --color-text:          #e7e4df;
-    --color-text-muted:    #a8a29b;
-    --color-text-subtle:   #8a847d;
-    --color-accent:        #7aa2ff;
-    --color-accent-hover:  #a3bfff;
-    --color-accent-bg:     #1c2740;
-    --color-accent-text:   #a3bfff;
-    --sidebar-bg:          #1a1d21;
-    --sidebar-item-hover:  #262a30;
-    --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.04);
-  }
-  :root:not([data-theme="light"]) :not(pre) > code {
-    background: #2a2e35;
-    color: #f0b36a;
-    border-color: #3a3f47;
-  }
-  :root:not([data-theme="light"]) .badge-link:hover { background: #22304f; }
-  :root:not([data-theme="light"]) .sidebar-overlay { background: rgba(0, 0, 0, 0.5); }
-}
-
-/* Manual dark mode via data-theme attribute (overrides system preference) */
+/* Manual dark mode via data-theme attribute */
 :root[data-theme="dark"] {
   --color-bg:            #16181c;
   --color-surface:       #1e2126;
@@ -780,10 +754,6 @@ hr {
 .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
-  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
-}
 
 /* ============================================================
    PRINT

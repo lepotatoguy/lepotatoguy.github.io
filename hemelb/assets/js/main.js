@@ -95,8 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) {
     const root = document.documentElement;
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const current = () => root.getAttribute("data-theme") || (media.matches ? "dark" : "light");
+    const current = () => root.getAttribute("data-theme") || "light";
     const label = () => {
       const dark = current() === "dark";
       const text = dark ? "Switch to light mode" : "Switch to dark mode";
@@ -109,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
       try { localStorage.setItem("theme", next); } catch (e) {}
       label();
     });
-    media.addEventListener("change", label);
     label();
   }
 });

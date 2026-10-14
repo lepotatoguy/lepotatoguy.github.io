@@ -1,0 +1,117 @@
+:root { color-scheme: light; }
+.nav-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface, var(--mist));
+  color: var(--ink);
+  cursor: pointer;
+}
+.theme-toggle:hover { background: var(--link-soft, var(--mist)); }
+.theme-toggle:focus-visible { outline: 2px solid var(--link, var(--accent)); outline-offset: 3px; }
+.theme-toggle svg { display: block; width: 18px; height: 18px; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #16181c;
+  --paper: #16181c;
+  --surface: #1e2126;
+  --mist: #1e2126;
+  --ink: #e7e4df;
+  --body: #c7cbd1;
+  --ink-soft: #c7cbd1;
+  --muted: #a8a29b;
+  --faint: #939ba7;
+  --line: #333940;
+  --link: #8bb1ff;
+  --link-dark: #b3caff;
+  --link-soft: #1c2740;
+  --accent: #8bb1ff;
+  --accent-dark: #b3caff;
+  --navy: #1b2837;
+}
+:root[data-theme="dark"] .site-nav { background: rgba(22, 24, 28, 0.94); border-bottom-color: var(--line); }
+:root[data-theme="dark"] .nav-brand,
+:root[data-theme="dark"] .nav-brand:hover,
+:root[data-theme="dark"] .nav-links a:hover,
+:root[data-theme="dark"] .nav-links a.active { color: var(--ink); }
+:root[data-theme="dark"] .nav-links a { color: var(--muted); }
+:root[data-theme="dark"] .nav-links a.active { border-bottom-color: var(--link); }
+:root[data-theme="dark"] .nav-toggle { color: var(--ink); }
+:root[data-theme="dark"] .nav-toggle:hover { background: var(--surface); }
+:root[data-theme="dark"] .skip-link { background: var(--surface); color: var(--link); }
+:root[data-theme="dark"] .badge-paper { background: #20314e; color: #b0cbff; }
+:root[data-theme="dark"] .badge-award { background: #3a2c1f; color: #f0cd86; }
+:root[data-theme="dark"] .badge-review { background: #16333d; color: #9acedd; }
+:root[data-theme="dark"] .badge-edu { background: #2c2443; color: #c7b0f0; }
+:root[data-theme="dark"] .timeline-tag { background: #35251d; color: #f4b68b; }
+
+:root[data-theme="dark"] .research-jump,
+:root[data-theme="dark"] .research-work-card { background: var(--surface); }
+:root[data-theme="dark"] .research-jump-teal { --jump-accent: #7dc8c2; background: #192c2b; }
+:root[data-theme="dark"] .research-jump-slate { --jump-accent: #abbcd2; background: #1f2631; }
+:root[data-theme="dark"] .research-jump-amber { --jump-accent: #edc77f; background: #30291f; }
+:root[data-theme="dark"] .research-jump-green { --jump-accent: #8cc9a6; background: #1c2c24; }
+:root[data-theme="dark"] .research-jump-violet { --jump-accent: #c3a2ee; background: #2a2235; }
+:root[data-theme="dark"] .button.primary { background: #3569b4; color: #fff; }
+:root[data-theme="dark"] .button.primary:hover { background: #407cca; }
+
+:root[data-theme="dark"] .travel-progress { background: #303945; }
+:root[data-theme="dark"] .travel-canvas { background-color: #1b2430; background-image: radial-gradient(#334354 0.8px, transparent 0.8px); }
+:root[data-theme="dark"] .travel-region { fill: #303945; stroke: #1b2430; }
+:root[data-theme="dark"] .travel-region.is-visited { fill: #3576dc; }
+:root[data-theme="dark"] .travel-region:hover,
+:root[data-theme="dark"] .travel-region:focus { fill: #526579; }
+:root[data-theme="dark"] .travel-region.is-visited:hover,
+:root[data-theme="dark"] .travel-region.is-visited:focus { fill: #2457b5; }
+:root[data-theme="dark"] .travel-region.is-selected,
+:root[data-theme="dark"] .travel-region:focus-visible { stroke: #e7e4df; }
+:root[data-theme="dark"] .travel-label { fill: #d9e2ec; stroke: #1b2430; }
+:root[data-theme="dark"] .travel-label.is-visited { fill: #fff; stroke: #3576dc; }
+:root[data-theme="dark"] .travel-tooltip,
+:root[data-theme="dark"] .travel-zoom,
+:root[data-theme="dark"] .travel-zoom button { background: var(--surface); }
+:root[data-theme="dark"] .travel-zoom button:hover { background: var(--link-soft); }
+:root[data-theme="dark"] .travel-dot:not(.visited) { background: #303945; border-color: #526579; }
+
+:root[data-theme="dark"] .anime-card {
+  --anime-paper: #28241c; --anime-line: #4f4534; --anime-body: #e0d6c6;
+  --anime-heading: #f3e7d0; --anime-tag: #332d22; --anime-tag-ink: #e0d6c6;
+}
+:root[data-theme="dark"] .anime-card[data-theme="naruto"] {
+  --anime-paper: #29231d; --anime-line: #524433; --anime-body: #e3d4c4;
+  --anime-heading: #edd9c3; --anime-tag: #352b22; --anime-tag-ink: #e3d4c4;
+}
+:root[data-theme="dark"] .anime-card[data-theme="one-punch-man"] {
+  --anime-paper: #2c241c; --anime-line: #5b4b32; --anime-body: #e4d8c4;
+  --anime-heading: #f3deac; --anime-tag: #362e22; --anime-tag-ink: #e4d8c4;
+}
+:root[data-theme="dark"] .anime-card[data-theme="jujutsu-kaisen"] {
+  --anime-paper: #211d2c; --anime-line: #47395d; --anime-body: #d8d0e3;
+  --anime-heading: #e0cff7; --anime-tag: #2c243b; --anime-tag-ink: #d8d0e3;
+}
+:root[data-theme="dark"] .anime-card[data-theme="demon-slayer"] {
+  --anime-paper: #192922; --anime-line: #345246; --anime-body: #cdded6;
+  --anime-heading: #b8ddca; --anime-tag: #22342b; --anime-tag-ink: #cdded6;
+}
+:root[data-theme="dark"] .anime-copy .anime-eyebrow { color: var(--anime-heading); }
+:root[data-theme="dark"] .anime-watchlist button:focus-visible { outline-color: var(--anime-heading); }
+:root[data-theme="dark"] .anime-watchlist button:hover { border-color: var(--anime-heading); }
+
+@media (max-width: 820px) {
+  :root[data-theme="dark"] .site-nav .nav-inner > nav { background: var(--page); border-bottom-color: var(--line); }
+  :root[data-theme="dark"] .site-nav .nav-links a { border-bottom-color: var(--line); }
+  :root[data-theme="dark"] .site-nav .nav-links a:hover,
+  :root[data-theme="dark"] .site-nav .nav-links a.active { color: var(--link); }
+}
+@media print { .theme-toggle { display: none; } }
