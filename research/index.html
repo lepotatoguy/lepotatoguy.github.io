@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research | Joyanta J. Mondal</title>
+  <meta name="description" content="Research highlights of Joyanta J. Mondal: certified parameter-efficient fine-tuning, reliable language-model systems, decision-making with guarantees, lightweight computer vision and medical imaging, and cloud computing.">
+  <link rel="canonical" href="https://lepotatoguy.github.io/research/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research | Joyanta J. Mondal">
+  <meta property="og:description" content="Reliable learning systems, from lightweight models to certified behavior.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/research/">
+  <meta property="og:image" content="https://lepotatoguy.github.io/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="research.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="../">Joyanta J. Mondal</a>
+      <nav aria-label="Sections">
+        <ul class="nav-links">
+          <li><a href="../#news">News</a></li>
+          <li><a href="../#publications">Publications</a></li>
+          <li><a href="../#honors">Honors</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li><a href="../#experience">Experience</a></li>
+          <li><a href="./" class="active" aria-current="page">Research</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-container page-shell research-highlights-page">
+    <header class="page-intro research-intro">
+      <p class="eyebrow">Research highlights</p>
+      <h1>Reliable learning systems, from lightweight models to certified behavior.</h1>
+      <p class="page-description">My research asks how much we can trust, prove, and explain about a learning system when labels, samples, or compute are limited. I study parameter-efficient adaptation of foundation models, evidence and evaluation for language-model systems, and decision-making with guarantees, building on earlier work in lightweight computer vision, medical imaging, and cloud computing.</p>
+    </header>
+
+    <nav class="research-jump-grid" aria-label="Research areas">
+      <a class="research-jump" href="#certified-adaptation">
+        <span>Adaptation &amp; guarantees</span>
+        <strong>Certified parameter-efficient fine-tuning</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-teal" href="#evidence-evaluation">
+        <span>Evidence &amp; evaluation</span>
+        <strong>Reliable language-model systems</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-slate" href="#decisions-guarantees">
+        <span>Learning &amp; decisions</span>
+        <strong>Decision-making with guarantees</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-amber" href="#lightweight-vision">
+        <span>Environment &amp; agriculture</span>
+        <strong>Computer vision</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-green" href="#lightweight-medical-imaging">
+        <span>Healthcare AI</span>
+        <strong>Medical image analysis</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-violet" href="#cloud-computing">
+        <span>Distributed systems</span>
+        <strong>Cloud computing</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+    </nav>
+
+    <div class="research-area-list">
+      <section class="research-area" id="certified-adaptation">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Adaptation &amp; guarantees</p>
+            <h2>Certified parameter-efficient fine-tuning</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I study when parameter-efficient adaptation can be trusted, and what can be proven about it. My work characterizes when Bayesian low-rank adapters admit useful generalization certificates, and the exact conditions under which a prefix can stand in for a LoRA adapter inside a frozen attention head.</p>
+            <ul class="topic-list">
+              <li>Parameter-Efficient Fine-Tuning</li>
+              <li>LoRA</li>
+              <li>PAC-Bayes Bounds</li>
+              <li>Transformers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I study</p>
+          <ul>
+            <li>When does a calibrated posterior over low-rank adapters yield a useful generalization certificate?</li>
+            <li>Which changes to the prior, the predictor, or complexity accounting actually tighten a certificate?</li>
+            <li>Can a fixed prefix replace a low-rank adapter while the attention head stays frozen?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Under review</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2609.32271" target="_blank" rel="noreferrer">Certification Frontiers for Gaussian LoRA ↗</a></h4>
+            <p>Characterizes when Gaussian posteriors around LoRA adapters admit informative PAC-Bayes certificates, and reduces their complexity without changing any prediction.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2609.36766" target="_blank" rel="noreferrer">When Can Prefixes Compile LoRA? ↗</a></h4>
+            <p>Exact, resource-capped tests for whether a continuous prefix can replace a low-rank adapter in a frozen attention head, through observability, realizability, and implementation conditions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="evidence-evaluation">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Evidence &amp; evaluation</p>
+            <h2>Reliable language-model systems</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I study how language-model systems should decide whether they have enough evidence to answer, and how to certify a model update when trusted labels are scarce and the evaluator itself, such as an LLM judge, may drift over time.</p>
+            <ul class="topic-list">
+              <li>Memory-Augmented LLMs</li>
+              <li>Evidence Sufficiency</li>
+              <li>LLM-as-a-Judge</li>
+              <li>Label-Efficient Evaluation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I study</p>
+          <ul>
+            <li>How can an agent tell that the evidence a question needs is no longer in its memory?</li>
+            <li>How should benchmarks build insufficient-evidence examples without leaking the label?</li>
+            <li>When can evaluator errors from earlier audits replace fresh labels in a release decision?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Under review</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2609.32269" target="_blank" rel="noreferrer">Before Answering: Evidence Sufficiency ↗</a></h4>
+            <p>Shows that deleting supporting passages leaks the label through memory size, proposes a size-matched construction, and studies a learned estimator that gates when an agent should answer.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2609.32267" target="_blank" rel="noreferrer">When Can Old Evaluations Certify a New Model? ↗</a></h4>
+            <p>A sequential certifier that lets past audits guide label collection while keeping release decisions valid under evaluator drift.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="decisions-guarantees">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Learning &amp; decisions</p>
+            <h2>Decision-making with guarantees</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I work on sequential decision-making that is reliable and transparent: contextual bandits that exploit graph structure, with a simple diagnostic that shows in advance when the method will help; bandits that meet exact exposure floors that can be checked in every period; and approximate behavioral-similarity metrics for Markov decision processes that report checkable bounds on their own error.</p>
+            <ul class="topic-list">
+              <li>Contextual Bandits</li>
+              <li>Reinforcement Learning</li>
+              <li>Fairness Constraints</li>
+              <li>Bisimulation Metrics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I study</p>
+          <ul>
+            <li>How can graph structure among arms reduce the cost of exploration?</li>
+            <li>How can exposure guarantees be met exactly in every period without giving up regret?</li>
+            <li>When can a faster, approximate computation still certify its own error?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Under review</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2606.27917" target="_blank" rel="noreferrer">Graph Dimensionality Reduction for Contextual Bandits ↗</a></h4>
+            <p>Projects arm features onto a graph's low-frequency spectral subspace, with regret bounds that depend on the reduced dimension rather than the full one.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2607.22935" target="_blank" rel="noreferrer">Discrepancy-Rounded Fair Bandits ↗</a></h4>
+            <p>Treats exact minimum-exposure floors as a rounding problem, meeting every floor while matching the minimax regret rate.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2608.06762" target="_blank" rel="noreferrer">Sub-Quadratic Bisimulation Metrics ↗</a></h4>
+            <p>Uses approximate nearest neighbors to compute bisimulation metrics in sub-quadratic time, with computable two-sided certificates on the result.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="lightweight-vision">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Environment &amp; agriculture</p>
+            <h2>Computer vision</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>My earlier work built lightweight deep learning models for real-world vision problems under limited compute, from estimating local air quality with smartphone photos to identifying plant leaf diseases.</p>
+            <ul class="topic-list">
+              <li>Computer Vision</li>
+              <li>Lightweight Models</li>
+              <li>Environmental Sensing</li>
+              <li>Agriculture</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I studied</p>
+          <ul>
+            <li>How small can a vision model be while still solving a real-world task?</li>
+            <li>Can everyday smartphone images measure local conditions such as air quality?</li>
+            <li>Which design choices let deep models run under limited compute in agricultural settings?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Published work</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">Scientific Reports</p>
+            <h4><a href="https://www.nature.com/articles/s41598-023-51015-1" target="_blank" rel="noreferrer">Air Quality Index from Smartphone Images ↗</a></h4>
+            <p>Estimates a location-specific aggregated air quality index from smartphone-captured images with an efficient deep convolutional network.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">ACM COMPASS 2022</p>
+            <h4><a href="https://drive.google.com/file/d/1LOF3unPm1o78NVQoA7RrmuJZh9zLU7LZ/view?usp=share_link" target="_blank" rel="noreferrer">PLeaD-Net: Plant Leaf Disease Network ↗</a></h4>
+            <p>A limited-resource deep convolutional network for identifying plant leaf diseases.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="lightweight-medical-imaging">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Healthcare AI</p>
+            <h2>Medical image analysis</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I worked on medical image analysis through small architectural changes, such as a single involution layer before a CNN that improves classification and segmentation with a negligible number of extra parameters, along with polyp segmentation and eye-tracking-based autism classification.</p>
+            <ul class="topic-list">
+              <li>Medical Imaging</li>
+              <li>Image Segmentation</li>
+              <li>Involution</li>
+              <li>Healthcare AI</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I studied</p>
+          <ul>
+            <li>Can a single involution layer improve medical image classification and segmentation at negligible parameter cost?</li>
+            <li>When do additional involution layers start to hurt predictions on medical images?</li>
+            <li>How can eye-tracking patterns help classify autism spectrum disorder in children?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Published work &amp; under review</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2024</p>
+            <h4><a href="https://arxiv.org/abs/2409.18506" target="_blank" rel="noreferrer">Med-IC: Single-Layer Involution for Medical Images ↗</a></h4>
+            <p>Adds a single involution layer before a CNN to improve medical image classification and segmentation with a negligible number of extra parameters.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">Engineering Applications of AI</p>
+            <h4><a href="https://arxiv.org/pdf/2401.03575.pdf" target="_blank" rel="noreferrer">Involution Fused Convolution for ASD ↗</a></h4>
+            <p>Combines involution and convolution to classify eye-tracking patterns of children with autism spectrum disorder.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">ICCV Workshops 2025</p>
+            <h4><a href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf" target="_blank" rel="noreferrer">BAMPolyp: Bi-Axial Mamba Bottleneck ↗</a></h4>
+            <p>A bi-axial Mamba bottleneck for segmenting gastrointestinal polyps.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="cloud-computing">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Distributed systems</p>
+            <h2>Cloud computing</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I also worked on cloud systems for images: orchestrating image storage and retrieval across a cloud system, and content-based search inside object storage.</p>
+            <ul class="topic-list">
+              <li>Cloud Computing</li>
+              <li>Object Storage</li>
+              <li>Content-Based Retrieval</li>
+              <li>Distributed Systems</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I studied</p>
+          <ul>
+            <li>How should image storage and retrieval be orchestrated across a cloud system?</li>
+            <li>How can object storage support searching by content rather than by file name?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Published work</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">IEEE Trans. Cloud Computing 2022</p>
+            <h4><a href="https://drive.google.com/file/d/1XNrqwMdFX9Ha9EG8mvvHh0ggvIA6dbQ2/view?usp=share_link" target="_blank" rel="noreferrer">Orchestrating Image Retrieval and Storage over a Cloud System ↗</a></h4>
+            <p>Orchestrates image retrieval and storage across a cloud system.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">IEEE Access 2024</p>
+            <h4><a href="https://ieeexplore.ieee.org/document/10530317" target="_blank" rel="noreferrer">Sherlock in OSS ↗</a></h4>
+            <p>A content-based searching approach for object storage systems.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="research-connection">
+      <div>
+        <p class="eyebrow">A connected agenda</p>
+        <h2>Keep it lean. Prove it reliable. Make it transparent.</h2>
+      </div>
+      <p>Each thread feeds the next: lean models and cloud systems made learning efficient where compute and bandwidth were scarce, reliability work asks what can be certified when labels or samples run short, and transparency comes from explainable models and guarantees that can be checked, or that hold back an answer when the evidence is not there.</p>
+    </div>
+
+    <div class="page-cta">
+      <p>See the complete publication record, including papers beyond these selected projects.</p>
+      <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" class="button primary" target="_blank" rel="noreferrer">View all publications</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-copyright">&copy; <span id="yr">2026</span> Joyanta J. Mondal</p>
+  </footer>
+
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Joyanta J. Mondal","url":"https://lepotatoguy.github.io","image":"https://lepotatoguy.github.io/images/profile.jpg","sameAs":["https://scholar.google.com/citations?user=lIwU1F0AAAAJ","https://github.com/lepotatoguy","https://www.researchgate.net/profile/Joyanta-Mondal"]}</script>
+</body>
+</html>
