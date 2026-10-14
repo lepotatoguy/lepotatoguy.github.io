@@ -16,7 +16,13 @@
       }
     ],
     "Connecticut": [],
-    "Delaware": [],
+    "Delaware": [
+      {
+        "title": "University of Delaware, Newark",
+        "photo": "travel-memories/photos/IMG_6016.jpg",
+        "alt": "Wearing graduation robes and holding a diploma at the University of Delaware in Newark."
+      }
+    ],
     "Florida": [
       {
         "title": "Florida, USA",
@@ -56,7 +62,13 @@
       }
     ],
     "Mississippi": [],
-    "New Jersey": [],
+    "New Jersey": [
+      {
+        "title": "Princeton University",
+        "photo": "travel-memories/photos/IMG_1987.jpg",
+        "alt": "Selfie in front of campus buildings at Princeton University."
+      }
+    ],
     "New York": [
       {
         "title": "New York City, New York",
@@ -69,7 +81,18 @@
         "alt": "Standing beside a cow sculpture at Cornell University Dairy."
       }
     ],
-    "Oklahoma": [],
+    "Oklahoma": [
+      {
+        "title": "Wichita Mountains, Oklahoma",
+        "photo": "travel-memories/photos/IMG_5392.jpg",
+        "alt": "Standing on a rocky overlook with lakes and open terrain behind in the Wichita Mountains, Oklahoma."
+      },
+      {
+        "title": "Oklahoma",
+        "photo": "travel-memories/photos/IMG_5439.jpg",
+        "alt": "Holding a fishing rod and a caught fish beside a lake in Oklahoma."
+      }
+    ],
     "Pennsylvania": [
       {
         "title": "Philadelphia, Pennsylvania",
@@ -84,7 +107,23 @@
         "alt": "Standing beside a meadow with mountains in the background in Tennessee."
       }
     ],
-    "Texas": [],
+    "Texas": [
+      {
+        "title": "Austin, Texas",
+        "photo": "travel-memories/photos/IMG_2850.jpg",
+        "alt": "Standing beside a railing overlooking the water in Austin, Texas."
+      },
+      {
+        "title": "Dallas, Texas",
+        "photo": "travel-memories/photos/IMG_4166.jpg",
+        "alt": "Standing in an Argentina jersey in front of a soccer mural in Dallas, Texas."
+      },
+      {
+        "title": "Netflix House, Dallas, Texas",
+        "photo": "travel-memories/photos/IMG_8007.jpg",
+        "alt": "Posing beside a Chopper character while wearing a matching hat at Netflix House in Dallas, Texas."
+      }
+    ],
     "Virginia": [],
     "West Virginia": [],
     "Washington, D.C.": [
