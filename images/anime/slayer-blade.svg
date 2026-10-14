@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="180" viewBox="0 0 220 180">
+  <defs><pattern id="checks" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#73a38c"/><path d="M0 0H20V20H0ZM20 20H40V40H20Z" fill="#24473c"/></pattern></defs>
+  <rect x="44" y="30" width="132" height="132" rx="12" fill="url(#checks)" transform="rotate(-9 110 96)"/>
+  <path d="M84 118L156 33L158 59L98 130Z" fill="#f2f6f6" stroke="#253b3b" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M93 119L153 48" stroke="#8da8a3" stroke-width="3"/>
+  <path d="M74 111L106 138" stroke="#d8b55c" stroke-width="13" stroke-linecap="round"/>
+  <path d="M76 119L93 135L71 160L56 146Z" fill="#253b3b" stroke="#182c2b" stroke-width="4"/>
+  <path d="M65 135L82 145M73 126L90 137M60 143L74 153" stroke="#c5ded1" stroke-width="3"/>
+  <g fill="#efc4d5" stroke="#bb7d9c" stroke-width="1.5"><circle cx="176" cy="121" r="9"/><circle cx="188" cy="130" r="9"/><circle cx="184" cy="144" r="9"/><circle cx="169" cy="144" r="9"/><circle cx="164" cy="130" r="9"/><circle cx="176" cy="134" r="5" fill="#f8e2a8"/></g>
+</svg>

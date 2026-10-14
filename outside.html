@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/nav-menu.css">
   <link rel="stylesheet" href="css/travel-map.css">
+  <link rel="stylesheet" href="css/anime.css">
   <style>
     .skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 8px 12px; background: #fff; transform: translateY(-150%); }
     .skip-link:focus { transform: translateY(0); }
@@ -53,7 +54,7 @@
   <main id="main-content" class="container outside-page">
     <header class="outside-intro">
       <h1 class="intro-name">Outside Research</h1>
-      <p>When I'm not working, I'm usually travelling, gaming as <em>LePotatoGuy</em>, logging films on Letterboxd, catching up on anime, cycling, or losing chess games with confidence.</p>
+      <p>When I'm not working, I'm usually travelling, gaming as <em>LePotatoGuy</em>, watching films and TV shows, catching up on anime, cycling, or losing chess games with confidence.</p>
     </header>
 
     <section id="travelling">
@@ -144,7 +145,25 @@
 
     <section id="anime">
       <h2 class="section-title">Anime</h2>
-      <p>Anime and comics have been with me for a long time. A few series I have watched: One Piece, Naruto, One Punch Man, Jujutsu Kaisen, and Demon Slayer.</p>
+      <div class="anime-card" id="anime-card" data-theme="one-piece">
+        <div class="anime-poster" aria-hidden="true">
+          <span class="anime-wanted" id="anime-poster-title">WANTED</span>
+          <img id="anime-emblem" src="images/anime/straw-hat.svg" alt="" width="220" height="180">
+          <span class="anime-poster-caption" id="anime-poster-caption">FOR ANOTHER EPISODE</span>
+        </div>
+        <div class="anime-copy">
+          <p class="anime-eyebrow">Anime &amp; comics</p>
+          <h3 id="anime-card-heading" aria-live="polite">A stop on the Grand Line.</h3>
+          <p>Anime and comics have been with me for a long time. A few series I've watched:</p>
+          <ul class="anime-watchlist" aria-label="Choose an anime theme">
+            <li><button type="button" data-anime="one-piece" aria-pressed="true" aria-controls="anime-card">One Piece</button></li>
+            <li><button type="button" data-anime="naruto" aria-pressed="false" aria-controls="anime-card">Naruto</button></li>
+            <li><button type="button" data-anime="one-punch-man" aria-pressed="false" aria-controls="anime-card">One Punch Man</button></li>
+            <li><button type="button" data-anime="jujutsu-kaisen" aria-pressed="false" aria-controls="anime-card">Jujutsu Kaisen</button></li>
+            <li><button type="button" data-anime="demon-slayer" aria-pressed="false" aria-controls="anime-card">Demon Slayer</button></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="cycling-chess">
@@ -162,6 +181,7 @@
 
   <script src="js/nav-menu.js" defer></script>
   <script src="js/travel-map.js" defer></script>
+  <script src="js/anime-card.js" defer></script>
   <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
 </body>
 </html>
