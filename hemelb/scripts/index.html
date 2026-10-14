@@ -1,30 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <title>HemeLB Scripts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HemeLB Helper Scripts: Geometry, Unit Conversion, and Output CSV</title>
+  <meta name="description" content="Python helper scripts for HemeLB: build test cylinder geometries (PyVista, trimesh), convert lattice-Boltzmann units, and plot extracted output CSV files.">
+  <link rel="canonical" href="https://lepotatoguy.github.io/hemelb/scripts/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HemeLB Made Easy">
+  <meta property="og:title" content="HemeLB Helper Scripts: Geometry, Unit Conversion, and Output CSV">
+  <meta property="og:description" content="Python helper scripts for HemeLB: build test cylinder geometries (PyVista, trimesh), convert lattice-Boltzmann units, and plot extracted output CSV files.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/hemelb/scripts/">
+  <meta property="og:image" content="https://lepotatoguy.github.io/hemelb/images/hemelb.png">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HemeLB Made Easy",
+          "item": "https://lepotatoguy.github.io/hemelb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HemeLB Helper Scripts",
+          "item": "https://lepotatoguy.github.io/hemelb/scripts/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "HemeLB Helper Scripts: Geometry, Unit Conversion, and Output CSV",
+      "description": "Python helper scripts for HemeLB: build test cylinder geometries (PyVista, trimesh), convert lattice-Boltzmann units, and plot extracted output CSV files.",
+      "url": "https://lepotatoguy.github.io/hemelb/scripts/",
+      "author": {
+        "@type": "Person",
+        "name": "Joyanta Mondal",
+        "url": "https://lepotatoguy.github.io"
+      },
+      "about": {
+        "@type": "SoftwareSourceCode",
+        "name": "HemeLB",
+        "codeRepository": "https://github.com/hemelb-codes/hemelb"
+      }
+    }
+  ]
+}
+  </script>
+  <meta name="author" content="Joyanta Mondal" />
+  <link rel="icon" type="image/png" href="../images/hemelb.png">
+  <script>
+    try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css?v=5">
 </head>
 <body>
-        <header class="topbar">
-    <a href="/" class="topbar-logo">MyProject</a>
+
+  <header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="2" y1="4.5" x2="16" y2="4.5"/>
+        <line x1="2" y1="9" x2="16" y2="9"/>
+        <line x1="2" y1="13.5" x2="16" y2="13.5"/>
+      </svg>
+    </button>
+    <a href="../index.html" class="topbar-logo">HemeLB</a>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
   </header>
 
   <div class="page-layout">
-    <!-- Mobile overlay (toggled via JS) -->
     <div class="sidebar-overlay" id="overlay"></div>
 
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Documentation">
       <div class="sidebar-section">
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
-          <li><a href="/install" class="active">
-            <svg class="nav-icon">...</svg> Installation
-          </a>
+          <li><a href="../index.html">Overview</a></li>
+          <li>
+            <span class="nav-group">Installation</span>
             <ul class="subnav">
-              <li><a href="/install#requirements" class="active">Requirements</a></li>
-              <li><a href="/install#setup">Setup</a></li>
+              <li><a href="../setup.html">Linux</a></li>
+              <li><a href="../setup_mac_silicon.html">Mac (Apple Silicon)</a></li>
             </ul>
           </li>
         </ul>
@@ -33,16 +98,45 @@
       <div class="sidebar-section">
         <span class="sidebar-section-label">Guides</span>
         <ul class="sidebar-nav">
-          <li><a href="/tutorial">Tutorial</a></li>
+          <li><a href="../tutorial.html">Tutorial</a></li>
+          <li><a href="../hemextract.html">HemeXtract</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="sidebar-section-label">Improved Fork (Unofficial)</span>
+        <ul class="sidebar-nav">
+          <li><a href="../improved.html">Install and Use</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="main-content">
-      <div class="container">...</div>
+      <div class="container">
+
+        <h1>HemeLB Scripts</h1>
+        <p class="page-subtitle">Helper Python scripts used in the HemeLB guides.</p>
+
+        <ul>
+          <li><a href="https://github.com/lepotatoguy/lepotatoguy.github.io/blob/main/hemelb/scripts/create_geometry_pyvista.py"><code>create_geometry_pyvista.py</code></a>: Builds a test cylinder geometry (along the Z-axis) with PyVista.</li>
+          <li><a href="https://github.com/lepotatoguy/lepotatoguy.github.io/blob/main/hemelb/scripts/create_geometry_trimesh.py"><code>create_geometry_trimesh.py</code></a>: Builds the same test cylinder geometry with trimesh.</li>
+          <li><a href="https://github.com/lepotatoguy/lepotatoguy.github.io/blob/main/hemelb/scripts/process_outputcsv.py"><code>process_outputcsv.py</code></a>: Reads an extracted HemeLB output CSV and plots the results (pandas, matplotlib).</li>
+          <li><a href="https://github.com/lepotatoguy/lepotatoguy.github.io/blob/main/hemelb/scripts/unit_conversion.py"><code>unit_conversion.py</code></a>: Lattice-Boltzmann unit conversion between physical and lattice units.</li>
+        </ul>
+
+        <p>
+          Browse all scripts on
+          <a href="https://github.com/lepotatoguy/lepotatoguy.github.io/tree/main/hemelb/scripts">GitHub</a>.
+        </p>
+
+        <footer>
+          &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
+        </footer>
+
+      </div>
     </div>
   </div>
-    <a href="https://github.com/lepotatoguy/lepotatoguy.github.io/tree/main/hemelb/scripts">Please go here for HemeLB Scripts.</a>
-<script defer src="assets/js/main.js"></script>
+
+  <script defer src="../assets/js/main.js?v=5"></script>
 </body>
 </html>

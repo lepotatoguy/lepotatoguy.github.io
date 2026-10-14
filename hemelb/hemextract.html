@@ -2,14 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>HemeXtract | HemeLB</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HemeXtract: Extract and Visualize HemeLB Output in ParaView</title>
   <meta name="description" content="Learn how to install and use HemeXtract to process HemeLB simulation output files and visualize them with ParaView.">
+  <link rel="canonical" href="https://lepotatoguy.github.io/hemelb/hemextract.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HemeLB Made Easy">
+  <meta property="og:title" content="HemeXtract: Extract and Visualize HemeLB Output in ParaView">
+  <meta property="og:description" content="Learn how to install and use HemeXtract to process HemeLB simulation output files and visualize them with ParaView.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/hemelb/hemextract.html">
+  <meta property="og:image" content="https://lepotatoguy.github.io/hemelb/images/hemelb.png">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HemeLB Made Easy",
+          "item": "https://lepotatoguy.github.io/hemelb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HemeXtract",
+          "item": "https://lepotatoguy.github.io/hemelb/hemextract.html"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "HemeXtract: Extract and Visualize HemeLB Output in ParaView",
+      "description": "Learn how to install and use HemeXtract to process HemeLB simulation output files and visualize them with ParaView.",
+      "url": "https://lepotatoguy.github.io/hemelb/hemextract.html",
+      "author": {
+        "@type": "Person",
+        "name": "Joyanta Mondal",
+        "url": "https://lepotatoguy.github.io"
+      },
+      "about": {
+        "@type": "SoftwareSourceCode",
+        "name": "HemeLB",
+        "codeRepository": "https://github.com/hemelb-codes/hemelb"
+      }
+    }
+  ]
+}
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="images/hemelb.png">
   <script>
     try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
 </head>
 <body>
 
@@ -31,14 +79,18 @@
   <div class="page-layout">
     <div class="sidebar-overlay" id="overlay"></div>
 
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Documentation">
       <div class="sidebar-section">
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
-          <li><a href="setup.html">Installation</a></li>
-          <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
-          <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
+          <li>
+            <span class="nav-group">Installation</span>
+            <ul class="subnav">
+              <li><a href="setup.html">Linux</a></li>
+              <li><a href="setup_mac_silicon.html">Mac (Apple Silicon)</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
 
@@ -49,8 +101,9 @@
           <li><a href="hemextract.html" class="active" aria-current="page">HemeXtract</a></li>
         </ul>
       </div>
+
       <div class="sidebar-section">
-        <span class="sidebar-section-label">Improved Fork</span>
+        <span class="sidebar-section-label">Improved Fork (Unofficial)</span>
         <ul class="sidebar-nav">
           <li><a href="improved.html">Install and Use</a></li>
         </ul>
@@ -91,7 +144,7 @@ sudo apt-get install rpcbind</code></pre>
           <a href="http://hemelb.org.s3-website.eu-west-2.amazonaws.com/tutorials/simulation/sim_section3/" target="_blank">HemeLB Simulation Tutorial Section 3</a>.
         </p>
 
-        <hr style="border:none;border-top:1px solid var(--color-border);margin:var(--space-10) 0;">
+        <hr>
 
         <h2 id="extract-information-newer-version">Extract Information (Newer Version)</h2>
         <p>First, activate the conda environment:</p>
@@ -108,10 +161,14 @@ sudo apt-get install rpcbind</code></pre>
           <a class="page-nav-next" href="improved.html"><span>Next</span>Improved Fork: Install and Use</a>
         </nav>
 
+        <footer>
+          &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
+        </footer>
+
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js?v=4"></script>
+  <script defer src="assets/js/main.js?v=5"></script>
 </body>
 </html>

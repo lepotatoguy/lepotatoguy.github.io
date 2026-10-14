@@ -59,6 +59,38 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateToTop, { passive: true });
   updateToTop();
 
+  // Right-hand "On this page" outline built from h2 headings (shown on wide screens)
+  const content = document.querySelector(".main-content .container");
+  const headings = content ? Array.from(content.querySelectorAll("h2[id]")) : [];
+  if (headings.length > 1) {
+    const rail = document.createElement("aside");
+    rail.className = "toc-rail";
+    rail.setAttribute("aria-label", "On this page");
+    const title = document.createElement("p");
+    title.className = "toc-rail-title";
+    title.textContent = "On this page";
+    const list = document.createElement("ol");
+    const links = headings.map(h => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#" + h.id;
+      a.textContent = h.textContent.trim();
+      li.appendChild(a);
+      list.appendChild(li);
+      return a;
+    });
+    rail.append(title, list);
+    content.parentNode.appendChild(rail);
+
+    const setActive = id =>
+      links.forEach(a => a.classList.toggle("active", a.hash === "#" + id));
+    const spy = new IntersectionObserver(
+      entries => entries.forEach(e => e.isIntersecting && setActive(e.target.id)),
+      { rootMargin: "0px 0px -70% 0px" }
+    );
+    headings.forEach(h => spy.observe(h));
+  }
+
   // Light / dark mode toggle (remembers the choice)
   const themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) {

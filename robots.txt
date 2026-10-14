@@ -1,0 +1,5 @@
+# All crawlers, including AI search and training crawlers, may index this site.
+User-agent: *
+Allow: /
+
+Sitemap: https://lepotatoguy.github.io/sitemap.xml

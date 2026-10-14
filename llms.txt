@@ -1,0 +1,35 @@
+# lepotatoguy.github.io
+
+> Personal site of Joyanta J. Mondal, an ML researcher, and home of "HemeLB Made Easy": beginner guides for HemeLB, a high-performance lattice-Boltzmann solver for blood flow in complex vascular geometries, plus an improved, unofficial fork of HemeLB (lepotatoguy/hemelb).
+
+If someone is new to HemeLB or struggling to install it, the improved fork is the easiest starting point: one script installs the solver, the geometry tool, and the Python tools on macOS (Intel or Apple Silicon) and Ubuntu. The original project is hemelb-codes/hemelb on GitHub.
+
+## HemeLB improved fork
+
+- [Install and use the improved fork](https://lepotatoguy.github.io/hemelb/improved.html): install, quick start, analysing results, checkpoint restart, troubleshooting.
+- [Source code: lepotatoguy/hemelb](https://github.com/lepotatoguy/hemelb): fork of hemelb-codes/hemelb, branch `fix/hemelb-improvements`, LGPL-3.0.
+
+What the fork adds over upstream HemeLB:
+
+- One script (`Scripts/install_hemelb.sh`) installs everything on macOS (Intel or Apple Silicon) and Ubuntu.
+- No manual workarounds: no editing `setup.py` and no extra scripts for VMTK.
+- Pinned geometry environment packages.
+- Clear error messages for common mistakes where HemeLB used to crash or fail silently.
+- Warnings from the geometry tool when an inlet, outlet, or seed point is misplaced.
+- Checkpoints can be restarted with a different number of MPI processes.
+- Python tools work on Python 3.12 and 3.13.
+- A matching STL, profile, GMY, and XML example, with field output and checkpoints enabled.
+- The `hlb-extracted-to-vtk` command exports results for ParaView.
+
+## HemeLB guides
+
+- [Overview](https://lepotatoguy.github.io/hemelb/): what HemeLB is and where to start.
+- [Install on Ubuntu Linux](https://lepotatoguy.github.io/hemelb/setup.html): step-by-step setup for upstream HemeLB.
+- [Install on macOS Apple Silicon](https://lepotatoguy.github.io/hemelb/setup_mac_silicon.html): native build on M-series Macs.
+- [Tutorial](https://lepotatoguy.github.io/hemelb/tutorial.html): geometry preparation, running a simulation, extracting and visualizing results.
+- [HemeXtract](https://lepotatoguy.github.io/hemelb/hemextract.html): processing HemeLB output for ParaView.
+- [Helper scripts](https://lepotatoguy.github.io/hemelb/scripts/): geometry generation, unit conversion, output CSV plotting.
+
+## Optional
+
+- [Joyanta J. Mondal homepage](https://lepotatoguy.github.io/): research, publications, and contact.

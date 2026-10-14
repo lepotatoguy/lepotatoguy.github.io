@@ -2,14 +2,14 @@
    DESIGN TOKENS
    ============================================================ */
 :root {
-  --color-bg:           #f7f6f3;
+  --color-bg:           #f6f8fa;
   --color-surface:      #ffffff;
-  --color-border:       #e8e4de;
-  --color-border-strong:#c9c3bb;
+  --color-border:       #e5e7eb;
+  --color-border-strong:#d1d5db;
 
-  --color-text:         #1a1917;
-  --color-text-muted:   #6b6560;
-  --color-text-subtle:  #9c958e;
+  --color-text:         #1f2328;
+  --color-text-muted:   #59636e;
+  --color-text-subtle:  #8b949e;
 
   --color-accent:       #1d4ed8;
   --color-accent-hover: #1e40af;
@@ -20,15 +20,15 @@
   --color-code-fg:      #d4cfc8;
   --color-code-border:  #1e2d3d;
 
-  --font-sans:   "Georgia", "Times New Roman", ui-serif, serif;
-  --font-ui:     "Helvetica Neue", system-ui, sans-serif;
+  --font-sans:   -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-ui:     var(--font-sans);
   --font-mono:   ui-monospace, "Cascadia Code", "Fira Code", Menlo, Consolas, monospace;
 
   --text-base:   1rem;
   --text-sm:     0.875rem;
   --text-xs:     0.8rem;
 
-  --leading-body:    1.75;
+  --leading-body:    1.7;
   --leading-heading: 1.2;
 
   --space-1:  4px;
@@ -51,10 +51,12 @@
 
   --transition: 150ms ease;
 
-  --sidebar-width:           240px;
-  --topbar-height:           52px;
-  --sidebar-bg:              #faf9f7;
-  --sidebar-item-hover:      #f0ede8;
+  --sidebar-width:           260px;
+  --topbar-height:           56px;
+  --toc-rail-width:          220px;
+  --content-max:             820px;
+  --sidebar-bg:              #fafbfc;
+  --sidebar-item-hover:      #eef1f4;
   --sidebar-item-active-bg:  var(--color-accent-bg);
   --sidebar-item-active-text:var(--color-accent-text);
 }
@@ -70,7 +72,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   font-size: var(--text-base);
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
@@ -233,12 +235,21 @@ body {
   color: var(--color-text-muted);
 }
 
-.sidebar-nav .subnav a:hover { color: var(--color-text-muted); }
+.sidebar-nav .subnav a:hover { color: var(--color-text); }
 
 .sidebar-nav .subnav a.active {
   color: var(--sidebar-item-active-text);
-  background: transparent;
-  font-weight: 500;
+  background: var(--sidebar-item-active-bg);
+  font-weight: 550;
+}
+
+.sidebar-nav .nav-group {
+  display: block;
+  padding: var(--space-2) var(--space-3) 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  font-weight: 450;
+  color: var(--color-text-muted);
 }
 
 /* ============================================================
@@ -251,13 +262,9 @@ body {
 }
 
 .container {
-  max-width: 760px;
-  margin: var(--space-12) auto;
-  padding: var(--space-12) var(--space-10);
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--color-border);
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-12) var(--space-12);
 }
 
 /* ============================================================
@@ -280,9 +287,7 @@ body {
   .main-content { margin-left: 0; }
 
   .container {
-    margin: var(--space-6) var(--space-4);
-    padding: var(--space-8) var(--space-6);
-    border-radius: var(--radius-md);
+    padding: var(--space-8) var(--space-6) var(--space-10);
   }
 
   .sidebar-overlay {
@@ -299,11 +304,7 @@ body {
 
 @media (max-width: 480px) {
   .container {
-    margin: 0;
-    padding: var(--space-6) var(--space-4);
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+    padding: var(--space-6) var(--space-4) var(--space-8);
   }
 }
 
@@ -523,9 +524,54 @@ footer {
 /* ============================================================
    LARGE SCREENS
    ============================================================ */
-@media (min-width: 1200px) {
-  body { font-size: 17px; }
-  .container { padding: var(--space-12) 72px; }
+/* Right-hand "On this page" outline (built by main.js from h2 headings) */
+.toc-rail {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  .main-content { padding-right: calc(var(--toc-rail-width) + var(--space-8)); }
+  .toc-rail {
+    display: block;
+    position: fixed;
+    top: calc(var(--topbar-height) + var(--space-10));
+    right: var(--space-6);
+    width: var(--toc-rail-width);
+    max-height: calc(100vh - var(--topbar-height) - var(--space-12));
+    overflow-y: auto;
+    font-family: var(--font-ui);
+    font-size: var(--text-xs);
+    border-left: 1px solid var(--color-border);
+    padding-left: var(--space-4);
+  }
+  .toc-rail-title {
+    margin: 0 0 var(--space-2);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .toc-rail ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toc-rail li { margin: 0; }
+  .toc-rail a {
+    display: block;
+    padding: 3px 0;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .toc-rail a:hover { color: var(--color-text); }
+  .toc-rail a.active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+  /* The rail replaces the inline "On this page" box on wide screens */
+  .container .toc { display: none; }
 }
 
 /* ============================================================
@@ -558,10 +604,25 @@ summary:focus-visible {
   max-width: none;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-10) 0;
+}
+
+.embed-frame {
+  display: block;
+  width: 100%;
+  height: 600px;
+  margin-top: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
 /* Note boxes */
 .callout {
-  background: var(--color-bg);
-  border-left: 4px solid var(--color-border-strong);
+  background: var(--color-accent-bg);
+  border-left: 4px solid var(--color-accent);
   padding: var(--space-4);
   margin: var(--space-6) 0;
   border-radius: var(--radius-sm);

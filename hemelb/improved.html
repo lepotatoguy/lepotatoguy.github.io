@@ -2,15 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HemeLB Improved Fork</title>
+  <title>HemeLB Improved Fork: One-Script Install for macOS and Ubuntu</title>
+  <meta name="description" content="Improved HemeLB fork: one-script install on macOS and Ubuntu, clearer errors, geometry checks, flexible checkpoint restarts, and ParaView export.">
+  <link rel="canonical" href="https://lepotatoguy.github.io/hemelb/improved.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="HemeLB Made Easy">
+  <meta property="og:title" content="HemeLB Improved Fork: One-Script Install for macOS and Ubuntu">
+  <meta property="og:description" content="Improved HemeLB fork: one-script install on macOS and Ubuntu, clearer errors, geometry checks, flexible checkpoint restarts, and ParaView export.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/hemelb/improved.html">
+  <meta property="og:image" content="https://lepotatoguy.github.io/hemelb/images/hemelb.png">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "HemeLB Made Easy",
+          "item": "https://lepotatoguy.github.io/hemelb/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "HemeLB Improved Fork",
+          "item": "https://lepotatoguy.github.io/hemelb/improved.html"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "headline": "HemeLB Improved Fork: One-Script Install for macOS and Ubuntu",
+      "description": "Improved HemeLB fork: one-script install on macOS and Ubuntu, clearer errors, geometry checks, flexible checkpoint restarts, and ParaView export.",
+      "url": "https://lepotatoguy.github.io/hemelb/improved.html",
+      "author": {
+        "@type": "Person",
+        "name": "Joyanta Mondal",
+        "url": "https://lepotatoguy.github.io"
+      },
+      "about": {
+        "@type": "SoftwareSourceCode",
+        "name": "HemeLB",
+        "codeRepository": "https://github.com/hemelb-codes/hemelb"
+      },
+      "dateModified": "2026-10-04"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "HemeLB improved fork (lepotatoguy/hemelb)",
+      "description": "Unofficial fork of HemeLB, a lattice-Boltzmann solver for blood flow in complex vascular geometries, with a one-script installer for macOS and Ubuntu, bug fixes, and updated guides.",
+      "codeRepository": "https://github.com/lepotatoguy/hemelb",
+      "url": "https://lepotatoguy.github.io/hemelb/improved.html",
+      "programmingLanguage": [
+        "C++",
+        "Python"
+      ],
+      "license": "https://www.gnu.org/licenses/lgpl-3.0.html",
+      "isBasedOn": "https://github.com/hemelb-codes/hemelb",
+      "author": {
+        "@type": "Person",
+        "name": "Joyanta Mondal",
+        "url": "https://lepotatoguy.github.io"
+      }
+    }
+  ]
+}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Joyanta Mondal, Anthropic Claude, ChatGPT">
-  <meta name="description" content="Install HemeLB and related tools, run the bundled example, inspect results in ParaView, and restart a fluid checkpoint on fix/hemelb-improvements.">
   <link rel="icon" type="image/png" href="images/hemelb.png">
   <script>
     try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=4">
+  <link rel="stylesheet" href="assets/css/style.css?v=5">
 </head>
 <body>
 
@@ -32,14 +99,18 @@
   <div class="page-layout">
     <div class="sidebar-overlay" id="overlay"></div>
 
-    <nav class="sidebar" id="sidebar">
+    <nav class="sidebar" id="sidebar" aria-label="Documentation">
       <div class="sidebar-section">
         <span class="sidebar-section-label">Getting Started</span>
         <ul class="sidebar-nav">
           <li><a href="index.html">Overview</a></li>
-          <li><a href="setup.html">Installation</a></li>
-          <li><a href="setup.html" style="padding-left: 2rem;">Linux</a></li>
-          <li><a href="setup_mac_silicon.html" style="padding-left: 2rem;">Mac (Apple Silicon)</a></li>
+          <li>
+            <span class="nav-group">Installation</span>
+            <ul class="subnav">
+              <li><a href="setup.html">Linux</a></li>
+              <li><a href="setup_mac_silicon.html">Mac (Apple Silicon)</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
 
@@ -50,8 +121,9 @@
           <li><a href="hemextract.html">HemeXtract</a></li>
         </ul>
       </div>
+
       <div class="sidebar-section">
-        <span class="sidebar-section-label">Improved Fork</span>
+        <span class="sidebar-section-label">Improved Fork (Unofficial)</span>
         <ul class="sidebar-nav">
           <li><a href="improved.html" class="active" aria-current="page">Install and Use</a></li>
         </ul>
@@ -284,13 +356,16 @@ conda env remove -n gmy-tool</code></pre>
 
         <nav class="page-nav" aria-label="Previous and next page">
           <a class="page-nav-prev" href="hemextract.html"><span>Previous</span>HemeXtract</a>
-          <a class="page-nav-next" href="tutorial.html"><span>Next</span>Tutorial</a>
         </nav>
+
+        <footer>
+          &copy; Compiled by <a href="https://lepotatoguy.github.io">Joyanta Mondal</a>.
+        </footer>
 
       </div>
     </div>
   </div>
 
-  <script defer src="assets/js/main.js?v=4"></script>
+  <script defer src="assets/js/main.js?v=5"></script>
 </body>
 </html>
