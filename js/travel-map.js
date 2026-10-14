@@ -466,12 +466,12 @@
     zoomOut.disabled = scale <= 1;
   }, { passive: false });
 
-  Promise.all(["data/travel-regions.json", "data/travel-visits.json", "data/travel-memories.json"].map(url =>
+  Promise.all(["data/travel-regions.json", "data/travel-visits.json", "travel-memories/memories.json"].map(url =>
     fetch(url).then(response => {
       if (!response.ok) throw new Error("Map data unavailable");
       return response.json();
     }).catch(error => {
-      if (url !== "data/travel-memories.json") throw error;
+      if (url !== "travel-memories/memories.json") throw error;
       memoryLoadFailed = true;
       return {};
     })

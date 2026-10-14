@@ -1,6 +1,6 @@
 # Travel memories
 
-Edit `data/travel-memories.json`. Use `us` for US states and `bd` for Bangladesh districts. Region names must match `data/travel-visits.json` or `data/travel-regions.json` exactly.
+Put photos in `travel-memories/photos/` and edit `travel-memories/memories.json`. Select a state or district on the map to see its memories. Use `us` for US states and `bd` for Bangladesh districts. Region names must match `data/travel-visits.json` or `data/travel-regions.json` exactly.
 
 Each region holds an array of memories. Each memory accepts these optional fields:
 
@@ -9,7 +9,7 @@ Each region holds an array of memories. Each memory accepts these optional field
 | `title` | Short heading |
 | `date` | Visit date or date description, displayed as written |
 | `caption` | Your travel note, displayed as plain text |
-| `photo` | Image path relative to outside.html, such as images/travel/your-photo.jpg |
+| `photo` | Image path relative to outside.html, such as `travel-memories/photos/your-photo.jpg` |
 | `alt` | Description of the photograph |
 
 Blank template for one Texas memory, replace empty values with your own details and remove unused fields:
@@ -31,7 +31,7 @@ Blank template for one Texas memory, replace empty values with your own details 
 }
 ```
 
-Add multiple objects to a region's array for separate visits. Empty entries are ignored. No memories are included initially.
+Add multiple objects to a region's array for separate visits. Empty entries are ignored. Visited regions already have empty arrays ready to edit. No memories are included initially. Keep filenames and paths identical, including capitalization. Photo paths are relative to `outside.html`, not to this JSON file.
 
 Copied share links use `/travel/us/` or `/travel/bd/` for whole maps. Region links append a lowercase region slug, for example `/travel/us/texas/` or `/travel/bd/cox-s-bazar/`. These pages include social preview metadata and a matching 1200 × 630 PNG, then open the interactive view. The address bar on the interactive map still uses `outside.html#travel/us/texas`.
 
