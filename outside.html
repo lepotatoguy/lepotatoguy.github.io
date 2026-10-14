@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outside Research | Joyanta J. Mondal</title>
+  <meta name="description" content="Outside research: travel, games, films, anime, chess, and cycling with Joyanta J. Mondal (LePotatoGuy).">
+  <link rel="canonical" href="https://lepotatoguy.github.io/outside.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Outside Research | Joyanta J. Mondal">
+  <meta property="og:description" content="Travel, games, films, anime, chess, and cycling.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/outside.html">
+  <meta property="og:image" content="https://lepotatoguy.github.io/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/nav-menu.css">
+  <link rel="stylesheet" href="css/travel-map.css">
+  <style>
+    .skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 8px 12px; background: #fff; transform: translateY(-150%); }
+    .skip-link:focus { transform: translateY(0); }
+    .outside-intro { padding-top: 48px; }
+    .outside-intro h1 { margin-bottom: 20px; }
+    .outside-page p + p { margin-top: 14px; }
+    .outside-list { padding-left: 22px; margin-top: 12px; }
+    .outside-list li { padding: 3px 0; }
+    .outside-note { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-nav">
+    <div class="container nav-inner">
+      <a class="nav-brand" href="./">Joyanta J. Mondal</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+      <nav id="site-menu" aria-label="Sections">
+        <ul class="nav-links">
+          <li><a href="./#news" class="nav-link">News</a></li>
+          <li><a href="./#publications" class="nav-link">Publications</a></li>
+          <li><a href="./#honors" class="nav-link">Honors</a></li>
+          <li><a href="./#education" class="nav-link">Education</a></li>
+          <li><a href="./#experience" class="nav-link">Experience</a></li>
+          <li><a href="research/" class="nav-link">Research</a></li>
+          <li><a href="outside.html" class="nav-link active" aria-current="page">Outside Research</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="container outside-page">
+    <header class="outside-intro">
+      <h1 class="intro-name">Outside Research</h1>
+      <p>When I'm not working, I'm usually travelling, gaming as <em>LePotatoGuy</em>, logging films on Letterboxd, catching up on anime, cycling, or losing chess games with confidence.</p>
+    </header>
+
+    <section id="travelling">
+      <h2 class="section-title">Travelling</h2>
+      <p>I've visited 22 US states and 22 districts in Bangladesh, as well as Turkey and India.</p>
+      <div class="travel-map" id="travel-map" hidden>
+        <div class="travel-toolbar">
+          <div class="travel-country-switch" role="group" aria-label="Choose a country">
+            <button type="button" data-country="us" aria-pressed="true">United States</button>
+            <button type="button" data-country="bd" aria-pressed="false">Bangladesh</button>
+          </div>
+          <span class="travel-count" id="travel-count"></span>
+        </div>
+        <div class="travel-progress" id="travel-progress" role="progressbar" aria-label="States visited" aria-valuemin="0" aria-valuenow="22" aria-valuemax="50">
+          <span id="travel-progress-fill"></span>
+        </div>
+        <div class="travel-canvas">
+          <svg id="travel-svg" viewBox="-20 -20 1015 650" role="group" aria-labelledby="travel-map-title travel-map-description">
+            <title id="travel-map-title">Places I've visited in the United States</title>
+            <desc id="travel-map-description">Visited regions are blue. Select a region to zoom in and see its memories. Drag to pan and pinch to zoom. Names appear as you zoom. Use arrow keys to move between regions and Enter to select. Escape closes the details.</desc>
+            <g id="travel-regions"></g>
+            <g id="travel-labels" aria-hidden="true"></g>
+          </svg>
+          <div class="travel-tooltip" id="travel-tooltip" role="tooltip" hidden>
+            <strong id="travel-tooltip-name"></strong>
+            <span id="travel-tooltip-country"></span>
+            <span id="travel-tooltip-status"></span>
+          </div>
+          <div class="travel-zoom" role="group" aria-label="Map zoom">
+            <button type="button" id="travel-zoom-in" aria-label="Zoom in">+</button>
+            <button type="button" id="travel-zoom-out" aria-label="Zoom out">&minus;</button>
+            <button type="button" id="travel-reset" aria-label="Reset map zoom">↺</button>
+          </div>
+        </div>
+        <p class="travel-gesture-hint">Drag to move · Pinch to zoom</p>
+        <div class="travel-map-footer">
+          <p id="travel-selection" role="status" aria-live="polite">Hover or tap a region to explore.</p>
+          <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span><i class="travel-dot"></i>Other regions</span></div>
+        </div>
+        <div class="travel-share" role="group" aria-label="Share travel map">
+          <button type="button" id="travel-share-map">Copy map link</button>
+          <button type="button" id="travel-share-region" disabled>Copy region link</button>
+          <span id="travel-share-status" role="status" aria-live="polite"></span>
+          <input id="travel-share-url" type="text" readonly aria-label="Share link" hidden>
+        </div>
+        <figure class="travel-share-preview" id="travel-share-preview" hidden>
+          <img id="travel-share-preview-image" width="1200" height="630" alt="Travel map social preview">
+          <figcaption><a id="travel-share-download" download>Download thumbnail</a></figcaption>
+        </figure>
+        <div class="travel-memories" id="travel-memories" aria-labelledby="travel-memory-title" hidden>
+          <h3 id="travel-memory-title">Travel memories</h3>
+          <div id="travel-memory-entries"></div>
+        </div>
+        <p class="travel-attribution">Boundaries: <a href="https://github.com/topojson/us-atlas" target="_blank" rel="noopener noreferrer">US Census / US Atlas</a>; <a href="https://www.geoboundaries.org/" target="_blank" rel="noopener noreferrer">geoBoundaries</a>, BBS / OCHA ROAP (<a href="https://creativecommons.org/licenses/by/3.0/igo/" target="_blank" rel="noopener noreferrer">CC BY 3.0 IGO</a>). Simplified for display.</p>
+      </div>
+      <div id="travel-fallback">
+        <p><strong>United States:</strong> Alabama, Arkansas, California, Connecticut, Delaware, Florida, Georgia, Hawaii, Illinois, Kentucky, Louisiana, Maryland, Massachusetts, Mississippi, New Jersey, New York, Oklahoma, Pennsylvania, Tennessee, Texas, Virginia, and West Virginia.</p>
+        <p><strong>Bangladesh:</strong> Bagerhat, Bandarban, Chandpur, Chittagong, Comilla, Cox's Bazar, Dhaka, Gazipur, Gopalganj, Jessore, Khulna, Kishoreganj, Manikganj, Mymensingh, Narayanganj, Narsingdi, Noakhali, Rajshahi, Satkhira, Shariatpur, Sylhet, and Tangail.</p>
+      </div>
+    </section>
+
+    <section id="games">
+      <div class="section-head">
+        <h2 class="section-title">Games</h2>
+        <a href="https://lepotatoguy.github.io/backlog/#/u/lepotatoguy" target="_blank" rel="noopener noreferrer">Full list on Backlog</a>
+      </div>
+      <p>I play as LePotatoGuy, mostly sports games, action-adventure, shooters, and strategy. My Backlog lists 115 games: 81 played, 3 in progress, and 31 still waiting their turn.</p>
+      <ul class="outside-list">
+        <li><strong>Marvel's Spider-Man 2 (2023):</strong> The one game I have rated on Backlog so far: 5 out of 5.</li>
+        <li><strong>FIFA and EA SPORTS FC:</strong> 23 entries logged, from FIFA 2000 to EA SPORTS FC 26.</li>
+        <li><strong>Like a Dragon:</strong> Yakuza 0, Like a Dragon Gaiden: The Man Who Erased His Name, and Like a Dragon: Infinite Wealth.</li>
+      </ul>
+    </section>
+
+    <section id="films">
+      <div class="section-head">
+        <h2 class="section-title">Films</h2>
+        <a href="https://letterboxd.com/lepotatoguy/" target="_blank" rel="noopener noreferrer">Diary on Letterboxd</a>
+      </div>
+      <p>I log what I watch on Letterboxd, from South Asian releases to classics, animation, and new blockbusters.</p>
+      <p class="outside-note">A few five-star logs:</p>
+      <ul class="outside-list">
+        <li><strong>The Godfather (1972):</strong> Rewatched June 2026.</li>
+        <li><strong>Grave of the Fireflies (1988):</strong> Watched June 2026.</li>
+        <li><strong>The Odyssey (2026):</strong> Watched July 2026.</li>
+      </ul>
+    </section>
+
+    <section id="anime">
+      <h2 class="section-title">Anime</h2>
+      <p>Anime and comics have been with me for a long time. A few series I have watched: One Piece, Naruto, One Punch Man, Jujutsu Kaisen, and Demon Slayer.</p>
+    </section>
+
+    <section id="cycling-chess">
+      <h2 class="section-title">Cycling and chess</h2>
+      <p>I ride when I can, and I play chess at a rating of about 400, which means I lose often and confidently.</p>
+      <p>Think you can beat me? You probably can. <a href="https://www.chess.com/member/lepotatoguy" target="_blank" rel="noopener noreferrer">Challenge me on Chess.com.</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="site-copyright">&copy; <span id="yr">2026</span> Joyanta J. Mondal</p>
+    </div>
+  </footer>
+
+  <script src="js/nav-menu.js" defer></script>
+  <script src="js/travel-map.js" defer></script>
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>

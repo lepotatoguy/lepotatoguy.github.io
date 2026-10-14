@@ -158,6 +158,12 @@ section {
   margin-bottom: 20px;
   border-bottom: 1px solid var(--line);
 }
+.section-head-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 20px;
+}
 .section-head .section-title {
   padding-bottom: 0;
   margin-bottom: 0;
