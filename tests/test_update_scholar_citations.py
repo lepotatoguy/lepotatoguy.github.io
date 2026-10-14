@@ -81,6 +81,17 @@ class BuildDocumentTest(unittest.TestCase):
         self.assertEqual(doc["top_papers"][0]["title"], "b")
         self.assertEqual(prev["history"][1]["total_citations"], 9)  # input not mutated
 
+    def test_keeps_manual_points_past_history_cap_in_date_order(self):
+        manual = {"date": "2020-01-01", "total_citations": 1, "source": "manual"}
+        daily = [{"date": f"2021-{m:02d}-01", "total_citations": 2} for m in range(1, 4)]
+        original_cap = usc.MAX_HISTORY_DAYS
+        usc.MAX_HISTORY_DAYS = 2
+        try:
+            doc = usc.build_document({"total_citations": 5}, {"history": daily + [manual]}, "2021-04-01")
+        finally:
+            usc.MAX_HISTORY_DAYS = original_cap
+        self.assertEqual([e["date"] for e in doc["history"]], ["2020-01-01", "2021-03-01", "2021-04-01"])
+
     def test_rejects_snapshot_without_total(self):
         with self.assertRaises(RuntimeError):
             usc.build_document({"papers": []}, {}, "2026-01-01")

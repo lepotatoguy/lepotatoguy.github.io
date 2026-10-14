@@ -36,6 +36,26 @@
   ],
   "history": [
     {
+      "date": "2023-08-01",
+      "total_citations": 11,
+      "source": "manual"
+    },
+    {
+      "date": "2024-11-26",
+      "total_citations": 52,
+      "source": "manual"
+    },
+    {
+      "date": "2026-09-25",
+      "total_citations": 145,
+      "source": "manual"
+    },
+    {
+      "date": "2026-10-12",
+      "total_citations": 150,
+      "source": "manual"
+    },
+    {
       "date": "2026-10-14",
       "total_citations": 151
     }

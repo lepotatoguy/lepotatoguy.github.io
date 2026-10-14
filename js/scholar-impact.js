@@ -23,23 +23,25 @@
     return new Date(iso + "T00:00:00Z").getTime();
   }
 
-  // Cumulative citations over time: year-end totals derived from Scholar's
-  // per-year counts (completed years only), followed by the daily snapshots.
+  // Cumulative citations over time: recorded snapshots (daily + hand-entered)
+  // merged with year-end totals derived from Scholar's per-year counts.
+  // Only completed years get a derived point; a recorded point wins on the same date.
   function buildSeries(yearly, history) {
-    var daily = (history || [])
+    var recorded = (history || [])
       .filter(function (e) { return e.date && Number.isFinite(Number(e.total_citations)); })
-      .map(function (e) { return { t: toTime(e.date), v: Number(e.total_citations) }; })
-      .sort(function (a, b) { return a.t - b.t; });
-    var firstDaily = daily.length ? daily[0].t : Infinity;
+      .map(function (e) { return { t: toTime(e.date), v: Number(e.total_citations) }; });
+    var recordedTimes = recorded.map(function (p) { return p.t; });
+    var latest = Math.max.apply(null, recordedTimes.concat([0]));
+    var latestYear = latest ? new Date(latest).getUTCFullYear() : Infinity;
 
     var running = 0;
     var yearEnds = [];
     (yearly || []).slice().sort(function (a, b) { return a.year - b.year; }).forEach(function (r) {
       running += Number(r.citations) || 0;
       var t = toTime(r.year + "-12-31");
-      if (t < firstDaily) yearEnds.push({ t: t, v: running });
+      if (r.year < latestYear && recordedTimes.indexOf(t) === -1) yearEnds.push({ t: t, v: running });
     });
-    return yearEnds.concat(daily);
+    return recorded.concat(yearEnds).sort(function (a, b) { return a.t - b.t; });
   }
 
   function drawChart(canvas, series) {

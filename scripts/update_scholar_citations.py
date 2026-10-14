@@ -156,8 +156,12 @@ def build_document(snapshot: dict[str, Any], previous: dict[str, Any], today: st
     total = snapshot.get("total_citations")
     if total is None:
         raise RuntimeError("Snapshot has no total citation count.")
-    history = [entry for entry in previous.get("history") or [] if entry.get("date") != today]
-    history = (history + [{"date": today, "total_citations": total}])[-MAX_HISTORY_DAYS:]
+    earlier = [entry for entry in previous.get("history") or [] if entry.get("date") != today]
+    # Hand-entered points (source "manual") are kept forever; daily snapshots are capped.
+    manual = [entry for entry in earlier if entry.get("source") == "manual"]
+    daily = [entry for entry in earlier if entry.get("source") != "manual"]
+    daily = (daily + [{"date": today, "total_citations": total}])[-MAX_HISTORY_DAYS:]
+    history = sorted(manual + daily, key=lambda entry: entry["date"])
     papers = sorted(snapshot.get("papers") or [], key=lambda p: p.get("citations", 0), reverse=True)
     return {
         "profile": {"scholar_id": AUTHOR_ID, "scholar_url": PROFILE_URL},
