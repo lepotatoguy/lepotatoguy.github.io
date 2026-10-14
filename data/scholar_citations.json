@@ -1,0 +1,80 @@
+{
+  "profile": {
+    "scholar_id": "lIwU1F0AAAAJ",
+    "scholar_url": "https://scholar.google.com/citations?user=lIwU1F0AAAAJ&hl=en"
+  },
+  "summary": {
+    "total_citations": 151,
+    "h_index": 9,
+    "i10_index": 7,
+    "paper_count": 28,
+    "updated": "2026-10-14",
+    "updated_at_utc": "2026-10-14T07:49:22+00:00",
+    "source": "google_scholar_direct"
+  },
+  "yearly": [
+    {
+      "year": 2022,
+      "citations": 7
+    },
+    {
+      "year": 2023,
+      "citations": 13
+    },
+    {
+      "year": 2024,
+      "citations": 35
+    },
+    {
+      "year": 2025,
+      "citations": 54
+    },
+    {
+      "year": 2026,
+      "citations": 41
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-10-14",
+      "total_citations": 151
+    }
+  ],
+  "top_papers": [
+    {
+      "title": "Uncovering local aggregated air quality index with smartphone captured images leveraging efficient deep convolutional neural network",
+      "year": "2024",
+      "venue": "Scientific Reports 14 (1), 1627, 2024",
+      "citations": 23,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:IjCSPb-OGe4C"
+    },
+    {
+      "title": "Involution fused convolution for classifying eye-tracking patterns of children with Autism Spectrum Disorder",
+      "year": "2025",
+      "venue": "Engineering Applications of Artificial Intelligence 139, 109475, 2025",
+      "citations": 22,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:WF5omc3nYNoC"
+    },
+    {
+      "title": "Orchestrating image retrieval and storage over a cloud system",
+      "year": "2022",
+      "venue": "IEEE Transactions on Cloud Computing 11 (2), 1794-1806, 2022",
+      "citations": 20,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:u-x6o8ySG0sC"
+    },
+    {
+      "title": "Note: Plant Leaf Disease Network (PLeaD-Net): Identifying Plant Leaf Diseases through Leveraging Limited-Resource Deep Convolutional Neural Network",
+      "year": "2022",
+      "venue": "COMPASS '22: ACM SIGCAS/SIGCHI Conference on Computing and Sustainable …, 2022",
+      "citations": 18,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:d1gkVwhDpl0C"
+    },
+    {
+      "title": "‘Khep’: Exploring Factors that Influence The Preference of Contractual Rides to Ride-Sharing Apps in Bangladesh",
+      "year": "2023",
+      "venue": "Proceedings of the 6th ACM SIGCAS/SIGCHI Conference on Computing and …, 2023",
+      "citations": 12,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:zYLM7Y9cAGgC"
+    }
+  ]
+}

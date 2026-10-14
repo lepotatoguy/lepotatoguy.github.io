@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/icomoon.css" />
@@ -40,1109 +40,35 @@
       href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     />
 
-    <style>
-      /* === RESET & VARIABLES === */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      :root {
-        --ink: #1a2332;
-        --paper: #f0f4f8;
-        --cream: #e2e9f0;
-        --accent: #2a7d6e;
-        --accent-soft: #3fa090;
-        --muted: #6b7a8d;
-        --border: rgba(26, 35, 50, 0.12);
-        --sidebar-w: 300px;
-        --font-display: "DM Serif Display", Georgia, serif;
-        --font-body: "DM Sans", sans-serif;
-        --font-mono: "DM Mono", monospace;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-      .news-logo {
-        display: inline-block;
-        height: 1.6em;
-        width: auto;
-        vertical-align: middle;
-        margin-left: 0.35rem;
-      }
-
-      body {
-        font-family: var(--font-body);
-        font-size: 15px;
-        line-height: 1.75;
-        color: var(--ink);
-        background: var(--paper);
-        overflow-x: hidden;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      a:hover {
-        color: var(--accent-soft);
-      }
-
-      /* === LAYOUT === */
-      .layout {
-        display: flex;
-        min-height: 100vh;
-      }
-
-      /* === SIDEBAR === */
-      .sidebar {
-        width: var(--sidebar-w);
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background: var(--ink);
-        color: var(--paper);
-        display: flex;
-        flex-direction: column;
-        z-index: 100;
-        overflow-y: auto;
-        overflow-x: hidden;
-      }
-
-      .sidebar-inner {
-        padding: 1.25rem 1.5rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        flex: 1;
-        min-height: min-content;
-      }
-
-      .profile-photo {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        background:
-          url("images/profile.jpg") center/cover,
-          #333;
-        margin: 0 auto 0.65rem;
-        border: 3px solid var(--accent);
-        flex-shrink: 0;
-      }
-
-      .sidebar-name {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        line-height: 1.2;
-        text-align: center;
-        color: #fff;
-        margin-bottom: 0.15rem;
-      }
-
-      .sidebar-pronoun {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        color: var(--accent-soft);
-        text-align: center;
-        letter-spacing: 0.08em;
-        margin-bottom: 0.3rem;
-      }
-
-      .sidebar-title {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        color: rgba(245, 242, 236, 0.55);
-        text-align: center;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        line-height: 1.45;
-        margin-bottom: 0.45rem;
-      }
-
-      .sidebar-email {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        color: rgba(245, 242, 236, 0.6);
-        text-align: center;
-        margin-bottom: 0.65rem;
-        word-break: break-all;
-      }
-
-      .sidebar-divider {
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-        margin: 0 0 0.6rem;
-      }
-
-      /* NAV */
-      .sidebar-nav {
-        list-style: none;
-        margin-bottom: 0.75rem;
-      }
-      .sidebar-nav li {
-        margin-bottom: 0;
-      }
-      .sidebar-nav a {
-        display: block;
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: rgba(245, 242, 236, 0.65);
-        padding: 0.3rem 0.75rem;
-        border-radius: 4px;
-        transition: all 0.2s;
-        border-left: 2px solid transparent;
-      }
-      .sidebar-nav a:hover,
-      .sidebar-nav a.active {
-        color: #fff;
-        border-left-color: var(--accent);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      /* SOCIAL ICONS */
-      .sidebar-social {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        justify-content: center;
-        margin-bottom: 0.75rem;
-      }
-      .sidebar-social a {
-        width: 28px;
-        height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.08);
-        color: rgba(245, 242, 236, 0.65);
-        font-size: 0.8rem;
-        transition: all 0.2s;
-      }
-      .sidebar-social a:hover {
-        background: var(--accent);
-        color: #fff;
-      }
-
-      /* CV BUTTON */
-      .cv-btn {
-        display: block;
-        text-align: center;
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-        border-radius: 4px;
-        transition: all 0.2s;
-        margin-bottom: 0.75rem;
-      }
-      .cv-btn:hover {
-        background: var(--accent);
-        color: #fff;
-      }
-
-      .sidebar-footer {
-        margin-top: auto;
-        padding-top: 0.75rem;
-        font-family: var(--font-mono);
-        font-size: 0.58rem;
-        color: rgba(245, 242, 236, 0.3);
-        text-align: center;
-        line-height: 1.6;
-      }
-
-      /* === MAIN CONTENT === */
-      .main {
-        margin-left: var(--sidebar-w);
-        flex: 1;
-        min-height: 100vh;
-      }
-
-      /* SECTIONS */
-      section {
-        padding: 5rem 4rem;
-        border-bottom: 1px solid var(--border);
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      section.visible {
-        opacity: 1;
-        transform: none;
-      }
-
-      .section-label {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--accent);
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-      }
-      .section-label::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-        max-width: 80px;
-      }
-
-      .section-title {
-        font-family: var(--font-display);
-        font-size: 2.4rem;
-        line-height: 1.15;
-        margin-bottom: 2rem;
-        color: var(--ink);
-      }
-
-      /* === HERO / ABOUT === */
-      #about {
-        background: var(--paper);
-        position: relative;
-        padding-top: 6rem;
-      }
-
-      .about-text p {
-        color: #3a3732;
-        margin-bottom: 1rem;
-        font-size: 0.95rem;
-        line-height: 1.85;
-      }
-
-      .about-interests {
-        margin-top: 1.5rem;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .tag {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        padding: 0.3rem 0.75rem;
-        border-radius: 20px;
-        background: var(--cream);
-        color: var(--muted);
-        border: 1px solid var(--border);
-        letter-spacing: 0.04em;
-      }
-
-      /* STATS CARD - removed */
-
-      /* === NEWS === */
-      #news {
-        background: var(--cream);
-      }
-
-      .news-list {
-        list-style: none;
-      }
-      .news-item {
-        display: grid;
-        grid-template-columns: 5rem 1.5rem 1fr;
-        gap: 0 1rem;
-        align-items: baseline;
-        padding: 0.9rem 0;
-        border-bottom: 1px solid var(--border);
-        font-size: 0.88rem;
-      }
-      .news-item:last-child {
-        border-bottom: none;
-      }
-
-      .news-date {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        color: var(--muted);
-        letter-spacing: 0.05em;
-      }
-      .news-icon {
-        color: var(--accent);
-        font-size: 0.75rem;
-        text-align: center;
-      }
-      .news-text {
-        color: #3a3732;
-        line-height: 1.6;
-      }
-      .news-text a {
-        color: var(--accent);
-      }
-      .news-text b {
-        color: var(--ink);
-        font-weight: 600;
-      }
-
-      /* BADGE types */
-      .badge {
-        display: inline-block;
-        font-family: var(--font-mono);
-        font-size: 0.58rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        padding: 0.15rem 0.5rem;
-        border-radius: 3px;
-        margin-right: 0.35rem;
-        vertical-align: middle;
-      }
-      .badge-paper {
-        background: #dbeafe;
-        color: #1e3a5f;
-      }
-      .badge-award {
-        background: #d1fae5;
-        color: #065f46;
-      }
-      .badge-review {
-        background: #e0f2fe;
-        color: #0c4a6e;
-      }
-      .badge-edu {
-        background: #ede9fe;
-        color: #4c1d95;
-      }
-
-      /* === PUBLICATIONS === */
-      #publications {
-        background: var(--paper);
-      }
-
-      .pub-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .pub-card {
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.5rem;
-        background: #fff;
-        position: relative;
-        transition:
-          box-shadow 0.2s,
-          transform 0.2s;
-      }
-      .pub-card:hover {
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transform: translateY(-2px);
-      }
-
-      .pub-venue {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--accent);
-        margin-bottom: 0.4rem;
-      }
-
-      .pub-title {
-        font-family: var(--font-display);
-        font-size: 1.05rem;
-        line-height: 1.35;
-        color: var(--ink);
-        margin-bottom: 0.5rem;
-      }
-
-      .pub-authors {
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-bottom: 0.75rem;
-        line-height: 1.5;
-      }
-      .pub-authors strong {
-        color: var(--ink);
-      }
-
-      .pub-links {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      .pub-link {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.25rem 0.65rem;
-        border: 1px solid var(--border);
-        border-radius: 3px;
-        color: var(--muted);
-        transition: all 0.2s;
-      }
-      .pub-link:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-
-      .pub-note {
-        font-family: var(--font-mono);
-        font-size: 0.62rem;
-        color: var(--muted);
-        margin-top: 0.5rem;
-        letter-spacing: 0.04em;
-      }
-
-      .scholar-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: var(--font-mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
-        color: var(--accent);
-        margin-top: 1.5rem;
-        padding: 0.6rem 1.25rem;
-        border: 1px solid var(--accent);
-        border-radius: 4px;
-        transition: all 0.2s;
-      }
-      .scholar-link:hover {
-        background: var(--accent);
-        color: #fff;
-      }
-
-      /* === HONORS === */
-      #honors {
-        background: var(--cream);
-      }
-
-      .honors-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1rem;
-      }
-
-      .honor-card {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.25rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .honor-card::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent), var(--accent-soft));
-      }
-      .honor-year {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--accent);
-        letter-spacing: 0.08em;
-        margin-bottom: 0.35rem;
-      }
-      .honor-title {
-        font-weight: 600;
-        font-size: 0.88rem;
-        color: var(--ink);
-        margin-bottom: 0.3rem;
-        line-height: 1.4;
-      }
-      .honor-org {
-        font-size: 0.78rem;
-        color: var(--muted);
-        line-height: 1.4;
-      }
-
-      /* === REVIEWER === */
-      #reviewer {
-        background: var(--paper);
-      }
-
-      .reviewer-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .reviewer-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        font-size: 0.88rem;
-        padding: 0.65rem 0.75rem;
-        border-radius: 5px;
-        transition: background 0.15s;
-      }
-      .reviewer-item:hover {
-        background: var(--cream);
-      }
-      .reviewer-item i {
-        color: var(--accent);
-        margin-top: 0.2rem;
-        font-size: 0.75rem;
-        flex-shrink: 0;
-      }
-      .reviewer-item a {
-        color: var(--ink);
-      }
-      .reviewer-item a:hover {
-        color: var(--accent);
-      }
-
-      /* === SKILLS === */
-      #skills {
-        background: var(--cream);
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.25rem;
-      }
-
-      .skill-group {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 1.25rem;
-      }
-      .skill-group-title {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--accent);
-        margin-bottom: 0.75rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border);
-      }
-      .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-      }
-      .skill-tag {
-        font-size: 0.78rem;
-        padding: 0.2rem 0.6rem;
-        background: var(--cream);
-        border-radius: 4px;
-        color: #3a3732;
-        border: 1px solid var(--border);
-      }
-
-      /* === EDUCATION & EXPERIENCE === */
-      #education,
-      #experience {
-        background: var(--paper);
-      }
-      #experience {
-        background: var(--cream);
-      }
-
-      .timeline {
-        position: relative;
-        padding-left: 2rem;
-      }
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.4rem;
-        bottom: 0;
-        width: 1px;
-        background: var(--border);
-      }
-
-      .timeline-item {
-        position: relative;
-        padding-bottom: 2.5rem;
-      }
-      .timeline-item:last-child {
-        padding-bottom: 0;
-      }
-
-      .timeline-dot {
-        position: absolute;
-        left: -2.4rem;
-        top: 0.35rem;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 2px solid var(--paper);
-        box-shadow: 0 0 0 2px var(--accent);
-      }
-
-      .timeline-period {
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--accent);
-        letter-spacing: 0.08em;
-        margin-bottom: 0.3rem;
-      }
-
-      .timeline-role {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        color: var(--ink);
-        margin-bottom: 0.25rem;
-      }
-
-      .timeline-org {
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin-bottom: 0.3rem;
-      }
-
-      .timeline-detail {
-        font-size: 0.82rem;
-        color: #3a3732;
-        line-height: 1.6;
-      }
-
-      .timeline-tag {
-        display: inline-block;
-        font-family: var(--font-mono);
-        font-size: 0.6rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        padding: 0.15rem 0.5rem;
-        border-radius: 3px;
-        background: #fff3e0;
-        color: #e65100;
-        margin-top: 0.4rem;
-      }
-
-      /* === COLLABORATIONS === */
-      #collaborations {
-        background: var(--paper);
-      }
-
-      .collab-note {
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin-bottom: 2rem;
-        max-width: 600px;
-      }
-
-      .collab-img {
-        width: 100%;
-        max-width: 860px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        display: block;
-      }
-
-      /* === LINEAGE === */
-      #lineage {
-        background: var(--cream);
-      }
-
-      .lineage-img {
-        width: 100%;
-        max-width: 860px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        display: block;
-      }
-
-      /* === MOBILE MENU === */
-      .mobile-toggle {
-        display: none;
-        position: fixed;
-        top: 1rem;
-        left: 1rem;
-        z-index: 200;
-        background: var(--ink);
-        color: #fff;
-        border: none;
-        width: 40px;
-        height: 40px;
-        border-radius: 6px;
-        font-size: 1rem;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* === RESPONSIVE === */
-
-      /* Large desktops 1280px+ — default, no overrides needed */
-
-      /* Standard desktops / laptops: 961px – 1279px */
-      @media (max-width: 1279px) {
-        :root {
-          --sidebar-w: 260px;
-        }
-        section {
-          padding: 4rem 3rem;
-        }
-        .section-title {
-          font-size: 2.1rem;
-        }
-      }
-
-      /* Tablets landscape + small laptops: 769px – 960px */
-      @media (max-width: 960px) {
-        .sidebar {
-          transform: translateX(-100%);
-          transition: transform 0.3s ease;
-          width: 280px;
-        }
-        .sidebar.open {
-          transform: none;
-        }
-        .main {
-          margin-left: 0;
-        }
-        .mobile-toggle {
-          display: flex;
-        }
-        section {
-          padding: 3.5rem 2.5rem;
-        }
-        .section-title {
-          font-size: 1.9rem;
-        }
-        .honors-grid {
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        }
-        .skills-grid {
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        }
-      }
-
-      /* Tablets portrait: 601px – 768px */
-      @media (max-width: 768px) {
-        section {
-          padding: 3rem 2rem;
-        }
-        .section-title {
-          font-size: 1.7rem;
-        }
-        .news-item {
-          grid-template-columns: 4rem 1.25rem 1fr;
-          font-size: 0.84rem;
-        }
-        .pub-card {
-          padding: 1.25rem;
-        }
-        .pub-title {
-          font-size: 0.98rem;
-        }
-        .timeline {
-          padding-left: 1.5rem;
-        }
-        .timeline-dot {
-          left: -1.9rem;
-        }
-        .honors-grid {
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
-        .skills-grid {
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
-        .collab-img,
-        .lineage-img {
-          border-radius: 6px;
-        }
-      }
-
-      /* Mobile landscape + large phones: 481px – 600px */
-      @media (max-width: 600px) {
-        section {
-          padding: 2.5rem 1.25rem;
-        }
-        .section-title {
-          font-size: 1.55rem;
-        }
-        .section-label {
-          font-size: 0.62rem;
-        }
-        .honors-grid {
-          grid-template-columns: 1fr;
-        }
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-        .news-item {
-          grid-template-columns: 3.5rem 1.1rem 1fr;
-          gap: 0 0.6rem;
-          font-size: 0.82rem;
-        }
-        .news-date {
-          font-size: 0.62rem;
-        }
-        .badge {
-          font-size: 0.54rem;
-          padding: 0.1rem 0.4rem;
-        }
-        .pub-card {
-          padding: 1rem;
-        }
-        .pub-title {
-          font-size: 0.95rem;
-        }
-        .pub-authors {
-          font-size: 0.75rem;
-        }
-        .pub-venue {
-          font-size: 0.6rem;
-        }
-        .timeline-role {
-          font-size: 1rem;
-        }
-        .timeline-org {
-          font-size: 0.8rem;
-        }
-        .timeline-detail {
-          font-size: 0.78rem;
-        }
-        .about-text p {
-          font-size: 0.88rem;
-        }
-        .tag {
-          font-size: 0.64rem;
-          padding: 0.25rem 0.6rem;
-        }
-        .reviewer-item {
-          font-size: 0.82rem;
-          padding: 0.5rem 0.5rem;
-        }
-        .skill-tag {
-          font-size: 0.74rem;
-        }
-        .scholar-link {
-          font-size: 0.67rem;
-          padding: 0.5rem 1rem;
-        }
-        .collab-note {
-          font-size: 0.84rem;
-        }
-      }
-
-      /* Small phones: 320px – 480px */
-      @media (max-width: 480px) {
-        section {
-          padding: 2rem 1rem;
-        }
-        .section-title {
-          font-size: 1.4rem;
-        }
-        .mobile-toggle {
-          top: 0.75rem;
-          left: 0.75rem;
-          width: 36px;
-          height: 36px;
-          font-size: 0.9rem;
-        }
-        .news-item {
-          grid-template-columns: 1fr;
-          gap: 0.2rem;
-        }
-        .news-date {
-          font-size: 0.6rem;
-          color: var(--accent);
-        }
-        .news-icon {
-          display: none;
-        }
-        .pub-card {
-          padding: 0.85rem;
-        }
-        .pub-links {
-          gap: 0.35rem;
-        }
-        .pub-link {
-          font-size: 0.6rem;
-          padding: 0.2rem 0.5rem;
-        }
-        .honor-card {
-          padding: 1rem;
-        }
-        .timeline {
-          padding-left: 1.25rem;
-        }
-        .timeline-dot {
-          left: -1.65rem;
-          width: 8px;
-          height: 8px;
-        }
-        .timeline-role {
-          font-size: 0.95rem;
-        }
-        .about-text p {
-          font-size: 0.85rem;
-          line-height: 1.7;
-        }
-        body {
-          font-size: 14px;
-        }
-      }
-
-      /* === SCROLL PROGRESS === */
-      .scroll-progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 2px;
-        background: var(--accent);
-        z-index: 999;
-        transition: width 0.1s linear;
-      }
-
-      /* === OVERLAY === */
-      .overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 99;
-      }
-      .overlay.show {
-        display: block;
-      }
-    </style>
+    <link rel="stylesheet" href="css/site.css" />
   </head>
   <body>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    <div class="overlay" id="overlay"></div>
+    <header class="site-nav">
+      <div class="container nav-inner">
+        <a class="nav-brand" href="#about">Joyanta J. Mondal</a>
+        <nav aria-label="Sections">
+          <ul class="nav-links">
+            <li><a href="#news" class="nav-link">News</a></li>
+            <li><a href="#publications" class="nav-link">Publications</a></li>
+            <li><a href="#honors" class="nav-link">Honors</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-    <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
-      <i class="fa fa-bars"></i>
-    </button>
-
-    <div class="layout">
-      <!-- SIDEBAR -->
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-inner">
-          <div class="profile-photo"></div>
-
-          <h1 class="sidebar-name">Joyanta J. Mondal</h1>
-          <div class="sidebar-pronoun">he / him</div>
-          <div class="sidebar-title">
-            M.S. in Computer Science<br />
-            <!-- University of Delaware<br /> -->
-            <span style="color: #e53e3e">&#x1F4CD;</span> Dallas, TX, USA
-          </div>
-          <div class="sidebar-email">
-            mjoyanta.cs [@] gmail.com &nbsp;<a
-              href="https://en.wikipedia.org/wiki/Address_munging"
-              target="_blank"
-              style="color: rgba(245, 242, 236, 0.4); font-size: 0.58rem"
-              >[why?]</a
-            >
+    <main class="container">
+      <!-- ABOUT -->
+      <section id="about" class="intro">
+        <div>
+          <h1 class="intro-name">Joyanta J. Mondal</h1>
+          <div class="intro-meta">
+            <span>he / him</span><span>M.S. in Computer Science</span
+            ><span>Dallas, TX, USA</span>
           </div>
 
-          <div class="sidebar-divider"></div>
-
-          <nav>
-            <ul class="sidebar-nav" id="sidebarNav">
-              <li><a href="#about" class="nav-link active">About</a></li>
-              <!-- <li><a href="#news" class="nav-link">News</a></li> -->
-              <li><a href="#publications" class="nav-link">Publications</a></li>
-              <li>
-                <a href="#honors" class="nav-link">Honors &amp; Awards</a>
-              </li>
-              <li><a href="#reviewer" class="nav-link">Reviewer</a></li>
-              <li><a href="#skills" class="nav-link">Skills</a></li>
-              <li><a href="#education" class="nav-link">Education</a></li>
-              <li><a href="#experience" class="nav-link">Experience</a></li>
-              <li>
-                <a href="#collaborations" class="nav-link">Collaborations</a>
-              </li>
-              <li><a href="#lineage" class="nav-link">Lineage</a></li>
-            </ul>
-          </nav>
-
-          <div class="sidebar-social">
-            <a
-              href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ"
-              target="_blank"
-              title="Google Scholar"
-              ><i class="ai ai-google-scholar"></i
-            ></a>
-            <a
-              href="https://www.researchgate.net/profile/Joyanta-Mondal"
-              target="_blank"
-              title="ResearchGate"
-              ><i class="ai ai-researchgate"></i
-            ></a>
-            <!-- <a
-              href="https://www.linkedin.com/in/joyanta0/"
-              target="_blank"
-              title="LinkedIn"
-              ><i class="fa fa-linkedin"></i
-            ></a> -->
-            <a
-              href="https://github.com/lepotatoguy"
-              target="_blank"
-              title="GitHub"
-              ><i class="fa fa-github"></i
-            ></a>
-            <a
-              href="https://twitter.com/LePotatoGuy_"
-              target="_blank"
-              title="Twitter/X"
-              ><i class="fa fa-twitter"></i
-            ></a>
-            <a
-              href="https://stackoverflow.com/users/9848043/joyanta-j-mondal"
-              target="_blank"
-              title="Stack Overflow"
-              ><i class="fa fa-stack-overflow"></i
-            ></a>
-            <a
-              href="https://www.youtube.com/channel/UCNGjN-H1BXslH31wbSnypLQ"
-              target="_blank"
-              title="YouTube"
-              ><i class="fa fa-youtube"></i
-            ></a>
-          </div>
-
-          <!-- <a
-            class="cv-btn"
-            href="#"
-            target="_blank"
-          >
-            <i class="fa fa-download" style="margin-right: 0.4rem"></i> Download
-            CV
-          </a> -->
-
-          <div class="sidebar-footer">
-            &copy; <span id="yr"></span> Joyanta J. Mondal<br />
-            All rights reserved.
-          </div>
-        </div>
-      </aside>
-
-      <!-- MAIN -->
-      <main class="main">
-        <!-- ABOUT -->
-        <section id="about">
-          <div class="section-label">Introduction</div>
-          <h2 class="section-title">Hello, I'm Joy!</h2>
-
-          <div class="about-text" style="max-width: 720px">
+          <div class="about-text">
             <!-- === NEW INTRO (Applied Efficient AI) === -->
             <p>
               I am a researcher from Dhaka, Bangladesh, currently based in
@@ -1150,7 +76,7 @@
               <strong>M.S. in Computer Science</strong> from the University of
               Delaware.
             </p>
-            <p>
+            <!-- <p>
               My research lies primarily at the intersection of efficient AI
               systems, applied computer vision, and resource-constrained
               deployment. I call this <strong>Applied Efficient AI</strong>:
@@ -1187,11 +113,26 @@
                 ></strong
               >, an involution-fused architecture for classifying eye-tracking
               patterns in children with Autism Spectrum Disorder. Alongside this
-              applied focus, I am exploring <strong>Trustworthy and Reliable AI</strong>, with an emphasis on 
-  reinforcement learning, reliability of large language models, and parameter-efficient fine-tuning
-  (LoRA). A common question in my work is how much we can prove, such as how well an algorithm will do or how reliable a
-     model is, when we have only a few labels, samples, or limited compute, and when low-rank structure makes that
-     possible.
+              applied focus, I am exploring
+              <strong>Trustworthy and Reliable AI</strong>, with an emphasis on
+              reinforcement learning, reliability of large language models, and
+              parameter-efficient fine-tuning (LoRA). A common question in my
+              work is how much we can prove, such as how well an algorithm will
+              do or how reliable a model is, when we have only a few labels,
+              samples, or limited compute, and when low-rank structure makes
+              that possible.
+            </p>  -->
+            <p>
+              My earlier research focused on developing efficient and deployable
+              machine learning systems for real-world problems, particularly
+              computer vision under resource constraints. I'm now extending this
+              focus toward trustworthy and reliable AI, exploring how foundation
+              models and learning systems can be adapted and evaluated to
+              improve their reliability, with particular interests in
+              parameter-efficient fine-tuning, evidence-grounded reasoning and
+              memory in large language models, and reliable model evaluation.
+              I'm also interested in graph machine learning and reinforcement
+              learning for structured learning and decision-making.
             </p>
             <p>
               My
@@ -1204,8 +145,9 @@
             </p>
             <p>
               Outside research: avid gamer (known by the in-game name
-              <em>LePotatoGuy</em>), anime and comic enthusiast, cyclist, and a chess
-              player rated ~400 (which means I lose often and confidently).
+              <em>LePotatoGuy</em>), anime and comic enthusiast, cyclist, and a
+              chess player rated ~400 (which means I lose often and
+              confidently).
               <a href="https://www.chess.com/member/lepotatoguy" target="_blank"
                 >Feel free to test me anyway.</a
               >
@@ -1300,7 +242,21 @@
             </div>
             === END OLD INTRO === -->
           </div>
-        </section>
+          <div class="intro-email">
+            mjoyanta.cs [@] gmail.com
+            <a href="https://en.wikipedia.org/wiki/Address_munging" target="_blank" rel="noopener">[why?]</a>
+          </div>
+          <div class="intro-links">
+            <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i>Scholar</a>
+            <a href="https://www.researchgate.net/profile/Joyanta-Mondal" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i>ResearchGate</a>
+            <a href="https://github.com/lepotatoguy" target="_blank" rel="noopener"><i class="fa fa-github"></i>GitHub</a>
+            <a href="https://twitter.com/LePotatoGuy_" target="_blank" rel="noopener"><i class="fa fa-twitter"></i>Twitter</a>
+            <a href="https://stackoverflow.com/users/9848043/joyanta-j-mondal" target="_blank" rel="noopener"><i class="fa fa-stack-overflow"></i>Stack Overflow</a>
+            <a href="https://www.youtube.com/channel/UCNGjN-H1BXslH31wbSnypLQ" target="_blank" rel="noopener"><i class="fa fa-youtube"></i>YouTube</a>
+          </div>
+        </div>
+        <img class="intro-photo" src="images/profile.jpg" alt="Photo of Joyanta J. Mondal" />
+      </section>
 
         <!-- NEWS -->
         <section id="news">
@@ -1317,6 +273,8 @@
                 ><span class="badge badge-award">Award</span>Awarded Quality
                 Journal Publication Award from BRAC University.</span
               >
+            </li>
+
             <li class="news-item">
               <span class="news-date">Dec 2025</span>
               <span class="news-icon"
@@ -1515,7 +473,6 @@
                 >
               </div>
               <div class="pub-note">DOI: 10.1109/ICCVW69036.2025.00118</div>
-
             </div>
 
             <div class="pub-card">
@@ -1548,9 +505,9 @@
                 Patterns of Children with Autism Spectrum Disorder
               </div>
               <div class="pub-authors">
-                Md. Farhadul Islam, <strong>Joyanta Jyoti Mondal*</strong>, Meem Arafat Manab*,
-                 Sarah Zabeen, Fardin Bin
-                Rahman, Md. Zahidul Hasan, Farig Sadeque, Jannatun Noor
+                Md. Farhadul Islam, <strong>Joyanta Jyoti Mondal*</strong>, Meem
+                Arafat Manab*, Sarah Zabeen, Fardin Bin Rahman, Md. Zahidul
+                Hasan, Farig Sadeque, Jannatun Noor
               </div>
               <div class="pub-links">
                 <a
@@ -2057,9 +1014,9 @@
           <p class="collab-note">
             My frequent collaborators include Dr. Ibne Farabi Shihab (Amazon),
             Meem Arafat Manab (researcher, Universidad Politécnica de Madrid,
-            Spain), Md Farhadul Islam (phd researcher, Kentucky), Dr.
-            Jannatun Noor (United International University, Bangladesh), and Dr. A.
-            B. M. Alim Al Islam (BUET, Bangladesh).
+            Spain), Md Farhadul Islam (phd researcher, Kentucky), Dr. Jannatun
+            Noor (United International University, Bangladesh), and Dr. A. B. M.
+            Alim Al Islam (BUET, Bangladesh).
           </p>
           <!-- <img
             src="images/research-colab/colab.png"
@@ -2084,90 +1041,91 @@
           />
         </section>
 
-        <section class="colorlib-skills" data-section="heatmap">
-          <div class="colorlib-narrow-content">
-            <!-- https://clustrmaps.com/ -->
-            <script
-              async
-              type="text/javascript"
-              id="clustrmaps"
-              src="//clustrmaps.com/map_v2.js?d=XIJLpBSWSzExs0WBQSuo3G6QkoAyGPpwUFdYVwDOCko&cl=ffffff&w=a"
-            ></script>
-          </div>
-        </section>
       </main>
-    </div>
 
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-widgets">
+          <div class="footer-widget-card">
+            <h3>Visitor Map</h3>
+            <div class="visitor-map-embed">
+              <script
+                type="text/javascript"
+                id="mapmyvisitors"
+                src="https://mapmyvisitors.com/map.js?d=L5cvFDyPc0LMee-O4l3B-ELqeYkMnT8UBniQPYGf6Yk&amp;cl=ffffff&amp;w=a"
+              ></script>
+            </div>
+          </div>
+
+          <div class="footer-widget-card">
+            <h3>Google Scholar Impact</h3>
+            <div class="citation-tracker-panel" data-scholar-tracker>
+              <div class="citation-tracker-topline">
+                <span>Updated daily</span>
+                <span data-scholar-updated>Loading</span>
+              </div>
+              <div class="citation-tracker-total">
+                <span data-scholar-total>--</span>
+                <small>Total citations</small>
+              </div>
+              <div class="citation-stat-grid">
+                <div><strong data-scholar-hindex>--</strong><span>h-index</span></div>
+                <div><strong data-scholar-i10>--</strong><span>i10-index</span></div>
+                <div><strong data-scholar-papers>--</strong><span>Indexed papers</span></div>
+              </div>
+              <div class="citation-chart-shell">
+                <canvas role="img" aria-label="Google Scholar cumulative citation history" data-scholar-chart></canvas>
+              </div>
+              <a
+                class="citation-top-paper"
+                href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ"
+                target="_blank"
+                rel="noopener"
+                data-scholar-top-paper
+              >
+                <span>Top cited paper</span>
+                <strong>Loading Scholar data</strong>
+              </a>
+              <div class="citation-tracker-actions">
+                <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                <a href="data/scholar_citations.json" target="_blank" rel="noopener">Citation JSON</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="site-copyright">&copy; <span id="yr"></span> Joyanta J. Mondal</p>
+      </div>
+    </footer>
+
+    <script src="js/scholar-impact.js" defer></script>
     <script>
-      // Year
       document.getElementById("yr").textContent = new Date().getFullYear();
 
-      // Scroll progress
-      window.addEventListener("scroll", () => {
-        const el = document.getElementById("scrollProgress");
-        const pct =
-          (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
-          100;
-        el.style.width = pct + "%";
-      });
-
-      // Mobile menu
-      const toggle = document.getElementById("mobileToggle");
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
-
-      toggle.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-        overlay.classList.toggle("show");
-      });
-      overlay.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-        overlay.classList.remove("show");
-      });
-
-      // Smooth scroll + close mobile menu
-      document.querySelectorAll(".nav-link").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const target = document.querySelector(link.getAttribute("href"));
-          if (target)
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          sidebar.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-      });
-
-      // Section reveal on scroll
-      const sections = document.querySelectorAll("section");
-      const observer = new IntersectionObserver(
+      // Highlight the nav link of the section currently in view
+      const navLinks = document.querySelectorAll(".nav-link");
+      const navObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
+            if (!entry.isIntersecting) return;
+            navLinks.forEach((link) =>
+              link.classList.toggle("active", link.hash === "#" + entry.target.id),
+            );
           });
         },
-        { threshold: 0.07 },
+        { rootMargin: "-40% 0px -55% 0px" },
       );
+      document.querySelectorAll("main section[id]").forEach((s) => navObserver.observe(s));
 
-      sections.forEach((s) => observer.observe(s));
-
-      // Active nav link on scroll
-      const navLinks = document.querySelectorAll(".nav-link");
-      const sectionIds = Array.from(sections).map((s) => s.id);
-
-      window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((s) => {
-          if (window.scrollY >= s.offsetTop - 120) current = s.id;
-        });
-        navLinks.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#" + current,
-          );
-        });
-      });
+      const navList = document.querySelector(".nav-links");
+      const markNavOverflow = () =>
+        navList.classList.toggle(
+          "is-scrollable",
+          navList.scrollWidth > navList.clientWidth + 1 &&
+            navList.scrollLeft + navList.clientWidth < navList.scrollWidth - 1,
+        );
+      navList.addEventListener("scroll", markNavOverflow, { passive: true });
+      window.addEventListener("resize", markNavOverflow);
+      markNavOverflow();
     </script>
   </body>
 </html>
