@@ -1,1 +1,3 @@
 .claude/
+graphify-out/
+*.DS_Store
