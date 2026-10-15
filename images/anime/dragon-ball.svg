@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="180" viewBox="0 0 220 180">
+  <defs>
+    <radialGradient id="ball" cx="35%" cy="28%"><stop stop-color="#fff3ab"/><stop offset="0.6" stop-color="#ffc54a"/><stop offset="1" stop-color="#eb861f"/></radialGradient>
+    <path id="star" d="M0-11L3-3L11-3L5 2L7 10L0 5L-7 10L-5 2L-11-3L-3-3Z"/>
+  </defs>
+  <path d="M28 133L42 92L27 84L57 62L53 40L83 47L103 13L123 39L158 23L156 58L191 58L177 91L200 111L174 139Z" fill="#f9bd49" opacity="0.65"/>
+  <path d="M42 135L53 101L44 88L74 66L74 46L100 59L115 31L130 59L162 48L158 78L182 91L167 135Z" fill="#fff0a6"/>
+  <circle cx="110" cy="94" r="59" fill="url(#ball)" stroke="#9e501c" stroke-width="4"/>
+  <g fill="#bc3e2d"><use href="#star" x="92" y="76"/><use href="#star" x="128" y="76"/><use href="#star" x="92" y="112"/><use href="#star" x="128" y="112"/></g>
+  <path d="M68 76Q77 53 97 48" fill="none" stroke="#fff8ce" stroke-width="7" stroke-linecap="round"/>
+  <path d="M29 149H67M153 149H191M36 161H82M138 161H184" stroke="#3d4265" stroke-width="4" stroke-linecap="round"/>
+</svg>

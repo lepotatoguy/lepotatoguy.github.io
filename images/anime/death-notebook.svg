@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="180" viewBox="0 0 220 180">
+  <g transform="rotate(-9 96 91)">
+    <path d="M52 29H143V153H52Q42 153 42 142V40Q42 29 52 29Z" fill="#f1eade" stroke="#302b2c" stroke-width="4"/>
+    <path d="M48 23H138V145H48Q38 145 38 134V34Q38 23 48 23Z" fill="#302b2c" stroke="#302b2c" stroke-width="4"/>
+    <path d="M50 27V139" stroke="#6b5f62" stroke-width="3"/>
+    <text x="95" y="59" text-anchor="middle" fill="#f1eade" font-family="Georgia,serif" font-size="17">DEATH</text>
+    <text x="95" y="79" text-anchor="middle" fill="#f1eade" font-family="Georgia,serif" font-size="17">NOTE</text>
+    <path d="M77 104L113 117M85 122L109 102" stroke="#7e6c72" stroke-width="2"/>
+  </g>
+  <path d="M167 102Q143 86 135 110Q127 133 145 150Q156 162 167 155Q181 164 193 146Q209 123 197 107Q184 93 167 102Z" fill="#a94448" stroke="#63323b" stroke-width="4"/>
+  <path d="M168 107Q161 93 169 86" fill="none" stroke="#302b2c" stroke-width="4" stroke-linecap="round"/>
+  <path d="M170 95Q176 80 190 84Q187 97 170 95Z" fill="#68705b" stroke="#41463b" stroke-width="2"/>
+  <path d="M145 118Q141 130 148 136" fill="none" stroke="#dc9696" stroke-width="4" stroke-linecap="round"/>
+</svg>

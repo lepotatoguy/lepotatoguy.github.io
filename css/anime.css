@@ -89,6 +89,31 @@
   --anime-poster: #dcece4; --anime-poster-line: #9fbcac; --anime-poster-ink: #24473c;
   --anime-accent: #226650; --anime-heading: #24473c; --anime-tag: #fafffc; --anime-tag-ink: #426353;
 }
+.anime-card[data-theme="dragon-ball-z"] {
+  --anime-paper: #fff7eb; --anime-line: #ecd1ac; --anime-body: #4d382c;
+  --anime-poster: #ffdf9e; --anime-poster-line: #d4aa5e; --anime-poster-ink: #3d4265;
+  --anime-accent: #aa4c19; --anime-heading: #3d4265; --anime-tag: #fffaf3; --anime-tag-ink: #64422b;
+}
+.anime-card[data-theme="attack-on-titan"] {
+  --anime-paper: #f3f6ef; --anime-line: #d1d9c5; --anime-body: #414b39;
+  --anime-poster: #e0e5d2; --anime-poster-line: #a7b393; --anime-poster-ink: #394b3b;
+  --anime-accent: #4b643c; --anime-heading: #394b3b; --anime-tag: #fafcf6; --anime-tag-ink: #4e5e40;
+}
+.anime-card[data-theme="death-note"] {
+  --anime-paper: #f5f3f1; --anime-line: #d6cfc9; --anime-body: #4c4440;
+  --anime-poster: #e5dfdb; --anime-poster-line: #b4a8a0; --anime-poster-ink: #302b2c;
+  --anime-accent: #923f42; --anime-heading: #302b2c; --anime-tag: #fcfaf8; --anime-tag-ink: #594b48;
+}
+.anime-card[data-theme="solo-leveling"] {
+  --anime-paper: #f2f3ff; --anime-line: #d3d4f0; --anime-body: #44435f;
+  --anime-poster: #dfdff7; --anime-poster-line: #aaa9d9; --anime-poster-ink: #35305a;
+  --anime-accent: #5a43a4; --anime-heading: #35305a; --anime-tag: #fafaff; --anime-tag-ink: #555071;
+}
+.anime-card[data-theme="jojos-bizarre-adventure"] {
+  --anime-paper: #fff1fa; --anime-line: #eccce0; --anime-body: #573b50;
+  --anime-poster: #f5d6eb; --anime-poster-line: #ce9dbc; --anime-poster-ink: #653b70;
+  --anime-accent: #913c7d; --anime-heading: #653b70; --anime-tag: #fffafe; --anime-tag-ink: #6a4761;
+}
 @media (max-width: 640px) {
   .anime-card { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
   .anime-poster { width: 190px; margin: 0 auto; }

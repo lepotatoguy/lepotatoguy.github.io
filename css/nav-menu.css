@@ -74,6 +74,10 @@
 
   .site-nav .nav-brand {
     display: block;
+    min-width: 0;
+    white-space: normal;
+    line-height: 1.4;
+    padding: 8px 0;
   }
 
   .nav-toggle {

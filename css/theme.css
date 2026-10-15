@@ -105,6 +105,26 @@
   --anime-heading: #b8ddca; --anime-tag: #22342b; --anime-tag-ink: #cdded6;
 }
 :root[data-theme="dark"] .anime-copy .anime-eyebrow { color: var(--anime-heading); }
+:root[data-theme="dark"] .anime-card[data-theme="dragon-ball-z"] {
+  --anime-paper: #2c231b; --anime-line: #59432c; --anime-body: #e5d3bd;
+  --anime-heading: #f1c889; --anime-tag: #372a1d; --anime-tag-ink: #e5d3bd;
+}
+:root[data-theme="dark"] .anime-card[data-theme="attack-on-titan"] {
+  --anime-paper: #21271e; --anime-line: #414e36; --anime-body: #d4ddc9;
+  --anime-heading: #c0d4ac; --anime-tag: #2a3324; --anime-tag-ink: #d4ddc9;
+}
+:root[data-theme="dark"] .anime-card[data-theme="death-note"] {
+  --anime-paper: #252123; --anime-line: #4a3b3e; --anime-body: #ddd0d0;
+  --anime-heading: #e4b5b8; --anime-tag: #32282b; --anime-tag-ink: #ddd0d0;
+}
+:root[data-theme="dark"] .anime-card[data-theme="solo-leveling"] {
+  --anime-paper: #1e2030; --anime-line: #3c3c60; --anime-body: #d0d2e9;
+  --anime-heading: #bab8f5; --anime-tag: #29293e; --anime-tag-ink: #d0d2e9;
+}
+:root[data-theme="dark"] .anime-card[data-theme="jojos-bizarre-adventure"] {
+  --anime-paper: #2c1e2a; --anime-line: #573850; --anime-body: #e5cde0;
+  --anime-heading: #edb6dc; --anime-tag: #392734; --anime-tag-ink: #e5cde0;
+}
 :root[data-theme="dark"] .anime-watchlist button:focus-visible { outline-color: var(--anime-heading); }
 :root[data-theme="dark"] .anime-watchlist button:hover { border-color: var(--anime-heading); }
 

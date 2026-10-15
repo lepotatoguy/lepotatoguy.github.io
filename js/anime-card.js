@@ -22,6 +22,26 @@
     "demon-slayer": {
       image: "slayer-blade.svg", title: "SLAYER", caption: "KEEP THE BLADE SHARP",
       heading: "On the trail of demons."
+    },
+    "dragon-ball-z": {
+      image: "dragon-ball.svg", title: "SAIYAN", caption: "THE NEXT POWER-UP",
+      heading: "One more power-up."
+    },
+    "attack-on-titan": {
+      image: "scout-wings.svg", title: "SCOUT", caption: "BEYOND THE WALLS",
+      heading: "Beyond the walls."
+    },
+    "death-note": {
+      image: "death-notebook.svg", title: "KIRA", caption: "EVERY NAME COUNTS",
+      heading: "A name in the notebook."
+    },
+    "solo-leveling": {
+      image: "shadow-daggers.svg", title: "HUNTER", caption: "LEVEL UP",
+      heading: "Into the shadows."
+    },
+    "jojos-bizarre-adventure": {
+      image: "bizarre-arrow.svg", title: "BIZARRE", caption: "STRIKE A POSE",
+      heading: "A bizarre adventure."
     }
   };
   const image = document.getElementById("anime-emblem");
