@@ -479,15 +479,11 @@ section {
   margin-top: 2px;
 }
 .timeline-org,
-.timeline-location {
+.timeline-location,
+.timeline-detail {
   font-size: 0.86rem;
   color: var(--muted);
   margin-top: 3px;
-}
-.timeline-detail {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin-top: 10px;
 }
 .timeline-tag {
   display: inline-block;
