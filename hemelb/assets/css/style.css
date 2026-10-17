@@ -770,3 +770,21 @@ hr {
   h2, h3 { break-after: avoid; }
   pre, .callout { break-inside: avoid; }
 }
+
+.tutorial-screenshot {
+  margin: 1.5rem 0;
+  break-inside: avoid;
+}
+
+.tutorial-screenshot img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.tutorial-screenshot figcaption {
+  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}

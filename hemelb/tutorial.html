@@ -58,7 +58,7 @@
   <script>
     try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
 </head>
 <body>
 
@@ -168,6 +168,13 @@
           <li>Use "Save Profile" to generate a reusable <code>.pr2</code> YAML file.</li>
         </ul>
 
+        <figure class="tutorial-screenshot">
+          <a href="images/geometry-tool-gui.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+            <img src="images/geometry-tool-gui.png" alt="HemeLB Setup Tool showing a cylinder with a green inlet, red outlet, and geometry settings" width="2048" height="1210" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Geometry Tool with inlet and outlet discs, a seed point, and output paths.</figcaption>
+        </figure>
+
         <h3 id="1-2-use-cli-tool-alternative">1.2. Use CLI Tool (Alternative)</h3>
         <p>Requires a <code>.pr2</code> profile (see Section 4).</p>
         <pre><code>hlb-gmy-cli &lt;path-to-profile.pr2&gt;</code></pre>
@@ -186,6 +193,13 @@
         <h3 id="2-2-execute-hemelb-simulation">2.2. Execute HemeLB Simulation</h3>
         <pre><code>mpirun -n 4 hemelb -in large_cylinder.xml -out ./output/large_cylinder_test</code></pre>
         <p>Ensure <code>.xml</code> and <code>.gmy</code> files are in the same directory. Adjust <code>-n</code> as appropriate.</p>
+
+        <figure class="tutorial-screenshot">
+          <a href="images/simulation-complete.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+            <img src="images/simulation-complete.png" alt="HemeLB terminal output showing simulation time steps followed by Finish running simulation" width="956" height="577" loading="lazy" decoding="async">
+          </a>
+          <figcaption>Example output after a HemeLB simulation finishes.</figcaption>
+        </figure>
 
         <h2 id="3-extracting-and-visualizing-results">3. Extracting and Visualizing Results</h2>
         <h3 id="3-1-extract-simulation-output">3.1. Extract Simulation Output</h3>

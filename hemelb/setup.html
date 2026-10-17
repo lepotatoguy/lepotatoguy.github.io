@@ -59,7 +59,7 @@
   <script>
     try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <link rel="stylesheet" href="assets/css/style.css?v=6">
 </head>
 <body>
 
@@ -175,9 +175,37 @@ ccmake ..</code></pre>
 
           <p>Press <code>c</code> to configure, update any necessary values, then press <code>c</code> again and finally <code>g</code> to generate build files.</p>
 
+          <figure class="tutorial-screenshot">
+            <a href="images/ccmake-options.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/ccmake-options.png" alt="CMake configuration editor showing dependency paths and build options" width="1461" height="1007" loading="lazy" decoding="async">
+            </a>
+            <figcaption>CMake options after the first configure pass.</figcaption>
+          </figure>
+
+          <figure class="tutorial-screenshot">
+            <a href="images/ccmake-configured.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/ccmake-configured.png" alt="CMake output reporting that configuration is done" width="813" height="566" loading="lazy" decoding="async">
+            </a>
+            <figcaption>CMake reports that configuration is done.</figcaption>
+          </figure>
+
           <h3 id="step-3-build-the-project">Step 3: Build the Project</h3>
           <pre><code>make        # or use make -j4 for parallel build</code></pre>
           <p>Use <code>sudo</code> if you encounter permission errors.</p>
+
+          <figure class="tutorial-screenshot">
+            <a href="images/build-permission-error.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/build-permission-error.png" alt="HemeLB build output showing permission denied when installing into /usr/local/bin" width="813" height="575" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Example installation failure caused by insufficient permission to write to /usr/local/bin.</figcaption>
+          </figure>
+
+          <figure class="tutorial-screenshot">
+            <a href="images/build-complete.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/build-complete.png" alt="Terminal output showing installed HemeLB resources and completed build targets" width="813" height="575" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Example output after a successful HemeLB installation.</figcaption>
+          </figure>
         </section>
 
         <section>
@@ -205,6 +233,13 @@ pip install '.[gui]'</code></pre>
 
           <h3 id="optional-fix-for-vmtk-detection-error">Optional: Fix for VMTK Detection Error</h3>
           <p>If <code>vmtk</code> is installed but not detected, either:</p>
+
+          <figure class="tutorial-screenshot">
+            <a href="images/geometry-vmtk-error.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/geometry-vmtk-error.png" alt="Geometry Tool installation failing because pip cannot find the required VMTK distribution" width="956" height="577" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Example VMTK dependency detection error during Geometry Tool installation.</figcaption>
+          </figure>
           <ul>
             <li>Edit <code>geometry-tool/setup.py</code> and comment out the VMTK dependency line</li>
             <li>Or follow Appendix 5.3 in the
@@ -214,10 +249,24 @@ pip install '.[gui]'</code></pre>
           <p>Re-run the installation afterwards:</p>
           <pre><code>pip install '.[gui]'</code></pre>
 
+          <figure class="tutorial-screenshot">
+            <a href="images/geometry-install-complete.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/geometry-install-complete.png" alt="Terminal output showing HlbGmyTool successfully built and installed" width="956" height="577" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Example output after the Geometry Tool installs successfully.</figcaption>
+          </figure>
+
           <h3 id="step-4-validate-installation">Step 4: Validate Installation</h3>
           <pre><code>pip install pytest
 hemelb-tests</code></pre>
           <p>Ensure the tests complete successfully without errors.</p>
+
+          <figure class="tutorial-screenshot">
+            <a href="images/hemelb-tests-passed.png" target="_blank" rel="noopener noreferrer" title="Open full-size screenshot">
+              <img src="images/hemelb-tests-passed.png" alt="HemeLB test output ending with All tests passed" width="1311" height="919" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Example output from a successful hemelb-tests run.</figcaption>
+          </figure>
         </section>
 
         <section>
