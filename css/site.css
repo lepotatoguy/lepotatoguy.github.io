@@ -176,8 +176,8 @@ section {
 }
 .intro-header {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 40px;
+  grid-template-columns: 190px minmax(0, max-content);
+  gap: 24px;
   align-items: center;
   margin-bottom: 28px;
 }
