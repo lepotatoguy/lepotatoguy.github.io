@@ -235,6 +235,17 @@ section {
 #about .intro-email {
   margin-bottom: 18px;
 }
+.opportunity-note {
+  margin-top: 24px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--link);
+  border-radius: 6px;
+  background: var(--link-soft);
+}
+.opportunity-note p + p {
+  margin-top: 8px;
+}
 #research-interest .about-interests {
   margin-bottom: 0;
 }
