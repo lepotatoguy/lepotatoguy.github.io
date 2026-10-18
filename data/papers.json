@@ -7,7 +7,11 @@
     "venue": "MICCAI",
     "arxiv": "2203.02110",
     "doi": "10.1007/978-3-031-16431-6_70",
-    "tags": ["Fairness", "Pruning", "Medical imaging"],
+    "tags": [
+      "Fairness",
+      "Pruning",
+      "Medical imaging"
+    ],
     "added": "2026-10-17",
     "summary": "Prunes the weights that matter much more to the better-served demographic group than to the other, shrinking the accuracy gap in skin-disease classifiers while overall accuracy stays close to the original.",
     "takeaways": [
@@ -16,5 +20,27 @@
       "Pruning can act as a fairness mechanism, not only as compression; a smaller model comes as a byproduct."
     ],
     "bodyUrl": "notes/wu2022fairprune.md"
+  },
+  {
+    "slug": "li2025diamond",
+    "title": "DiaMond: Dementia Diagnosis with Multi-Modal Vision Transformers Using MRI and PET",
+    "authors": "Yitong Li, Morteza Ghahremani, Youssef Wally, Christian Wachinger",
+    "year": 2025,
+    "venue": "WACV",
+    "arxiv": "2410.23219",
+    "doi": "10.1109/wacv61041.2025.00021",
+    "tags": [
+      "Medical imaging",
+      "Multi-modal learning",
+      "Vision transformers"
+    ],
+    "added": "2026-10-17",
+    "summary": "A pure vision-transformer model that fuses MRI and PET through self-attention branches, a thresholded bi-attention branch and RegBN normalization, improving Alzheimer's prediction and AD vs. FTD differential diagnosis.",
+    "takeaways": [
+      "Bi-attention with a threshold keeps only strong MRI to PET similarities, giving a cleaner cross-modal signal.",
+      "RegBN removes the part of one modality's features explained by the other, so each branch carries unique information.",
+      "Pure ViT fusion beats PET-only and CNN or fusion baselines, including on the harder AD vs. FTD differential diagnosis."
+    ],
+    "bodyUrl": "notes/li2025diamond.md"
   }
 ]
