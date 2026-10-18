@@ -1,7 +1,7 @@
 // Renders data/papers.json on /papers/ ("Papers I read"): search box, topic chips, and one page per paper at #/p/<slug>.
 // Entry fields: slug, title, authors, year, tags[], added (YYYY-MM-DD, date read), summary; optional venue, arxiv, doi,
 // pdf, code, takeaways[] (bullet list) and bodyUrl ("notes/<slug>.md", Markdown notes shown on the paper's own page).
-// To add a paper: append an entry to data/papers.json and, for long notes, copy papers/notes/_template.md.
+// To add a paper: prepend an entry to data/papers.json and, for long notes, copy papers/notes/_template.md.
 (function () {
   "use strict";
 
@@ -16,9 +16,9 @@
 
   const filterPapers = (papers, tag, query) => papers.filter(p => matchesPaper(p, tag, query));
   const collectTags = papers => [...new Set(papers.flatMap(p => p.tags || []))].sort();
-  // Most recently read first; ISO dates compare correctly as strings.
+  // Most recently read first; same-day entries keep their newest-first list order.
   const sortByAdded = papers => papers.slice().sort((a, b) =>
-    String(b.added || "").localeCompare(String(a.added || "")) || (b.year || 0) - (a.year || 0));
+    String(b.added || "").localeCompare(String(a.added || "")));
   const notesUrl = p => (p.bodyUrl && NOTES_PATH.test(p.bodyUrl) ? p.bodyUrl : "");
 
   function paperLinks(p) {

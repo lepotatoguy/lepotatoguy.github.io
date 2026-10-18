@@ -1,5 +1,22 @@
 [
   {
+    "slug": "brooks1986nosilverbullet",
+    "title": "No Silver Bullet: Essence and Accidents of Software Engineering",
+    "authors": "Frederick P. Brooks Jr.",
+    "year": 1986,
+    "venue": "UNC technical report TR86-020",
+    "pdf": "https://www.cs.unc.edu/techreports/86-020.pdf",
+    "tags": ["Software engineering", "Software design", "Productivity"],
+    "added": "2026-10-17",
+    "summary": "Brooks argues that better tools remove implementation overhead while the harder work remains specifying, designing and validating a complex system; he favors reuse, rapid prototypes, incremental development and skilled designers.",
+    "takeaways": [
+      "Better languages and tools reduce accidental difficulty; deciding what a system should do and how its parts fit remains essential work.",
+      "Prototypes clarify requirements, and a running system grown incrementally makes feedback and backtracking easier.",
+      "The paper argues for steady improvement through several approaches, while questioning promises of a single tenfold breakthrough."
+    ],
+    "bodyUrl": "notes/brooks1986nosilverbullet.md"
+  },
+  {
     "slug": "wu2022fairprune",
     "title": "FairPrune: Achieving Fairness Through Pruning for Dermatological Disease Diagnosis",
     "authors": "Yawen Wu, Dewen Zeng, Xiaowei Xu, Yiyu Shi, Jingtong Hu",

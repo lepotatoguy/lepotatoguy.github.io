@@ -21,6 +21,11 @@ assert.deepStrictEqual(filterPapers(papers, "", "  lora ").map(p => p.slug), ["b
 assert.deepStrictEqual(filterPapers(papers, "Decision-making", "arxiv").map(p => p.slug), ["b"]);
 assert.deepStrictEqual(collectTags(papers), ["Decision-making", "Fine-tuning"]);
 assert.deepStrictEqual(sortByAdded(papers).map(p => p.slug), ["a", "b", "c"]);
+const sameDayReadings = [
+  { slug: "latest-read", year: 1986, added: "2026-10-17" },
+  { slug: "earlier-read", year: 2025, added: "2026-10-17" },
+];
+assert.deepStrictEqual(sortByAdded(sameDayReadings).map(p => p.slug), ["latest-read", "earlier-read"]);
 assert.strictEqual(notesUrl({ bodyUrl: "notes/a-1.md" }), "notes/a-1.md");
 assert.strictEqual(notesUrl({ bodyUrl: "https://evil.example/x.md" }), "");
 assert.strictEqual(notesUrl({ bodyUrl: "notes/../x.md" }), "");
