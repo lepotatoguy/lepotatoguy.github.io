@@ -33,4 +33,4 @@ What the fork adds over upstream HemeLB:
 ## Optional
 
 - [Joyanta J. Mondal homepage](https://lepotatoguy.github.io/): research, publications, and contact.
-- [Papers](https://lepotatoguy.github.io/papers/): searchable list of Joyanta J. Mondal's papers with summaries and links.
+- [Papers I read](https://lepotatoguy.github.io/papers/): papers Joyanta J. Mondal has read, with summaries, takeaways and notes.

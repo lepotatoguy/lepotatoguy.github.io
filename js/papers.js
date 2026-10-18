@@ -1,10 +1,11 @@
-// Renders data/papers.json on /papers/: search box, topic chips, and one page per paper at #/p/<slug>.
-// Entry fields: slug, title, authors, year, venue, tags[], summary; optional arxiv, doi, pdf, code,
-// takeaways[] (bullet list) and notes[] (paragraphs) shown on the paper's own page. "todo" is ignored.
+// Renders data/papers.json on /papers/ ("Papers I read"): search box, topic chips, and one page per paper at #/p/<slug>.
+// Entry fields: slug, title, authors, year, tags[], added (YYYY-MM-DD, date read), summary; optional venue, arxiv, doi,
+// pdf, code, takeaways[] (bullet list) and bodyUrl ("notes/<slug>.md", Markdown notes shown on the paper's own page).
+// To add a paper: append an entry to data/papers.json and, for long notes, copy papers/notes/_template.md.
 (function () {
   "use strict";
 
-  const MY_NAME = "Joyanta Jyoti Mondal";
+  const NOTES_PATH = /^notes\/[\w-]+\.md$/;
 
   function matchesPaper(paper, tag, query) {
     const tags = paper.tags || [];
@@ -15,7 +16,10 @@
 
   const filterPapers = (papers, tag, query) => papers.filter(p => matchesPaper(p, tag, query));
   const collectTags = papers => [...new Set(papers.flatMap(p => p.tags || []))].sort();
-  const sortByYear = papers => papers.slice().sort((a, b) => (b.year || 0) - (a.year || 0));
+  // Most recently read first; ISO dates compare correctly as strings.
+  const sortByAdded = papers => papers.slice().sort((a, b) =>
+    String(b.added || "").localeCompare(String(a.added || "")) || (b.year || 0) - (a.year || 0));
+  const notesUrl = p => (p.bodyUrl && NOTES_PATH.test(p.bodyUrl) ? p.bodyUrl : "");
 
   function paperLinks(p) {
     return [
@@ -27,7 +31,7 @@
   }
 
   if (typeof module !== "undefined") {
-    module.exports = { filterPapers, collectTags, sortByYear, paperLinks };
+    module.exports = { filterPapers, collectTags, sortByAdded, paperLinks, notesUrl };
     return;
   }
 
@@ -35,14 +39,9 @@
   const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   let papers = [], activeTag = "", query = "", loadError = "";
 
-  function authorsHtml(p) {
-    if (!p.authors) return "";
-    const names = esc(p.authors).split(MY_NAME).join("<strong>" + MY_NAME + "</strong>");
-    const note = p.authors.includes("*") ? ' <span class="paper-note">(* equal contribution)</span>' : "";
-    return '<p class="paper-authors">' + names + note + "</p>";
-  }
-
-  const tagsHtml = p => (p.tags || []).map(t => '<span class="paper-tag">' + esc(t) + "</span>").join("");
+  const authorsHtml = p => (p.authors ? '<p class="paper-authors">' + esc(p.authors) + "</p>" : "");
+  const tagsHtml = p => (p.tags || []).map(t => '<span class="paper-tag">' + esc(t) + "</span>").join("") +
+    (p.added ? '<span class="paper-added">Read ' + esc(p.added) + "</span>" : "");
 
   function drawChips() {
     $("#paper-chips").innerHTML = collectTags(papers).map(t =>
@@ -65,6 +64,21 @@
       </a>`).join("") : '<p class="paper-empty">' + esc(loadError || (papers.length ? "No papers match. Clear the search or pick another topic." : "No papers yet.")) + "</p>";
   }
 
+  async function drawNotes(p) {
+    const url = notesUrl(p);
+    const box = $("#paper-notes");
+    if (!url || !box) return;
+    try {
+      const r = await fetch(url, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const md = await r.text();
+      // Notes are this repo's own files; without the Markdown library, fall back to plain paragraphs.
+      box.innerHTML = window.marked ? window.marked.parse(md) : md.split(/\n\s*\n/).map(b => "<p>" + esc(b) + "</p>").join("");
+    } catch (e) {
+      box.innerHTML = '<p class="paper-empty">Could not load the notes (' + esc(e.message) + ").</p>";
+    }
+  }
+
   function showPaper(slug) {
     const p = papers.find(x => x.slug === slug);
     const view = $("#paper-detail");
@@ -72,7 +86,7 @@
       view.innerHTML = '<a class="paper-back" href="#/">Back to all papers</a><p class="paper-empty">Paper not found.</p>';
       return;
     }
-    document.title = p.title + " | Joyanta J. Mondal";
+    document.title = p.title + " | Papers I read | Joyanta J. Mondal";
     const links = paperLinks(p).map(([label, url]) =>
       '<a class="paper-button" href="' + esc(url) + '" target="_blank" rel="noreferrer">' + esc(label) + " ↗</a>").join("");
     view.innerHTML = `
@@ -83,8 +97,9 @@
       <div class="paper-tags">${tagsHtml(p)}</div>
       ${links ? `<div class="paper-links">${links}</div>` : ""}
       ${p.summary ? `<p class="page-description">${esc(p.summary)}</p>` : ""}
-      ${(p.takeaways || []).length ? `<div class="paper-takeaways"><h2>Key points</h2><ul>${p.takeaways.map(t => "<li>" + esc(t) + "</li>").join("")}</ul></div>` : ""}
-      ${(p.notes || []).map(n => "<p>" + esc(n) + "</p>").join("")}`;
+      ${(p.takeaways || []).length ? `<div class="paper-takeaways"><h2>Key takeaways</h2><ul>${p.takeaways.map(t => "<li>" + esc(t) + "</li>").join("")}</ul></div>` : ""}
+      <div class="paper-notes" id="paper-notes"></div>`;
+    drawNotes(p);
   }
 
   function route() {
@@ -92,7 +107,7 @@
     $("#paper-list-view").hidden = Boolean(m);
     $("#paper-detail").hidden = !m;
     if (m) showPaper(decodeURIComponent(m[1]));
-    else document.title = "Papers | Joyanta J. Mondal";
+    else document.title = "Papers I read | Joyanta J. Mondal";
     window.scrollTo(0, 0);
   }
 
@@ -100,7 +115,7 @@
     try {
       const r = await fetch("../data/papers.json", { cache: "no-store" });
       if (!r.ok) throw new Error("HTTP " + r.status);
-      papers = sortByYear(await r.json());
+      papers = sortByAdded(await r.json());
     } catch (e) {
       loadError = "Could not load the paper list (" + e.message + ").";
     }
