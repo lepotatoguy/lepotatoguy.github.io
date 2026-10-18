@@ -42,5 +42,28 @@
       "Pure ViT fusion beats PET-only and CNN or fusion baselines, including on the harder AD vs. FTD differential diagnosis."
     ],
     "bodyUrl": "notes/li2025diamond.md"
+  },
+  {
+    "slug": "azad2024dlka",
+    "title": "Beyond Self-Attention: Deformable Large Kernel Attention for Medical Image Segmentation",
+    "authors": "Reza Azad, Leon Niggemeier, Michael Hüttemann, Amirhossein Kazerouni, Ehsan Khodapanah Aghdam, Yury Velichko, Ulaş Bağcı, Dorit Merhof",
+    "year": 2024,
+    "venue": "WACV",
+    "arxiv": "2309.00121",
+    "doi": "10.1109/wacv57701.2024.00132",
+    "code": "https://github.com/lepotatoguy/deformableLKA",
+    "tags": [
+      "Medical imaging",
+      "Segmentation",
+      "Replication"
+    ],
+    "added": "2026-10-17",
+    "summary": "Deformable large kernel attention (D-LKA) pairs large convolution kernels with deformable sampling, capturing global context and irregular organ shapes at lower cost than self-attention, in 2D and 3D segmentation networks.",
+    "takeaways": [
+      "Large kernels give broad context; deformable sampling bends the receptive field around irregular shapes and boundaries.",
+      "The 3D variant uses inter-slice continuity instead of segmenting volumes slice by slice.",
+      "My replication came within about 4 Dice points of the reported 2D result and about 2 on 3D pancreas, but training needs a lot of memory and time."
+    ],
+    "bodyUrl": "notes/azad2024dlka.md"
   }
 ]
