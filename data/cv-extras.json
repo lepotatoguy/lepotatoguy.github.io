@@ -1,0 +1,35 @@
+{
+  "name": "Joyanta Jyoti Mondal",
+  "website": "https://www.joyantamondal.com",
+  "fileName": "CV_Academic_Mondal",
+  "repo": "lepotatoguy/lepotatoguy.github.io",
+  "summary": "AI/ML researcher with 5+ years of academic and applied experience in deep learning, model optimization, and computer vision for healthcare and social impact. Demonstrated expertise in designing parameter-efficient neural architectures for resource-constrained, real-world domains, spanning interdisciplinary projects in both academic and applied settings. Recognized with multiple academic honors, prestigious grants, and fellowships, with a commitment to translating AI research into reliable, and practical applications.",
+  "education": {
+    "BRAC University": { "period": "04/2018 - 01/2023" }
+  },
+  "experience": {
+    "Graduate Teaching Assistant @ University of Delaware": [
+      "Delivered individualized feedback and guidance to 145+ students in Data Structures, improving assignment quality and overall course performance by ensuring weekly one-on-one consultations."
+    ],
+    "Research & Teaching Assistant @ BRAC University": [
+      "Developed an efficient Deep CNN architecture for detecting Air Quality Index (AQI), reducing prediction error by up to 78% compared to state-of-the-art models with an R² value of 0.39, enabling near real-time and offline air quality monitoring.",
+      "Guided a research project on a fog-resilient Bangla license plate recognition system integrating Dark Channel Prior and YOLOv8, achieving 98.5% detection accuracy in adverse weather.",
+      "Mentored 120+ students through assignment reviews and weekly consultations, improving capstone project deliverables and technical competency."
+    ],
+    "Undergraduate Research Assistant @ BRAC University": [
+      "Created a 1,200+ image dataset and testbed to evaluate Progressive JPEG retrieval system under real-world bandwidth limits, achieving up to 69% faster load times and 27% compressed size in cloud applications, served over 1 Million users.",
+      "Led a project on detecting plant diseases using a lightweight DCNN architecture, achieving 98% accuracy, using 93.07% fewer computational parameters than the average of state-of-the-art architectures.",
+      "Improved document keyword extraction using a pre-trained BERT model in a cloud system, maintaining a consistent low query time (54–58ms) for high-throughput environments."
+    ]
+  },
+  "publications": {
+    "10.1109/ICCVW69036.2025.00118": {
+      "venue": "CVAMD at International Conference on Computer Vision (ICCV) Workshop"
+    },
+    "10.1016/j.engappai.2024.109475": { "tag": "Q1, Impact Factor: 9" },
+    "10.1038/s41598-023-51015-1": { "tag": "Q1, Impact Factor: 4.9" },
+    "10.1109/TCC.2022.3162790": { "tag": "Q1, Impact Factor: 5" }
+  },
+  "associations": ["Institute of Electrical and Electronics Engineers (IEEE)"],
+  "references": "Available on request."
+}

@@ -18,6 +18,26 @@
 .theme-toggle:focus-visible { outline: 2px solid var(--link, var(--accent)); outline-offset: 3px; }
 .theme-toggle svg { display: block; width: 18px; height: 18px; }
 .theme-toggle .icon-sun { display: none; }
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface, var(--mist));
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cv-download:hover { background: var(--link-soft, var(--mist)); }
+.cv-download:focus-visible { outline: 2px solid var(--link, var(--accent)); outline-offset: 3px; }
+.cv-download:disabled { opacity: 0.6; cursor: progress; }
+.cv-download svg { display: block; width: 16px; height: 16px; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
@@ -134,4 +154,4 @@
   :root[data-theme="dark"] .site-nav .nav-links a:hover,
   :root[data-theme="dark"] .site-nav .nav-links a.active { color: var(--link); }
 }
-@media print { .theme-toggle { display: none; } }
+@media print { .theme-toggle, .cv-download { display: none; } }
