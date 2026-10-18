@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="../js/theme.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papers | Joyanta J. Mondal</title>
+  <meta name="description" content="Searchable list of papers by Joyanta J. Mondal, with summaries and links, filterable by topic.">
+  <link rel="canonical" href="https://lepotatoguy.github.io/papers/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Papers | Joyanta J. Mondal">
+  <meta property="og:description" content="Papers by Joyanta J. Mondal, with summaries and links.">
+  <meta property="og:url" content="https://lepotatoguy.github.io/papers/">
+  <meta property="og:image" content="https://lepotatoguy.github.io/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Papers | Joyanta J. Mondal">
+  <link rel="icon" href="../images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../research/research.css">
+  <link rel="stylesheet" href="papers.css">
+  <link rel="stylesheet" href="../css/nav-menu.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="../">Joyanta J. Mondal / <span lang="bn">জয়ন্ত মন্ডল</span></a>
+      <nav id="site-menu" aria-label="Sections">
+        <ul class="nav-links">
+          <li><a href="../#news">News</a></li>
+          <li><a href="../#publications">Publications</a></li>
+          <li><a href="../#honors">Honors</a></li>
+          <li><a href="../#education">Education</a></li>
+          <li><a href="../#experience">Experience</a></li>
+          <li><a href="../research/">Research</a></li>
+          <li><a href="./" class="active" aria-current="page">Papers</a></li>
+          <li><a href="../outside.html">Outside Work</a></li>
+        </ul>
+      </nav>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="site-container page-shell">
+    <section id="paper-list-view">
+      <header class="page-intro">
+        <p class="eyebrow">Papers</p>
+        <h1>Papers</h1>
+        <p class="page-description">Papers I have written or co-authored. Search by title, author or venue, or pick a topic to narrow the list. Open a paper for its links.</p>
+      </header>
+      <div class="papers-tools">
+        <input id="paper-search" type="search" placeholder="Search title, author, venue or topic" aria-label="Search papers">
+      </div>
+      <div class="paper-chips" id="paper-chips" role="group" aria-label="Filter by topic"></div>
+      <p class="paper-count" id="paper-count" aria-live="polite"></p>
+      <div id="paper-list"></div>
+      <noscript><p class="paper-empty">This list needs JavaScript. The full record is on <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ">Google Scholar</a>.</p></noscript>
+    </section>
+    <article class="paper-detail" id="paper-detail" hidden></article>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-copyright">&copy; <span id="yr">2026</span> Joyanta J. Mondal</p>
+  </footer>
+
+  <script src="../js/nav-menu.js" defer></script>
+  <script src="../js/papers.js" defer></script>
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Joyanta J. Mondal","url":"https://lepotatoguy.github.io","image":"https://lepotatoguy.github.io/images/profile.jpg","sameAs":["https://scholar.google.com/citations?user=lIwU1F0AAAAJ","https://github.com/lepotatoguy","https://www.researchgate.net/profile/Joyanta-Mondal"]}</script>
+</body>
+</html>
