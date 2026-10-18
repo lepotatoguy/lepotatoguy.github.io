@@ -75,7 +75,7 @@
       // Notes are this repo's own files; without the Markdown library, fall back to plain paragraphs.
       box.innerHTML = window.marked ? window.marked.parse(md) : md.split(/\n\s*\n/).map(b => "<p>" + esc(b) + "</p>").join("");
     } catch (e) {
-      box.innerHTML = '<p class="paper-empty">Could not load the notes (' + esc(e.message) + ").</p>";
+      box.innerHTML = '<p class="paper-empty">Could not load papers/' + esc(url) + " (" + esc(e.message) + ").</p>";
     }
   }
 

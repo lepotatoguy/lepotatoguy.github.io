@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "slug": "vaswani2017attention",
+    "title": "Attention Is All You Need",
+    "authors": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin",
+    "year": 2017,
+    "venue": "NeurIPS",
+    "arxiv": "1706.03762",
+    "tags": ["Transformers"],
+    "added": "2026-10-17",
+    "summary": "Introduces the Transformer, a sequence model built only from attention, with no recurrence or convolution.",
+    "takeaways": [
+      "Replace with a takeaway you kept.",
+      "Replace with another one."
+    ],
+    "bodyUrl": "notes/vaswani2017attention.md"
+  }
+]
