@@ -1,6 +1,6 @@
 ## Why I read it
 
-My CISC642 final project at the University of Delaware (Department of Computer and Information Sciences): I presented the paper and replicated its 2D and 3D experiments. Replication code: [lepotatoguy/deformableLKA](https://github.com/lepotatoguy/deformableLKA).
+I replicated the code. Replication code: [lepotatoguy/deformableLKA](https://github.com/lepotatoguy/deformableLKA).
 
 ## Problem
 

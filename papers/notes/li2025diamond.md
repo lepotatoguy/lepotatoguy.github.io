@@ -1,6 +1,4 @@
-## Why I read it
 
-I presented this paper at the University of Delaware (Department of Computer and Information Sciences).
 
 ## Background
 
