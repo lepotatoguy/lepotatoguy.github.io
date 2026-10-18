@@ -1,18 +1,20 @@
 [
   {
-    "slug": "vaswani2017attention",
-    "title": "Attention Is All You Need",
-    "authors": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin",
-    "year": 2017,
-    "venue": "NeurIPS",
-    "arxiv": "1706.03762",
-    "tags": ["Transformers"],
+    "slug": "wu2022fairprune",
+    "title": "FairPrune: Achieving Fairness Through Pruning for Dermatological Disease Diagnosis",
+    "authors": "Yawen Wu, Dewen Zeng, Xiaowei Xu, Yiyu Shi, Jingtong Hu",
+    "year": 2022,
+    "venue": "MICCAI",
+    "arxiv": "2203.02110",
+    "doi": "10.1007/978-3-031-16431-6_70",
+    "tags": ["Fairness", "Pruning", "Medical imaging"],
     "added": "2026-10-17",
-    "summary": "Introduces the Transformer, a sequence model built only from attention, with no recurrence or convolution.",
+    "summary": "Prunes the weights that matter much more to the better-served demographic group than to the other, shrinking the accuracy gap in skin-disease classifiers while overall accuracy stays close to the original.",
     "takeaways": [
-      "Replace with a takeaway you kept.",
-      "Replace with another one."
+      "Fairness does not have to cost much accuracy.",
+      "Removing parameters that help the privileged group but contribute little to the unprivileged group narrows the performance gap.",
+      "Pruning can act as a fairness mechanism, not only as compression; a smaller model comes as a byproduct."
     ],
-    "bodyUrl": "notes/vaswani2017attention.md"
+    "bodyUrl": "notes/wu2022fairprune.md"
   }
 ]
