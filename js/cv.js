@@ -343,12 +343,18 @@
       info: { title: "CV - " + extras.name, author: extras.name },
       defaultStyle: { font: "Pagella", fontSize: 10, lineHeight: 1.08 },
       content: content,
-      footer: (page, pages) => (page === pages && updated
-        ? {
-          text: "Last updated " + updated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }),
-          alignment: "center", fontSize: 8, margin: [0, 14, 0, 0],
+      footer: (page, pages) => {
+        if (page !== pages) return null;
+        const parts = [];
+        if (extras.generatedFrom) {
+          parts.push("CV generated from ", { text: extras.generatedFrom, link: "https://" + extras.generatedFrom, color: LINK });
         }
-        : null),
+        if (updated) {
+          if (parts.length) parts.push("  |  ");
+          parts.push("Last updated " + updated.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }));
+        }
+        return parts.length ? { text: parts, alignment: "center", fontSize: 8, margin: [0, 14, 0, 0] } : null;
+      },
     };
   }
 
