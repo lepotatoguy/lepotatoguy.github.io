@@ -1,5 +1,23 @@
 [
   {
+    "slug": "vaswani2017attention",
+    "title": "Attention Is All You Need",
+    "authors": "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin",
+    "year": 2017,
+    "venue": "NIPS",
+    "arxiv": "1706.03762",
+    "pdf": "https://arxiv.org/pdf/1706.03762v7",
+    "tags": ["Transformers", "Attention", "Machine translation"],
+    "added": "2026-10-18",
+    "summary": "The Transformer uses self-attention to connect token positions directly, enabling parallel sequence representation during training, with masked attention and encoder-decoder attention for generating translations.",
+    "takeaways": [
+      "Scaled dot-product attention combines values using query-key similarity, while multiple heads learn different projections of those relationships.",
+      "Positional encodings supply token order, and a causal mask prevents the decoder from using future output tokens.",
+      "Parallel training still leaves sequential generation and the quadratic cost of dense attention on long sequences."
+    ],
+    "bodyUrl": "notes/vaswani2017attention.md"
+  },
+  {
     "slug": "brooks1986nosilverbullet",
     "title": "No Silver Bullet: Essence and Accidents of Software Engineering",
     "authors": "Frederick P. Brooks Jr.",
