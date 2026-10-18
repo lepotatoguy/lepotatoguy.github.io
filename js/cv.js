@@ -373,7 +373,7 @@
           bolditalics: abs("fonts/pagella/texgyrepagella-bolditalic.otf"),
         },
       };
-      const name = (extras.fileName || "CV") + "_" + new Date().getFullYear() + ".pdf";
+      const name = (extras.fileName || "CV") + ".pdf";
       await new Promise(resolve => pdfMake.createPdf(buildDoc(extras, updated)).download(name, resolve));
     } catch (error) {
       console.error(error);
