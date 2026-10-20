@@ -9,11 +9,11 @@
     "pdf": "https://arxiv.org/pdf/1706.03762v7",
     "tags": ["Transformers", "Attention", "Machine translation"],
     "added": "2026-10-18",
-    "summary": "The Transformer uses self-attention to connect token positions directly, enabling parallel sequence representation during training, with masked attention and encoder-decoder attention for generating translations.",
+    "summary": "The Transformer lets each token gather information directly from other tokens. It can process training positions in parallel, then generate a translation one token at a time using the input sentence and the output so far.",
     "takeaways": [
-      "Scaled dot-product attention combines values using query-key similarity, while multiple heads learn different projections of those relationships.",
-      "Positional encodings supply token order, and a causal mask prevents the decoder from using future output tokens.",
-      "Parallel training still leaves sequential generation and the quadratic cost of dense attention on long sequences."
+      "Attention compares query and key vectors, scales their dot-product scores, and uses the resulting weights to combine value vectors. Multiple heads learn different ways to make these comparisons.",
+      "Position signals tell the model where tokens occur. A causal mask blocks future output tokens, so the decoder cannot read ahead at the answer during training.",
+      "Training positions can be processed in parallel, but generation still proceeds one token at a time. Dense attention compares every pair of positions, making long sequences expensive."
     ],
     "bodyUrl": "notes/vaswani2017attention.md"
   },

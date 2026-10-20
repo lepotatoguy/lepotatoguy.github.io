@@ -74,6 +74,15 @@
       const md = await r.text();
       // Notes are this repo's own files; without the Markdown library, fall back to plain paragraphs.
       box.innerHTML = window.marked ? window.marked.parse(md) : md.split(/\n\s*\n/).map(b => "<p>" + esc(b) + "</p>").join("");
+      if (window.renderMathInElement) {
+        window.renderMathInElement(box, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false }
+          ],
+          throwOnError: false
+        });
+      }
     } catch (e) {
       box.innerHTML = '<p class="paper-empty">Could not load papers/' + esc(url) + " (" + esc(e.message) + ").</p>";
     }

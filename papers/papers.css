@@ -209,6 +209,12 @@
   overflow-x: auto;
 }
 
+.paper-notes .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
 .paper-notes table {
   display: block;
   overflow-x: auto;
