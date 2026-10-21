@@ -8,8 +8,8 @@
     "h_index": 9,
     "i10_index": 7,
     "paper_count": 29,
-    "updated": "2026-10-20",
-    "updated_at_utc": "2026-10-20T15:10:28+00:00",
+    "updated": "2026-10-21",
+    "updated_at_utc": "2026-10-21T15:20:55+00:00",
     "source": "serpapi"
   },
   "yearly": [
@@ -81,6 +81,10 @@
     },
     {
       "date": "2026-10-20",
+      "total_citations": 153
+    },
+    {
+      "date": "2026-10-21",
       "total_citations": 153
     }
   ],
