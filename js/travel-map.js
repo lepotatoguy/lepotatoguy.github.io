@@ -23,7 +23,8 @@
     Delaware: "DE", Florida: "FL", Georgia: "GA", Hawaii: "HI", Illinois: "IL",
     Kentucky: "KY", Louisiana: "LA", Maryland: "MD", Massachusetts: "MA",
     Mississippi: "MS", "New Jersey": "NJ", "New York": "NY", Oklahoma: "OK",
-    Pennsylvania: "PA", Tennessee: "TN", Texas: "TX", Virginia: "VA", "West Virginia": "WV"
+    Oregon: "OR", Pennsylvania: "PA", Tennessee: "TN", Texas: "TX", Virginia: "VA",
+    Washington: "WA", "West Virginia": "WV"
   };
   let country = "us";
   let selected = null;

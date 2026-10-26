@@ -10,7 +10,7 @@ License: https://creativecommons.org/licenses/by/3.0/igo/
 
 Adaptations: simplified source geometry converted to SVG path coordinates using d3-geo; Bangladesh rendered with Mercator projection. Screen coordinates rounded to one decimal. No boundary changes intended. Rendering data stored in travel-regions.json.
 
-Visits: transcribed from the two user-supplied travel map images on 2026-10-14: 22 US states and 22 Bangladesh districts. District names match the geometry dataset spellings (Chittagong, Comilla, Jessore). Update travel-visits.json and the HTML text fallback together when more places are added.
+Visits: transcribed from the two user-supplied travel map images on 2026-10-14: 22 US states and 22 Bangladesh districts. District names match the geometry dataset spellings (Chittagong, Comilla, Jessore). Oregon and Washington added on 2026-10-26 from the user's confirmation. Current totals: 24 US states and 22 Bangladesh districts. Update travel-visits.json and the HTML text fallback together when more places are added.
 
 US Atlas license:
 
