@@ -4,12 +4,12 @@
     "scholar_url": "https://scholar.google.com/citations?user=lIwU1F0AAAAJ&hl=en"
   },
   "summary": {
-    "total_citations": 153,
+    "total_citations": 154,
     "h_index": 9,
     "i10_index": 7,
     "paper_count": 31,
-    "updated": "2026-10-29",
-    "updated_at_utc": "2026-10-29T16:59:04+00:00",
+    "updated": "2026-10-30",
+    "updated_at_utc": "2026-10-30T16:43:31+00:00",
     "source": "serpapi"
   },
   "yearly": [
@@ -31,7 +31,7 @@
     },
     {
       "year": 2026,
-      "citations": 43
+      "citations": 44
     }
   ],
   "history": [
@@ -118,6 +118,10 @@
     {
       "date": "2026-10-29",
       "total_citations": 153
+    },
+    {
+      "date": "2026-10-30",
+      "total_citations": 154
     }
   ],
   "top_papers": [
