@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <script src="../js/theme.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research: LoRA, LLM Evaluation and Bandits | Joyanta J. Mondal</title>
-  <meta name="description" content="Research highlights of Joyanta J. Mondal: certified parameter-efficient fine-tuning, reliable language-model systems, decision-making with guarantees, lightweight computer vision and medical imaging, and cloud computing.">
+  <title>Research: Efficient AI, Reliability, RL and Graph Learning | Joyanta J. Mondal</title>
+  <meta name="description" content="Research highlights of Joyanta J. Mondal: efficient language model systems, reliable AI, reinforcement learning, and graph representation learning, alongside computer vision, medical imaging, and cloud computing.">
   <link rel="canonical" href="https://lepotatoguy.github.io/research/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Research: LoRA, LLM Evaluation and Bandits | Joyanta J. Mondal">
-  <meta property="og:description" content="Reliable learning systems, from lightweight models to certified behavior.">
+  <meta property="og:title" content="Research: Efficient AI, Reliability, RL and Graph Learning | Joyanta J. Mondal">
+  <meta property="og:description" content="Learning systems that use limited resources well, with evidence to assess when they can be trusted.">
   <meta property="og:url" content="https://lepotatoguy.github.io/research/">
   <meta property="og:image" content="https://lepotatoguy.github.io/images/profile.jpg">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Research: LoRA, LLM Evaluation and Bandits | Joyanta J. Mondal">
+  <meta name="twitter:title" content="Research: Efficient AI, Reliability, RL and Graph Learning | Joyanta J. Mondal">
   <link rel="icon" href="../images/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="research.css?v=2">
   <link rel="stylesheet" href="../css/nav-menu.css">
   <link rel="stylesheet" href="../css/theme.css">
 </head>
@@ -51,24 +51,29 @@
   <main id="main-content" class="site-container page-shell research-highlights-page">
     <header class="page-intro research-intro">
       <p class="eyebrow">Research highlights</p>
-      <h1>Reliable learning systems, from lightweight models to certified behavior.</h1>
-      <p class="page-description">My research asks what we can trust, prove, and explain about learning systems when labels, samples, or compute are limited. I study parameter-efficient adaptation of foundation models, evidence and evaluation for language-model systems, and decision-making with guarantees, alongside ongoing work in medical imaging. These interests build on my earlier work in lightweight computer vision and cloud computing.</p>
+      <h1>Learning systems that use limited resources well, with evidence we can trust.</h1>
+      <p class="page-description">My research focuses on efficient language model systems, reliable AI, reinforcement learning, and graph representation learning. I study how to adapt models with fewer resources, assess when their predictions can be trusted, and improve decision-making through feedback and relationships in data. Alongside these topics, I work on computer vision, medical imaging, and cloud computing. Some of this work reflects my interest in AI for Social Good, particularly agriculture, healthcare, and environmental sensing.</p>
     </header>
 
     <nav class="research-jump-grid" aria-label="Research areas">
       <a class="research-jump" href="#certified-adaptation">
-        <span>Adaptation &amp; guarantees</span>
-        <strong>Certified parameter-efficient fine-tuning</strong>
+        <span>Adaptation &amp; compression</span>
+        <strong>Efficient Language Model Systems</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
       <a class="research-jump research-jump-teal" href="#evidence-evaluation">
-        <span>Evidence &amp; evaluation</span>
-        <strong>Reliable language-model systems</strong>
+        <span>Evidence &amp; guarantees</span>
+        <strong>Reliable AI</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
       <a class="research-jump research-jump-slate" href="#decisions-guarantees">
         <span>Learning &amp; decisions</span>
-        <strong>Decision-making with guarantees</strong>
+        <strong>Reinforcement Learning</strong>
+        <span class="jump-arrow" aria-hidden="true">↓</span>
+      </a>
+      <a class="research-jump research-jump-violet" href="#graph-representation-learning">
+        <span>Structure &amp; representations</span>
+        <strong>Graph Representation Learning</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
       <a class="research-jump research-jump-amber" href="#lightweight-vision">
@@ -92,41 +97,41 @@
       <section class="research-area" id="certified-adaptation">
         <div class="research-area-header">
           <div>
-            <p class="eyebrow">Adaptation &amp; guarantees</p>
-            <h2>Certified parameter-efficient fine-tuning</h2>
+            <p class="eyebrow">Adaptation &amp; compression</p>
+            <h2>Efficient Language Model Systems</h2>
           </div>
           <div class="research-area-overview">
-            <p>I study when parameter-efficient adaptation can be trusted, and what can be proven about it. My work characterizes when Bayesian low-rank adapters admit useful generalization certificates, and the exact conditions under which a prefix can stand in for a LoRA adapter inside a frozen attention head.</p>
+            <p>I study how to adapt and simplify language models with limited training and computation. One line of work asks when learned input vectors, called prefixes, can reproduce a low-rank adapter's effect inside a frozen attention head. Another examines which model weights to remove so a text classifier can still return a useful set of possible labels. Under the calibration assumptions, that set has a statistical guarantee on how often it contains the correct answer.</p>
             <ul class="topic-list">
               <li>Parameter-Efficient Fine-Tuning</li>
               <li>LoRA</li>
-              <li>PAC-Bayes Bounds</li>
-              <li>Transformers</li>
+              <li>Model Pruning</li>
+              <li>Conformal Prediction</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
           <p class="research-question-label">Questions I study</p>
           <ul>
-            <li>When does a calibrated posterior over low-rank adapters yield a useful generalization certificate?</li>
-            <li>Which changes to the prior, the predictor, or complexity accounting actually tighten a certificate?</li>
-            <li>Can a fixed prefix replace a low-rank adapter while the attention head stays frozen?</li>
+            <li>How can language models learn and adapt with less computation and memory?</li>
+            <li>How can we make models smaller while preserving useful capabilities?</li>
+            <li>How should we balance efficiency with prediction quality?</li>
           </ul>
         </div>
         <div class="research-work-heading">
           <h3>Selected projects</h3>
-          <span>Under review</span>
+          <span>Preprints</span>
         </div>
         <div class="research-work-grid">
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
-            <h4><a href="https://arxiv.org/abs/2609.32271" target="_blank" rel="noreferrer">Certification Frontiers for Gaussian LoRA ↗</a></h4>
-            <p>Characterizes when Gaussian posteriors around LoRA adapters admit informative PAC-Bayes certificates, and reduces their complexity without changing any prediction.</p>
+            <h4><a href="https://arxiv.org/abs/2608.23744" target="_blank" rel="noreferrer">Candidate-Label Saliency for Efficient Conformal Pruning of Text Classifiers ↗</a></h4>
+            <p>Uses sensitivity to plausible labels to choose which weights to remove. Studies how to keep prediction sets small after pruning, with coverage supplied by independent calibration, and checks how the benefits change with recovery training and equal time budgets.</p>
           </article>
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.36766" target="_blank" rel="noreferrer">When Can Prefixes Compile LoRA? ↗</a></h4>
-            <p>Exact, resource-capped tests for whether a continuous prefix can replace a low-rank adapter in a frozen attention head, through observability, realizability, and implementation conditions.</p>
+            <p>Identifies when a shared input prefix can reproduce a LoRA adapter's effect in a single frozen attention head under resource limits. Separates what is mathematically possible from what numerical precision allows; it does not establish whole-model equivalence.</p>
           </article>
         </div>
       </section>
@@ -134,46 +139,46 @@
       <section class="research-area" id="evidence-evaluation">
         <div class="research-area-header">
           <div>
-            <p class="eyebrow">Evidence &amp; evaluation</p>
-            <h2>Reliable language-model systems</h2>
+            <p class="eyebrow">Evidence &amp; guarantees</p>
+            <h2>Reliable AI</h2>
           </div>
           <div class="research-area-overview">
-            <p>I study how language-model systems should decide whether they have enough evidence to answer, and how to certify a model update when trusted labels are scarce and the evaluator itself, such as an LLM judge, may drift over time.</p>
+            <p>I study what evidence is needed to trust a model's predictions or approve an update. This includes checking whether an agent's memory contains enough information to answer a question, deriving statistical bounds on adapted models' prediction errors, and deciding how earlier evaluations can help when fresh human labels are expensive. Across these problems, I examine the assumptions behind a guarantee and when the available evidence falls short.</p>
             <ul class="topic-list">
-              <li>Memory-Augmented LLMs</li>
               <li>Evidence Sufficiency</li>
-              <li>LLM-as-a-Judge</li>
+              <li>PAC-Bayes Bounds</li>
               <li>Label-Efficient Evaluation</li>
+              <li>Evaluator Drift</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
           <p class="research-question-label">Questions I study</p>
           <ul>
-            <li>How can an agent tell that the evidence a question needs is no longer in its memory?</li>
-            <li>How should benchmarks build insufficient-evidence examples without leaking the label?</li>
-            <li>When can evaluator errors from earlier audits replace fresh labels in a release decision?</li>
+            <li>When should we trust an AI system's predictions?</li>
+            <li>How can we measure uncertainty and recognize when more evidence is needed?</li>
+            <li>How can we evaluate AI systems reliably as models and data change?</li>
           </ul>
         </div>
         <div class="research-work-heading">
           <h3>Selected projects</h3>
-          <span>Under review</span>
+          <span>Preprints</span>
         </div>
         <div class="research-work-grid">
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.32269" target="_blank" rel="noreferrer">Before Answering: Evidence Sufficiency ↗</a></h4>
-            <p>Shows that deleting supporting passages leaks the label through memory size, proposes a size-matched construction, and studies a learned estimator that gates when an agent should answer.</p>
+            <p>Shows how a benchmark can accidentally reveal missing evidence through memory length. Introduces size-matched examples and studies an estimator of whether the remaining memory supports an answer, including where it fails to generalize.</p>
           </article>
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.32267" target="_blank" rel="noreferrer">When Can Old Evaluations Certify a New Model? ↗</a></h4>
-            <p>A sequential certifier that lets past audits guide label collection while keeping release decisions valid under evaluator drift.</p>
+            <p>Distinguishes when old evaluator errors can support a new release decision from when they can only guide fresh checks. Introduces a sequential test that can use helpful history while retaining validity when that history is unreliable.</p>
           </article>
           <article class="research-work-card">
-            <p class="work-meta">Manuscript 2026</p>
-            <h4>Candidate-Label Saliency for Efficient Conformal Pruning of Text Classifiers</h4>
-            <p>Prunes language-model text classifiers with a saliency score built for conformal prediction, aiming for smaller prediction sets that keep their coverage guarantee.</p>
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2609.32271" target="_blank" rel="noreferrer">Certification Frontiers for Gaussian LoRA ↗</a></h4>
+            <p>Studies when a distribution over low-rank adapters supports a useful bound on prediction error. Identifies limits that better complexity accounting cannot fix, and shows how to tighten part of a bound without changing predictions.</p>
           </article>
         </div>
       </section>
@@ -182,14 +187,14 @@
         <div class="research-area-header">
           <div>
             <p class="eyebrow">Learning &amp; decisions</p>
-            <h2>Decision-making with guarantees</h2>
+            <h2>Reinforcement Learning and Sequential Decision-Making</h2>
           </div>
           <div class="research-area-overview">
-            <p>I work on sequential decision-making that is reliable and transparent: contextual bandits that exploit graph structure, with a simple diagnostic that shows in advance when the method will help; bandits that meet exact exposure floors that can be checked in every period; and approximate behavioral-similarity metrics for Markov decision processes that report checkable bounds on their own error.</p>
+            <p>I study how agents learn to choose actions from feedback while respecting costs and constraints. My work asks when an agent should pay for language-model advice, how to learn which choices work best while guaranteeing a minimum share of exposure, and how to compare states without checking every pair. For example, a recommendation system may need to give each provider a minimum number of opportunities to be shown. Fair exposure in recommendation is one way this research connects to AI for Social Good. Related work on graph-structured bandits appears in the <a href="#graph-representation-learning">graph representation learning section</a>.</p>
             <ul class="topic-list">
-              <li>Contextual Bandits</li>
               <li>Reinforcement Learning</li>
-              <li>Fairness Constraints</li>
+              <li>Contextual Bandits</li>
+              <li>Cost-Aware Advice</li>
               <li>Bisimulation Metrics</li>
             </ul>
           </div>
@@ -197,30 +202,72 @@
         <div class="research-question-band">
           <p class="research-question-label">Questions I study</p>
           <ul>
-            <li>How can graph structure among arms reduce the cost of exploration?</li>
-            <li>How can exposure guarantees be met exactly in every period without giving up regret?</li>
-            <li>When can a faster, approximate computation still certify its own error?</li>
+            <li>How can agents learn to make good decisions from limited feedback?</li>
+            <li>How should agents balance exploring new choices with using what they already know?</li>
+            <li>How can learning and decision-making account for costs and fairness?</li>
           </ul>
         </div>
         <div class="research-work-heading">
           <h3>Selected projects</h3>
-          <span>Under review</span>
+          <span>Preprints</span>
         </div>
         <div class="research-work-grid">
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
-            <h4><a href="https://arxiv.org/abs/2606.27917" target="_blank" rel="noreferrer">Graph Dimensionality Reduction for Contextual Bandits ↗</a></h4>
-            <p>Projects arm features onto a graph's low-frequency spectral subspace, with regret bounds that depend on the reduced dimension rather than the full one.</p>
+            <h4><a href="https://arxiv.org/abs/2609.29548" target="_blank" rel="noreferrer">When Is Language-Model Advice Worth Buying? ↗</a></h4>
+            <p>Studies a controller that predicts whether advice is worth requesting. Compares selective querying with simple schedules at matched budgets, showing why fewer calls alone do not establish better timing or a reliable deployment guarantee.</p>
           </article>
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2607.22935" target="_blank" rel="noreferrer">Discrepancy-Rounded Fair Bandits ↗</a></h4>
-            <p>Treats exact minimum-exposure floors as a rounding problem, meeting every floor while matching the minimax regret rate.</p>
+            <p>Turns fractional allocation plans into actual choices that meet minimum-exposure requirements in every time block. Derives bounds on reward lost relative to the best fair allocation, with additional conditions for overlapping groups.</p>
           </article>
           <article class="research-work-card">
             <p class="work-meta">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2608.06762" target="_blank" rel="noreferrer">Sub-Quadratic Bisimulation Metrics ↗</a></h4>
-            <p>Uses approximate nearest neighbors to compute bisimulation metrics in sub-quadratic time, with computable two-sided certificates on the result.</p>
+            <p>Approximates how similarly states behave by updating selected pairs instead of every pair. Under structural assumptions, reduces pairwise computation and returns lower and upper bounds that show when the approximation is too uncertain to use.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="research-area" id="graph-representation-learning">
+        <div class="research-area-header">
+          <div>
+            <p class="eyebrow">Structure &amp; representations</p>
+            <h2>Graph Representation Learning</h2>
+          </div>
+          <div class="research-area-overview">
+            <p>I explore how relationships between entities can help a model learn. In knowledge graphs, this means learning vector representations of entities and their relationships to predict missing links. In contextual bandits, it means using connections among available choices to build a smaller representation for learning from rewards. My work examines which parts of the graph help and when its structure can be misleading.</p>
+            <ul class="topic-list">
+              <li>Knowledge Graph Embeddings</li>
+              <li>Negative Sampling</li>
+              <li>GFlowNets</li>
+              <li>Spectral Representations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="research-question-band">
+          <p class="research-question-label">Questions I study</p>
+          <ul>
+            <li>How can models learn from relationships between entities?</li>
+            <li>What makes a graph representation useful for a learning task?</li>
+            <li>How can graph structure improve prediction and decision-making?</li>
+          </ul>
+        </div>
+        <div class="research-work-heading">
+          <h3>Selected projects</h3>
+          <span>Preprints</span>
+        </div>
+        <div class="research-work-grid">
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2608.23849" target="_blank" rel="noreferrer">FlowNeg: GFlowNet-Guided Diverse Hard Negative Sampling for Knowledge Graph Embedding ↗</a></h4>
+            <p>Trains a generative sampler to produce challenging, varied counterexamples for knowledge graph embeddings. Uses training-graph structure to reduce conflicts with missing true links, while recognizing that an unobserved link is not necessarily false.</p>
+          </article>
+          <article class="research-work-card">
+            <p class="work-meta">arXiv 2026</p>
+            <h4><a href="https://arxiv.org/abs/2606.27917" target="_blank" rel="noreferrer">Graph Dimensionality Reduction for Contextual Bandits ↗</a></h4>
+            <p>Uses graph structure to build a smaller feature space for choosing actions from feedback. Derives learning guarantees that account for imperfect structure and provides a diagnostic for when graph-based reduction is likely to help.</p>
           </article>
         </div>
       </section>
@@ -359,9 +406,9 @@
     <div class="research-connection">
       <div>
         <p class="eyebrow">A connected agenda</p>
-        <h2>Keep it lean. Prove it reliable. Make it transparent.</h2>
+        <h2>What can we preserve when resources are limited?</h2>
       </div>
-      <p>Each thread feeds the next: lean models and cloud systems made learning efficient where compute and bandwidth were scarce, reliability work asks what can be certified when labels or samples run short, and transparency comes from explainable models and guarantees that can be checked, or that hold back an answer when the evidence is not there.</p>
+      <p>Across these areas, I ask what a learning system can preserve when computation, labeled data, or opportunities to explore are limited. Efficient adaptation and graph representations change what a model needs to learn. Reliability methods check what its evidence supports, while sequential decision-making makes the costs of acting and gathering more information explicit.</p>
     </div>
 
     <div class="page-cta">
