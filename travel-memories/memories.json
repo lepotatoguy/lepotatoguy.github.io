@@ -9,12 +9,28 @@
     ],
     "Arkansas": [],
     "California": [
-      {
-        "title": "Los Angeles, California",
-        "photo": "travel-memories/photos/496139147_18507548641021481_4496293460438918379_n.jpg",
-        "alt": "Street-side selfie in Los Angeles, California."
-      }
-    ],
+  {
+    "title": "Los Angeles, California",
+    "photo": "travel-memories/photos/496139147_18507548641021481_4496293460438918379_n.jpg",
+    "alt": "Street-side selfie in Los Angeles, California."
+  },
+  {
+    "title": "Mount Shasta, California",
+    "photo": "travel-memories/photos/IMG_9485.jpg",
+    "alt": "View of Mount Shasta from the road."
+  },
+  {
+    "title": "Mount Shasta City, California",
+    "photo": "travel-memories/photos/IMG_9525.jpg",
+    "alt": "Seated in a restaurant with Mount Shasta visible through the window.",
+    "caption": "A restaurant in Mount Shasta City with a view of Mount Shasta."
+  },
+  {
+    "title": "Golden Gate Bridge, San Francisco",
+    "photo": "travel-memories/photos/IMG_9541_Copy_Copy.jpg",
+    "alt": "Standing in front of the Golden Gate Bridge in San Francisco."
+  }
+],
     "Connecticut": [],
     "Delaware": [
       {
@@ -93,6 +109,20 @@
         "alt": "Holding a fishing rod and a caught fish beside a lake in Oklahoma."
       }
     ],
+    "Washington": [
+  {
+    "title": "Seattle, Washington",
+    "photo": "travel-memories/photos/IMG_9239.jpg",
+    "alt": "Selfie overlooking the Seattle skyline."
+  }
+],
+    "Oregon": [
+  {
+    "title": "Medford, Oregon",
+    "photo": "travel-memories/photos/IMG_9451.jpg",
+    "alt": "Standing at a hillside overlook in Medford, Oregon."
+  }
+],
     "Pennsylvania": [
       {
         "title": "Philadelphia, Pennsylvania",
@@ -108,22 +138,27 @@
       }
     ],
     "Texas": [
-      {
-        "title": "Austin, Texas",
-        "photo": "travel-memories/photos/IMG_2850.jpg",
-        "alt": "Standing beside a railing overlooking the water in Austin, Texas."
-      },
-      {
-        "title": "Dallas, Texas",
-        "photo": "travel-memories/photos/IMG_4166.jpg",
-        "alt": "Standing in an Argentina jersey in front of a soccer mural in Dallas, Texas."
-      },
-      {
-        "title": "Netflix House, Dallas, Texas",
-        "photo": "travel-memories/photos/IMG_8007.jpg",
-        "alt": "Posing beside a Chopper character while wearing a matching hat at Netflix House in Dallas, Texas."
-      }
-    ],
+  {
+    "title": "Austin, Texas",
+    "photo": "travel-memories/photos/IMG_2850.jpg",
+    "alt": "Standing beside a railing overlooking the water in Austin, Texas."
+  },
+  {
+    "title": "Dallas, Texas",
+    "photo": "travel-memories/photos/IMG_4166.jpg",
+    "alt": "Standing in an Argentina jersey in front of a soccer mural in Dallas, Texas."
+  },
+  {
+    "title": "Netflix House, Dallas, Texas",
+    "photo": "travel-memories/photos/IMG_8007.jpg",
+    "alt": "Posing beside a Chopper character while wearing a matching hat at Netflix House in Dallas, Texas."
+  },
+  {
+    "title": "Dallas, Texas",
+    "photo": "travel-memories/photos/IMG_8870.jpg",
+    "alt": "Selfie beside a beaver statue in Dallas, Texas."
+  }
+],
     "Virginia": [],
     "West Virginia": [],
     "Washington, D.C.": [
