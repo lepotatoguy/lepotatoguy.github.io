@@ -182,7 +182,7 @@
       Number(b.region === selected) - Number(a.region === selected) || Number(b.visited) - Number(a.visited)
     );
     ordered.forEach(item => {
-      const {region, label, bounds, visited} = item;
+      const {region, label, bounds, visited, photoIcon} = item;
       const detailed = scale >= 1.8;
       const text = detailed ? region.name : (visited && country === "us" ? abbreviations[region.name] : "");
       const size = (detailed ? 11 : 12) / pixels;
@@ -193,6 +193,9 @@
       const collision = occupied.some(other => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
       const visible = text && inside && fits && !collision;
       label.style.display = visible ? "" : "none";
+      if (photoIcon) {
+        photoIcon.setAttribute("transform", "translate(" + (region.x - 6 / pixels) + " " + (region.y + (visible ? 7 : -6) / pixels) + ") scale(" + (1 / pixels) + ")");
+      }
       if (visible) {
         label.textContent = text;
         label.setAttribute("font-size", size);
@@ -254,6 +257,7 @@
     regionViews = [];
     tooltip.hidden = true;
     const map = maps[country];
+    document.getElementById("travel-photo-prompt").textContent = country === "us" ? "Select a blue state to see my photos." : "Select a blue district to see my photos.";
     document.getElementById("travel-map-title").textContent = "Places I've visited in " + map.name;
     const count = visits[country].length;
     const total = map.regions.length;
@@ -269,12 +273,13 @@
     });
     map.regions.forEach((region, index) => {
       const visited = visits[country].includes(region.name);
+      const hasPhotos = visited && ((memories[country] && memories[country][region.name]) || []).some(entry => entry.photo);
       const path = document.createElementNS(NS, "path");
       path.setAttribute("d", region.path);
       path.setAttribute("class", "travel-region" + (visited ? " is-visited" : ""));
       path.dataset.name = region.name;
       path.setAttribute("role", "button");
-      path.setAttribute("aria-label", region.name + (visited ? ", visited" : ""));
+      path.setAttribute("aria-label", region.name + (visited ? ", visited" : "") + (hasPhotos ? ", photos available" : ""));
       path.setAttribute("aria-pressed", "false");
       path.setAttribute("aria-describedby", "travel-tooltip");
       path.setAttribute("tabindex", index === 0 ? "0" : "-1");
@@ -316,10 +321,52 @@
       label.setAttribute("y", region.y);
       label.setAttribute("class", "travel-label" + (visited ? " is-visited" : ""));
       labels.append(label);
-      regionViews.push({region, path, label, visited, bounds: path.getBBox()});
+      let photoIcon = null;
+      if (country === "us" && hasPhotos) {
+        photoIcon = document.createElementNS(NS, "g");
+        photoIcon.setAttribute("class", "travel-photo-icon");
+        const background = document.createElementNS(NS, "rect");
+        background.setAttribute("width", "12");
+        background.setAttribute("height", "11");
+        background.setAttribute("rx", "3");
+        const camera = document.createElementNS(NS, "path");
+        camera.setAttribute("d", "M2.5 3.5h2l.6-1h1.8l.6 1h2v4.7h-7z M7.2 5.9a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z");
+        photoIcon.append(background, camera);
+        labels.append(photoIcon);
+      }
+      regionViews.push({region, path, label, photoIcon, visited, bounds: path.getBBox()});
     });
+    renderHighlights();
     status.textContent = "Hover or tap a region to explore.";
     updateView(false, { x: 487.5, y: 305 });
+  }
+
+  function renderHighlights() {
+    const highlights = document.getElementById("travel-highlights");
+    const list = document.getElementById("travel-highlight-list");
+    list.replaceChildren();
+    const preferred = country === "us" ? ["California", "Texas", "New York"] : ["Cox's Bazar", "Dhaka", "Khulna"];
+    preferred.forEach(name => {
+      const region = maps[country].regions.find(item => item.name === name);
+      const photo = ((memories[country] && memories[country][name]) || []).find(entry => entry.photo);
+      if (!region || !photo || !visits[country].includes(name)) return;
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", "See photos from " + name);
+      const image = document.createElement("img");
+      image.src = photo.photo;
+      image.alt = "";
+      image.loading = "lazy";
+      const label = document.createElement("span");
+      label.textContent = name;
+      button.append(image, label);
+      button.addEventListener("click", () => {
+        selectRegion(region);
+        memoryPanel.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth", block: "start" });
+      });
+      list.append(button);
+    });
+    highlights.hidden = !list.children.length;
   }
 
   container.querySelectorAll("[data-country]").forEach(button => {

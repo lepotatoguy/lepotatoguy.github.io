@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/nav-menu.css">
-  <link rel="stylesheet" href="css/travel-map.css">
+  <link rel="stylesheet" href="css/travel-map.css?v=2">
 <link rel="stylesheet" href="css/national-parks.css">
   <link rel="stylesheet" href="css/anime.css">
   <style>
@@ -81,6 +81,7 @@
         <div class="travel-progress" id="travel-progress" role="progressbar" aria-label="States visited" aria-valuemin="0" aria-valuenow="24" aria-valuemax="50">
           <span id="travel-progress-fill"></span>
         </div>
+        <p class="travel-photo-prompt" id="travel-photo-prompt">Select a blue state to see my photos.</p>
         <div class="travel-canvas">
           <svg id="travel-svg" viewBox="-20 -20 1015 650" role="group" aria-labelledby="travel-map-title travel-map-description">
             <title id="travel-map-title">Places I've visited in the United States</title>
@@ -103,6 +104,10 @@
         <div class="travel-map-footer">
           <p id="travel-selection" role="status" aria-live="polite">Hover or tap a region to explore.</p>
           <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span><i class="travel-dot"></i>Other regions</span></div>
+        </div>
+        <div class="travel-highlights" id="travel-highlights" hidden>
+          <div class="travel-highlights-heading"><h3>Photo highlights</h3><span>Select a photo to explore</span></div>
+          <div class="travel-highlight-list" id="travel-highlight-list"></div>
         </div>
         <div class="travel-share" role="group" aria-label="Share travel map">
           <button type="button" id="travel-share-map">Copy map link</button>
@@ -135,24 +140,20 @@
       <span class="travel-count" id="parks-count">Loading parks…</span>
     </div>
     <div class="travel-progress" id="parks-progress" role="progressbar" aria-label="National parks visited" aria-valuemin="0" aria-valuenow="0" aria-valuemax="64"><span id="parks-progress-fill"></span></div>
-    <div class="parks-view-controls">
-      <span id="parks-view-label">Showing all parks</span>
-      <label><input type="checkbox" id="parks-show-all" checked> Show unvisited parks</label>
-    </div>
     <div class="parks-map-wrap">
       <div id="parks-map" role="region" aria-label="Map of United States national parks"></div>
     </div>
-    <p class="travel-gesture-hint">Drag to move · Pinch to zoom</p>
+    <p class="travel-gesture-hint">Drag to move · Zoom in to see park boundaries</p>
     <div class="travel-map-footer">
       <p id="parks-status" role="status" aria-live="polite">Select a park to explore.</p>
-      <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span id="parks-unvisited-legend"><i class="travel-dot"></i>Not yet visited</span></div>
+      <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span><i class="travel-dot"></i>Not yet visited</span></div>
     </div>
     <div class="parks-actions"><button id="parks-reset" type="button">Reset map</button></div>
     <div class="travel-memories" id="parks-memories" hidden>
       <h3 id="parks-memory-title"></h3>
       <div id="parks-memory-entries"></div>
     </div>
-    <p class="travel-attribution">Park list: <a href="https://www.nps.gov/aboutus/national-park-system.htm">National Park Service</a>. Map locations: <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">Wikipedia</a>.</p>
+    <p class="travel-attribution">Park list: <a href="https://www.nps.gov/aboutus/national-park-system.htm">National Park Service</a>. Boundaries: <a href="https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NPS_Regional_and_Park_Boundary/FeatureServer/1">National Park Service land resources data</a>; Chiricahua boundary may predate its national park designation.</p>
   </div>
   <noscript><p>The national parks map requires JavaScript.</p></noscript>
 </section>
@@ -241,10 +242,10 @@
   </footer>
 
   <script src="js/nav-menu.js" defer></script>
-  <script src="js/travel-map.js" defer></script>
+  <script src="js/travel-map.js?v=2" defer></script>
   <script src="js/anime-card.js" defer></script>
   <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/national-parks.js"></script>
+  <script src="js/national-parks.js?v=5"></script>
 </body>
 </html>
