@@ -1,0 +1,14 @@
+.parks-preview .travel-country-switch span { padding: 7px 14px; border-radius: 5px; background: var(--page); color: var(--link-dark); font-size: .88rem; font-weight: 500; }
+.parks-view-controls { display: flex; justify-content: space-between; align-items: center; gap: 8px 16px; flex-wrap: wrap; margin: 0 0 12px; color: var(--muted); font-size: .8rem; }
+.parks-view-controls label { display: inline-flex; align-items: center; gap: 6px; color: var(--body); cursor: pointer; }
+.parks-view-controls input { accent-color: #3576dc; }
+.parks-preview .travel-legend [hidden] { display: none; }
+.parks-preview #parks-unvisited-legend i { background: #8391a2; border-color: #8391a2; }
+.parks-map-wrap { position: relative; isolation: isolate; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+#parks-map { height: 420px; z-index: 0; background: #e0e6ee; }
+.parks-actions button { padding: 5px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--page); color: var(--body); font: inherit; font-size: .8rem; cursor: pointer; }
+.parks-actions button:hover { color: var(--link-dark); border-color: var(--link); }
+.parks-actions button:focus-visible, #parks-map path:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+#parks-memory-entries { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 16px; }
+.parks-preview .travel-attribution { margin-top: 12px; }
+@media (max-width: 520px) { #parks-map { height: 300px; } }

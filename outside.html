@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/nav-menu.css">
   <link rel="stylesheet" href="css/travel-map.css">
+<link rel="stylesheet" href="css/national-parks.css">
   <link rel="stylesheet" href="css/anime.css">
   <style>
     .skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 8px 12px; background: #fff; transform: translateY(-150%); }
@@ -32,6 +33,7 @@
     .outside-note { margin-top: 20px; }
   </style>
   <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -124,7 +126,37 @@
       </div>
     </section>
 
-    <section id="games">
+<section id="national-parks" aria-labelledby="parks-title">
+  <h2 class="section-title" id="parks-title">National Parks</h2>
+  <p>A map of my national park visits and memories. I hope to fill it up someday.</p>
+  <div class="travel-map parks-preview">
+    <div class="travel-toolbar">
+      <div class="travel-country-switch"><span>United States</span></div>
+      <span class="travel-count" id="parks-count">Loading parks…</span>
+    </div>
+    <div class="travel-progress" id="parks-progress" role="progressbar" aria-label="National parks visited" aria-valuemin="0" aria-valuenow="0" aria-valuemax="64"><span id="parks-progress-fill"></span></div>
+    <div class="parks-view-controls">
+      <span id="parks-view-label">Showing all parks</span>
+      <label><input type="checkbox" id="parks-show-all" checked> Show unvisited parks</label>
+    </div>
+    <div class="parks-map-wrap">
+      <div id="parks-map" role="region" aria-label="Map of United States national parks"></div>
+    </div>
+    <p class="travel-gesture-hint">Drag to move · Pinch to zoom</p>
+    <div class="travel-map-footer">
+      <p id="parks-status" role="status" aria-live="polite">Select a park to explore.</p>
+      <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span id="parks-unvisited-legend"><i class="travel-dot"></i>Not yet visited</span></div>
+    </div>
+    <div class="parks-actions"><button id="parks-reset" type="button">Reset map</button></div>
+    <div class="travel-memories" id="parks-memories" hidden>
+      <h3 id="parks-memory-title"></h3>
+      <div id="parks-memory-entries"></div>
+    </div>
+    <p class="travel-attribution">Park list: <a href="https://www.nps.gov/aboutus/national-park-system.htm">National Park Service</a>. Map locations: <a href="https://en.wikipedia.org/wiki/List_of_national_parks_of_the_United_States">Wikipedia</a>.</p>
+  </div>
+  <noscript><p>The national parks map requires JavaScript.</p></noscript>
+</section>
+<section id="games">
       <div class="section-head">
         <h2 class="section-title">Featured Games</h2>
         <a href="https://lepotatoguy.github.io/backlog/#/u/lepotatoguy" target="_blank" rel="noopener noreferrer">Full list on Backlog</a>
@@ -212,5 +244,7 @@
   <script src="js/travel-map.js" defer></script>
   <script src="js/anime-card.js" defer></script>
   <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/national-parks.js"></script>
 </body>
 </html>
