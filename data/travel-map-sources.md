@@ -10,6 +10,8 @@ License: https://creativecommons.org/licenses/by/3.0/igo/
 
 Adaptations: simplified source geometry converted to SVG path coordinates using d3-geo; Bangladesh rendered with Mercator projection. Screen coordinates rounded to one decimal. No boundary changes intended. Rendering data stored in travel-regions.json.
 
+National park boundaries: NPS Land Resources Division boundary service, https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NPS_Regional_and_Park_Boundary/FeatureServer/1. Source geometry is in national-park-boundaries.json. national-park-projected.json uses d3-geo Albers USA at scale 1185, translate [522, 300.5], rounded to one decimal, aligned to the state map. American Samoa and the Virgin Islands are listed separately because they fall outside that projection. The Chiricahua boundary may predate its national park designation.
+
 Visits: transcribed from the two user-supplied travel map images on 2026-10-14: 22 US states and 22 Bangladesh districts. District names match the geometry dataset spellings (Chittagong, Comilla, Jessore). Oregon and Washington added on 2026-10-26 from the user's confirmation. Current totals: 24 US states and 22 Bangladesh districts. Update travel-visits.json and the HTML text fallback together when more places are added.
 
 US Atlas license:

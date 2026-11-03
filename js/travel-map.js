@@ -5,6 +5,12 @@
   const svg = document.getElementById("travel-svg");
   const layer = document.getElementById("travel-regions");
   const labels = document.getElementById("travel-labels");
+  const parkLayer = document.getElementById("travel-parks");
+  const parkControls = document.getElementById("travel-park-controls");
+  const parkToggle = document.getElementById("travel-show-parks");
+  const visitedParks = new Set(["GRSM", "REDW"]);
+  let parks = [];
+  let parkViews = [];
   const status = document.getElementById("travel-selection");
   const zoomIn = document.getElementById("travel-zoom-in");
   const zoomOut = document.getElementById("travel-zoom-out");
@@ -134,6 +140,101 @@
     memoryPanel.hidden = false;
   }
 
+  function selectPark(park) {
+    const title = park.name === "American Samoa" ? "National Park of American Samoa" : park.name + " National Park";
+    selected = null;
+    document.getElementById("travel-highlights").hidden = !document.getElementById("travel-highlight-list").children.length;
+    tooltip.hidden = true;
+    regionViews.forEach(item => {
+      item.path.classList.remove("is-selected");
+      item.path.setAttribute("aria-pressed", "false");
+    });
+    shareRegionButton.disabled = true;
+    shareRegionButton.textContent = "Copy region link";
+    writeLocation();
+    status.textContent = title + (visitedParks.has(park.code) ? " · Visited" : " · Not yet visited");
+    document.getElementById("travel-memory-title").textContent = title + " · Travel memories";
+    const content = document.getElementById("travel-memory-entries");
+    content.replaceChildren();
+    if (park.code === "GRSM") {
+      const card = document.createElement("article");
+      card.className = "travel-memory";
+      const image = document.createElement("img");
+      image.src = "travel-memories/photos/475658275_1358689298474334_191427817361750296_n.jpg";
+      image.alt = "Standing beside a meadow with mountains in the background in Tennessee.";
+      const heading = document.createElement("h4");
+      heading.textContent = "Great Smoky Mountains, Tennessee";
+      card.append(image, heading);
+      content.append(card);
+    } else {
+      const empty = document.createElement("p");
+      empty.className = "travel-memory-empty";
+      empty.textContent = "No memories added yet.";
+      content.append(empty);
+    }
+    memoryPanel.hidden = false;
+  }
+
+  function updateParkViews() {
+    const pixels = Math.min(svg.getBoundingClientRect().width / currentView[2], svg.getBoundingClientRect().height / currentView[3]);
+    if (!pixels) return;
+    parkViews.forEach(item => {
+      const boundary = scale >= 2.25 && (Math.max(item.bounds.width, item.bounds.height) * pixels >= 12 || scale >= 3.375);
+      item.dot.style.display = boundary ? "none" : "";
+      item.shape.style.display = boundary ? "" : "none";
+      item.dot.setAttribute("r", (item.visited ? 6 : 4.5) / pixels);
+      item.dot.style.strokeWidth = 1.5 / pixels;
+      item.shape.style.strokeWidth = 1.5 / pixels;
+    });
+  }
+
+  function renderParks() {
+    parkLayer.replaceChildren();
+    parkViews = [];
+    parkControls.hidden = country !== "us" || !parks.length;
+    parkLayer.style.display = country === "us" ? "" : "none";
+    if (country !== "us" || !parks.length) return;
+    document.getElementById("travel-park-count").textContent = visitedParks.size + " of " + parks.length + " US national parks";
+    const territories = document.getElementById("travel-territory-parks");
+    territories.replaceChildren();
+    parks.forEach(park => {
+      const visited = visitedParks.has(park.code);
+      const title = park.name === "American Samoa" ? "National Park of American Samoa" : park.name + " National Park";
+      if (!park.point || !park.path) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = title;
+        button.addEventListener("click", () => selectPark(park));
+        territories.append(button);
+        return;
+      }
+      const group = document.createElementNS(NS, "g");
+      group.dataset.park = park.code;
+      group.setAttribute("role", "button");
+      group.setAttribute("tabindex", "0");
+      group.setAttribute("aria-label", title + (visited ? ", visited" : ", not yet visited"));
+      const tip = document.createElementNS(NS, "title");
+      tip.textContent = title + (visited ? " · Visited" : " · Not yet visited");
+      const shape = document.createElementNS(NS, "path");
+      shape.setAttribute("d", park.path);
+      shape.setAttribute("class", "travel-park-shape" + (visited ? " is-visited" : ""));
+      const dot = document.createElementNS(NS, "circle");
+      dot.setAttribute("cx", park.point[0]);
+      dot.setAttribute("cy", park.point[1]);
+      dot.setAttribute("class", "travel-park-dot" + (visited ? " is-visited" : ""));
+      group.append(tip, shape, dot);
+      group.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") { event.preventDefault(); selectPark(park); }
+      });
+      parkLayer.append(group);
+      parkViews.push({park, dot, shape, visited, bounds: shape.getBBox()});
+    });
+    parkViews.filter(item => item.visited).forEach(item => parkLayer.append(item.dot.parentNode));
+    if (territories.children.length) territories.prepend("Outside the map: ");
+    updateParkViews();
+    parkLayer.style.display = parkToggle.checked ? "" : "none";
+  }
+
   function showRegion(region, event) {
     tooltipRegion = region;
     const visited = visits[country].includes(region.name);
@@ -157,6 +258,7 @@
 
   function selectRegion(region, saveLocation = true) {
     selected = region;
+    document.getElementById("travel-highlights").hidden = true;
     regionViews.forEach(item => {
       const active = item.region.name === region.name;
       item.path.classList.toggle("is-selected", active);
@@ -209,6 +311,7 @@
     currentView = view;
     svg.setAttribute("viewBox", view.join(" "));
     updateLabels();
+    updateParkViews();
     if (!gesture && selected && tooltipRegion === selected && !tooltip.hidden) positionTooltip(selected);
   }
 
@@ -325,18 +428,15 @@
       if (country === "us" && hasPhotos) {
         photoIcon = document.createElementNS(NS, "g");
         photoIcon.setAttribute("class", "travel-photo-icon");
-        const background = document.createElementNS(NS, "rect");
-        background.setAttribute("width", "12");
-        background.setAttribute("height", "11");
-        background.setAttribute("rx", "3");
         const camera = document.createElementNS(NS, "path");
-        camera.setAttribute("d", "M2.5 3.5h2l.6-1h1.8l.6 1h2v4.7h-7z M7.2 5.9a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z");
-        photoIcon.append(background, camera);
+        camera.setAttribute("d", "M1.5 3.5h2l1-1.5h3l1 1.5h2v5.8h-9z M8 6.4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z");
+        photoIcon.append(camera);
         labels.append(photoIcon);
       }
       regionViews.push({region, path, label, photoIcon, visited, bounds: path.getBBox()});
     });
     renderHighlights();
+    renderParks();
     status.textContent = "Hover or tap a region to explore.";
     updateView(false, { x: 487.5, y: 305 });
   }
@@ -372,10 +472,14 @@
   container.querySelectorAll("[data-country]").forEach(button => {
     button.addEventListener("click", () => { country = button.dataset.country; render(); writeLocation(); });
   });
+  parkToggle.addEventListener("change", () => {
+    parkLayer.style.display = parkToggle.checked && country === "us" ? "" : "none";
+  });
   zoomIn.addEventListener("click", () => { scale = Math.min(6, scale * 1.5); updateView(true); });
   zoomOut.addEventListener("click", () => { scale = Math.max(1, scale / 1.5); updateView(true); });
   document.getElementById("travel-reset").addEventListener("click", () => {
     selected = null;
+    document.getElementById("travel-highlights").hidden = !document.getElementById("travel-highlight-list").children.length;
     scale = 1;
     tooltip.hidden = true;
     memoryPanel.hidden = true;
@@ -395,6 +499,7 @@
   });
   window.addEventListener("resize", () => {
     updateLabels();
+    updateParkViews();
     if (tooltipRegion && !tooltip.hidden) positionTooltip(tooltipRegion);
   });
   svg.addEventListener("pointerleave", () => {
@@ -493,6 +598,12 @@
   svg.addEventListener("click", event => {
     if (suppressClick) { suppressClick = false; return; }
     const target = document.elementFromPoint(event.clientX, event.clientY);
+    const parkTarget = target && target.closest("[data-park]");
+    if (parkTarget) {
+      const park = parks.find(item => item.code === parkTarget.dataset.park);
+      if (park) selectPark(park);
+      return;
+    }
     const path = target && target.closest(".travel-region");
     const region = path && maps[country].regions.find(item => item.name === path.dataset.name);
     if (region) selectRegion(region);
@@ -514,17 +625,18 @@
     zoomOut.disabled = scale <= 1;
   }, { passive: false });
 
-  Promise.all(["data/travel-regions.json", "data/travel-visits.json", "travel-memories/memories.json"].map(url =>
+  Promise.all(["data/travel-regions.json", "data/travel-visits.json", "travel-memories/memories.json", "data/national-park-projected.json"].map(url =>
     fetch(url).then(response => {
       if (!response.ok) throw new Error("Map data unavailable");
       return response.json();
     }).catch(error => {
+      if (url === "data/national-park-projected.json") return [];
       if (url !== "travel-memories/memories.json") throw error;
       memoryLoadFailed = true;
       return {};
     })
   )).then(data => {
-    [maps, visits, memories] = data;
+    [maps, visits, memories, parks] = data;
     container.hidden = false;
     render();
     restoreLocation();

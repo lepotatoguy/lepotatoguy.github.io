@@ -19,8 +19,20 @@
 .travel-label { fill: #374151; font-family: var(--font); font-weight: 600; text-anchor: middle; dominant-baseline: central; pointer-events: none; paint-order: stroke; stroke: #f7faff; stroke-width: 3px; stroke-linejoin: round; }
 .travel-label.is-visited { fill: #fff; stroke: #3576dc; }
 .travel-photo-icon { pointer-events: none; }
-.travel-photo-icon rect { fill: #1d4ed8; stroke: white; stroke-width: .8; }
-.travel-photo-icon path { fill: none; stroke: white; stroke-width: .85; stroke-linejoin: round; }
+.travel-park-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 18px; padding: 8px 0 14px; color: var(--muted); font-size: .78rem; }
+.travel-park-controls[hidden] { display: none; }
+.travel-park-controls label { display: inline-flex; align-items: center; gap: 5px; color: var(--body); cursor: pointer; }
+.travel-park-controls input { accent-color: #c24a12; }
+.travel-park-dot { fill: #64748b; stroke: white; cursor: pointer; }
+.travel-park-dot.is-visited { fill: #e06124; stroke: white; }
+.travel-park-shape { fill: #94a3b8; fill-opacity: .8; stroke: #475569; cursor: pointer; }
+.travel-park-shape.is-visited { fill: #ef7a3f; fill-opacity: .8; stroke: #a9350a; }
+#travel-parks g:focus-visible { outline: none; filter: drop-shadow(0 0 3px #e06124); }
+.travel-dot.park-visited { background: #e06124; border-color: #e06124; }
+.travel-dot.park-other { background: #64748b; border-color: white; }
+.travel-territories { width: 100%; }
+.travel-territories button { margin: 0 0 0 8px; padding: 3px 7px; border: 1px solid var(--line); border-radius: 5px; background: var(--page); color: var(--body); font-size: .78rem; }
+.travel-photo-icon path { fill: none; stroke: white; stroke-width: 1.15; stroke-linejoin: round; stroke-linecap: round; }
 .outside-page .travel-photo-prompt { margin: 0 0 12px; color: var(--ink); font-size: .88rem; font-weight: 500; }
 .travel-highlights { margin: 4px 0 18px; }
 .travel-highlights-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }

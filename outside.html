@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/nav-menu.css">
-  <link rel="stylesheet" href="css/travel-map.css?v=2">
-<link rel="stylesheet" href="css/national-parks.css">
+  <link rel="stylesheet" href="css/travel-map.css?v=7">
+
   <link rel="stylesheet" href="css/anime.css">
   <style>
     .skip-link { position: fixed; top: 8px; left: 16px; z-index: 100; padding: 8px 12px; background: #fff; transform: translateY(-150%); }
@@ -33,7 +33,6 @@
     .outside-note { margin-top: 20px; }
   </style>
   <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -69,7 +68,7 @@
 
     <section id="travelling">
       <h2 class="section-title">Travelling</h2>
-      <p>I've visited 24 US states and 22 districts in Bangladesh, as well as Turkey and India.</p>
+      <p>I've visited 24 US states and 22 districts in Bangladesh, as well as Turkey and India. I've also visited <span id="travel-park-count">2 of 64 US national parks</span> and hope to visit them all someday.</p>
       <div class="travel-map" id="travel-map" hidden>
         <div class="travel-toolbar">
           <div class="travel-country-switch" role="group" aria-label="Choose a country">
@@ -85,8 +84,9 @@
         <div class="travel-canvas">
           <svg id="travel-svg" viewBox="-20 -20 1015 650" role="group" aria-labelledby="travel-map-title travel-map-description">
             <title id="travel-map-title">Places I've visited in the United States</title>
-            <desc id="travel-map-description">Visited regions are blue. Select a region to zoom in and see its memories. Drag to pan and pinch to zoom. Names appear as you zoom. Use arrow keys to move between regions and Enter to select. Escape closes the details.</desc>
-            <g id="travel-regions"></g>
+            <desc id="travel-map-description">Visited regions are blue. Select a region or park to see its memories. Visited national parks are orange. Drag to pan and pinch to zoom. Use arrow keys to move between regions and Enter to select. Escape closes the details.</desc>
+          <g id="travel-regions"></g>
+          <g id="travel-parks"></g>
             <g id="travel-labels" aria-hidden="true"></g>
           </svg>
           <div class="travel-tooltip" id="travel-tooltip" role="tooltip" hidden>
@@ -101,6 +101,13 @@
           </div>
         </div>
         <p class="travel-gesture-hint">Drag to move · Pinch to zoom</p>
+        <div id="travel-park-controls" class="travel-park-controls" hidden>
+          <span id="national-parks"></span>
+          <label><input type="checkbox" id="travel-show-parks" checked> Show national parks</label>
+          <div class="travel-legend"><span><i class="travel-dot park-visited"></i>Visited park</span><span><i class="travel-dot park-other"></i>Other parks</span></div>
+          <div id="travel-territory-parks" class="travel-territories"></div>
+          <small>Park boundaries: <a href="https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NPS_Regional_and_Park_Boundary/FeatureServer/1">National Park Service land resources data</a>; Chiricahua boundary may predate its national park designation.</small>
+        </div>
         <div class="travel-map-footer">
           <p id="travel-selection" role="status" aria-live="polite">Hover or tap a region to explore.</p>
           <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span><i class="travel-dot"></i>Other regions</span></div>
@@ -131,32 +138,6 @@
       </div>
     </section>
 
-<section id="national-parks" aria-labelledby="parks-title">
-  <h2 class="section-title" id="parks-title">National Parks</h2>
-  <p>A map of my national park visits and memories. I hope to fill it up someday.</p>
-  <div class="travel-map parks-preview">
-    <div class="travel-toolbar">
-      <div class="travel-country-switch"><span>United States</span></div>
-      <span class="travel-count" id="parks-count">Loading parks…</span>
-    </div>
-    <div class="travel-progress" id="parks-progress" role="progressbar" aria-label="National parks visited" aria-valuemin="0" aria-valuenow="0" aria-valuemax="64"><span id="parks-progress-fill"></span></div>
-    <div class="parks-map-wrap">
-      <div id="parks-map" role="region" aria-label="Map of United States national parks"></div>
-    </div>
-    <p class="travel-gesture-hint">Drag to move · Zoom in to see park boundaries</p>
-    <div class="travel-map-footer">
-      <p id="parks-status" role="status" aria-live="polite">Select a park to explore.</p>
-      <div class="travel-legend"><span><i class="travel-dot visited"></i>Visited</span><span><i class="travel-dot"></i>Not yet visited</span></div>
-    </div>
-    <div class="parks-actions"><button id="parks-reset" type="button">Reset map</button></div>
-    <div class="travel-memories" id="parks-memories" hidden>
-      <h3 id="parks-memory-title"></h3>
-      <div id="parks-memory-entries"></div>
-    </div>
-    <p class="travel-attribution">Park list: <a href="https://www.nps.gov/aboutus/national-park-system.htm">National Park Service</a>. Boundaries: <a href="https://services.arcgis.com/xOi1kZaI0eWDREZv/ArcGIS/rest/services/NPS_Regional_and_Park_Boundary/FeatureServer/1">National Park Service land resources data</a>; Chiricahua boundary may predate its national park designation.</p>
-  </div>
-  <noscript><p>The national parks map requires JavaScript.</p></noscript>
-</section>
 <section id="games">
       <div class="section-head">
         <h2 class="section-title">Featured Games</h2>
@@ -242,10 +223,8 @@
   </footer>
 
   <script src="js/nav-menu.js" defer></script>
-  <script src="js/travel-map.js?v=2" defer></script>
+  <script src="js/travel-map.js?v=9" defer></script>
   <script src="js/anime-card.js" defer></script>
   <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/national-parks.js?v=5"></script>
 </body>
 </html>
