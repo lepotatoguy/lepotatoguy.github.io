@@ -4,12 +4,12 @@
     "scholar_url": "https://scholar.google.com/citations?user=lIwU1F0AAAAJ&hl=en"
   },
   "summary": {
-    "total_citations": 155,
+    "total_citations": 156,
     "h_index": 9,
     "i10_index": 7,
     "paper_count": 31,
-    "updated": "2026-11-05",
-    "updated_at_utc": "2026-11-05T18:06:37+00:00",
+    "updated": "2026-11-06",
+    "updated_at_utc": "2026-11-06T17:33:32+00:00",
     "source": "serpapi"
   },
   "yearly": [
@@ -27,7 +27,7 @@
     },
     {
       "year": 2025,
-      "citations": 54
+      "citations": 55
     },
     {
       "year": 2026,
@@ -146,6 +146,10 @@
     {
       "date": "2026-11-05",
       "total_citations": 155
+    },
+    {
+      "date": "2026-11-06",
+      "total_citations": 156
     }
   ],
   "top_papers": [
@@ -178,11 +182,11 @@
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:d1gkVwhDpl0C"
     },
     {
-      "title": "Sherlock in OSS: A Novel Approach of Content-Based Searching in Object Storage System",
-      "year": "2024",
-      "venue": "IEEE Access, 2024",
-      "citations": 12,
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:UeHWp8X0CEIC"
+      "title": "‘Khep’: Exploring Factors that Influence The Preference of Contractual Rides to Ride-Sharing Apps in Bangladesh",
+      "year": "2023",
+      "venue": "Proceedings of the 6th ACM SIGCAS/SIGCHI Conference on Computing and …, 2023",
+      "citations": 13,
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:zYLM7Y9cAGgC"
     }
   ]
 }
