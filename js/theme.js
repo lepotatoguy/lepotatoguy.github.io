@@ -6,7 +6,9 @@
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") choice = saved;
   } catch (error) {}
-  const current = () => choice || "light";
+  // A saved choice wins; otherwise follow the operating system setting.
+  const system = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  const current = () => choice || (system && system.matches ? "dark" : "light");
   root.setAttribute("data-theme", current());
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -29,6 +31,7 @@
       choice = event.newValue === "light" || event.newValue === "dark" ? event.newValue : null;
       update();
     });
+    if (system && system.addEventListener) system.addEventListener("change", update);
     update();
   });
 })();

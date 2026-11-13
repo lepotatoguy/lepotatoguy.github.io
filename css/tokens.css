@@ -1,0 +1,180 @@
+/* Design tokens and base rules for the whole site. Load first on every page.
+   Colours, type sizes, spacing and radii are defined here and nowhere else. */
+
+:root {
+  color-scheme: light;
+
+  /* Colour */
+  --page: #ffffff;
+  --surface: #f9fafb;
+  --ink: #111827;
+  --body: #374151;
+  --muted: #6b7280;
+  --rule: #9ca3af; /* decorative only: separators and icons, never text */
+  --line: #e5e7eb;
+  --link: #2563eb;
+  --link-dark: #1d4ed8;
+  --link-soft: #eff6ff;
+  --on-link: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.94);
+  --logo-bg: #ffffff;
+
+  --badge-paper-bg: #dbeafe;
+  --badge-paper-fg: #1e40af;
+  --badge-award-bg: #fef3c7;
+  --badge-award-fg: #92400e;
+  --badge-review-bg: #e0f2fe;
+  --badge-review-fg: #075985;
+  --badge-edu-bg: #ede9fe;
+  --badge-edu-fg: #5b21b6;
+  --tag-warm-bg: #fff7ed;
+  --tag-warm-fg: #c2410c;
+  --chart-stroke: #2563eb;
+
+  /* Type scale */
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: 2.25rem;
+  --font: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  /* Spacing scale */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+
+  /* Shape */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-pill: 999px;
+  --shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
+
+  /* Layout. Breakpoints used site-wide: 520px, 820px, 1080px. */
+  --content-w: 960px;
+  --wide-w: 1120px;
+  --nav-h: 56px;
+  --date-col: 9rem;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #16181c;
+  --surface: #1e2126;
+  --ink: #e7e4df;
+  --body: #c7cbd1;
+  --muted: #a8a29b;
+  --rule: #6b7280;
+  --line: #333940;
+  --link: #8bb1ff;
+  --link-dark: #b3caff;
+  --link-soft: #1c2740;
+  --on-link: #16181c;
+  --nav-bg: rgba(22, 24, 28, 0.94);
+
+  --badge-paper-bg: #20314e;
+  --badge-paper-fg: #b0cbff;
+  --badge-award-bg: #3a2c1f;
+  --badge-award-fg: #f0cd86;
+  --badge-review-bg: #16333d;
+  --badge-review-fg: #9acedd;
+  --badge-edu-bg: #2c2443;
+  --badge-edu-fg: #c7b0f0;
+  --tag-warm-bg: #35251d;
+  --tag-warm-fg: #f4b68b;
+  --chart-stroke: #8bb1ff;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + var(--s-4));
+}
+
+body {
+  background: var(--page);
+  color: var(--body);
+  font-family: var(--font);
+  font-size: var(--fs-md);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+a:hover {
+  color: var(--link-dark);
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+strong,
+b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.container {
+  max-width: var(--content-w);
+  margin: 0 auto;
+  padding: 0 var(--s-5);
+}
+.container.wide {
+  max-width: var(--wide-w);
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 0 var(--s-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
