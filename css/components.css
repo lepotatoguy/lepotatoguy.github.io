@@ -1,0 +1,403 @@
+/* Shared components for every page. Load after tokens.css and before the page stylesheet. */
+
+/* === SKIP LINK === */
+.skip-link {
+  position: absolute;
+  left: var(--s-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--s-2) var(--s-4);
+  background: var(--page);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.skip-link:focus {
+  top: var(--s-2);
+}
+
+/* === TOP NAV === */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--nav-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-5);
+  min-height: var(--nav-h);
+}
+.nav-brand {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  white-space: nowrap;
+}
+.nav-brand:hover {
+  color: var(--ink);
+  text-decoration: none;
+}
+/* The Bengali name stays in the page heading; the bar has no room for it. */
+.nav-brand-alt {
+  display: none;
+}
+.nav-inner > nav {
+  min-width: 0;
+}
+.nav-links {
+  display: flex;
+  gap: var(--s-4);
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+.nav-links.is-scrollable {
+  mask-image: linear-gradient(to right, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, #000 85%, transparent);
+}
+.nav-links a {
+  display: block;
+  color: var(--muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+  padding: var(--s-1) 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a:hover {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom-color: var(--line);
+}
+.nav-links a.active {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--link);
+}
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  flex-shrink: 0;
+}
+
+/* === BUTTONS === */
+.btn,
+.cv-download,
+.theme-toggle,
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 0 var(--s-3);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--page);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn:hover,
+.cv-download:hover,
+.theme-toggle:hover,
+.nav-toggle:hover {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--rule);
+  text-decoration: none;
+}
+.btn:disabled,
+.cv-download:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.btn svg,
+.cv-download svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+.btn-icon,
+.theme-toggle,
+.nav-toggle {
+  width: 36px;
+  padding: 0;
+}
+.btn-sm {
+  min-height: 28px;
+  padding: 0 var(--s-2);
+  font-size: var(--fs-xs);
+  color: var(--link);
+}
+.btn-sm:hover {
+  color: var(--link-dark);
+}
+.btn-primary {
+  min-height: 44px;
+  padding: 0 var(--s-4);
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--on-link);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--link-dark);
+  border-color: var(--link-dark);
+  color: var(--on-link);
+}
+
+.theme-toggle svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+.theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+/* Hamburger: hidden on wide screens, bars turn into an X while open */
+.nav-toggle {
+  display: none;
+}
+.nav-toggle-bars,
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.nav-toggle-bars {
+  position: relative;
+}
+.nav-toggle-bars::before,
+.nav-toggle-bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav-toggle-bars::before {
+  top: -6px;
+}
+.nav-toggle-bars::after {
+  top: 6px;
+}
+.site-nav.menu-open .nav-toggle-bars {
+  background: transparent;
+}
+.site-nav.menu-open .nav-toggle-bars::before {
+  transform: translateY(6px) rotate(45deg);
+}
+.site-nav.menu-open .nav-toggle-bars::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* === CHIP, EYEBROW, BADGE, CARD === */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  padding: 2px var(--s-2);
+  color: var(--body);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+}
+a.chip,
+button.chip {
+  min-height: 40px;
+  padding: 0 var(--s-3);
+  font-family: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--page);
+  border-radius: var(--r-md);
+  cursor: pointer;
+}
+a.chip:hover,
+button.chip:hover {
+  text-decoration: none;
+  border-color: var(--rule);
+  background: var(--surface);
+}
+button.chip[aria-pressed="true"] {
+  background: var(--link);
+  border-color: var(--link);
+  color: var(--on-link);
+}
+a.chip i {
+  color: var(--muted);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--link-dark);
+}
+.eyebrow.filled {
+  background: var(--link-soft);
+  padding: 1px var(--s-2);
+  border-radius: var(--r-sm);
+}
+.eyebrow.quiet {
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 1px 6px;
+  border-radius: var(--r-sm);
+  margin-right: 6px;
+  vertical-align: 1px;
+}
+.badge-paper {
+  background: var(--badge-paper-bg);
+  color: var(--badge-paper-fg);
+}
+.badge-award {
+  background: var(--badge-award-bg);
+  color: var(--badge-award-fg);
+}
+.badge-review {
+  background: var(--badge-review-bg);
+  color: var(--badge-review-fg);
+}
+.badge-edu {
+  background: var(--badge-edu-bg);
+  color: var(--badge-edu-fg);
+}
+
+.card {
+  background: var(--page);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+}
+a.card {
+  display: block;
+  color: inherit;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+a.card:hover {
+  text-decoration: none;
+  border-color: var(--rule);
+  box-shadow: var(--shadow);
+}
+
+/* === SECTION HEAD === */
+.section-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+}
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-1) var(--s-4);
+  padding-bottom: var(--s-2);
+  margin-bottom: var(--s-4);
+  border-bottom: 1px solid var(--line);
+}
+.section-head-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-4);
+  font-size: var(--fs-sm);
+}
+
+/* === FOOTER === */
+.site-footer {
+  margin-top: var(--s-8);
+  border-top: 1px solid var(--line);
+}
+.site-copyright {
+  color: var(--muted);
+  font-size: var(--fs-xs);
+  text-align: center;
+  padding: var(--s-5) 0;
+}
+
+/* === SMALL SCREENS: nav becomes a drawer === */
+@media (max-width: 820px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+  .site-nav .nav-inner > nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--page);
+    box-shadow: var(--shadow);
+  }
+  .site-nav.menu-open .nav-inner > nav {
+    display: block;
+  }
+  .site-nav .nav-links,
+  .site-nav .nav-links.is-scrollable {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--s-1) var(--s-5) var(--s-3);
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+  .site-nav .nav-links a {
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--fs-md);
+  }
+  .site-nav .nav-links li:last-child a {
+    border-bottom: 0;
+  }
+  .site-nav .nav-links a:hover,
+  .site-nav .nav-links a.active {
+    border-bottom-color: var(--line);
+    color: var(--link);
+  }
+}
+
+@media print {
+  .theme-toggle,
+  .cv-download,
+  .nav-toggle,
+  .skip-link {
+    display: none;
+  }
+}

@@ -26,14 +26,13 @@
     <meta name="twitter:image" content="https://lepotatoguy.github.io/images/profile.jpg" />
     <link rel="canonical" href="https://lepotatoguy.github.io/" />
     <title>Homepage of Joyanta J. Mondal</title>
-    <link rel="shortcut icon" href="images/logo.png" />
+    <link rel="icon" href="images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/icomoon.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -43,14 +42,15 @@
       href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     />
 
-    <link rel="stylesheet" href="css/site.css?v=3823a7111a23" />
-    <link rel="stylesheet" href="css/nav-menu.css" />
-    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/site.css?v=r2a1" />
 </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-nav">
       <div class="container nav-inner">
-        <a class="nav-brand" href="#about">Joyanta J. Mondal / <span lang="bn">জয়ন্ত মন্ডল</span></a>
+        <a class="nav-brand" href="#about">Joyanta J. Mondal<span class="nav-brand-alt"> / <span lang="bn">জয়ন্ত মন্ডল</span></span></a>
         <nav id="site-menu" aria-label="Sections">
           <ul class="nav-links">
             <li><a href="#news" class="nav-link">News</a></li>
@@ -76,11 +76,11 @@
       </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
       <!-- ABOUT -->
       <section id="about" class="intro">
         <div class="intro-header">
-          <img class="intro-photo" src="images/profile.jpg" alt="Photo of Joyanta J. Mondal" />
+          <img class="intro-photo" src="images/profile.jpg" alt="Photo of Joyanta J. Mondal" width="960" height="960" fetchpriority="high" />
           <div class="intro-identity">
             <h1 class="intro-name">Joyanta J. Mondal / <span lang="bn">জয়ন্ত মন্ডল</span></h1>
             <div class="intro-meta">
@@ -95,58 +95,11 @@
         </div>
 
           <div class="about-text">
-            <!-- === NEW INTRO (Applied Efficient AI) === -->
             <p>
               I’m a researcher from Dhaka, Bangladesh, with an
               <strong>M.S. in Computer Science</strong> from the
               University of Delaware.
             </p>
-            <!-- <p>
-              My research lies primarily at the intersection of efficient AI
-              systems, applied computer vision, and resource-constrained
-              deployment. I call this <strong>Applied Efficient AI</strong>:
-              building machine learning systems that are not just accurate but
-              genuinely deployable, architecturally lean, and grounded in
-              real-world constraints. I work across a broad range of domains,
-              including medical image analysis, environmental sensing, computer
-              vision, and distributed systems. The unifying thread is not the
-              domain, it is the constraint: does the system hold up beyond a lab
-              environment, under real compute budgets, for real users.
-            </p>
-            <p>
-              Representative work includes
-              <strong
-                ><a
-                  href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_
-  Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf"
-                  target="_blank"
-                  >BAMPolyp (ICCVW '25)</a
-                ></strong
-              >, a Bi-Axial Mamba bottleneck architecture for gastrointestinal
-              polyp segmentation;
-              <strong
-                ><a
-                  href="https://www.nature.com/articles/s41598-023-51015-1"
-                  target="_blank"
-                  >AQI-Net (Nature Sci. Rep. '23)</a
-                ></strong
-              >, a smartphone-deployable network for location-specific air
-              quality estimation; and
-              <strong
-                ><a href="https://arxiv.org/pdf/2401.03575.pdf" target="_blank"
-                  >InvoConvNet (EAAI '24)</a
-                ></strong
-              >, an involution-fused architecture for classifying eye-tracking
-              patterns in children with Autism Spectrum Disorder. Alongside this
-              applied focus, I am exploring
-              <strong>Trustworthy and Reliable AI</strong>, with an emphasis on
-              reinforcement learning, reliability of large language models, and
-              parameter-efficient fine-tuning (LoRA). A common question in my
-              work is how much we can prove, such as how well an algorithm will
-              do or how reliable a model is, when we have only a few labels,
-              samples, or limited compute, and when low-rank structure makes
-              that possible.
-            </p>  -->
             <p>
               Outside research: avid gamer (known by the in-game name
               <em>LePotatoGuy</em>), traveller, anime and comic enthusiast,
@@ -156,94 +109,18 @@
             </p>
             <p>
               Fun facts: I've visited nearly half the states in the U.S., and my
-              <a href="https://en.wikipedia.org/wiki/Erd%C5%91s_number" target="_blank">Erdős number</a> is 4.
+              <a href="https://en.wikipedia.org/wiki/Erd%C5%91s_number" target="_blank" rel="noopener">Erdős number</a> is 4.
             </p>
 
 
-            <!-- === OLD INTRO (commented out, do not delete) ===
-            <p>
-              I am a researcher from Dhaka, Bangladesh, currently based in
-              Dallas, Texas, with an
-              <strong>M.S. in Computer Science</strong> from the University of
-              Delaware.
-            </p>
-            <p>
-              I design AI systems at the intersection of
-              <strong>social good</strong>, <strong>healthcare</strong>, and
-              <strong>computer vision</strong> — with a core commitment to
-              making machine learning practical, accessible, and impactful in
-              real-world settings. My work spans medical image segmentation, air
-              quality sensing, and assistive technology, grounded in deep
-              learning architectures, convolutional and attention-based models,
-              and efficient training strategies. I have developed methods such
-              as:
-              <strong
-                ><a
-                  href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf"
-                  target="_blank"
-                  >BAMPolyp (ICCVW '25)</a
-                ></strong
-              >, a Bi-Axial Mamba bottleneck architecture for gastrointestinal
-              polyp segmentation;
-              <strong
-                ><a
-                  href="https://www.nature.com/articles/s41598-023-51015-1"
-                  target="_blank"
-                  >AQI-Net (Nature Sci. Rep. '23)</a
-                ></strong
-              >, a smartphone-based deep learning approach for location-specific
-              air quality index estimation; and
-              <strong
-                ><a href="https://arxiv.org/pdf/2401.03575.pdf" target="_blank"
-                  >InvoConvNet (EAAI '24)</a
-                ></strong
-              >, an involution-fused convolutional network for classifying
-              eye-tracking patterns in children with Autism Spectrum Disorder.
-            </p>
-            <p>
-              My current focus is on
-              <strong>Reliable AI in Healthcare</strong> — specifically small
-              and vision-language models (SLMs and SVLMs) adapted for
-              low-resource clinical settings, mitigating hallucination in
-              medical LLMs, leveraging multilingual models for non-English
-              clinical texts, and improving the transparency of AI in clinical
-              decision-making.
-            </p>
-            <p>
-              My
-              <a
-                href="https://en.wikipedia.org/wiki/Erd%C5%91s_number"
-                target="_blank"
-                >Erdős number</a
-              >
-              is 4.
-            </p>
-            <p>
-              Outside research: avid gamer (<em>LePotatoGuy</em>), anime
-              enthusiast, cyclist, and a chess player rated ~400 — which means I
-              lose often and confidently.
-              <a href="https://www.chess.com/member/lepotatoguy" target="_blank"
-                >Feel free to challenge me anyway.</a
-              >
-            </p>
-            <div class="about-interests">
-              <span class="tag">Deep Learning</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">Cloud Computing</span>
-              <span class="tag">Reliable AI</span>
-              <span class="tag">AI for Healthcare</span>
-              <span class="tag">Medical Imaging</span>
-              <span class="tag">AI for Social Good</span>
-            </div>
-            === END OLD INTRO === -->
           </div>
           <div class="intro-links">
-            <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" target="_blank" rel="noopener"><i class="ai ai-google-scholar"></i>Scholar</a>
-            <!-- <a href="https://www.researchgate.net/profile/Joyanta-Mondal" target="_blank" rel="noopener"><i class="ai ai-researchgate"></i>ResearchGate</a> -->
-            <a href="https://github.com/lepotatoguy" target="_blank" rel="noopener"><i class="fa fa-github"></i>GitHub</a>
-            <a href="https://twitter.com/LePotatoGuy_" target="_blank" rel="noopener"><i class="fa fa-twitter"></i>Twitter</a>
-            <a href="https://stackoverflow.com/users/9848043/joyanta-j-mondal" target="_blank" rel="noopener"><i class="fa fa-stack-overflow"></i>Stack Overflow</a>
-            <a href="https://www.youtube.com/channel/UCNGjN-H1BXslH31wbSnypLQ" target="_blank" rel="noopener"><i class="fa fa-youtube"></i>YouTube</a>
+            <a class="chip" href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i>Scholar</a>
+            <!-- <a class="chip" href="https://www.researchgate.net/profile/Joyanta-Mondal" target="_blank" rel="noopener"><i class="ai ai-researchgate" aria-hidden="true"></i>ResearchGate</a> -->
+            <a class="chip" href="https://github.com/lepotatoguy" target="_blank" rel="noopener"><i class="fa fa-github" aria-hidden="true"></i>GitHub</a>
+            <a class="chip" href="https://twitter.com/LePotatoGuy_" target="_blank" rel="noopener"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a>
+            <a class="chip" href="https://stackoverflow.com/users/9848043/joyanta-j-mondal" target="_blank" rel="noopener"><i class="fa fa-stack-overflow" aria-hidden="true"></i>Stack Overflow</a>
+            <a class="chip" href="https://www.youtube.com/channel/UCNGjN-H1BXslH31wbSnypLQ" target="_blank" rel="noopener"><i class="fa fa-youtube" aria-hidden="true"></i>YouTube</a>
           </div>
       </section>
 
@@ -252,7 +129,7 @@
       </aside>
 
       <section id="research-interest" aria-labelledby="research-interest-title">
-        <h2 id="research-interest-title" class="section-title">Research Interest</h2>
+        <div class="section-head"><h2 id="research-interest-title" class="section-title">Research Interest</h2></div>
         <div class="about-text">
             <p>
               My earlier research focused on developing
@@ -268,49 +145,39 @@
               in medical imaging.
             </p>
             <div class="about-interests">
-              <span class="tag">Efficient Language Model Systems</span>
-              <!-- <span class="tag">Efficient Architectures</span> -->
-              <span class="tag">Deep Learning</span>
-              <span class="tag">Computer Vision</span>
-              <span class="tag">Medical Imaging</span>
-              <span class="tag">Cloud Computing</span>
-              <span class="tag">AI for Social Good</span>
-              <span class="tag">Reinforcement Learning</span>
-              <span class="tag">Reliable AI</span>
-              <span class="tag">Graph Representation Learning</span>
+              <span class="chip tag">Efficient Language Model Systems</span>
+              <!-- <span class="chip tag">Efficient Architectures</span> -->
+              <span class="chip tag">Deep Learning</span>
+              <span class="chip tag">Computer Vision</span>
+              <span class="chip tag">Medical Imaging</span>
+              <span class="chip tag">Cloud Computing</span>
+              <span class="chip tag">AI for Social Good</span>
+              <span class="chip tag">Reinforcement Learning</span>
+              <span class="chip tag">Reliable AI</span>
+              <span class="chip tag">Graph Representation Learning</span>
             </div>
         </div>
       </section>
 
         <!-- NEWS -->
         <section id="news">
-          <div class="section-label">Latest</div>
-          <h2 class="section-title">News</h2>
+          <div class="section-head"><h2 class="section-title">News</h2></div>
 
           <ul class="news-list">
             <li class="news-item">
               <span class="news-date">Nov 2026</span>
-              <span class="news-icon"
-                ><i class="fa fa-trophy" aria-hidden="true"></i
-              ></span>
               <span class="news-text"
-                ><span class="badge badge-paper">Paper</span><a href="https://arxiv.org/abs/2608.23849" target="_blank" rel="noreferrer">FlowNeg</a> accepted to the <b>Main Conference of EACL 2027</b>.</span
+                ><span class="badge badge-paper">Paper</span><a href="https://arxiv.org/abs/2608.23849" target="_blank" rel="noreferrer">FlowNeg</a> accepted to the <b>Main Conference of EACL 2027 (Core A)</b>. </span
               >
             </li>
             <li class="news-item">
               <span class="news-date">Aug 2026</span>
-              <span class="news-icon"
-                ><i class="fa fa-trophy" aria-hidden="true"></i
-              ></span>
               <span class="news-text"
-                ><span class="badge badge-paper">Paper</span>Review Paper on Weakly Supervised 3D Pose Estimation at <b>Intelligent Systems with Applications</b></span
+                ><span class="badge badge-paper">Paper</span>Review Paper on Weakly Supervised 3D Pose Estimation published at <b>Intelligent Systems with Applications</b></span
               >
             </li>
             <li class="news-item">
               <span class="news-date">Aug 2026</span>
-              <span class="news-icon"
-                ><i class="fa fa-trophy" aria-hidden="true"></i
-              ></span>
               <span class="news-text"
                 ><span class="badge badge-award">Award</span>Awarded Quality
                 Journal Publication Award from BRAC University.</span
@@ -318,9 +185,6 @@
             </li>
             <li class="news-item">
               <span class="news-date">Dec 2025</span>
-              <span class="news-icon"
-                ><i class="fa fa-graduation-cap" aria-hidden="true"></i
-              ></span>
               <span class="news-text"
                 ><span class="badge badge-edu">Degree</span>Completed M.S. in
                 Computer Science from the University of Delaware!
@@ -328,17 +192,18 @@
                   src="images/hengineer.png"
                   alt="Hengineer logo"
                   class="news-logo"
+                width="101"
+                height="96"
+                loading="lazy"
+                decoding="async"
               /></span>
             </li>
             <li class="news-item">
               <span class="news-date">Nov 2025</span>
-              <span class="news-icon"
-                ><i class="fa fa-file-text-o" aria-hidden="true"></i
-              ></span>
               <span class="news-text"
                 ><span class="badge badge-review">Review</span>Invited as
                 reviewer at
-                <a href="https://peerj.com/" target="_blank">PeerJ Journal</a
+                <a href="https://peerj.com/" target="_blank" rel="noopener">PeerJ Journal</a
                 >.</span
               >
             </li>
@@ -348,24 +213,18 @@
             <ul class="news-list">
               <li class="news-item">
                 <span class="news-date">Aug 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-pencil" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Op-Ed</span>Op-Ed published in
                   The Daily Star on responsible AI use in education.
                   <a
                     href="https://www.thedailystar.net/opinion/views/news/students-need-be-taught-responsible-use-ai-3971496"
-                    target="_blank"
+                    target="_blank" rel="noopener"
                     >[Link]</a
                   ></span
                 >
               </li>
               <li class="news-item">
                 <span class="news-date">Jul 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Paper</span>BAMPolyp
                   (Mamba-based polyp segmentation) accepted at
@@ -374,9 +233,6 @@
               </li>
               <li class="news-item">
                 <span class="news-date">May 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Paper</span>Two-step
                   copyright-aware image generation model accepted at
@@ -386,9 +242,6 @@
               </li>
               <li class="news-item">
                 <span class="news-date">May 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-trophy" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-award">Award</span>Awarded Quality
                   Journal Publication Award from BRAC University.</span
@@ -396,25 +249,19 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Apr 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Paper</span>GCN+Transformer
                   model for CB2 receptor ligand activity prediction accepted at
                   <b>IJCNN</b>.
                   <a
                     href="https://ieeexplore.ieee.org/document/11227988"
-                    target="_blank"
+                    target="_blank" rel="noopener"
                     >[Link]</a
                   ></span
                 >
               </li>
               <li class="news-item">
                 <span class="news-date">Mar 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-file-text-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-review">Review</span>Invited as
                   reviewer at <b>NeurIPS 2025</b>.</span
@@ -422,9 +269,6 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Jan 2025</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Paper</span>Adversarial attacks
                   paper (ET DeepFool) accepted at
@@ -433,13 +277,10 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Dec 2024</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-award">Fellowship</span>Selected for
                   NSF-funded
-                  <a href="https://sites.udel.edu/midas-nrt/" target="_blank"
+                  <a href="https://sites.udel.edu/midas-nrt/" target="_blank" rel="noopener"
                     >NRT-MIDAS</a
                   >
                   fellowship program.</span
@@ -447,9 +288,6 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Oct 2024</span>
-                <span class="news-icon"
-                  ><i class="fa fa-check-square-o" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Paper</span>Involution Fused
                   ConvNet for ASD eye-tracking classification accepted at
@@ -458,9 +296,6 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Aug 2024</span>
-                <span class="news-icon"
-                  ><i class="fa fa-graduation-cap" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-edu">Enrollment</span>Started graduate
                   studies at the University of Delaware.</span
@@ -468,15 +303,12 @@
               </li>
               <li class="news-item">
                 <span class="news-date">Feb 2023</span>
-                <span class="news-icon"
-                  ><i class="fa fa-pencil" aria-hidden="true"></i
-                ></span>
                 <span class="news-text"
                   ><span class="badge badge-paper">Op-Ed</span>Op-Ed published in
                   The Daily Star on ChatGPT in education.
                   <a
                     href="https://www.thedailystar.net/opinion/views/news/why-im-not-concerned-about-students-using-chatgpt-3246421"
-                    target="_blank"
+                    target="_blank" rel="noopener"
                     >[Link]</a
                   ></span
                 >
@@ -487,12 +319,11 @@
 
         <!-- PUBLICATIONS -->
         <section id="publications">
-          <div class="section-label">Research</div>
           <div class="section-head">
             <h2 class="section-title">Selected Publications</h2>
             <div class="section-head-links">
               <a class="scholar-link" href="research/">
-                <i class="fa fa-lightbulb-o"></i> Research Agenda
+                <i class="fa fa-lightbulb-o" aria-hidden="true"></i> Research Agenda
               </a>
               <a
                 class="scholar-link"
@@ -500,231 +331,187 @@
                 target="_blank"
                 rel="noopener"
               >
-                <i class="ai ai-google-scholar"></i> Full list on Google Scholar
+                <i class="ai ai-google-scholar" aria-hidden="true"></i> Full list on Google Scholar
               </a>
             </div>
           </div>
 
           <div class="pub-list">
-            <div class="pub-card">
-              <div class="pub-venue">ICCVW 2025 &bull; CVAMD Workshop</div>
-              <div class="pub-title">
-                BAMPolyp: Bi-Axial Mamba Bottleneck for Gastrointestinal Polyp
-                <span class="pub-title-ending">Segmentation <a
-                  class="pub-link"
-                  href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf"
-                  target="_blank"
-                  >PDF</a
-                ></span>
-              </div>
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">ICCVW 2025 &bull; CVAMD Workshop</div>
+              <h3 class="pub-title">BAMPolyp: Bi-Axial Mamba Bottleneck for Gastrointestinal Polyp Segmentation</h3>
               <div class="pub-authors">
                 Md Farhadul Islam, Tashik Ahmed, Partho Chanda,
                 <strong>Joyanta Jyoti Mondal</strong>, Meem Arafat Manab, Sarah
                 Zabeen, Jannatun Noor
               </div>
-              <div class="pub-note">DOI: 10.1109/ICCVW69036.2025.00118</div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-venue">Nature Scientific Reports &bull; 2025</div>
-              <div class="pub-title">
-                Tailoring Adversarial Attacks on Deep Neural Networks for
-                Targeted Class Manipulation Using DeepFool <span class="pub-title-ending">Algorithm <a
-                  class="pub-link"
-                  href="https://www.nature.com/articles/s41598-025-87405-w"
-                  target="_blank"
-                  >Paper</a
-                ></span>
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf" target="_blank" rel="noopener" aria-label="PDF: BAMPolyp: Bi-Axial Mamba Bottleneck for Gastrointestinal Polyp Segmentation">PDF</a>
+                <div class="pub-note">DOI: 10.1109/ICCVW69036.2025.00118</div>
               </div>
+            </article>
+
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">Nature Scientific Reports &bull; 2025</div>
+              <h3 class="pub-title">Tailoring Adversarial Attacks on Deep Neural Networks for Targeted Class Manipulation Using DeepFool Algorithm</h3>
               <div class="pub-authors">
                 S. M. Fazle Rabby Labib, <strong>Joyanta Jyoti Mondal</strong>,
                 Meem Arafat Manab, Sarfaraz Newaz, Xi Xiao
               </div>
-              <div class="pub-note">DOI: 10.1038/s41598-025-87405-w</div>
-            </div>
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://www.nature.com/articles/s41598-025-87405-w" target="_blank" rel="noopener" aria-label="Paper: Tailoring Adversarial Attacks on Deep Neural Networks for Targeted Class Manipulation Using DeepFool Algorithm">Paper</a>
+                <div class="pub-note">DOI: 10.1038/s41598-025-87405-w</div>
+              </div>
+            </article>
 
-            <div class="pub-card">
-              <div class="pub-venue">
-                Engineering Applications of Artificial Intelligence &bull; 2024
-              </div>
-              <div class="pub-title">
-                Involution Fused Convolution for Classifying Eye-Tracking
-                Patterns of Children with Autism Spectrum <span class="pub-title-ending">Disorder <a
-                  class="pub-link"
-                  href="https://arxiv.org/pdf/2401.03575.pdf"
-                  target="_blank"
-                  >PDF</a
-                ></span>
-              </div>
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">Engineering Applications of Artificial Intelligence &bull; 2024</div>
+              <h3 class="pub-title">Involution Fused Convolution for Classifying Eye-Tracking Patterns of Children with Autism Spectrum Disorder</h3>
               <div class="pub-authors">
                 Md. Farhadul Islam, <strong>Joyanta Jyoti Mondal*</strong>, Meem
                 Arafat Manab*, Sarah Zabeen, Fardin Bin Rahman, Md. Zahidul
                 Hasan, Farig Sadeque, Jannatun Noor
               </div>
-              <div class="pub-note">
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://arxiv.org/pdf/2401.03575.pdf" target="_blank" rel="noopener" aria-label="PDF: Involution Fused Convolution for Classifying Eye-Tracking Patterns of Children with Autism Spectrum Disorder">PDF</a>
+                <div class="pub-note">
                 DOI: 10.1016/j.engappai.2024.109475 &nbsp;&bull;&nbsp; * Equal
                 contribution
               </div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-venue">Nature Scientific Reports &bull; 2023</div>
-              <div class="pub-title">
-                Unmasking the Invisible: Finding Location-Specific Aggregated
-                Air Quality Index with Smartphone-Captured <span class="pub-title-ending">Images <a
-                  class="pub-link"
-                  href="https://www.nature.com/articles/s41598-023-51015-1"
-                  target="_blank"
-                  >Paper</a
-                ></span>
               </div>
+            </article>
+
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">Nature Scientific Reports &bull; 2023</div>
+              <h3 class="pub-title">Unmasking the Invisible: Finding Location-Specific Aggregated Air Quality Index with Smartphone-Captured Images</h3>
               <div class="pub-authors">
                 <strong>Joyanta Jyoti Mondal*</strong>, Md. Farhadul Islam*,
                 Raima Islam, Nowsin Kabir Rhidi, Sarfaraz Newaz, Meem Arafat
                 Manab, A. B. M. Alim Al Islam, Jannatun Noor
               </div>
-              <div class="pub-note">
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://www.nature.com/articles/s41598-023-51015-1" target="_blank" rel="noopener" aria-label="Paper: Unmasking the Invisible: Finding Location-Specific Aggregated Air Quality Index with Smartphone-Captured Images">Paper</a>
+                <div class="pub-note">
                 DOI: 10.1038/s41598-023-51015-1 &nbsp;&bull;&nbsp; * Equal
                 contribution
               </div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-venue">IEEE Access &bull; 2024</div>
-              <div class="pub-title">
-                Sherlock in OSS: A Novel Approach of Content-Based Searching in
-                Object Storage <span class="pub-title-ending">System <a
-                  class="pub-link"
-                  href="https://ieeexplore.ieee.org/document/10530317"
-                  target="_blank"
-                  >Paper</a
-                ></span>
               </div>
+            </article>
+
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">IEEE Access &bull; 2024</div>
+              <h3 class="pub-title">Sherlock in OSS: A Novel Approach of Content-Based Searching in Object Storage System</h3>
               <div class="pub-authors">
                 Jannatun Noor, Md. Sadiqul Islam Sakif,
                 <strong>Joyanta Jyoti Mondal</strong>, Mir Rownak Ali Uday,
                 Rizwanul Haque Ratul, Sriram Chellappan, A. B. M. Alim Al Islam
               </div>
-              <div class="pub-note">DOI: 10.1109/ACCESS.2024.3401074</div>
-            </div>
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://ieeexplore.ieee.org/document/10530317" target="_blank" rel="noopener" aria-label="Paper: Sherlock in OSS: A Novel Approach of Content-Based Searching in Object Storage System">Paper</a>
+                <div class="pub-note">DOI: 10.1109/ACCESS.2024.3401074</div>
+              </div>
+            </article>
 
-            <div class="pub-card">
-              <div class="pub-venue">
-                IEEE Transactions on Cloud Computing &bull; 2022
-              </div>
-              <div class="pub-title">
-                Orchestrating Image Retrieval and Storage over a Cloud <span class="pub-title-ending">System <a
-                  class="pub-link"
-                  href="https://drive.google.com/file/d/1XNrqwMdFX9Ha9EG8mvvHh0ggvIA6dbQ2/view?usp=share_link"
-                  target="_blank"
-                  >PDF</a
-                ></span>
-              </div>
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">IEEE Transactions on Cloud Computing &bull; 2022</div>
+              <h3 class="pub-title">Orchestrating Image Retrieval and Storage over a Cloud System</h3>
               <div class="pub-authors">
                 Jannatun Noor, <strong>Joyanta Jyoti Mondal*</strong>, Md Nazrul
                 Huda Shanto*, Md Golam Hossain, Sriram Chellappan, A. B. M. Alim
                 Al Islam
               </div>
-              <div class="pub-note">
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://drive.google.com/file/d/1XNrqwMdFX9Ha9EG8mvvHh0ggvIA6dbQ2/view?usp=share_link" target="_blank" rel="noopener" aria-label="PDF: Orchestrating Image Retrieval and Storage over a Cloud System">PDF</a>
+                <div class="pub-note">
                 DOI: 10.1109/TCC.2022.3162790 &nbsp;&bull;&nbsp; * Equal
                 contribution
               </div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-venue">ACM COMPASS 2023</div>
-              <div class="pub-title">
-                'Khep': Exploring Factors that Influence the Preference of
-                Contractual Rides to Ride-Sharing Apps in <span class="pub-title-ending">Bangladesh <a
-                  class="pub-link"
-                  href="https://dl.acm.org/doi/10.1145/3588001.3609361"
-                  target="_blank"
-                  >Paper</a
-                ></span>
               </div>
+            </article>
+
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">ACM COMPASS 2023</div>
+              <h3 class="pub-title">'Khep': Exploring Factors that Influence the Preference of Contractual Rides to Ride-Sharing Apps in Bangladesh</h3>
               <div class="pub-authors">
                 Aditto Baidya Alok, Hasibul Sakib, Shamsil Arafin Ullah, Fardin
                 Huq, Riya Ghosh, <strong>Joyanta Jyoti Mondal</strong>, Md
                 Sadiqul Islam Sakif, Jannatun Noor
               </div>
-              <div class="pub-note">DOI: 10.1145/3588001.3609361</div>
-            </div>
-
-            <div class="pub-card">
-              <div class="pub-venue">ACM COMPASS 2022</div>
-              <div class="pub-title">
-                PLeaD-Net: Identifying Plant Leaf Diseases through Leveraging
-                Limited-Resource Deep Convolutional Neural <span class="pub-title-ending">Network <a
-                  class="pub-link"
-                  href="https://drive.google.com/file/d/1LOF3unPm1o78NVQoA7RrmuJZh9zLU7LZ/view?usp=share_link"
-                  target="_blank"
-                  >PDF</a
-                ></span>
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://dl.acm.org/doi/10.1145/3588001.3609361" target="_blank" rel="noopener" aria-label="Paper: &#x27;Khep&#x27;: Exploring Factors that Influence the Preference of Contractual Rides to Ride-Sharing Apps in Bangladesh">Paper</a>
+                <div class="pub-note">DOI: 10.1145/3588001.3609361</div>
               </div>
+            </article>
+
+            <article class="pub-card">
+              <div class="pub-venue eyebrow filled">ACM COMPASS 2022</div>
+              <h3 class="pub-title">PLeaD-Net: Identifying Plant Leaf Diseases through Leveraging Limited-Resource Deep Convolutional Neural Network</h3>
               <div class="pub-authors">
                 <strong>Joyanta Jyoti Mondal*</strong>, Md Farhadul Islam*,
                 Sarah Zabeen, A. B. M. Alim Al Islam, Jannatun Noor
               </div>
-              <div class="pub-note">
+              <div class="pub-foot">
+                <a class="btn btn-sm pub-link" href="https://drive.google.com/file/d/1LOF3unPm1o78NVQoA7RrmuJZh9zLU7LZ/view?usp=share_link" target="_blank" rel="noopener" aria-label="PDF: PLeaD-Net: Identifying Plant Leaf Diseases through Leveraging Limited-Resource Deep Convolutional Neural Network">PDF</a>
+                <div class="pub-note">
                 DOI: 10.1145/3530190.3534844 &nbsp;&bull;&nbsp; * Equal
                 contribution
               </div>
-            </div>
+              </div>
+            </article>
           </div>
         </section>
 
         <!-- HONORS -->
         <section id="honors">
-          <div class="section-label">Recognition</div>
-          <h2 class="section-title">Honors &amp; Awards</h2>
+          <div class="section-head"><h2 class="section-title">Honors &amp; Awards</h2></div>
 
           <div class="honors-grid">
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">Aug 2026</div>
-              <div class="honor-title">Quality Journal Publication Award</div>
+              <h3 class="honor-title">Quality Journal Publication Award</h3>
               <div class="honor-org">BRAC University</div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">May 2025</div>
-              <div class="honor-title">Quality Journal Publication Award</div>
+              <h3 class="honor-title">Quality Journal Publication Award</h3>
               <div class="honor-org">BRAC University</div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">Dec 2024</div>
-              <div class="honor-title">NRT-MIDAS Fellowship</div>
+              <h3 class="honor-title">NRT-MIDAS Fellowship</h3>
               <div class="honor-org">
                 NSF-Funded Program, University of Delaware
               </div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">2022 &ndash; 2024</div>
-              <div class="honor-title">NSF Research Support</div>
+              <h3 class="honor-title">NSF Research Support</h3>
               <div class="honor-org">
                 US National Science Foundation (Grant: 2014547)
               </div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">Aug 2023</div>
-              <div class="honor-title">Blazer Graduate Research Fellowship</div>
+              <h3 class="honor-title">Blazer Graduate Research Fellowship</h3>
               <div class="honor-org">
                 University of Alabama at Birmingham Graduate School
               </div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">Dec 2022</div>
-              <div class="honor-title">
+              <h3 class="honor-title">
                 Runner-Up, Best Research Poster Award
-              </div>
+              </h3>
               <div class="honor-org">
                 9th International Conference on Networking, Systems and Security
                 (NSysS 2022)
               </div>
             </div>
-            <div class="honor-card">
+            <div class="card honor-card">
               <div class="honor-year">2022</div>
-              <div class="honor-title">
+              <h3 class="honor-title">
                 Travel &amp; Participation Grant Fellowship
-              </div>
+              </h3>
               <div class="honor-org">ACM SIGCHI (for ACM COMPASS 2022)</div>
             </div>
           </div>
@@ -732,105 +519,104 @@
 
         <!-- REVIEWER -->
         <section id="reviewer">
-          <div class="section-label">Service</div>
-          <h2 class="section-title">Reviewer Work</h2>
+          <div class="section-head"><h2 class="section-title">Reviewer Work</h2></div>
 
           <ul class="reviewer-list">
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://nips.cc" target="_blank">NeurIPS 2025</a></span
+                <a href="https://nips.cc" target="_blank" rel="noopener">NeurIPS 2025</a></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://iclr.cc" target="_blank"
+                <a href="https://iclr.cc" target="_blank" rel="noopener"
                   >ICLR 2025 (13th)</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://cscw.acm.org/2024/" target="_blank"
+                <a href="https://cscw.acm.org/2024/" target="_blank" rel="noopener"
                   >ACM CSCW 2024</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Judge, Undergraduate Research Expo, University of Alabama at
                 Birmingham (Fall 2023)</span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://wvll.github.io" target="_blank"
+                <a href="https://wvll.github.io" target="_blank" rel="noopener"
                   >1st WACV 2024 Workshop on Vision-Based Understanding for
                   Low-Resource Languages (WVLL)</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://chi2024.acm.org" target="_blank"
+                <a href="https://chi2024.acm.org" target="_blank" rel="noopener"
                   >ACM CHI 2024</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://iclr.cc" target="_blank"
+                <a href="https://iclr.cc" target="_blank" rel="noopener"
                   >ICLR 2024 (12th)</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://nips.cc/" target="_blank"
+                <a href="https://nips.cc/" target="_blank" rel="noopener"
                   >NeurIPS 2023</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
                 <a
                   href="https://sites.google.com/view/mint-2024"
-                  target="_blank"
+                  target="_blank" rel="noopener"
                   >NeurIPS 2024 Workshop on Foundation Model Interventions (MINT
                   2024)</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://dl.acm.org/journal/acmjcss/" target="_blank"
+                <a href="https://dl.acm.org/journal/acmjcss/" target="_blank" rel="noopener"
                   >ACM Journal on Computing and Sustainable Societies</a
                 ></span
               >
             </li>
             <li class="reviewer-item">
-              <i class="fa fa-check-square-o"></i>
+              <i class="fa fa-check-square-o" aria-hidden="true"></i>
               <span
                 >Reviewer,
-                <a href="https://peerj.com/" target="_blank"
+                <a href="https://peerj.com/" target="_blank" rel="noopener"
                   >PeerJ Journal</a
                 ></span
               >
@@ -840,64 +626,63 @@
 
         <!-- SKILLS -->
         <section id="skills">
-          <div class="section-label">Competencies</div>
-          <h2 class="section-title">Skills</h2>
+          <div class="section-head"><h2 class="section-title">Skills</h2></div>
 
           <div class="skills-grid">
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">Programming Languages</div>
               <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">JavaScript</span>
+                <span class="chip skill-tag">Python</span>
+                <span class="chip skill-tag">Java</span>
+                <span class="chip skill-tag">PHP</span>
+                <span class="chip skill-tag">SQL</span>
+                <span class="chip skill-tag">JavaScript</span>
               </div>
             </div>
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">ML / DL Frameworks</div>
               <div class="skill-tags">
-                <span class="skill-tag">PyTorch</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Keras</span>
-                <span class="skill-tag">Django</span>
+                <span class="chip skill-tag">PyTorch</span>
+                <span class="chip skill-tag">TensorFlow</span>
+                <span class="chip skill-tag">Keras</span>
+                <span class="chip skill-tag">Django</span>
               </div>
             </div>
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">Python Libraries</div>
               <div class="skill-tags">
-                <span class="skill-tag">NumPy</span>
-                <span class="skill-tag">Pandas</span>
-                <span class="skill-tag">Matplotlib</span>
-                <span class="skill-tag">OpenCV</span>
-                <span class="skill-tag">Seaborn</span>
+                <span class="chip skill-tag">NumPy</span>
+                <span class="chip skill-tag">Pandas</span>
+                <span class="chip skill-tag">Matplotlib</span>
+                <span class="chip skill-tag">OpenCV</span>
+                <span class="chip skill-tag">Seaborn</span>
               </div>
             </div>
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">Developer Tools &amp; Cloud</div>
               <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Docker</span>
-                <span class="skill-tag">AWS</span>
-                <span class="skill-tag">Heroku</span>
-                <span class="skill-tag">VMware</span>
-                <span class="skill-tag">KVM</span>
-                <span class="skill-tag">VirtualBox</span>
+                <span class="chip skill-tag">Git</span>
+                <span class="chip skill-tag">Docker</span>
+                <span class="chip skill-tag">AWS</span>
+                <span class="chip skill-tag">Heroku</span>
+                <span class="chip skill-tag">VMware</span>
+                <span class="chip skill-tag">KVM</span>
+                <span class="chip skill-tag">VirtualBox</span>
               </div>
             </div>
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">Writing &amp; Productivity</div>
               <div class="skill-tags">
-                <span class="skill-tag">LaTeX</span>
-                <span class="skill-tag">Microsoft Office</span>
-                <span class="skill-tag">HTML/CSS</span>
+                <span class="chip skill-tag">LaTeX</span>
+                <span class="chip skill-tag">Microsoft Office</span>
+                <span class="chip skill-tag">HTML/CSS</span>
               </div>
             </div>
-            <div class="skill-group">
+            <div class="card skill-group">
               <div class="skill-group-title">Operating Systems</div>
               <div class="skill-tags">
-                <span class="skill-tag">Linux (Ubuntu)</span>
-                <span class="skill-tag">Windows</span>
+                <span class="chip skill-tag">Linux (Ubuntu)</span>
+                <span class="chip skill-tag">Windows</span>
               </div>
             </div>
           </div>
@@ -905,7 +690,7 @@
 
         <!-- EDUCATION -->
         <section id="education">
-          <h2 class="section-title">Education</h2>
+          <div class="section-head"><h2 class="section-title">Education</h2></div>
           <div class="timeline">
             <article class="timeline-item">
               <div class="timeline-period">Aug 2024 &ndash; Dec 2025</div>
@@ -943,7 +728,7 @@
 
         <!-- EXPERIENCE -->
         <section id="experience">
-          <h2 class="section-title">Experience</h2>
+          <div class="section-head"><h2 class="section-title">Experience</h2></div>
           <div class="timeline">
             <article class="timeline-item">
               <div class="timeline-period">Aug 2024 &ndash; Apr 2025</div>
@@ -999,8 +784,7 @@
 
         <!-- COLLABORATIONS -->
         <section id="collaborations">
-          <div class="section-label">Network</div>
-          <h2 class="section-title">Collaborations</h2>
+          <div class="section-head"><h2 class="section-title">Collaborations</h2></div>
           <p class="collab-note">
             My frequent collaborators include Dr. Ibne Farabi Shihab (Amazon),
             Meem Arafat Manab (phd researcher, Universidad Politécnica de Madrid,
@@ -1017,8 +801,7 @@
 
         <!-- LINEAGE -->
         <section id="lineage">
-          <div class="section-label">Academic Tree</div>
-          <h2 class="section-title">Lineage</h2>
+          <div class="section-head"><h2 class="section-title">Lineage</h2></div>
           <p class="collab-note">
             I am honored to be part of a distinguished academic lineage
             connecting to figures such as Isaac Newton, De Morgan, Thomson, and
@@ -1028,6 +811,10 @@
             src="images/Lineage of JJ.png"
             class="lineage-img"
             alt="Academic Lineage of Joyanta J. Mondal"
+            width="991"
+            height="781"
+            loading="lazy"
+            decoding="async"
           />
         </section>
 

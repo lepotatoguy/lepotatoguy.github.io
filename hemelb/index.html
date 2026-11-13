@@ -46,14 +46,14 @@
   <meta name="author" content="Joyanta Mondal" />
   <link rel="icon" type="image/png" href="images/hemelb.png">
   <script>
-    try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+    var t = null; try { t = localStorage.getItem("theme"); } catch (e) {} if (t !== "light" && t !== "dark") t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.setAttribute("data-theme", t);
   </script>
-  <link rel="stylesheet" href="assets/css/style.css?v=5">
+  <link rel="stylesheet" href="assets/css/style.css?v=7">
 </head>
 <body>
-
-  <header class="topbar">
-    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar">
+    <button class="topbar-menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
         <line x1="2" y1="4.5" x2="16" y2="4.5"/>
         <line x1="2" y1="9" x2="16" y2="9"/>
@@ -101,7 +101,7 @@
       </div>
     </nav>
 
-    <div class="main-content">
+    <main class="main-content" id="main-content">
       <div class="container">
 
         <h1>HemeLB Made Easy</h1>
@@ -206,9 +206,9 @@
 
 
       </div>
-    </div>
+    </main>
   </div>
 
-  <script defer src="assets/js/main.js?v=5"></script>
+  <script defer src="assets/js/main.js?v=7"></script>
 </body>
 </html>

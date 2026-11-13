@@ -14,19 +14,19 @@
   <meta property="og:image" content="https://lepotatoguy.github.io/images/profile.jpg">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Research: Efficient AI, Reliability, RL and Graph Learning | Joyanta J. Mondal">
-  <link rel="icon" href="../images/logo.png">
+  <link rel="icon" href="../images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="research.css?v=2">
-  <link rel="stylesheet" href="../css/nav-menu.css">
-  <link rel="stylesheet" href="../css/theme.css">
-</head>
+  <link rel="stylesheet" href="../css/tokens.css?v=3">
+  <link rel="stylesheet" href="../css/components.css?v=3">
+  <link rel="stylesheet" href="research.css?v=3">
+    </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-nav">
-    <div class="nav-inner">
-      <a class="nav-brand" href="../">Joyanta J. Mondal / <span lang="bn">জয়ন্ত মন্ডল</span></a>
+    <div class="container nav-inner">
+      <a class="nav-brand" href="../">Joyanta J. Mondal<span class="nav-brand-alt"> / <span lang="bn">জয়ন্ত মন্ডল</span></span></a>
       <nav id="site-menu" aria-label="Sections">
         <ul class="nav-links">
           <li><a href="../#news">News</a></li>
@@ -48,7 +48,7 @@
     </div>
   </header>
 
-  <main id="main-content" class="site-container page-shell research-highlights-page">
+  <main id="main-content" class="container page-shell research-highlights-page">
     <header class="page-intro research-intro">
       <p class="eyebrow">Research highlights</p>
       <h1>Learning systems that use limited resources well, with evidence we can trust.</h1>
@@ -56,38 +56,38 @@
     </header>
 
     <nav class="research-jump-grid" aria-label="Research areas">
-      <a class="research-jump" href="#certified-adaptation">
-        <span>Adaptation &amp; compression</span>
+      <a class="card research-jump" href="#certified-adaptation">
+        <span class="eyebrow quiet">Adaptation &amp; compression</span>
         <strong>Efficient Language Model Systems</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-teal" href="#evidence-evaluation">
-        <span>Evidence &amp; guarantees</span>
+      <a class="card research-jump" href="#evidence-evaluation">
+        <span class="eyebrow quiet">Evidence &amp; guarantees</span>
         <strong>Reliable AI</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-slate" href="#decisions-guarantees">
-        <span>Learning &amp; decisions</span>
+      <a class="card research-jump" href="#decisions-guarantees">
+        <span class="eyebrow quiet">Learning &amp; decisions</span>
         <strong>Reinforcement Learning</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-violet" href="#graph-representation-learning">
-        <span>Structure &amp; representations</span>
+      <a class="card research-jump" href="#graph-representation-learning">
+        <span class="eyebrow quiet">Structure &amp; representations</span>
         <strong>Graph Representation Learning</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-amber" href="#lightweight-vision">
-        <span>Environment &amp; agriculture</span>
+      <a class="card research-jump" href="#lightweight-vision">
+        <span class="eyebrow quiet">Environment &amp; agriculture</span>
         <strong>Computer vision</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-green" href="#lightweight-medical-imaging">
-        <span>Healthcare AI</span>
+      <a class="card research-jump" href="#lightweight-medical-imaging">
+        <span class="eyebrow quiet">Healthcare AI</span>
         <strong>Medical image analysis</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
-      <a class="research-jump research-jump-violet" href="#cloud-computing">
-        <span>Distributed systems</span>
+      <a class="card research-jump" href="#cloud-computing">
+        <span class="eyebrow quiet">Distributed systems</span>
         <strong>Cloud computing</strong>
         <span class="jump-arrow" aria-hidden="true">↓</span>
       </a>
@@ -103,15 +103,15 @@
           <div class="research-area-overview">
             <p>I study how to adapt and simplify language models with limited training and computation. One line of work asks when learned input vectors, called prefixes, can reproduce a low-rank adapter's effect inside a frozen attention head. Another examines which model weights to remove so a text classifier can still return a useful set of possible labels. Under the calibration assumptions, that set has a statistical guarantee on how often it contains the correct answer.</p>
             <ul class="topic-list">
-              <li>Parameter-Efficient Fine-Tuning</li>
-              <li>LoRA</li>
-              <li>Model Pruning</li>
-              <li>Conformal Prediction</li>
+              <li class="chip">Parameter-Efficient Fine-Tuning</li>
+              <li class="chip">LoRA</li>
+              <li class="chip">Model Pruning</li>
+              <li class="chip">Conformal Prediction</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>How can language models learn and adapt with less computation and memory?</li>
             <li>How can we make models smaller while preserving useful capabilities?</li>
@@ -123,13 +123,13 @@
           <span>Preprints</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2608.23744" target="_blank" rel="noreferrer">Candidate-Label Saliency for Efficient Conformal Pruning of Text Classifiers ↗</a></h4>
             <p>Uses sensitivity to plausible labels to choose which weights to remove. Studies how to keep prediction sets small after pruning, with coverage supplied by independent calibration, and checks how the benefits change with recovery training and equal time budgets.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.36766" target="_blank" rel="noreferrer">When Can Prefixes Compile LoRA? ↗</a></h4>
             <p>Identifies when a shared input prefix can reproduce a LoRA adapter's effect in a single frozen attention head under resource limits. Separates what is mathematically possible from what numerical precision allows; it does not establish whole-model equivalence.</p>
           </article>
@@ -145,15 +145,15 @@
           <div class="research-area-overview">
             <p>I study what evidence is needed to trust a model's predictions or approve an update. This includes checking whether an agent's memory contains enough information to answer a question, deriving statistical bounds on adapted models' prediction errors, and deciding how earlier evaluations can help when fresh human labels are expensive. Across these problems, I examine the assumptions behind a guarantee and when the available evidence falls short.</p>
             <ul class="topic-list">
-              <li>Evidence Sufficiency</li>
-              <li>PAC-Bayes Bounds</li>
-              <li>Label-Efficient Evaluation</li>
-              <li>Evaluator Drift</li>
+              <li class="chip">Evidence Sufficiency</li>
+              <li class="chip">PAC-Bayes Bounds</li>
+              <li class="chip">Label-Efficient Evaluation</li>
+              <li class="chip">Evaluator Drift</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>When should we trust an AI system's predictions?</li>
             <li>How can we measure uncertainty and recognize when more evidence is needed?</li>
@@ -165,18 +165,18 @@
           <span>Preprints</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.32269" target="_blank" rel="noreferrer">Before Answering: Evidence Sufficiency ↗</a></h4>
             <p>Shows how a benchmark can accidentally reveal missing evidence through memory length. Introduces size-matched examples and studies an estimator of whether the remaining memory supports an answer, including where it fails to generalize.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.32267" target="_blank" rel="noreferrer">When Can Old Evaluations Certify a New Model? ↗</a></h4>
             <p>Distinguishes when old evaluator errors can support a new release decision from when they can only guide fresh checks. Introduces a sequential test that can use helpful history while retaining validity when that history is unreliable.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.32271" target="_blank" rel="noreferrer">Certification Frontiers for Gaussian LoRA ↗</a></h4>
             <p>Studies when a distribution over low-rank adapters supports a useful bound on prediction error. Identifies limits that better complexity accounting cannot fix, and shows how to tighten part of a bound without changing predictions.</p>
           </article>
@@ -192,15 +192,15 @@
           <div class="research-area-overview">
             <p>I study how agents learn to choose actions from feedback while respecting costs and constraints. My work asks when an agent should pay for language-model advice, how to learn which choices work best while guaranteeing a minimum share of exposure, and how to compare states without checking every pair. For example, a recommendation system may need to give each provider a minimum number of opportunities to be shown. Fair exposure in recommendation is one way this research connects to AI for Social Good. Related work on graph-structured bandits appears in the <a href="#graph-representation-learning">graph representation learning section</a>.</p>
             <ul class="topic-list">
-              <li>Reinforcement Learning</li>
-              <li>Contextual Bandits</li>
-              <li>Cost-Aware Advice</li>
-              <li>Bisimulation Metrics</li>
+              <li class="chip">Reinforcement Learning</li>
+              <li class="chip">Contextual Bandits</li>
+              <li class="chip">Cost-Aware Advice</li>
+              <li class="chip">Bisimulation Metrics</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>How can agents learn to make good decisions from limited feedback?</li>
             <li>How should agents balance exploring new choices with using what they already know?</li>
@@ -212,18 +212,18 @@
           <span>Preprints</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2609.29548" target="_blank" rel="noreferrer">When Is Language-Model Advice Worth Buying? ↗</a></h4>
             <p>Studies a controller that predicts whether advice is worth requesting. Compares selective querying with simple schedules at matched budgets, showing why fewer calls alone do not establish better timing or a reliable deployment guarantee.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2607.22935" target="_blank" rel="noreferrer">Discrepancy-Rounded Fair Bandits ↗</a></h4>
             <p>Turns fractional allocation plans into actual choices that meet minimum-exposure requirements in every time block. Derives bounds on reward lost relative to the best fair allocation, with additional conditions for overlapping groups.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2608.06762" target="_blank" rel="noreferrer">Sub-Quadratic Bisimulation Metrics ↗</a></h4>
             <p>Approximates how similarly states behave by updating selected pairs instead of every pair. Under structural assumptions, reduces pairwise computation and returns lower and upper bounds that show when the approximation is too uncertain to use.</p>
           </article>
@@ -239,15 +239,15 @@
           <div class="research-area-overview">
             <p>I explore how relationships between entities can help a model learn. In knowledge graphs, this means learning vector representations of entities and their relationships to predict missing links. In contextual bandits, it means using connections among available choices to build a smaller representation for learning from rewards. My work examines which parts of the graph help and when its structure can be misleading.</p>
             <ul class="topic-list">
-              <li>Knowledge Graph Embeddings</li>
-              <li>Negative Sampling</li>
-              <li>GFlowNets</li>
-              <li>Spectral Representations</li>
+              <li class="chip">Knowledge Graph Embeddings</li>
+              <li class="chip">Negative Sampling</li>
+              <li class="chip">GFlowNets</li>
+              <li class="chip">Spectral Representations</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>How can models learn from relationships between entities?</li>
             <li>What makes a graph representation useful for a learning task?</li>
@@ -259,13 +259,13 @@
           <span>Preprints</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">EACL 2027 · Main Conference</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">EACL 2027 · Main Conference</p>
             <h4><a href="https://arxiv.org/abs/2608.23849" target="_blank" rel="noreferrer">FlowNeg: GFlowNet-Guided Diverse Hard Negative Sampling for Knowledge Graph Embedding ↗</a></h4>
             <p>Trains a generative sampler to produce challenging, varied counterexamples for knowledge graph embeddings. Uses training-graph structure to reduce conflicts with missing true links, while recognizing that an unobserved link is not necessarily false.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2026</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2026</p>
             <h4><a href="https://arxiv.org/abs/2606.27917" target="_blank" rel="noreferrer">Graph Dimensionality Reduction for Contextual Bandits ↗</a></h4>
             <p>Uses graph structure to build a smaller feature space for choosing actions from feedback. Derives learning guarantees that account for imperfect structure and provides a diagnostic for when graph-based reduction is likely to help.</p>
           </article>
@@ -281,15 +281,15 @@
           <div class="research-area-overview">
             <p>I build lightweight deep learning models for real-world vision problems under limited compute, from estimating local air quality with smartphone photos to identifying plant leaf diseases.</p>
             <ul class="topic-list">
-              <li>Computer Vision</li>
-              <li>Lightweight Models</li>
-              <li>Environmental Sensing</li>
-              <li>Agriculture</li>
+              <li class="chip">Computer Vision</li>
+              <li class="chip">Lightweight Models</li>
+              <li class="chip">Environmental Sensing</li>
+              <li class="chip">Agriculture</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>How small can a vision model be while still solving a real-world task?</li>
             <li>Can everyday smartphone images measure local conditions such as air quality?</li>
@@ -301,13 +301,13 @@
           <span>Published work</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">Scientific Reports</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">Scientific Reports</p>
             <h4><a href="https://www.nature.com/articles/s41598-023-51015-1" target="_blank" rel="noreferrer">Air Quality Index from Smartphone Images ↗</a></h4>
             <p>Estimates a location-specific aggregated air quality index from smartphone-captured images with an efficient deep convolutional network.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">ACM COMPASS 2022</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">ACM COMPASS 2022</p>
             <h4><a href="https://drive.google.com/file/d/1LOF3unPm1o78NVQoA7RrmuJZh9zLU7LZ/view?usp=share_link" target="_blank" rel="noreferrer">PLeaD-Net: Plant Leaf Disease Network ↗</a></h4>
             <p>A limited-resource deep convolutional network for identifying plant leaf diseases.</p>
           </article>
@@ -323,15 +323,15 @@
           <div class="research-area-overview">
             <p>I work on medical image analysis through small architectural changes, such as a single involution layer before a CNN that improves classification and segmentation with a negligible number of extra parameters, along with polyp segmentation and eye-tracking-based autism classification.</p>
             <ul class="topic-list">
-              <li>Medical Imaging</li>
-              <li>Image Segmentation</li>
-              <li>Involution</li>
-              <li>Healthcare AI</li>
+              <li class="chip">Medical Imaging</li>
+              <li class="chip">Image Segmentation</li>
+              <li class="chip">Involution</li>
+              <li class="chip">Healthcare AI</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>Can a single involution layer improve medical image classification and segmentation at negligible parameter cost?</li>
             <li>When do additional involution layers start to hurt predictions on medical images?</li>
@@ -343,18 +343,18 @@
           <span>Published work &amp; under review</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">arXiv 2024</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">arXiv 2024</p>
             <h4><a href="https://arxiv.org/abs/2409.18506" target="_blank" rel="noreferrer">Med-IC: Single-Layer Involution for Medical Images ↗</a></h4>
             <p>Adds a single involution layer before a CNN to improve medical image classification and segmentation with a negligible number of extra parameters.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">Engineering Applications of AI</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">Engineering Applications of AI</p>
             <h4><a href="https://arxiv.org/pdf/2401.03575.pdf" target="_blank" rel="noreferrer">Involution Fused Convolution for ASD ↗</a></h4>
             <p>Combines involution and convolution to classify eye-tracking patterns of children with autism spectrum disorder.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">ICCV Workshops 2025</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">ICCV Workshops 2025</p>
             <h4><a href="https://openaccess.thecvf.com/content/ICCV2025W/CVAMD/papers/Islam_BAMPolyp_Bi-Axial_Mamba_Bottleneck_for_Gastrointestinal_Polyp_Segmentation_ICCVW_2025_paper.pdf" target="_blank" rel="noreferrer">BAMPolyp: Bi-Axial Mamba Bottleneck ↗</a></h4>
             <p>A bi-axial Mamba bottleneck for segmenting gastrointestinal polyps.</p>
           </article>
@@ -370,15 +370,15 @@
           <div class="research-area-overview">
             <p>I also work on cloud systems for image storage, retrieval, and content-based search in object storage. A concern across these projects is efficient deployment in environments with limited resources.</p>
             <ul class="topic-list">
-              <li>Cloud Computing</li>
-              <li>Object Storage</li>
-              <li>Content-Based Retrieval</li>
-              <li>Distributed Systems</li>
+              <li class="chip">Cloud Computing</li>
+              <li class="chip">Object Storage</li>
+              <li class="chip">Content-Based Retrieval</li>
+              <li class="chip">Distributed Systems</li>
             </ul>
           </div>
         </div>
         <div class="research-question-band">
-          <p class="research-question-label">Questions I study</p>
+          <p class="eyebrow research-question-label">Questions I study</p>
           <ul>
             <li>How can image storage and retrieval be orchestrated efficiently across a cloud system with limited resources?</li>
             <li>How can object storage search by content rather than file name while remaining efficient in resource-constrained environments?</li>
@@ -389,13 +389,13 @@
           <span>Published work</span>
         </div>
         <div class="research-work-grid">
-          <article class="research-work-card">
-            <p class="work-meta">IEEE Trans. Cloud Computing 2022</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">IEEE Trans. Cloud Computing 2022</p>
             <h4><a href="https://drive.google.com/file/d/1XNrqwMdFX9Ha9EG8mvvHh0ggvIA6dbQ2/view?usp=share_link" target="_blank" rel="noreferrer">Orchestrating Image Retrieval and Storage over a Cloud System ↗</a></h4>
             <p>Orchestrates image retrieval and storage across a cloud system.</p>
           </article>
-          <article class="research-work-card">
-            <p class="work-meta">IEEE Access 2024</p>
+          <article class="card research-work-card">
+            <p class="eyebrow">IEEE Access 2024</p>
             <h4><a href="https://ieeexplore.ieee.org/document/10530317" target="_blank" rel="noreferrer">Sherlock in OSS ↗</a></h4>
             <p>A content-based searching approach for object storage systems.</p>
           </article>
@@ -413,7 +413,10 @@
 
     <div class="page-cta">
       <p>See the complete publication record, including papers beyond these selected projects.</p>
-      <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" class="button primary" target="_blank" rel="noreferrer">View all publications</a>
+      <div class="page-cta-links">
+      <a href="../papers/" class="btn">Papers I read</a>
+      <a href="https://scholar.google.com/citations?user=lIwU1F0AAAAJ" class="btn btn-primary" target="_blank" rel="noreferrer">View all publications</a>
+      </div>
     </div>
   </main>
 

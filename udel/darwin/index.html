@@ -197,12 +197,12 @@
 </script>
 <link rel="canonical" href="https://lepotatoguy.github.io/udel/darwin/">
 <link rel="icon" type="image/png" href="images/ud-logo.png">
-<script>try { const theme = localStorage.getItem('theme'); if (theme === 'light' || theme === 'dark') document.documentElement.setAttribute('data-theme', theme); } catch (e) {}</script>
-<link rel="stylesheet" href="../../hemelb/assets/css/style.css?v=5">
+<script>
+    var t = null; try { t = localStorage.getItem("theme"); } catch (e) {} if (t !== "light" && t !== "dark") t = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; document.documentElement.setAttribute("data-theme", t);
+  </script>
+<link rel="stylesheet" href="../../hemelb/assets/css/style.css?v=7">
 <style>
 html { scroll-padding-top: 5rem; }
-.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 200; padding: .75rem; background: var(--color-bg); }
-.skip-link:focus { top: .5rem; }
 figure { margin: 1.5rem 0; }
 figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--color-border); border-radius: 4px; }
 figcaption, .source-meta { color: var(--color-text-muted); font-size: .875rem; }
@@ -212,9 +212,9 @@ kbd { border: 1px solid var(--color-border); border-radius: 3px; padding: .1em .
 </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header class="topbar">
-<button class="topbar-menu-btn" id="menu-btn" type="button" aria-label="Toggle navigation" aria-controls="sidebar"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4.5h14M2 9h14M2 13.5h14"/></svg></button>
+<button class="topbar-menu-btn" id="menu-btn" type="button" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 4.5h14M2 9h14M2 13.5h14"/></svg></button>
 <a href="#" class="topbar-logo"><img src="images/ud-logo.png" alt="" width="96" height="87" decoding="async">DARWIN Made Easy</a>
 <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme" title="Switch colour theme">
 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -227,7 +227,7 @@ kbd { border: 1px solid var(--color-border); border-radius: 3px; padding: .1em .
 <div class="sidebar-section"><span class="sidebar-section-label">Getting started</span><ul class="sidebar-nav"><li><a href="#project-documentation">Documentation</a></li><li><a href="#connect">Connect to DARWIN</a></li><li><a href="#interactive">Interactive sessions</a></li><li><a href="#batch">Batch jobs and scripts</a></li><li><a href="#jupyter">Anaconda and Jupyter</a></li><li><a href="#transfer">Transfer files</a></li><li><a href="#spack">Spack package management</a></li><li><a href="#acknowledgements">DARWIN acknowledgements</a></li></ul></div>
 <div class="sidebar-section"><span class="sidebar-section-label">Resources</span><ul class="sidebar-nav"><li><a href="https://docs.hpc.udel.edu/start">Official HPC documentation</a></li></ul></div>
 </nav>
-<main class="main-content" id="main"><div class="container">
+<main class="main-content" id="main-content"><div class="container">
 <h1>UD DARWIN HPC Made Easy</h1>
 <p class="page-subtitle">Set up a development environment on the University of Delaware's DARWIN HPC cluster.</p>
 <p><a href="https://docs.hpc.udel.edu/abstract/darwin/darwin">DARWIN</a> (Delaware Advanced Research Workforce and Innovation Network) is the University of Delaware's big data and high-performance computing system, designed to support research and education in Delaware. The system was funded by the National Science Foundation.</p>
@@ -271,6 +271,6 @@ vim ~/.spack/packages.yaml</code></pre><p>See <a href="https://spack.readthedocs
 <footer><a href="https://docs.hpc.udel.edu/abstract/darwin/darwin">Official Documentation Link</a></footer>
 </div></main>
 </div>
-<script src="../../hemelb/assets/js/main.js?v=5"></script>
+<script src="../../hemelb/assets/js/main.js?v=7"></script>
 </body>
 </html>

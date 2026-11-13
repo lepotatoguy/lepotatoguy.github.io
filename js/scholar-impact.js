@@ -4,7 +4,8 @@
 
   var DATA_URL = "data/scholar_citations.json";
   var CHART_PAD_PX = 14;
-  var LINE_COLOR = "#2c86c9";
+  var FILL_ALPHA = 0.16;
+  var RESIZE_DEBOUNCE_MS = 120;
   var DAY_MS = 86400000;
 
   function formatNumber(value) {
@@ -44,6 +45,13 @@
     return recorded.concat(yearEnds).sort(function (a, b) { return a.t - b.t; });
   }
 
+  // Chart colours come from the page's CSS custom properties so they follow the theme.
+  function themeColors() {
+    var style = getComputedStyle(document.documentElement);
+    var read = function (name) { return style.getPropertyValue(name).trim(); };
+    return { stroke: read("--chart-stroke"), page: read("--page"), line: read("--line") };
+  }
+
   function drawChart(canvas, series) {
     if (!canvas || !canvas.getContext) return;
     var ratio = window.devicePixelRatio || 1;
@@ -53,9 +61,10 @@
     canvas.height = height;
 
     var ctx = canvas.getContext("2d");
+    var colors = themeColors();
     var pad = CHART_PAD_PX * ratio;
     ctx.clearRect(0, 0, width, height);
-    ctx.strokeStyle = "rgba(38, 90, 130, 0.14)";
+    ctx.strokeStyle = colors.line;
     ctx.lineWidth = 1.4 * ratio;
     ctx.beginPath();
     ctx.moveTo(pad, height - pad);
@@ -76,20 +85,19 @@
       };
     });
 
-    var fill = ctx.createLinearGradient(0, pad, 0, height - pad);
-    fill.addColorStop(0, "rgba(62, 137, 193, 0.24)");
-    fill.addColorStop(1, "rgba(62, 137, 193, 0.02)");
     ctx.beginPath();
     ctx.moveTo(xy[0].x, height - pad);
     xy.forEach(function (p) { ctx.lineTo(p.x, p.y); });
     ctx.lineTo(xy[xy.length - 1].x, height - pad);
     ctx.closePath();
-    ctx.fillStyle = fill;
+    ctx.fillStyle = colors.stroke;
+    ctx.globalAlpha = FILL_ALPHA;
     ctx.fill();
+    ctx.globalAlpha = 1;
 
     ctx.beginPath();
     xy.forEach(function (p, i) { i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y); });
-    ctx.strokeStyle = LINE_COLOR;
+    ctx.strokeStyle = colors.stroke;
     ctx.lineWidth = 2.5 * ratio;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -98,7 +106,7 @@
     var last = xy[xy.length - 1];
     ctx.beginPath();
     ctx.arc(last.x, last.y, 4.5 * ratio, 0, Math.PI * 2);
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = colors.page;
     ctx.fill();
     ctx.lineWidth = 2 * ratio;
     ctx.stroke();
@@ -123,8 +131,25 @@
 
     var canvas = card.querySelector("[data-scholar-chart]");
     var series = buildSeries(data.yearly, data.history);
-    drawChart(canvas, series);
-    window.addEventListener("resize", function () { drawChart(canvas, series); });
+    var redraw = function () { drawChart(canvas, series); };
+    redraw();
+    watchRedraw(redraw);
+  }
+
+  var redrawFn = null;
+  var resizeTimer = 0;
+
+  // One debounced resize listener and one theme observer, however often render runs.
+  function watchRedraw(redraw) {
+    var first = redrawFn === null;
+    redrawFn = redraw;
+    if (!first) return;
+    window.addEventListener("resize", function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { redrawFn(); }, RESIZE_DEBOUNCE_MS);
+    });
+    new MutationObserver(function () { redrawFn(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
   }
 
   function showFallback(card) {

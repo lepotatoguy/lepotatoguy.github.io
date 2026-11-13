@@ -9,13 +9,14 @@
   --anime-heading: #263b4e;
   --anime-tag: #fffdf7;
   --anime-tag-ink: #665745;
+  --anime-on-accent: #ffffff;
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
   align-items: center;
-  gap: 32px;
-  padding: 28px;
+  gap: var(--s-6);
+  padding: var(--s-5);
   border: 1px solid var(--anime-line);
-  border-radius: 10px;
+  border-radius: var(--r-md);
   background: var(--anime-paper);
   color: var(--anime-body);
 }
@@ -49,7 +50,7 @@
 }
 .anime-copy .anime-eyebrow {
   color: var(--anime-accent);
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -61,12 +62,12 @@
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 14px;
+  margin-bottom: var(--s-3);
 }
-.anime-copy p { font-size: 0.93rem; }
-.anime-watchlist { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin-top: 16px; }
-.anime-watchlist button { font: inherit; cursor: pointer; padding: 4px 10px; border: 1px solid var(--anime-line); border-radius: 5px; background: var(--anime-tag); color: var(--anime-tag-ink); font-size: 0.8rem; }
-.anime-watchlist button[aria-pressed="true"] { background: var(--anime-accent); border-color: var(--anime-accent); color: #fff; font-weight: 600; }
+.anime-copy p { font-size: var(--fs-sm); }
+.anime-watchlist { display: flex; flex-wrap: wrap; gap: var(--s-2); list-style: none; margin-top: var(--s-4); }
+.anime-watchlist button { font: inherit; cursor: pointer; min-height: 36px; padding: 0 var(--s-3); border: 1px solid var(--anime-line); border-radius: var(--r-md); background: var(--anime-tag); color: var(--anime-tag-ink); font-size: var(--fs-xs); }
+.anime-watchlist button[aria-pressed="true"] { background: var(--anime-accent); border-color: var(--anime-accent); color: var(--anime-on-accent); font-weight: 600; }
 .anime-watchlist button:hover { border-color: var(--anime-accent); }
 .anime-watchlist button:focus-visible { outline: 2px solid var(--anime-accent); outline-offset: 3px; }
 .anime-card[data-theme="naruto"] {
@@ -114,8 +115,53 @@
   --anime-poster: #f5d6eb; --anime-poster-line: #ce9dbc; --anime-poster-ink: #653b70;
   --anime-accent: #913c7d; --anime-heading: #653b70; --anime-tag: #fffafe; --anime-tag-ink: #6a4761;
 }
-@media (max-width: 640px) {
-  .anime-card { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+/* Dark theme: card keeps its own palette, only paper, text and tag colours change */
+:root[data-theme="dark"] .anime-card {
+  --anime-paper: #28241c; --anime-line: #4f4534; --anime-body: #e0d6c6;
+  --anime-heading: #f3e7d0; --anime-tag: #332d22; --anime-tag-ink: #e0d6c6;
+}
+:root[data-theme="dark"] .anime-card[data-theme="naruto"] {
+  --anime-paper: #29231d; --anime-line: #524433; --anime-body: #e3d4c4;
+  --anime-heading: #edd9c3; --anime-tag: #352b22; --anime-tag-ink: #e3d4c4;
+}
+:root[data-theme="dark"] .anime-card[data-theme="one-punch-man"] {
+  --anime-paper: #2c241c; --anime-line: #5b4b32; --anime-body: #e4d8c4;
+  --anime-heading: #f3deac; --anime-tag: #362e22; --anime-tag-ink: #e4d8c4;
+}
+:root[data-theme="dark"] .anime-card[data-theme="jujutsu-kaisen"] {
+  --anime-paper: #211d2c; --anime-line: #47395d; --anime-body: #d8d0e3;
+  --anime-heading: #e0cff7; --anime-tag: #2c243b; --anime-tag-ink: #d8d0e3;
+}
+:root[data-theme="dark"] .anime-card[data-theme="demon-slayer"] {
+  --anime-paper: #192922; --anime-line: #345246; --anime-body: #cdded6;
+  --anime-heading: #b8ddca; --anime-tag: #22342b; --anime-tag-ink: #cdded6;
+}
+:root[data-theme="dark"] .anime-copy .anime-eyebrow { color: var(--anime-heading); }
+:root[data-theme="dark"] .anime-card[data-theme="dragon-ball-z"] {
+  --anime-paper: #2c231b; --anime-line: #59432c; --anime-body: #e5d3bd;
+  --anime-heading: #f1c889; --anime-tag: #372a1d; --anime-tag-ink: #e5d3bd;
+}
+:root[data-theme="dark"] .anime-card[data-theme="attack-on-titan"] {
+  --anime-paper: #21271e; --anime-line: #414e36; --anime-body: #d4ddc9;
+  --anime-heading: #c0d4ac; --anime-tag: #2a3324; --anime-tag-ink: #d4ddc9;
+}
+:root[data-theme="dark"] .anime-card[data-theme="death-note"] {
+  --anime-paper: #252123; --anime-line: #4a3b3e; --anime-body: #ddd0d0;
+  --anime-heading: #e4b5b8; --anime-tag: #32282b; --anime-tag-ink: #ddd0d0;
+}
+:root[data-theme="dark"] .anime-card[data-theme="solo-leveling"] {
+  --anime-paper: #1e2030; --anime-line: #3c3c60; --anime-body: #d0d2e9;
+  --anime-heading: #bab8f5; --anime-tag: #29293e; --anime-tag-ink: #d0d2e9;
+}
+:root[data-theme="dark"] .anime-card[data-theme="jojos-bizarre-adventure"] {
+  --anime-paper: #2c1e2a; --anime-line: #573850; --anime-body: #e5cde0;
+  --anime-heading: #edb6dc; --anime-tag: #392734; --anime-tag-ink: #e5cde0;
+}
+:root[data-theme="dark"] .anime-watchlist button:focus-visible { outline-color: var(--anime-heading); }
+:root[data-theme="dark"] .anime-watchlist button:hover { border-color: var(--anime-heading); }
+
+@media (max-width: 820px) {
+  .anime-card { grid-template-columns: 1fr; gap: var(--s-5); padding: var(--s-5); }
   .anime-poster { width: 190px; margin: 0 auto; }
   .anime-poster img { width: 150px; }
 }
