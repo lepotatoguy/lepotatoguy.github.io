@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pre.parentNode.insertBefore(wrapper, pre);
     wrapper.appendChild(pre);
     wrapper.appendChild(button);
+    if (pre.scrollWidth > pre.clientWidth) pre.setAttribute("tabindex", "0");
   });
 
   // Sidebar drawer (mobile)
@@ -35,14 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("overlay");
 
   if (menuBtn && sidebar && overlay) {
-    menuBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("open");
-      overlay.classList.toggle("open");
-    });
-
-    overlay.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
+    const setDrawer = open => {
+      sidebar.classList.toggle("open", open);
+      overlay.classList.toggle("open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+    menuBtn.addEventListener("click", () => setDrawer(!sidebar.classList.contains("open")));
+    overlay.addEventListener("click", () => setDrawer(false));
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && sidebar.classList.contains("open")) {
+        setDrawer(false);
+        menuBtn.focus();
+      }
     });
   }
 
@@ -95,7 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) {
     const root = document.documentElement;
-    const current = () => root.getAttribute("data-theme") || "light";
+    const current = () => {
+      const t = root.getAttribute("data-theme");
+      if (t === "light" || t === "dark") return t;
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    };
     const label = () => {
       const dark = current() === "dark";
       const text = dark ? "Switch to light mode" : "Switch to dark mode";

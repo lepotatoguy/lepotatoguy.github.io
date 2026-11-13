@@ -2,19 +2,20 @@
    DESIGN TOKENS
    ============================================================ */
 :root {
-  --color-bg:           #f6f8fa;
+  --color-bg:           #f9fafb;
   --color-surface:      #ffffff;
   --color-border:       #e5e7eb;
   --color-border-strong:#d1d5db;
+  --color-ink:          #111827;
 
-  --color-text:         #1f2328;
-  --color-text-muted:   #59636e;
-  --color-text-subtle:  #8b949e;
+  --color-text:         #374151;
+  --color-text-muted:   #6b7280;
+  --color-text-subtle:  #9ca3af;
 
-  --color-accent:       #1d4ed8;
-  --color-accent-hover: #1e40af;
+  --color-accent:       #2563eb;
+  --color-accent-hover: #1d4ed8;
   --color-accent-bg:    #eff6ff;
-  --color-accent-text:  #1e40af;
+  --color-accent-text:  #1d4ed8;
 
   --color-code-bg:      #0f1621;
   --color-code-fg:      #d4cfc8;
@@ -41,9 +42,9 @@
   --space-10: 40px;
   --space-12: 48px;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
 
   --shadow-card: 0 1px 3px rgba(26, 25, 23, 0.06),
                  0 8px 24px rgba(26, 25, 23, 0.07),
@@ -55,8 +56,8 @@
   --topbar-height:           56px;
   --toc-rail-width:          220px;
   --content-max:             820px;
-  --sidebar-bg:              #fafbfc;
-  --sidebar-item-hover:      #eef1f4;
+  --sidebar-bg:              #f9fafb;
+  --sidebar-item-hover:      #f3f4f6;
   --sidebar-item-active-bg:  var(--color-accent-bg);
   --sidebar-item-active-text:var(--color-accent-text);
 }
@@ -275,12 +276,15 @@ body {
 
   .sidebar {
     transform: translateX(-100%);
-    transition: transform 200ms ease, box-shadow 200ms ease;
+    visibility: hidden;
+    transition: transform 200ms ease, box-shadow 200ms ease, visibility 0s linear 200ms;
     z-index: 90;
   }
 
   .sidebar.open {
     transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
     box-shadow: 4px 0 24px rgba(26, 25, 23, 0.1);
   }
 
@@ -316,7 +320,7 @@ h1, h2, h3, h4 {
   line-height: var(--leading-heading);
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--color-text);
+  color: var(--color-ink);
 }
 
 h1 {
@@ -336,7 +340,7 @@ h2 {
 h3 {
   font-size: 1.05rem;
   margin: var(--space-8) 0 var(--space-2);
-  color: var(--color-text);
+  color: var(--color-ink);
   font-weight: 600;
 }
 
@@ -392,7 +396,7 @@ code {
 
 :not(pre) > code {
   background: #f0ede8;
-  color: #b45309;
+  color: #92400e;
   padding: 1px 5px;
   border-radius: var(--radius-sm);
   border: 1px solid #e5ddd3;
@@ -411,7 +415,7 @@ code {
   content: attr(data-lang);
   display: block;
   background: #1a2540;
-  color: #5b7db5;
+  color: #8fa8d8;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
@@ -515,7 +519,7 @@ pre::-webkit-scrollbar-thumb { background: #2d3f55; border-radius: 3px; }
 footer {
   font-family: var(--font-ui);
   font-size: var(--text-sm);
-  color: var(--color-text-subtle);
+  color: var(--color-text-muted);
   margin-top: var(--space-12);
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border);
@@ -588,6 +592,29 @@ summary:focus-visible {
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
+
+/* Focus ring for scrollable code blocks, visible on the dark background */
+pre:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+.code-block:focus-within { border-color: var(--color-accent); }
+
+/* Skip link: hidden until keyboard focus */
+.skip-link {
+  position: fixed;
+  left: var(--space-4);
+  top: -5rem;
+  z-index: 200;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+}
+.skip-link:focus { top: var(--space-2); }
 
 /* Copy button: always visible on touch screens and when focused */
 .code-block:focus-within .copy-btn { opacity: 1; }
@@ -702,15 +729,16 @@ hr {
 :root[data-theme="dark"] {
   --color-bg:            #16181c;
   --color-surface:       #1e2126;
-  --color-border:        #2e333a;
+  --color-border:        #333940;
   --color-border-strong: #4a5059;
-  --color-text:          #e7e4df;
+  --color-ink:           #e7e4df;
+  --color-text:          #c7cbd1;
   --color-text-muted:    #a8a29b;
-  --color-text-subtle:   #8a847d;
-  --color-accent:        #7aa2ff;
-  --color-accent-hover:  #a3bfff;
+  --color-text-subtle:   #6b7280;
+  --color-accent:        #8bb1ff;
+  --color-accent-hover:  #b3caff;
   --color-accent-bg:     #1c2740;
-  --color-accent-text:   #a3bfff;
+  --color-accent-text:   #b3caff;
   --sidebar-bg:          #1a1d21;
   --sidebar-item-hover:  #262a30;
   --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -780,11 +808,16 @@ hr {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
 }
 
 .tutorial-screenshot figcaption {
   margin-top: 0.5rem;
   color: var(--color-text-muted);
   font-size: 0.875rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none; animation: none; }
 }
