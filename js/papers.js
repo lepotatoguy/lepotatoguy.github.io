@@ -37,25 +37,25 @@
 
   const $ = s => document.querySelector(s);
   const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  let papers = [], activeTag = "", query = "", loadError = "";
+  let routed = false, papers = [], activeTag = "", query = "", loadError = "";
 
   const authorsHtml = p => (p.authors ? '<p class="paper-authors">' + esc(p.authors) + "</p>" : "");
-  const tagsHtml = p => (p.tags || []).map(t => '<span class="paper-tag">' + esc(t) + "</span>").join("") +
+  const tagsHtml = p => (p.tags || []).map(t => '<span class="paper-tag chip">' + esc(t) + "</span>").join("") +
     (p.added ? '<span class="paper-added">Read ' + esc(p.added) + "</span>" : "");
 
   function drawChips() {
     $("#paper-chips").innerHTML = collectTags(papers).map(t =>
-      '<button class="paper-chip" type="button" aria-pressed="' + (t === activeTag) + '" data-tag="' + esc(t) + '">' + esc(t) + "</button>").join("");
+      '<button class="paper-chip chip" type="button" aria-pressed="' + (t === activeTag) + '" data-tag="' + esc(t) + '">' + esc(t) + "</button>").join("");
   }
 
   function drawList() {
     const rows = filterPapers(papers, activeTag, query);
     $("#paper-count").textContent = papers.length ? rows.length + " of " + papers.length + " papers" : "";
     $("#paper-list").innerHTML = rows.length ? rows.map(p => `
-      <a class="paper-card" href="#/p/${encodeURIComponent(p.slug)}">
+      <a class="card paper-card" href="#/p/${encodeURIComponent(p.slug)}">
         <div class="paper-year">${esc(p.year)}</div>
         <div>
-          <p class="work-meta">${esc(p.venue || "Preprint")}</p>
+          <p class="eyebrow">${esc(p.venue || "Preprint")}</p>
           <h2>${esc(p.title)}</h2>
           ${authorsHtml(p)}
           ${p.summary ? `<p class="paper-summary">${esc(p.summary)}</p>` : ""}
@@ -93,14 +93,15 @@
     const view = $("#paper-detail");
     if (!p) {
       view.innerHTML = '<a class="paper-back" href="#/">Back to all papers</a><p class="paper-empty">Paper not found.</p>';
+      focusEl(view.querySelector(".paper-back"));
       return;
     }
     document.title = p.title + " | Papers I read | Joyanta J. Mondal";
     const links = paperLinks(p).map(([label, url]) =>
-      '<a class="paper-button" href="' + esc(url) + '" target="_blank" rel="noreferrer">' + esc(label) + " ↗</a>").join("");
+      '<a class="btn paper-button" href="' + esc(url) + '" target="_blank" rel="noreferrer">' + esc(label) + " ↗</a>").join("");
     view.innerHTML = `
       <a class="paper-back" href="#/">Back to all papers</a>
-      <p class="work-meta">${esc(p.venue || "Preprint")} ${esc(p.year)}</p>
+      <p class="eyebrow">${esc(p.venue || "Preprint")} ${esc(p.year)}</p>
       <h1>${esc(p.title)}</h1>
       ${authorsHtml(p)}
       <div class="paper-tags">${tagsHtml(p)}</div>
@@ -108,7 +109,15 @@
       ${p.summary ? `<p class="page-description">${esc(p.summary)}</p>` : ""}
       ${(p.takeaways || []).length ? `<div class="paper-takeaways"><h2>Key takeaways</h2><ul>${p.takeaways.map(t => "<li>" + esc(t) + "</li>").join("")}</ul></div>` : ""}
       <div class="paper-notes" id="paper-notes"></div>`;
+    focusEl(view.querySelector("h1"));
     drawNotes(p);
+  }
+
+  // Move keyboard focus after a route change; headings need tabindex="-1" to be focusable.
+  function focusEl(el) {
+    if (!el) return;
+    if (!el.matches("a, button, input")) el.setAttribute("tabindex", "-1");
+    el.focus({ preventScroll: true });
   }
 
   function route() {
@@ -116,7 +125,11 @@
     $("#paper-list-view").hidden = Boolean(m);
     $("#paper-detail").hidden = !m;
     if (m) showPaper(decodeURIComponent(m[1]));
-    else document.title = "Papers I read | Joyanta J. Mondal";
+    else {
+      document.title = "Papers I read | Joyanta J. Mondal";
+      if (routed) focusEl($("#paper-list-view h1"));
+    }
+    routed = true;
     window.scrollTo(0, 0);
   }
 
