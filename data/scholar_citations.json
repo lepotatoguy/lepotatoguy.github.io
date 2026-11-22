@@ -4,12 +4,12 @@
     "scholar_url": "https://scholar.google.com/citations?user=lIwU1F0AAAAJ&hl=en"
   },
   "summary": {
-    "total_citations": 158,
+    "total_citations": 159,
     "h_index": 9,
     "i10_index": 7,
-    "paper_count": 31,
-    "updated": "2026-11-21",
-    "updated_at_utc": "2026-11-21T17:37:40+00:00",
+    "paper_count": 32,
+    "updated": "2026-11-22",
+    "updated_at_utc": "2026-11-22T17:52:52+00:00",
     "source": "serpapi"
   },
   "yearly": [
@@ -31,7 +31,7 @@
     },
     {
       "year": 2026,
-      "citations": 47
+      "citations": 48
     }
   ],
   "history": [
@@ -210,6 +210,10 @@
     {
       "date": "2026-11-21",
       "total_citations": 158
+    },
+    {
+      "date": "2026-11-22",
+      "total_citations": 159
     }
   ],
   "top_papers": [
@@ -217,7 +221,7 @@
       "title": "Uncovering local aggregated air quality index with smartphone captured images leveraging efficient deep convolutional neural network",
       "year": "2024",
       "venue": "Scientific Reports 14 (1), 1627, 2024",
-      "citations": 24,
+      "citations": 25,
       "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lIwU1F0AAAAJ&pagesize=100&citation_for_view=lIwU1F0AAAAJ:IjCSPb-OGe4C"
     },
     {
